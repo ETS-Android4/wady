@@ -36,16 +36,12 @@ public class GestureHandler implements GestureListener {
 
 	@Override
 	public boolean pan(float x, float y, float deltaX, float deltaY) {		
-		GVars.cam.position.add(-deltaX, deltaY, 0);
+		GVars.cam.position.add(0, deltaY, 0);
 		return true;
 	}
 
 	@Override
 	public boolean zoom(float initialDistance, float distance) {
-		float newZoom = GVars.cam.zoom -(distance - initialDistance)*0.0002f;
-		if (newZoom < 4f && newZoom > 1f) {
-			GVars.cam.zoom = newZoom;
-		}
 		return false;
 	}
 

@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
+import com.mpv.data.GVars;
 
 public class MainMenuStage extends Stage {
 
@@ -19,8 +20,8 @@ public class MainMenuStage extends Stage {
 
 	public MainMenuStage() {
 		// TODO Auto-generated constructor stub
-		float buttonWidth=Const.BLOCK_SIZE_PIX*2f;
-		float buttonHeight=Const.BLOCK_HALF_PIX*1.5f;
+		float buttonWidth=Const.BLOCK_SIZE*GVars.BOX_TO_WORLD;
+		float buttonHeight=Const.BLOCK_HALF*GVars.BOX_TO_WORLD*1.5f;
 		Table table = new Table();
 		this.addActor(table);	  
 

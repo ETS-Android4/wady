@@ -2,6 +2,7 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -15,12 +16,12 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mpv.control.GestureHandler;
 import com.mpv.control.InputHandler;
 import com.mpv.data.Assets;
-import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.game.players.Player;
 import com.mpv.game.players.Players;
@@ -46,13 +47,12 @@ public class GameScreen implements Screen {
 		GVars.tweenManager = new TweenManager();
 		batch = new SpriteBatch();
 		batch.setShader(Assets.shader);
-		uiStage = new GameUIStage(new ScreenViewport(), batch);
-		
 		//Camera		
-				GVars.cam = new OrthographicCamera(GVars.scrWidth, GVars.scrHeight);
-				GVars.cam.position.set(Const.widthInPixels/2, Const.heightInPixels/2, 0);
+		GVars.cam = new OrthographicCamera(GVars.scrWidth, GVars.scrHeight);
+		//GVars.cam.position.set(Const.widthInPixels/2, Const.heightInPixels/2, 0);
 		//Game Stage
-	    gameStage = new Stage(new ScreenViewport(GVars.cam), batch);
+		uiStage = new GameUIStage(new ScreenViewport(GVars.cam), batch);
+	    gameStage = new Stage(new ScreenViewport(), batch);
 	    Players.add(gameStage);
 	    gameStage.addListener(new ClickListener() {
 			@Override
@@ -98,25 +98,22 @@ public class GameScreen implements Screen {
 		currentFrame = Assets.animation.getKeyFrame(stateTime, true);
 		batch.setProjectionMatrix(GVars.cam.combined);
 		batch.begin();
-		batch.draw(currentFrame, Const.widthInPixels/2, Const.heightInPixels/2);
+		batch.draw(currentFrame, GVars.scrWidth/2, GVars.scrHeight/2);
 		batch.end();
 		//FPS
 		GameUIStage.labelFPS.setText(Float.toString(1/delta).substring(0, 4));
 		//Physics debug
-		debugRenderer.render(GVars.world, GVars.cam.combined.scl(Const.BOX_TO_WORLD));		
+		debugRenderer.render(GVars.world, GVars.cam.combined.scl(GVars.BOX_TO_WORLD));		
 		gameStage.draw();
 		uiStage.draw();
 		//UI debug
-		//Table.drawDebug(uiStage);
+		Table.drawDebug(uiStage);
 		//Table.drawDebug(gameStage);
 	}
 
 	@Override
-	public void resize(int width, int height) {
-		
+	public void resize(int width, int height) {	
 		glViewport = new Rectangle(0, 0, width, height);
-		uiStage.getViewport().setWorldSize(width, width);;
-		gameStage.getViewport().setWorldSize(width, height);
 		GVars.resize(width, height);
 	}
 

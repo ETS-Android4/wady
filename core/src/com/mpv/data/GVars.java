@@ -12,6 +12,9 @@ public class GVars {
 	//Screen parameters
 	public static float scrWidth=1;
 	public static float scrHeight=1;
+	//Scale
+	public static float BOX_TO_WORLD; //= widthInPixels/widthInMeters;
+	public static float WORLD_TO_BOX; //= 1/BOX_TO_WORLD;
 	//Global items	
 	public static ApplicationHandler app;
 	public static OrthographicCamera cam;
@@ -27,6 +30,9 @@ public class GVars {
 			cam.viewportWidth = width;
 			cam.viewportHeight = height;
 		}
+		//Scale
+		BOX_TO_WORLD = scrWidth/Const.widthInMeters;
+		WORLD_TO_BOX = scrHeight/BOX_TO_WORLD;
 	}
 	public static void dispose () {
 		world.dispose();		

@@ -3,7 +3,6 @@ package com.mpv.control;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
-import com.mpv.data.GVars;
 import com.mpv.game.ApplicationHandler;
 
 public class InputHandler implements InputProcessor {
@@ -63,10 +62,6 @@ public class InputHandler implements InputProcessor {
 	@Override
 	public boolean scrolled(int amount) {
 		// TODO Auto-generated method stub
-		float newZoom = GVars.cam.zoom + amount*0.3f;
-		if (newZoom < 4f && newZoom > 1f) {
-			GVars.cam.zoom = newZoom;
-		}
 		return false;
 	}
 

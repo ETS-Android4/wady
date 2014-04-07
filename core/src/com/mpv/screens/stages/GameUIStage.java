@@ -29,7 +29,7 @@ public class GameUIStage extends Stage {
 		labelDebug = new Label("", Assets.skin, "normal-text");
 		Table controlPanel = new Table();
 		controlPanel.setFillParent(true);
-		controlPanel.debug().top().right();
+		controlPanel.debug().bottom().right();
 		controlPanel.add(labelDebug).expand(true, false).size(GVars.scrHeight/13);
 		controlPanel.add(labelFPS).size(GVars.scrHeight/13);
 		controlPanel.add(bExit).size(GVars.scrHeight/15);   
