@@ -2,7 +2,6 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -14,10 +13,8 @@ import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mpv.control.GestureHandler;
 import com.mpv.control.InputHandler;
@@ -32,7 +29,7 @@ public class GameScreen implements Screen {
 
 	private Stage gameStage;
 	private GameUIStage uiStage;
-	Box2DDebugRenderer debugRenderer;
+	private Box2DDebugRenderer debugRenderer;
 	private GestureHandler gestureHandler = new GestureHandler();
 	private InputMultiplexer multiplexer;
 	private GL20 gl20 = Gdx.graphics.getGL20();
@@ -49,23 +46,10 @@ public class GameScreen implements Screen {
 		batch.setShader(Assets.shader);
 		//Camera		
 		GVars.cam = new OrthographicCamera(GVars.scrWidth, GVars.scrHeight);
-		//GVars.cam.position.set(Const.widthInPixels/2, Const.heightInPixels/2, 0);
 		//Game Stage
-		uiStage = new GameUIStage(new ScreenViewport(GVars.cam), batch);
-	    gameStage = new Stage(new ScreenViewport(), batch);
+		uiStage = new GameUIStage(new ScreenViewport(), batch);
+	    gameStage = new Stage(new ScreenViewport(GVars.cam), batch);
 	    Players.add(gameStage);
-	    gameStage.addListener(new ClickListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				//Tween.set(Players.activePlayer, PlayerAccessor.MOVE).target(Players.activePlayer.getX(), Players.activePlayer.getY());
-				Tween.to(Players.activePlayer, PlayerAccessor.MOVE, 1f)
-					.target(x, y)
-					.start(GVars.tweenManager);
-				return super.touchDown(event, x, y, pointer, button);
-			}
-		});
-	    
 		Gdx.graphics.setVSync(true);
 		//Input processor for gesture detection
 		multiplexer = new InputMultiplexer();
@@ -89,6 +73,7 @@ public class GameScreen implements Screen {
 		gl20.glClearColor(0, 0, 0, 1);
 		gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		gl20.glViewport((int)glViewport.x, (int)glViewport.y, (int)glViewport.width, (int)glViewport.height);
+		GVars.cam.position.set(Players.activePlayer.getX(), Players.activePlayer.getY(),0);
 		GVars.cam.update();
 		//Map
 		otmRendered.setView(GVars.cam);

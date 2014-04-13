@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mpv.data.Const;
+import com.mpv.data.GVars;
 
 public class Players {
 	public static Player activePlayer = null;
@@ -17,8 +19,7 @@ public class Players {
 		Player player;
 		for (int i = 0; i < 16; i++) {
 			player = new Player();
-			player.setBounds(0, 0, 64, 64);
-			player.setPosition(i*10, i*10);
+			player.setBounds(0, 0, Const.BLOCK_SIZE*GVars.WORLD_TO_BOX, Const.BLOCK_SIZE*GVars.WORLD_TO_BOX);
 			playerList.add(player);
 			stage.addActor(player);
 		}

@@ -7,9 +7,6 @@ import com.mpv.data.GVars;
 
 public class GestureHandler implements GestureListener {
 	
-	Vector2 vel = new Vector2();
-	Vector2 dist = new Vector2();
-	
 	@Override
 	public boolean touchDown(float x, float y, int pointer, int button) {
 		return false;
@@ -36,7 +33,6 @@ public class GestureHandler implements GestureListener {
 
 	@Override
 	public boolean pan(float x, float y, float deltaX, float deltaY) {		
-		GVars.cam.position.add(0, deltaY, 0);
 		return true;
 	}
 

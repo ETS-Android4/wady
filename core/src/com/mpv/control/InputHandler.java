@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.mpv.game.ApplicationHandler;
+import com.mpv.game.players.Players;
 
 public class InputHandler implements InputProcessor {
 
@@ -16,6 +17,9 @@ public class InputHandler implements InputProcessor {
 	@Override
 	public boolean keyDown(int keycode) {
 		// TODO Auto-generated method stub
+		switch (keycode) {
+			//case Keys.LEFT: Players.activePlayer.
+		}
 		return false;
 	}
 
