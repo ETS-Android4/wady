@@ -2,7 +2,6 @@ package com.mpv.control;
 
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
-import com.mpv.data.GVars;
 
 
 public class GestureHandler implements GestureListener {

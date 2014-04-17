@@ -3,22 +3,21 @@ package com.mpv.control;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.math.Vector2;
 import com.mpv.game.ApplicationHandler;
 import com.mpv.game.players.Players;
 
 public class InputHandler implements InputProcessor {
 
 	ApplicationHandler app;
-	
-	public InputHandler() {
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public boolean keyDown(int keycode) {
 		// TODO Auto-generated method stub
 		switch (keycode) {
-			//case Keys.LEFT: Players.activePlayer.
+			case Keys.LEFT: Players.activePlayer.applyForce(new Vector2(-1f, 1f)); 
+				break;
+			case Keys.RIGHT: Players.activePlayer.applyForce(new Vector2(1f, 1f));
 		}
 		return false;
 	}

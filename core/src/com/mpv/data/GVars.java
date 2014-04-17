@@ -18,9 +18,10 @@ public class GVars {
 	//Global items	
 	public static ApplicationHandler app;
 	public static OrthographicCamera cam;
-	public static World world = new World(new Vector2(0, 0), true);
+	public static World world = new World(new Vector2(0, -9.8f), true);
 	//Tweens
 	public static TweenManager tweenManager;
+	//Maps
 	
 	public static void resize(float width, float height) {
 		
@@ -32,7 +33,7 @@ public class GVars {
 		}
 		//Scale
 		BOX_TO_WORLD = scrWidth/Const.widthInMeters;
-		WORLD_TO_BOX = scrHeight/BOX_TO_WORLD;
+		WORLD_TO_BOX = 1/BOX_TO_WORLD;
 	}
 	public static void dispose () {
 		world.dispose();		

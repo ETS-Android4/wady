@@ -3,6 +3,6 @@
 	<classpathentry kind="output" path="bin"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
-	<classpathentry sourcepath="/home/user1/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/5dc3f81066ffd683221eec6ded8da78c75caac4a/gdx-1.0-SNAPSHOT-sources.jar" kind="lib" path="/home/user1/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/dfee1e3c6fc7b9e7e17b2900d492186a024b2d16/gdx-1.0-SNAPSHOT.jar" exported="true"/>
-	<classpathentry kind="lib" path="/home/user1/git/wady/core/libs/tween-engine-api.jar" exported="true"/>
+	<classpathentry sourcepath="C:/Users/pmuravyov/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/1921c847623b0cfc57270757a824c17be3429aff/gdx-1.0-SNAPSHOT-sources.jar" kind="lib" path="C:/Users/pmuravyov/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/e55cf8e907695c529ff93ef1407b9b4ba3074935/gdx-1.0-SNAPSHOT.jar" exported="true"/>
+	<classpathentry kind="lib" path="D:/work/home/git/wady/core/libs/tween-engine-api.jar" exported="true"/>
 </classpath>

@@ -2,6 +2,7 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -10,6 +11,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.input.GestureDetector;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -46,6 +48,7 @@ public class GameScreen implements Screen {
 		batch.setShader(Assets.shader);
 		//Camera		
 		GVars.cam = new OrthographicCamera(GVars.scrWidth, GVars.scrHeight);
+		//GVars.cam.zoom = 5f;
 		//Game Stage
 		uiStage = new GameUIStage(new ScreenViewport(), batch);
 	    gameStage = new Stage(new ScreenViewport(GVars.cam), batch);
@@ -60,24 +63,35 @@ public class GameScreen implements Screen {
 		Gdx.input.setInputProcessor(multiplexer);
 		//Physics renderer
 		debugRenderer = new Box2DDebugRenderer();
-		//Batch
-		otmRendered = new OrthogonalTiledMapRenderer(Assets.map1);
+		//Map
+		MapProperties prop = Assets.map1.getProperties();
+
+		int mapWidth = prop.get("width", Integer.class);
+		int mapHeight = prop.get("height", Integer.class);
+		int tilePixelWidth = prop.get("tilewidth", Integer.class);
+		int tilePixelHeight = prop.get("tileheight", Integer.class);
+
+		int mapPixelWidth = mapWidth * tilePixelWidth;
+		int mapPixelHeight = mapHeight * tilePixelHeight;
+		otmRendered = new OrthogonalTiledMapRenderer(Assets.map1,GVars.scrWidth/mapPixelWidth);
 	}
 
 	@Override
 	public void render(float delta) {	
-		//game.worldStep(delta);
+		GVars.app.gameObject.worldStep(delta);
 		GVars.tweenManager.update(delta);
+		Players.positionSync();
 		uiStage.act(Gdx.graphics.getDeltaTime());
 		gameStage.act(Gdx.graphics.getDeltaTime());
 		gl20.glClearColor(0, 0, 0, 1);
 		gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		gl20.glViewport((int)glViewport.x, (int)glViewport.y, (int)glViewport.width, (int)glViewport.height);
-		GVars.cam.position.set(Players.activePlayer.getX(), Players.activePlayer.getY(),0);
+		GVars.cam.position.set(GVars.cam.position.x, Players.activePlayer.getY(),0);
 		GVars.cam.update();
 		//Map
 		otmRendered.setView(GVars.cam);
 		otmRendered.render();
+		
 		//SpriteBatch and animation
 		stateTime+=delta;
 		currentFrame = Assets.animation.getKeyFrame(stateTime, true);

@@ -1,8 +1,6 @@
 package com.mpv.game;
 
 import java.util.ArrayList;
-
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -16,18 +14,12 @@ import com.mpv.data.GVars;
 
 public class GameObject {
 
-	//
-	private boolean accelerometer = false;
-
 	ApplicationHandler app;
 	//Body and spite lists
 	ArrayList<Sprite> SpriteList;
 
 	//Delta time accumulator
 	private float accumulator = 0;
-	//Gravity vectors
-	private Vector2 noGravity = new Vector2();
-	private Vector2 varGravity = new Vector2();
 
 	public GameObject() {
 
@@ -87,33 +79,17 @@ public class GameObject {
 		return SpriteList;
 	}
 
-
-	private void setGravity () {
-		if (accelerometer) {
-			float x = Gdx.input.getAccelerometerX();
-			float y = Gdx.input.getAccelerometerY();
-			varGravity.set((Math.abs(x)>4f) ? x : 0, Math.abs(y)>4f ? y : 0).scl(Const.GRAVITY_MUL);
-			GVars.world.setGravity(varGravity);
-		}
-	}
 	public void worldStep (float delta){
 		//Should be improved on heavy applications (< 60 FPS)
 		if (delta >= (Const.BOX_STEP/3)) {
 			GVars.world.step(delta, Const.BOX_VELOCITY_ITERATIONS, Const.BOX_POSITION_ITERATIONS);
-			setGravity();
 			accumulator = 0;
 		} else {
 			accumulator += delta;
 			if (accumulator >= Const.BOX_STEP) {
 				GVars.world.step(accumulator, Const.BOX_VELOCITY_ITERATIONS, Const.BOX_POSITION_ITERATIONS);
-				setGravity();
 				accumulator = 0;
 			}
 		}
-	}
-
-	public void setAccelerometer(boolean a) {
-		this.accelerometer = a;
-		GVars.world.setGravity(noGravity);
 	}
 }
