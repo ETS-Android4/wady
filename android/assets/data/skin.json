@@ -14,17 +14,27 @@
 	dialogDim: { name: empty, color: { r: 0, g: 0, b: 0, a: 0.45 } }
      },
      com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {  
-      default: { background: button, font: normaltext, fontColor: white },  
+      default: { font: normaltext, fontColor: white },  
+      gamelabel: { background: edit, font: normaltext, fontColor: white },  
       normal-text: { font: normaltext, fontColor: white },  
       title-text: { font: titletext, fontColor: red },  
      },
      com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {  
       default: { up: button, down: button-down, disabled: button-disabled }, 
       button-snd: {up: button-snd, down: button-snd, checked: button-snd-disabled},
+      button-mus: {up: button-mus, down: button-mus, checked: button-mus-disabled},
       button-gra: {up: button-gra, down: button-gra, checked: button-gra-disabled, disabled: button-gra-disabled},
       button-exit: {up: button-exit, down: button-exit-down},
+      button-ok: {up: button-ok, down: button-ok-disabled},
+      button-cancel: {up: button-cancel, down: button-cancel-disabled},
       transparent: { },  
-     },  
+     },
+     com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle: {  
+      default: { font: normaltext, selection: none},  
+     },
+     com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
+      default: { font: normaltext, background: button-down, cursor: cursor, selection: none, fontColor: white},
+     },
      com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {  
       default: { up: button, down: button-down, disabled: button-disabled, font: normaltext, fontColor: white },  
      },
