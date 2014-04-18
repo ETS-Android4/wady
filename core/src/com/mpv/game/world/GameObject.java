@@ -1,4 +1,4 @@
-package com.mpv.game;
+package com.mpv.game.world;
 
 import java.util.ArrayList;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -7,10 +7,12 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
+import com.mpv.game.ApplicationHandler;
+import com.mpv.game.ContactHandler;
 
 public class GameObject {
 
@@ -22,29 +24,9 @@ public class GameObject {
 	private float accumulator = 0;
 
 	public GameObject() {
-
-		PolygonShape polygonShape = new PolygonShape();
-
 		setWorldBounds();
-		//Defining blocks
-		BodyDef bodyDef = new BodyDef();
-		FixtureDef fixtureDef = new FixtureDef();
-		polygonShape.setAsBox(Const.BLOCK_HALF, Const.BLOCK_HALF);
-		fixtureDef.filter.categoryBits = Const.CATEGORY_BLOCK;
-		fixtureDef.shape = polygonShape;
-		fixtureDef.density = Const.BLOCK_DENSITY;
-		fixtureDef.friction = Const.BLOCK_FRICTION;
-		fixtureDef.restitution = Const.BLOCK_RESTITUTION;
-
-		bodyDef.type = BodyType.DynamicBody;
-
-		//Adding empty rectangle with index 15 at position 4:4
-
-		//Cloning original SpriteList
-		//
+		MapBodyBuilder.buildShapes(Assets.map1, 32f, GVars.world);
 		GVars.world.setContactListener(new ContactHandler());
-		//Dispose disposable
-		polygonShape.dispose();
 	}
 	private void setWorldBounds() {
 

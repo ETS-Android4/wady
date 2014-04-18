@@ -1,103 +1,52 @@
-
 skin.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-background
+player
   rotate: false
-  xy: 1, 334
+  xy: 1, 70
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-empty
-  rotate: false
-  xy: 131, 396
-  size: 132, 66
-  split: 44, 39, 25, 22
-  orig: 132, 66
-  offset: 0, 0
-  index: -1
 button-cancel-disabled
-  rotate: false
-  xy: 1, 268
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-cancel
-  rotate: false
-  xy: 265, 398
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-exit-down
-  rotate: false
-  xy: 1, 202
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-exit
-  rotate: false
-  xy: 331, 398
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-gra-disabled
-  rotate: false
-  xy: 1, 136
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-gra
-  rotate: false
-  xy: 397, 398
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-mus-disabled
-  rotate: false
-  xy: 1, 70
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-mus
   rotate: false
   xy: 1, 4
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+button-cancel
+  rotate: false
+  xy: 131, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+button-exit-down
+  rotate: false
+  xy: 197, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+button-exit
+  rotate: false
+  xy: 263, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 button-ok-disabled
   rotate: false
-  xy: 67, 268
+  xy: 329, 134
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 button-ok
   rotate: false
-  xy: 67, 202
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-snd-disabled
-  rotate: false
-  xy: 67, 136
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-snd
-  rotate: false
-  xy: 67, 70
+  xy: 395, 134
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -110,16 +59,9 @@ button-disabled
   orig: 62, 62
   offset: 0, 0
   index: -1
-cursor
-  rotate: false
-  xy: 463, 398
-  size: 8, 64
-  orig: 8, 64
-  offset: 0, 0
-  index: -1
 button-down
   rotate: false
-  xy: 265, 334
+  xy: 131, 70
   size: 62, 62
   split: 16, 16, 16, 15
   orig: 62, 62
@@ -127,7 +69,7 @@ button-down
   index: -1
 button
   rotate: false
-  xy: 329, 334
+  xy: 131, 6
   size: 62, 62
   split: 16, 15, 16, 15
   orig: 62, 62
@@ -135,7 +77,7 @@ button
   index: -1
 edit
   rotate: false
-  xy: 393, 334
+  xy: 195, 70
   size: 62, 62
   split: 25, 19, 22, 22
   orig: 62, 62
@@ -143,10 +85,17 @@ edit
   index: -1
 window
   rotate: false
-  xy: 131, 6
+  xy: 195, 6
   size: 62, 62
   split: 16, 16, 34, 14
   orig: 62, 62
+  offset: 0, 0
+  index: -1
+cursor
+  rotate: false
+  xy: 461, 134
+  size: 8, 64
+  orig: 8, 64
   offset: 0, 0
   index: -1
 none

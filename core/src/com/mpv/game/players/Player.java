@@ -47,8 +47,9 @@ public class Player extends Image  {
 	    body.setTransform(5f, 5f, 0);
 		body.setUserData(this);
 		//Actor
-		this.setDrawable(Assets.skin, "button");
+		this.setDrawable(Assets.skin, "player");
 		this.setSize(Const.BLOCK_SIZE*GVars.BOX_TO_WORLD, Const.BLOCK_SIZE*GVars.BOX_TO_WORLD);
+		this.setOrigin(this.getWidth()/2, this.getHeight()/2);
 		//Dispose disposable
 		polygonShape.dispose();
 	}
@@ -62,5 +63,6 @@ public class Player extends Image  {
 				(body.getPosition().x-Const.BLOCK_HALF)*GVars.BOX_TO_WORLD, 
 				(body.getPosition().y-Const.BLOCK_HALF)*GVars.BOX_TO_WORLD
 				);
+		this.setRotation((float)Math.toDegrees(body.getAngle()));
 	}
 }

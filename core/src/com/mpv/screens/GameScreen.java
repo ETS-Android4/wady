@@ -2,21 +2,18 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mpv.control.GestureHandler;
 import com.mpv.control.InputHandler;
@@ -37,18 +34,17 @@ public class GameScreen implements Screen {
 	private GL20 gl20 = Gdx.graphics.getGL20();
 	private Rectangle glViewport;
 	private SpriteBatch batch;
-	private TextureRegion currentFrame;
-	private float stateTime = 0f;
+	//private TextureRegion currentFrame;
+	//private float stateTime = 0f;
 	private OrthogonalTiledMapRenderer otmRendered;
     	
 	public GameScreen() {
 		Tween.registerAccessor(Player.class, new PlayerAccessor());
 		GVars.tweenManager = new TweenManager();
 		batch = new SpriteBatch();
-		batch.setShader(Assets.shader);
+		//batch.setShader(Assets.shader);
 		//Camera		
 		GVars.cam = new OrthographicCamera(GVars.scrWidth, GVars.scrHeight);
-		//GVars.cam.zoom = 5f;
 		//Game Stage
 		uiStage = new GameUIStage(new ScreenViewport(), batch);
 	    gameStage = new Stage(new ScreenViewport(GVars.cam), batch);
@@ -67,12 +63,12 @@ public class GameScreen implements Screen {
 		MapProperties prop = Assets.map1.getProperties();
 
 		int mapWidth = prop.get("width", Integer.class);
-		int mapHeight = prop.get("height", Integer.class);
+		//int mapHeight = prop.get("height", Integer.class);
 		int tilePixelWidth = prop.get("tilewidth", Integer.class);
-		int tilePixelHeight = prop.get("tileheight", Integer.class);
+		//int tilePixelHeight = prop.get("tileheight", Integer.class);
 
 		int mapPixelWidth = mapWidth * tilePixelWidth;
-		int mapPixelHeight = mapHeight * tilePixelHeight;
+		//int mapPixelHeight = mapHeight * tilePixelHeight;
 		otmRendered = new OrthogonalTiledMapRenderer(Assets.map1,GVars.scrWidth/mapPixelWidth);
 	}
 
@@ -93,20 +89,20 @@ public class GameScreen implements Screen {
 		otmRendered.render();
 		
 		//SpriteBatch and animation
-		stateTime+=delta;
+		/*stateTime+=delta;
 		currentFrame = Assets.animation.getKeyFrame(stateTime, true);
 		batch.setProjectionMatrix(GVars.cam.combined);
 		batch.begin();
 		batch.draw(currentFrame, GVars.scrWidth/2, GVars.scrHeight/2);
-		batch.end();
+		batch.end();*/
 		//FPS
 		GameUIStage.labelFPS.setText(Float.toString(1/delta).substring(0, 4));
 		//Physics debug
-		debugRenderer.render(GVars.world, GVars.cam.combined.scl(GVars.BOX_TO_WORLD));		
+		//debugRenderer.render(GVars.world, GVars.cam.combined.scl(GVars.BOX_TO_WORLD));		
 		gameStage.draw();
 		uiStage.draw();
 		//UI debug
-		Table.drawDebug(uiStage);
+		//Table.drawDebug(uiStage);
 		//Table.drawDebug(gameStage);
 	}
 
@@ -141,7 +137,6 @@ public class GameScreen implements Screen {
 		otmRendered.dispose();
 		uiStage.dispose();
 		gameStage.dispose();
-		Assets.skin.dispose();
 	}
 	public void showDialog() {
 		Gdx.input.setInputProcessor(uiStage);

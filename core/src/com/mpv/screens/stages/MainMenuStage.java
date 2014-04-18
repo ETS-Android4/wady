@@ -26,7 +26,6 @@ public class MainMenuStage extends Stage {
 		this.addActor(table);	  
 
 		table.setFillParent(true); 
-		table.setBackground(Assets.skin.getTiledDrawable("background"));
 		exitDialog = 
 				new Dialog("", Assets.skin, "default") {
 			protected void result (Object obj) {
@@ -81,13 +80,5 @@ public class MainMenuStage extends Stage {
 			}
 		});     
 	}
-
-	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-		Assets.skin.dispose();
-		super.dispose();
-	}
-
 
 }

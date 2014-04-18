@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.GdxNativesLoader;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
+import com.mpv.game.world.GameObject;
 import com.mpv.screens.GameScreen;
 import com.mpv.screens.MenuScreen;
 
