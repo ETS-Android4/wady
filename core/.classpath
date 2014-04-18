@@ -3,6 +3,7 @@
 	<classpathentry kind="output" path="bin"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
-	<classpathentry sourcepath="C:/Users/pmuravyov/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/3136bb8d7a11b1f7ec571b4af8ccf6aad97fd73b/gdx-1.0-SNAPSHOT-sources.jar" kind="lib" path="C:/Users/pmuravyov/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/f33cd854622c6b4e3b0a15ca6e5c7333eb579528/gdx-1.0-SNAPSHOT.jar" exported="true"/>
-	<classpathentry kind="lib" path="D:/work/home/git/wady/core/libs/tween-engine-api.jar" exported="true"/>
+	<classpathentry sourcepath="/home/user2/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/46ca136c331a820ddcf5ec467dd3e1da4fb072ca/gdx-1.0-SNAPSHOT-sources.jar" kind="lib" path="/home/user2/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/f7889118fc19cfaffe8592cc5d1ba385a93d0bf1/gdx-1.0-SNAPSHOT.jar" exported="true"/>
+	<classpathentry sourcepath="/home/user2/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.0-SNAPSHOT/6b4cb8314016b00d390e7d0f7f65c1693ccac5c9/gdx-box2d-1.0-SNAPSHOT-sources.jar" kind="lib" path="/home/user2/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.0-SNAPSHOT/31bdada7d784445bf83b1aa1488a4c3d31b8c7ce/gdx-box2d-1.0-SNAPSHOT.jar" exported="true"/>
+	<classpathentry kind="lib" path="/home/user2/git/wady/core/libs/tween-engine-api.jar" exported="true"/>
 </classpath>
