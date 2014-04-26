@@ -21,7 +21,7 @@ public class Const {
 		public static final float startpointX = 0;
 		public static final float startpointY = 0;
 		public static final float widthInMeters = 10f;
-		public static final float heightInMeters = 100f;
+		public static final float heightInMeters = 300f;
 		//public static final float widthInPixels = 1600f;
 		//public static final float heightInPixels = 1600f;
 		public static final float CAM_BORDER = 100f;

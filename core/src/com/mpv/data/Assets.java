@@ -52,7 +52,7 @@ public class Assets {
 		skin = new Skin(Gdx.files.internal("data/skin.json"));
 		skin.getFont("normaltext").setScale(0.4f);
 		//Tiled maps
-		map1 = new TmxMapLoader().load("maps/level1.tmx");
+		map1 = new TmxMapLoader().load("maps/level01.tmx");
 		//Animation
 		animationTexture = new Texture(Gdx.files.internal("data/exp2.png")); 
 		TextureRegion[][] tmp = TextureRegion.split(animationTexture, animationTexture.getWidth() / 
