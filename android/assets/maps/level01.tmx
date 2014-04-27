@@ -13,6 +13,11 @@
    eJzt0m0OwUAQxvFtwiE4gtcjeD0C4jDiI4fgDrgD7oDLmKadpMbutgkfRP6/5AlJn3Z1hnMAAAAAAAAAAAAAAAAAAAC/61Cxs6/Qu0m2kmMkp7x7ltwDSZ9xLfRCzp7eIXCW7aWfG89Zvt7OZe9f1rvk0WvpPB4VevadbG/n3ueo+0jPCM1RZ6lziLkFzvHtblNypr6zfv4D/V+VzVL3prttJc61JZ3ktad70xkN5PpQMjK9lXn+TK7PJQvTi91Tk27d9Nee+xrSaUqWkRSf05XvPU/6knGh1wz81qnphZT1JkmWT3t2V6Ge3ZXOzaqyq2+K7a2YJ6zEYaw=
   </data>
  </layer>
+ <layer name="decor" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJztzrEJwDAMBEBlfmeIZAh7iHgpq04lCBgCd53gn1cEAAAAAAAAAAAAAPB346jl5ivX8j4L3Sszd3Hji17ceDb8wn4L+tgFYQ==
+  </data>
+ </layer>
  <objectgroup name="obstacles" width="10" height="300">
   <object x="271" y="9172" width="33" height="29">
    <ellipse/>
@@ -42,9 +47,4 @@
    <ellipse/>
   </object>
  </objectgroup>
- <layer name="decor" width="10" height="300">
-  <data encoding="base64" compression="zlib">
-   eJztzrEJwDAMBEBlfmeIZAh7iHgpq04lCBgCd53gn1cEAAAAAAAAAAAAAPB346jl5ivX8j4L3Sszd3Hji17ceDb8wn4L+tgFYQ==
-  </data>
- </layer>
 </map>
