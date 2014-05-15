@@ -3,9 +3,8 @@ package com.mpv.data;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -31,8 +30,7 @@ public class Assets {
 	//Maps
 	public static TiledMap map1; 
 	//Textures & regions
-	private static Texture animationTexture;
-	private static TextureRegion[] _frames;
+	private static TextureAtlas textureAtlas;
 	public static Animation animation;
 	//Shaders
 	public static ShaderProgram shader;
@@ -53,18 +51,8 @@ public class Assets {
 		skin.getFont("normaltext").setScale(0.4f);
 		//Tiled maps
 		map1 = new TmxMapLoader().load("maps/level01.tmx");
-		//Animation
-		animationTexture = new Texture(Gdx.files.internal("data/exp2.png")); 
-		TextureRegion[][] tmp = TextureRegion.split(animationTexture, animationTexture.getWidth() / 
-				4, animationTexture.getHeight() / 4);
-		int index = 0;
-		_frames = new TextureRegion[4*4];
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
-				_frames[index++] = tmp[i][j];
-			}
-		}
-		animation = new Animation(Const.ANIMATION_SPEED, _frames);
+		//
+		loadAnimation();
 		//Shader
 		ShaderProgram.pedantic = false;
 		shader = new ShaderProgram(
@@ -73,11 +61,17 @@ public class Assets {
 		System.out.println(shader.isCompiled() ? "shader compiled" : shader.getLog());
 
 	}
+	
+	private static void loadAnimation() {
 
+		textureAtlas = new TextureAtlas(Gdx.files.internal("data/animation.atlas"));
+		animation = new Animation(Const.ANIMATION_SPEED, textureAtlas.getRegions());
+		
+	}
+	
 	public static void dispose() {
 		audioDispose();
 		skin.dispose();
-		animationTexture.dispose();
 		map1.dispose();
 		shader.dispose();
 	}

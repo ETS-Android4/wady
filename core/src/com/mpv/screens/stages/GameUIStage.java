@@ -32,7 +32,7 @@ public class GameUIStage extends Stage {
 		controlPanel.debug().bottom().right();
 		controlPanel.add(labelDebug).expand(true, false).size(GVars.scrHeight/13);
 		controlPanel.add(labelFPS).size(GVars.scrHeight/13);
-		controlPanel.add(bExit).size(GVars.scrHeight/15);   
+		controlPanel.add(bExit).size(GVars.scrHeight/15);
 		this.addActor(controlPanel);
 	}
 

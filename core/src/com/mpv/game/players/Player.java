@@ -7,13 +7,11 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
 
-public class Player extends Image  {
+public class Player extends AnimatedImage  {
 	
 	final Player inst;
 	private Body body;
@@ -47,7 +45,7 @@ public class Player extends Image  {
 	    body.setTransform(5f, 5f, 0);
 		body.setUserData(this);
 		//Actor
-		this.setDrawable(Assets.skin, "player");
+		//this.se(Assets.skin, "player");
 		this.setSize(Const.BLOCK_SIZE*GVars.BOX_TO_WORLD, Const.BLOCK_SIZE*GVars.BOX_TO_WORLD);
 		this.setOrigin(this.getWidth()/2, this.getHeight()/2);
 		//Dispose disposable
@@ -56,6 +54,7 @@ public class Player extends Image  {
 
 	public void applyForce(Vector2 impulse) {
 		body.applyLinearImpulse(impulse, body.getWorldCenter(), true);
+		reset();
 	}
 	
 	public void positionSync() {
