@@ -16,7 +16,7 @@ public class Const {
 		public static final float BLOCK_FRICTION = 0f;
 		public static final float BLOCK_RESTITUTION = 0.5f;
 		public static final float BODY_LINEAR_DAMPING = 0.9f;
-		public static final boolean FIXED_ROTATION = false;
+		public static final boolean FIXED_ROTATION = true;
 		//Physics world bounds
 		public static final float startpointX = 0;
 		public static final float startpointY = 0;

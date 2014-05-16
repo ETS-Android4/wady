@@ -2,6 +2,7 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -13,6 +14,7 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mpv.control.GestureHandler;
@@ -28,7 +30,7 @@ public class GameScreen implements Screen {
 
 	private Stage gameStage;
 	private GameUIStage uiStage;
-	//private Box2DDebugRenderer debugRenderer;
+	private Box2DDebugRenderer debugRenderer;
 	private GestureHandler gestureHandler = new GestureHandler();
 	private InputMultiplexer multiplexer;
 	private GL20 gl20 = Gdx.graphics.getGL20();
@@ -58,7 +60,8 @@ public class GameScreen implements Screen {
 		multiplexer.addProcessor(gameStage);
 		Gdx.input.setInputProcessor(multiplexer);
 		//Physics renderer
-		//debugRenderer = new Box2DDebugRenderer();
+		debugRenderer = new Box2DDebugRenderer();
+		debugRenderer.setDrawVelocities(true);
 		//Map
 		MapProperties prop = Assets.map1.getProperties();
 
