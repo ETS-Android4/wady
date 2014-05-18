@@ -54,7 +54,7 @@ public class Player extends AnimatedImage  {
 	    body.setTransform(5f, 5f, 0);
 		body.setUserData(this);
 		//Actor
-		this.setSize(Const.BLOCK_SIZE*GVars.BOX_TO_WORLD, Const.BLOCK_SIZE*GVars.BOX_TO_WORLD);
+		this.setSize(Const.BLOCK_SIZE*1.5f*GVars.BOX_TO_WORLD, Const.BLOCK_SIZE*1.5f*GVars.BOX_TO_WORLD);
 		this.setOrigin(this.getWidth()/2, this.getHeight()/2);
 		//Dispose disposable
 		playerShape.dispose();
