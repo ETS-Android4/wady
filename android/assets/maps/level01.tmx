@@ -5,17 +5,17 @@
  </tileset>
  <layer name="background" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJzt1LENgzAQQFFniCwB2SFBrAAMzzS5JrWBRNHZesXrLMuW/3kvpewHzDf+6Z7gDPRtCGN4VNY9wytMlXVLWMOW4G7kpDl6pW24xuyQhRahXeYX2mFe4ZyMM5PxTLRPV/RI1xz1q1Y++9Ra0Rxn+Mv4hn7y80YAtOING3shIw==
+   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAOBvLuAAAQ==
   </data>
  </layer>
  <layer name="terrain" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJzt0m0OwUAQxvFtwiE4gtcjeD0C4jDiI4fgDrgD7oDLmKadpMbutgkfRP6/5AlJn3Z1hnMAAAAAAAAAAAAAAAAAAAC/61Cxs6/Qu0m2kmMkp7x7ltwDSZ9xLfRCzp7eIXCW7aWfG89Zvt7OZe9f1rvk0WvpPB4VevadbG/n3ueo+0jPCM1RZ6lziLkFzvHtblNypr6zfv4D/V+VzVL3prttJc61JZ3ktad70xkN5PpQMjK9lXn+TK7PJQvTi91Tk27d9Nee+xrSaUqWkRSf05XvPU/6knGh1wz81qnphZT1JkmWT3t2V6Ge3ZXOzaqyq2+K7a2YJ6zEYaw=
+   eJzt2stOwzAQheHpmgp4hKDyAIC4wxYQpOKypRUERHn/R2BGtRXLxOMsuGz+TzqqIh/FdW3vuhKR1YgAAAAAAAAAAAAAAAAAAAD8h42RnW5Er9Eca16dTEO31RwVYu+4TXol7UBvU/MesuX07jWHYa55pfci6/XXenchsddodgZ60Vy+y99n3pI1xXRhbKY5dXIm/e/gmRXmSRPfc1KZczf04udP25uI7GsOJn7vSsevNTeV3rOOLzRLp3euudBcVr7bg+ZR8xSe7YzFM536kPV/iD/Ds50n22/vvBs7i3aPOs12pRvZ/Z1WW/15HXN/TVybd39F+juQa7NeyV/18j0u9fI9bmR4jfke/zZv39J8ARq5M6k=
   </data>
  </layer>
  <layer name="decor" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJztzrEJwDAMBEBlfmeIZAh7iHgpq04lCBgCd53gn1cEAAAAAAAAAAAAAPB346jl5ivX8j4L3Sszd3Hji17ceDb8wn4L+tgFYQ==
+   eJztzrENwCAAA0HmStghyQ7A/iPgNhUFHbqTvnPhUgAAAAAAAAAAAICTXelOdbF70pu+xa6lnsb+NQD4mXqmAtE=
   </data>
  </layer>
  <objectgroup name="obstacles" width="10" height="300">
@@ -26,24 +26,30 @@
    <polyline points="0,0 17,-1 29,-32 200,-27 203,150 215,161 236,159 249,130 245,-70 -1,-70 0,1"/>
   </object>
   <object x="0" y="8882">
-   <polyline points="0,0 19,-4 29,-29 272,-31 274,-70 27,-71 22,-80 11,-106 0,-106 0,2"/>
+   <polyline points="0,0 17,-22 28,-34 267,-35 270,-69 27,-69 22,-80 11,-94 0,-106 0,2"/>
   </object>
   <object x="322" y="8789">
-   <polyline points="0,0 -15,-6 -30,-33 -265,-33 -279,-55 -279,-216 -272,-232 -251,-236 -182,-235 -170,-215 -170,-87 -166,-75 -29,-77 -19,-88 -23,-344 -47,-361 -48,-386 -24,-399 -16,-417 -4,-413 -1,4"/>
+   <polyline points="0,0 -15,-6 -30,-33 -265,-33 -279,-55 -279,-216 -271,-229 -250,-232 -186,-231 -170,-215 -170,-87 -166,-75 -29,-77 -19,-88 -23,-344 -47,-361 -48,-386 -24,-399 -16,-417 -4,-413 -1,4"/>
   </object>
   <object x="3" y="8501">
    <polyline points="0,0 195,1 203,11 205,142 212,154 235,154 245,139 244,-18 226,-43 -3,-45 -3,0"/>
   </object>
-  <object x="44" y="8240" width="67" height="68">
+  <object x="45" y="8235" width="71" height="73">
    <ellipse/>
   </object>
   <object x="79" y="9424" width="65" height="66">
    <ellipse/>
   </object>
-  <object x="173" y="9071" width="65" height="66">
+  <object x="174" y="9066" width="72" height="73">
    <ellipse/>
   </object>
   <object x="48" y="9038" width="65" height="66">
+   <ellipse/>
+  </object>
+  <object x="76" y="8936" width="72" height="73">
+   <ellipse/>
+  </object>
+  <object x="259" y="9124" width="31" height="28">
    <ellipse/>
   </object>
  </objectgroup>
