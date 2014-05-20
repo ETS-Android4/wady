@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
+import com.mpv.data.GVars;
 import com.mpv.game.ApplicationHandler;
-import com.mpv.game.players.Players;
 
 public class InputHandler implements InputProcessor {
 
@@ -15,9 +15,9 @@ public class InputHandler implements InputProcessor {
 	public boolean keyDown(int keycode) {
 		// TODO Auto-generated method stub
 		switch (keycode) {
-			case Keys.LEFT: Players.activePlayer.applyForce(new Vector2(-1f, 1f)); 
+			case Keys.LEFT: GVars.activePlayer.applyForce(new Vector2(-1f, 1f)); 
 				break;
-			case Keys.RIGHT: Players.activePlayer.applyForce(new Vector2(1f, 1f));
+			case Keys.RIGHT: GVars.activePlayer.applyForce(new Vector2(1f, 1f));
 		}
 		return false;
 	}

@@ -3,7 +3,6 @@ package com.mpv.control;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
 import com.mpv.data.GVars;
-import com.mpv.game.players.Players;
 
 
 public class GestureHandler implements GestureListener {
@@ -17,9 +16,9 @@ public class GestureHandler implements GestureListener {
 	public boolean tap(float x, float y, int count, int button) {
 		// TODO Auto-generated method stub
 		if (x > GVars.scrWidth/2) {
-			Players.activePlayer.applyForce(new Vector2(1f, 1f));
+			GVars.activePlayer.applyForce(new Vector2(1f, 1f));
 		}else {
-			Players.activePlayer.applyForce(new Vector2(-1f, 1f));
+			GVars.activePlayer.applyForce(new Vector2(-1f, 1f));
 		}
 		return false;
 	}

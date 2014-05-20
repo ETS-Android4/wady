@@ -22,16 +22,14 @@ public class Player extends AnimatedImage  {
 	public static final int S_HIT = 4;
 	
 	public static int state = Player.S_IDLE;
-	final Player inst;
 	private Body body;
 	
 	public Player() {
-		inst = this;
+		GVars.activePlayer = this;
 		this.addListener(new ClickListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				Players.activePlayer = inst;
 				return super.touchDown(event, x, y, pointer, button);
 			}
 		});
@@ -51,14 +49,15 @@ public class Player extends AnimatedImage  {
 		body.createFixture(fixtureDef);
 		body.setFixedRotation(Const.FIXED_ROTATION);
 	    body.setLinearDamping(Const.BODY_LINEAR_DAMPING);
-	    body.setTransform(5f, 5f, 0);
+	    body.setTransform(5f, Const.BLOCK_SIZE , 0);
 		body.setUserData(this);
 		//Actor
 		this.setSize(Const.BLOCK_SIZE*1.5f*GVars.BOX_TO_WORLD, Const.BLOCK_SIZE*1.5f*GVars.BOX_TO_WORLD);
 		this.setOrigin(this.getWidth()/2, this.getHeight()/2);
-		//Dispose disposable
-		playerShape.dispose();
+		this.setRotation(360);
 		Tween.set(this, PlayerAccessor.ROTATE).target(this.getRotation());
+		//Dispose disposable
+				playerShape.dispose();
 	}
 
 	public void applyForce(Vector2 impulse) {
@@ -89,6 +88,5 @@ public class Player extends AnimatedImage  {
 			.target(angle+270f)
 			.start(GVars.tweenManager);
 		//State update
-		
 	}
 }

@@ -48,7 +48,7 @@ public class Assets {
 		buttonSound = Gdx.audio.newSound(Gdx.files.internal("sounds/button.mp3"));
 		//Skin & Font
 		skin = new Skin(Gdx.files.internal("data/skin.json"));
-		skin.getFont("normaltext").setScale(0.4f);
+		skin.getFont("normaltext").setScale(0.5f);
 		//Tiled maps
 		map1 = new TmxMapLoader().load("maps/level01.tmx");
 		//
@@ -74,6 +74,7 @@ public class Assets {
 		skin.dispose();
 		map1.dispose();
 		shader.dispose();
+		textureAtlas.dispose();
 	}
 	public static void pauseMusic() {
 		menuMusic.pause();

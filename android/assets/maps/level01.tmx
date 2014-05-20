@@ -5,17 +5,17 @@
  </tileset>
  <layer name="background" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAOBvLuAAAQ==
+   eJydlElyhTAUAzl3uHw2WaQoS93ygko+4DdILd7ned6/6+ff9Ya/7fm3zhuef+9/657qnJ6faqX/TzOd+tvL9rI9jD5251QraZx6pt6kxYkL0tt6avROXJIu5JXZse3XZrPapRwujKzc27NpXsqfmc/u3fQmr+33gmrbMy27xpP2rTj1tpo2T4gt4286v2Sp8bLuYb8nRkeai/Y29xe9iCXTizS2u5GXxNCa4cX/5t2pP51NM6WdjWeWVdLS5u5Gr5Z10sX0troSv6TnzTt0L2ltrjXrxnvSi1iyDNwylRg13Cc9LBvkTdLc8ti4Npmk/5tXiVHLHPlm8m3YP2lidlnmvO25amB4bXlb+qVzNleLFydO2l4m+5SnNFNiws6R9jDe3Pp3y0fK7w3bxvd0r820PG9s0/uNG6OPyanhjlhLv5PWlAnDWNvF6kVz2gyRZ40bw4lhjDiwPWnWRQvSKXlselJGaN/2TVj2S77RviZLJidGI6MdZbVxsfqStKbck9fkZdrB7tf0NjxQL2LEsNtYbGwT/zabyUeTP9L3VM/sbXLQzizfg6U/aW11bHUW5hp/5FPLevKNdm5znPLRalO+2k7k4eJBm4Wya/hue1oPiZvEY7pn8mnnsPmzHjZviRXKZ8uH1YO4a7umjFA2U01iqXnUdjOZtdlq3tn+xnNiiLw/6Wq5avNRRtucN8xYT0792wxrfpOW6XfLqcllY8xoSHVvs2i4umGk8W41Ndy2+ReP29wti2bHtvPCjdXZzGpZoiyRP4s+LSeNXXPG5MC8Z3yjmRM3Jo8pA7ffhdV38qp5TXOR/sSpyXjr1TRvNRtzjdGWazNf4qfxtOxFtRsf6UqcJfZI87QrzZQYpRo0s921ebxo1Pgi7pZ+7X7K/Mrj4rl5Tu+S/4Yxyq/Nf8vJzUymVsu1zSDVMH4svdZc2R3b3oYNyyFlp/VNupmM/wLSNpvG
   </data>
  </layer>
  <layer name="terrain" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJzt2stOwzAQheHpmgp4hKDyAIC4wxYQpOKypRUERHn/R2BGtRXLxOMsuGz+TzqqIh/FdW3vuhKR1YgAAAAAAAAAAAAAAAAAAAD8h42RnW5Er9Eca16dTEO31RwVYu+4TXol7UBvU/MesuX07jWHYa55pfci6/XXenchsddodgZ60Vy+y99n3pI1xXRhbKY5dXIm/e/gmRXmSRPfc1KZczf04udP25uI7GsOJn7vSsevNTeV3rOOLzRLp3euudBcVr7bg+ZR8xSe7YzFM536kPV/iD/Ds50n22/vvBs7i3aPOs12pRvZ/Z1WW/15HXN/TVybd39F+juQa7NeyV/18j0u9fI9bmR4jfke/zZv39J8ARq5M6k=
+   eJzt2s1OAjEUhuHDWqJewhC8ADUCKm7V4BCVLRAcjHD/l+A5oc1MyrSdhT+b90m+kEm/zFDaspqdiOw6BAAAAAAAAAAAAAAAAAAA4D+cdOxUHXqFZqz5SKTvuqVmFIndY9boxZQtvVPNp8tZovequXHPmmd6GznMP9d7cfG9QjNo6XlzORbez2wbc/Kp3NhQc5vIndS/Q8ow8pxm/H0mmWdeuJ7//GmXPZErzXUv3XvU8SfNc6a31PGVZp3o3WummofMd3vTvGsW7tr2mN/TTV9yeId4765tP9l6p/a7sb1o56jSnGe6np3ffrZV79cu59f4uaXOr0h9BkJl0Iv5q164xrFeuMaFtM8xXOPfFvs/DfMN9pIyBQ==
   </data>
  </layer>
  <layer name="decor" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJztzrENwCAAA0HmStghyQ7A/iPgNhUFHbqTvnPhUgAAAAAAAAAAAICTXelOdbF70pu+xa6lnsb+NQD4mXqmAtE=
+   eJztzsEJgDAQRNGkLbUHtQe1G6uwUQcsIIcIgrwHn73MYUsBAAAAAAAAAAAA/mxIY5oauzktaW3strSno/81gC5Xfe5Zv/2D99ylugQD
   </data>
  </layer>
  <objectgroup name="obstacles" width="10" height="300">
@@ -51,6 +51,9 @@
   </object>
   <object x="259" y="9124" width="31" height="28">
    <ellipse/>
+  </object>
+  <object x="320" y="9572">
+   <polyline points="0,0 -321,1"/>
   </object>
  </objectgroup>
 </map>

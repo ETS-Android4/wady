@@ -2,7 +2,6 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -22,7 +21,6 @@ import com.mpv.control.InputHandler;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
 import com.mpv.game.players.Player;
-import com.mpv.game.players.Players;
 import com.mpv.screens.stages.GameUIStage;
 import com.mpv.tween.PlayerAccessor;
 
@@ -46,11 +44,12 @@ public class GameScreen implements Screen {
 		batch = new SpriteBatch();
 		//batch.setShader(Assets.shader);
 		//Camera		
-		GVars.cam = new OrthographicCamera(GVars.scrWidth, GVars.scrHeight);
+		GVars.frCam = new OrthographicCamera(GVars.scrWidth, GVars.scrHeight);
+		GVars.bgCam = new OrthographicCamera(GVars.scrWidth, GVars.scrHeight);
 		//Game Stage
 		uiStage = new GameUIStage(new ScreenViewport(), batch);
-	    gameStage = new Stage(new ScreenViewport(GVars.cam), batch);
-	    Players.add(gameStage);
+	    gameStage = new Stage(new ScreenViewport(GVars.frCam), batch);
+	    gameStage.addActor(new Player());
 		Gdx.graphics.setVSync(true);
 		//Input processor for gesture detection
 		multiplexer = new InputMultiplexer();
@@ -79,18 +78,21 @@ public class GameScreen implements Screen {
 	public void render(float delta) {	
 		GVars.app.gameObject.worldStep(delta);
 		GVars.tweenManager.update(delta);
-		Players.positionSync();
+		GVars.activePlayer.positionSync();
 		uiStage.act(Gdx.graphics.getDeltaTime());
 		gameStage.act(Gdx.graphics.getDeltaTime());
 		gl20.glClearColor(0, 0, 0, 1);
 		gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		gl20.glViewport((int)glViewport.x, (int)glViewport.y, (int)glViewport.width, (int)glViewport.height);
-		GVars.cam.position.set(GVars.cam.position.x, Players.activePlayer.getY(),0);
-		GVars.cam.update();
+		GVars.frCam.position.set(GVars.frCam.position.x, Math.max(GVars.activePlayer.getY(), GVars.scrHeight/2),0);
+		GVars.bgCam.position.set(GVars.frCam.position.x, GVars.frCam.position.y/1.6f + GVars.scrHeight/4, 0);
+		GVars.frCam.update();
+		GVars.bgCam.update();
 		//Map
-		otmRendered.setView(GVars.cam);
+		otmRendered.setView(GVars.bgCam);
 		batch.begin();
 		otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map1.getLayers().get(0));
+		otmRendered.setView(GVars.frCam);
 		otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map1.getLayers().get(1));
 		batch.end();
 		//Player
