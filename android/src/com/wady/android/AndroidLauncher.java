@@ -50,4 +50,12 @@ public class AndroidLauncher extends AndroidApplication {
         // Hook it all up
         setContentView(layout);
     }
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		//System.runFinalizersOnExit(true);
+		System.exit(0);
+	}
 }

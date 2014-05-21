@@ -57,7 +57,7 @@ public class Player extends AnimatedImage  {
 		this.setRotation(360);
 		Tween.set(this, PlayerAccessor.ROTATE).target(this.getRotation());
 		//Dispose disposable
-				playerShape.dispose();
+		playerShape.dispose();
 	}
 
 	public void applyForce(Vector2 impulse) {

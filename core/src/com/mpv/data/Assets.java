@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -34,7 +35,41 @@ public class Assets {
 	public static Animation animation;
 	//Shaders
 	public static ShaderProgram shader;
+	
+	public static void dispose() {
+		audioDispose();
+		skin.dispose();
+		skin = null;
+		map1.dispose();
+		map1 = null;
+		shader.dispose();
+		shader = null;
+		textureAtlas.dispose();
+		textureAtlas = null;
+		animation = null;
+	}
 
+	private static void audioDispose(){
+		//Music
+		gameMusic.stop();
+		menuMusic.stop();
+		gameMusic.dispose();
+		menuMusic.dispose();
+		gameMusic = null;
+		menuMusic = null;
+		//Sound
+		blockSound.dispose();
+		blockSound = null;
+		newPosSound.dispose();
+		newPosSound = null;
+		gameOverSound.dispose();
+		gameOverSound = null;
+		edgeSound.dispose();
+		edgeSound = null;
+		buttonSound.dispose();
+		buttonSound = null;
+	}
+	
 	public static void Load() {
 		//Music
 		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("music/menu.mp3"));
@@ -69,13 +104,8 @@ public class Assets {
 		
 	}
 	
-	public static void dispose() {
-		audioDispose();
-		skin.dispose();
-		map1.dispose();
-		shader.dispose();
-		textureAtlas.dispose();
-	}
+
+	
 	public static void pauseMusic() {
 		menuMusic.pause();
 		gameMusic.pause();
@@ -96,20 +126,14 @@ public class Assets {
 	public static void playSnd (Sound sound, float volume, float pitch) {
 		if (Settings.soundEnabled) 	sound.play(volume, pitch, 0);
 	}
-	private static void audioDispose(){
-		//Music
-		gameMusic.stop();
-		menuMusic.stop();
-		gameMusic.dispose();
-		menuMusic.dispose();
-		gameMusic = null;
-		menuMusic = null;
-		//Sound
-		blockSound.dispose();
-		newPosSound.dispose();
-		gameOverSound.dispose();
-		edgeSound.dispose();
-		buttonSound.dispose();
+	
+	public static void fixBleeding(TextureRegion region) {
+		float x = region.getRegionX();
+		float y = region.getRegionY();
+		float width = region.getRegionWidth();
+		float height = region.getRegionHeight();
+		float invTexWidth = 1f / region.getTexture().getWidth();
+		float invTexHeight = 1f / region.getTexture().getHeight();
+		region.setRegion((x + .5f) * invTexWidth, (y+.5f) * invTexHeight, (x + width - .5f) * invTexWidth, (y + height - .5f) * invTexHeight);       
 	}
-
 }

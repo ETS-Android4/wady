@@ -44,6 +44,11 @@ public class GVars {
 	}
 	public static void dispose () {
 		world.dispose();
+		world = null;
+		frCam = null;
+		bgCam = null;
+		tweenManager = null;
+		activePlayer = null;
 	}
 	
 }

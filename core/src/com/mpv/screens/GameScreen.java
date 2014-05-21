@@ -2,6 +2,7 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -12,6 +13,7 @@ import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -84,8 +86,11 @@ public class GameScreen implements Screen {
 		gl20.glClearColor(0, 0, 0, 1);
 		gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		gl20.glViewport((int)glViewport.x, (int)glViewport.y, (int)glViewport.width, (int)glViewport.height);
-		GVars.frCam.position.set(GVars.frCam.position.x, Math.max(GVars.activePlayer.getY(), GVars.scrHeight/2),0);
-		GVars.bgCam.position.set(GVars.frCam.position.x, GVars.frCam.position.y/1.6f + GVars.scrHeight/4, 0);
+		GVars.frCam.position.set(GVars.frCam.position.x, 
+					Math.max(MathUtils.round(GVars.activePlayer.getY()), (int)GVars.scrHeight/2),
+					0);
+		GVars.bgCam.position.set(GVars.frCam.position.x, 
+					MathUtils.round(GVars.frCam.position.y/1.6f + GVars.scrHeight/4), 0);
 		GVars.frCam.update();
 		GVars.bgCam.update();
 		//Map
