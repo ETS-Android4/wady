@@ -2,7 +2,6 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -17,6 +16,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mpv.control.GestureHandler;
 import com.mpv.control.InputHandler;
@@ -116,11 +116,11 @@ public class GameScreen implements Screen {
 		//FPS
 		GameUIStage.labelFPS.setText(Float.toString(1/delta).substring(0, 4));
 		//Physics debug
-		//debugRenderer.render(GVars.world, GVars.cam.combined.scl(GVars.BOX_TO_WORLD));		
+		//debugRenderer.render(GVars.world, GVars.frCam.combined.scl(GVars.BOX_TO_WORLD));		
 		
 		uiStage.draw();
 		//UI debug
-		//Table.drawDebug(uiStage);
+		Table.drawDebug(uiStage);
 		//Table.drawDebug(gameStage);
 	}
 

@@ -52,8 +52,8 @@ public class Player extends AnimatedImage  {
 	    body.setTransform(5f, Const.BLOCK_SIZE , 0);
 		body.setUserData(this);
 		//Actor
-		this.setSize(Const.BLOCK_SIZE*1.5f*GVars.BOX_TO_WORLD, Const.BLOCK_SIZE*1.5f*GVars.BOX_TO_WORLD);
-		this.setOrigin(this.getWidth()/2, this.getHeight()/2);
+		this.setSize(Const.PLAYER_SIZE*GVars.BOX_TO_WORLD, Const.PLAYER_SIZE*GVars.BOX_TO_WORLD);
+		this.setOrigin(this.getWidth()/2f, this.getHeight()/2f);
 		this.setRotation(360);
 		Tween.set(this, PlayerAccessor.ROTATE).target(this.getRotation());
 		//Dispose disposable
@@ -81,12 +81,11 @@ public class Player extends AnimatedImage  {
 			angle = angle - 360;
 		}
 		this.setPosition(
-				(body.getPosition().x-Const.BLOCK_HALF)*GVars.BOX_TO_WORLD, 
-				(body.getPosition().y-Const.BLOCK_HALF)*GVars.BOX_TO_WORLD
+				(body.getPosition().x-Const.PLAYER_HALF)*GVars.BOX_TO_WORLD, 
+				(body.getPosition().y-Const.PLAYER_HALF)*GVars.BOX_TO_WORLD
 				);
 		Tween.to(this, PlayerAccessor.ROTATE, 0.2f)
 			.target(angle+270f)
 			.start(GVars.tweenManager);
-		//State update
 	}
 }

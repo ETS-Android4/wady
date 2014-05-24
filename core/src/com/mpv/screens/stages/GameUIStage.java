@@ -15,6 +15,8 @@ public class GameUIStage extends Stage {
 
 	public static Label labelFPS;
 	public static Label labelDebug;
+	public static Label labelTime;
+	
 	public GameUIStage(Viewport viewport,	 SpriteBatch batch) {
 		super(viewport, batch);
 		Button bExit = new Button(Assets.skin, "button-exit");

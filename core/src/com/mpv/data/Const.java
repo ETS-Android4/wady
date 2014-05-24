@@ -24,6 +24,9 @@ public class Const {
 		public static final float heightInMeters = 300f;
 		//public static final float widthInPixels = 1600f;
 		//public static final float heightInPixels = 1600f;
+		//Render parameters
+		public static final float PLAYER_SIZE = BLOCK_SIZE*2.5f;
+		public static final float PLAYER_HALF = PLAYER_SIZE/2f;
 		public static final float CAM_BORDER = 100f;
 
 		//Collision categories
