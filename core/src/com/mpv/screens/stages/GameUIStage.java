@@ -29,13 +29,22 @@ public class GameUIStage extends Stage {
 		});
 		labelFPS = new Label("", Assets.skin, "normal-text");
 		labelDebug = new Label("", Assets.skin, "normal-text");
+		labelTime = new Label("", Assets.skin, "normal-text");
 		Table controlPanel = new Table();
 		controlPanel.setFillParent(true);
 		controlPanel.debug().bottom().right();
 		controlPanel.add(labelDebug).expand(true, false).size(GVars.scrHeight/13);
+		controlPanel.add(labelTime).height(GVars.scrHeight/13).width(getWidth()/5);
 		controlPanel.add(labelFPS).size(GVars.scrHeight/13);
 		controlPanel.add(bExit).size(GVars.scrHeight/15);
 		this.addActor(controlPanel);
 	}
 
+	@Override
+	public void draw() {
+		// TODO Auto-generated method stub
+		labelTime.setText(String.format("%02d:%02d", GVars.gameTimeMin, GVars.gameTimeSec));
+		super.draw();
+	}
+	
 }

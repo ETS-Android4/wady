@@ -78,14 +78,12 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void render(float delta) {	
-		GVars.app.gameObject.worldStep(delta);
+		GVars.app.gameObject.gameUpdate(delta);
 		GVars.tweenManager.update(delta);
 		GVars.activePlayer.positionSync();
+		
 		uiStage.act(Gdx.graphics.getDeltaTime());
 		gameStage.act(Gdx.graphics.getDeltaTime());
-		gl20.glClearColor(0, 0, 0, 1);
-		gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		gl20.glViewport((int)glViewport.x, (int)glViewport.y, (int)glViewport.width, (int)glViewport.height);
 		GVars.frCam.position.set(GVars.frCam.position.x, 
 					Math.max(MathUtils.round(GVars.activePlayer.getY()), (int)GVars.scrHeight/2),
 					0);
@@ -93,6 +91,10 @@ public class GameScreen implements Screen {
 					MathUtils.round(GVars.frCam.position.y/1.6f + GVars.scrHeight/4), 0);
 		GVars.frCam.update();
 		GVars.bgCam.update();
+		//Clear
+		gl20.glClearColor(0, 0, 0, 1);
+		gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		gl20.glViewport((int)glViewport.x, (int)glViewport.y, (int)glViewport.width, (int)glViewport.height);
 		//Map
 		otmRendered.setView(GVars.bgCam);
 		batch.begin();
@@ -102,21 +104,14 @@ public class GameScreen implements Screen {
 		batch.end();
 		//Player
 		gameStage.draw();
-		//Decor
+		//Decor layer
 		batch.begin();
 		otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map1.getLayers().get(2));		
 		batch.end();
-		//SpriteBatch and animation
-		/*stateTime+=delta;
-		currentFrame = Assets.animation.getKeyFrame(stateTime, true);
-		batch.setProjectionMatrix(GVars.cam.combined);
-		batch.begin();
-		batch.draw(currentFrame, GVars.scrWidth/2, GVars.scrHeight/2);
-		batch.end();*/
 		//FPS
 		GameUIStage.labelFPS.setText(Float.toString(1/delta).substring(0, 4));
 		//Physics debug
-		//debugRenderer.render(GVars.world, GVars.frCam.combined.scl(GVars.BOX_TO_WORLD));		
+		debugRenderer.render(GVars.world, GVars.frCam.combined.scl(GVars.BOX_TO_WORLD));		
 		
 		uiStage.draw();
 		//UI debug

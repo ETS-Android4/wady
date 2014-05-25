@@ -2,13 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="src" path="/wady-core"/>
-	<classpathentry exported="true" kind="lib" path="/home/user2/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-android/1.0-SNAPSHOT/84bf42cfadeb55a3e369220329a1a035f1642030/gdx-backend-android-1.0-SNAPSHOT.jar" sourcepath="/home/user2/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-android/1.0-SNAPSHOT/17065dc4006b83a93b7380791dc084b8d797f29e/gdx-backend-android-1.0-SNAPSHOT-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="/home/user2/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.0-SNAPSHOT/90d1659fe78586f2a5a167566f420be8a3cce0a1/gdx-box2d-1.0-SNAPSHOT.jar" sourcepath="/home/user2/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.0-SNAPSHOT/e4cb68f9b5d0e7cc3540acc69ae11bdb6cd7306b/gdx-box2d-1.0-SNAPSHOT-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="/home/user2/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/e544ea790a29a33485f683895bfa6507d805e91d/gdx-1.0-SNAPSHOT.jar" sourcepath="/home/user2/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/56dbe5a756ae1efd82f80dd92ed45d1adcc5d83f/gdx-1.0-SNAPSHOT-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="/home/user2/git/wady/core/libs/tween-engine-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/user1/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-android/1.1.0/be72ba2987612670c7e9533bdaaa999955752237/gdx-backend-android-1.1.0.jar" sourcepath="/home/user1/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-android/1.1.0/fb44c77894319e626d0d61615f1319272e16cc44/gdx-backend-android-1.1.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/user1/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.1.0/919bff3c5e92062ee3413f86076c089bd810b5b3/gdx-box2d-1.1.0.jar" sourcepath="/home/user1/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.1.0/4a031279bbde63fafdcc6b487c4c85aa4dd1207b/gdx-box2d-1.1.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/user1/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.1.0/686f5a609c717eb0769d3b954c501a49bf4fe351/gdx-1.1.0.jar" sourcepath="/home/user1/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.1.0/abdb14d6d21978e13055b14f834108e4c8dd8cba/gdx-1.1.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/user1/git/wady/core/libs/tween-engine-api.jar"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

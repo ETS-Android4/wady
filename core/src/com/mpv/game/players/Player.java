@@ -1,6 +1,7 @@
 package com.mpv.game.players;
 
 import aurelienribon.tweenengine.Tween;
+
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
+import com.mpv.game.world.GameObject;
 import com.mpv.tween.PlayerAccessor;
 
 public class Player extends AnimatedImage  {
@@ -22,6 +24,8 @@ public class Player extends AnimatedImage  {
 	public static final int S_HIT = 4;
 	
 	public static int state = Player.S_IDLE;
+	
+	private static final float animFix = 3.5f;
 	private Body body;
 	
 	public Player() {
@@ -30,6 +34,11 @@ public class Player extends AnimatedImage  {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
+				if (GameObject.state != GameObject.ACTIVE) {
+					GameObject.getInstance().gameResume();
+				} else {
+					GameObject.getInstance().gamePause();
+				}
 				return super.touchDown(event, x, y, pointer, button);
 			}
 		});
@@ -53,7 +62,7 @@ public class Player extends AnimatedImage  {
 		body.setUserData(this);
 		//Actor
 		this.setSize(Const.PLAYER_SIZE*GVars.BOX_TO_WORLD, Const.PLAYER_SIZE*GVars.BOX_TO_WORLD);
-		this.setOrigin(this.getWidth()/2f, this.getHeight()/2f);
+		this.setOrigin(this.getWidth()/2f, this.getHeight()/animFix);
 		this.setRotation(360);
 		Tween.set(this, PlayerAccessor.ROTATE).target(this.getRotation());
 		//Dispose disposable
@@ -82,7 +91,7 @@ public class Player extends AnimatedImage  {
 		}
 		this.setPosition(
 				(body.getPosition().x-Const.PLAYER_HALF)*GVars.BOX_TO_WORLD, 
-				(body.getPosition().y-Const.PLAYER_HALF)*GVars.BOX_TO_WORLD
+				(body.getPosition().y-Const.PLAYER_SIZE/animFix)*GVars.BOX_TO_WORLD
 				);
 		Tween.to(this, PlayerAccessor.ROTATE, 0.2f)
 			.target(angle+270f)

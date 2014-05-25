@@ -14,12 +14,12 @@ public class ApplicationHandler extends Game {
 	public MenuScreen menuScreen;
 	public GameScreen gameScreen;
 	public GameObject gameObject;
-	
 	public static IReqHandler ExternalHandler;
 	
 	public ApplicationHandler(IReqHandler irh) {
 		ApplicationHandler.ExternalHandler = irh;
 	}
+	
 	public ApplicationHandler() {
 		
 	}
@@ -37,7 +37,7 @@ public class ApplicationHandler extends Game {
 		GVars.app = this;
 		GVars.resize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
-		gameObject = new GameObject();		
+		gameObject = GameObject.getInstance();		
 		gameScreen = new GameScreen();
 		menuScreen = new MenuScreen();
 		//Sleep for 2 seconds

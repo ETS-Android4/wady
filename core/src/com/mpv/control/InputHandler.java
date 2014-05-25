@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.mpv.data.GVars;
 import com.mpv.game.ApplicationHandler;
+import com.mpv.game.world.GameObject;
 
 public class InputHandler implements InputProcessor {
 
@@ -14,6 +15,9 @@ public class InputHandler implements InputProcessor {
 	@Override
 	public boolean keyDown(int keycode) {
 		// TODO Auto-generated method stub
+		if (GameObject.state != GameObject.ACTIVE) {
+			return false;
+		}
 		switch (keycode) {
 			case Keys.LEFT: GVars.activePlayer.applyForce(new Vector2(-1f, 1f)); 
 				break;

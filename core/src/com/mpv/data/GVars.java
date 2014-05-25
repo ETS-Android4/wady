@@ -1,7 +1,6 @@
 package com.mpv.data;
 
 import aurelienribon.tweenengine.TweenManager;
-
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
@@ -25,6 +24,9 @@ public class GVars {
 	public static TweenManager tweenManager;
 	//Player
 	public static Player activePlayer = null;
+	//Gameplay
+	public static int gameTimeSec;
+	public static int gameTimeMin;
 	
 	public static void resize(float width, float height) {
 		
