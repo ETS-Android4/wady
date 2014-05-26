@@ -33,7 +33,7 @@ public class Assets {
 	private static TextureAtlas textureAtlas;
 	public static Animation animation;
 	//Shaders
-	public static ShaderProgram shader;
+	//public static ShaderProgram shader;
 	
 	public static void dispose() {
 		audioDispose();
@@ -41,8 +41,8 @@ public class Assets {
 		skin = null;
 		map1.dispose();
 		map1 = null;
-		shader.dispose();
-		shader = null;
+		//shader.dispose();
+		//shader = null;
 		textureAtlas.dispose();
 		textureAtlas = null;
 		animation = null;
@@ -89,10 +89,10 @@ public class Assets {
 		loadAnimation();
 		//Shader
 		ShaderProgram.pedantic = false;
-		shader = new ShaderProgram(
+		/*shader = new ShaderProgram(
 				Gdx.files.internal("shaders/red.vsh"), 
 				Gdx.files.internal("shaders/red.fsh"));
-		System.out.println(shader.isCompiled() ? "shader compiled" : shader.getLog());
+		System.out.println(shader.isCompiled() ? "shader compiled" : shader.getLog());*/
 
 	}
 	

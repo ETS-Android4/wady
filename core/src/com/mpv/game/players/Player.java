@@ -26,7 +26,7 @@ public class Player extends AnimatedImage  {
 	public static int state = Player.S_IDLE;
 	
 	private static final float animFix = 3.5f;
-	private Body body;
+	public Body body;
 	
 	public Player() {
 		GVars.activePlayer = this;
@@ -65,6 +65,7 @@ public class Player extends AnimatedImage  {
 		this.setOrigin(this.getWidth()/2f, this.getHeight()/animFix);
 		this.setRotation(360);
 		Tween.set(this, PlayerAccessor.ROTATE).target(this.getRotation());
+		GVars.pointLight.attachToBody(body, 0f, 0f);
 		//Dispose disposable
 		playerShape.dispose();
 	}

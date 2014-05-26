@@ -1,6 +1,9 @@
 package com.mpv.data;
 
 import aurelienribon.tweenengine.TweenManager;
+import box2dLight.PointLight;
+import box2dLight.RayHandler;
+
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
@@ -20,6 +23,8 @@ public class GVars {
 	public static OrthographicCamera frCam;
 	public static OrthographicCamera bgCam;
 	public static World world = new World(new Vector2(0, -9.8f), true);
+	public static RayHandler rayHandler = new RayHandler(world);
+	public static PointLight pointLight;
 	//Tweens
 	public static TweenManager tweenManager;
 	//Player
@@ -46,6 +51,7 @@ public class GVars {
 	}
 	public static void dispose () {
 		world.dispose();
+		rayHandler.dispose();
 		world = null;
 		frCam = null;
 		bgCam = null;

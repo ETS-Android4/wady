@@ -2,9 +2,11 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
+import box2dLight.PointLight;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,14 +15,15 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mpv.control.GestureHandler;
 import com.mpv.control.InputHandler;
 import com.mpv.data.Assets;
+import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.game.players.Player;
 import com.mpv.screens.stages.GameUIStage;
@@ -36,6 +39,8 @@ public class GameScreen implements Screen {
 	private GL20 gl20 = Gdx.graphics.getGL20();
 	private Rectangle glViewport;
 	private SpriteBatch batch;
+	private Matrix4 camLight;
+
 	//private TextureRegion currentFrame;
 	//private float stateTime = 0f;
 	private OrthogonalTiledMapRenderer otmRendered;
@@ -48,6 +53,9 @@ public class GameScreen implements Screen {
 		//Camera		
 		GVars.frCam = new OrthographicCamera(GVars.scrWidth, GVars.scrHeight);
 		GVars.bgCam = new OrthographicCamera(GVars.scrWidth, GVars.scrHeight);
+		//Lights		
+		GVars.pointLight = new PointLight(GVars.rayHandler, 24, new Color(1,1,1,1), Const.widthInMeters, Const.BLOCK_SIZE, Const.BLOCK_SIZE);
+		//pointLight.attachToBody(GVars.activePlayer.body, 0f, 0f);
 		//Game Stage
 		uiStage = new GameUIStage(new ScreenViewport(), batch);
 	    gameStage = new Stage(new ScreenViewport(GVars.frCam), batch);
@@ -91,6 +99,8 @@ public class GameScreen implements Screen {
 					MathUtils.round(GVars.frCam.position.y/1.6f + GVars.scrHeight/4), 0);
 		GVars.frCam.update();
 		GVars.bgCam.update();
+		camLight = new Matrix4(GVars.frCam.combined);
+		GVars.rayHandler.setCombinedMatrix(camLight.scl(GVars.BOX_TO_WORLD));
 		//Clear
 		gl20.glClearColor(0, 0, 0, 1);
 		gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -99,9 +109,13 @@ public class GameScreen implements Screen {
 		otmRendered.setView(GVars.bgCam);
 		batch.begin();
 		otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map1.getLayers().get(0));
+		batch.end();
 		otmRendered.setView(GVars.frCam);
+		GVars.rayHandler.updateAndRender();
+		batch.begin();
 		otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map1.getLayers().get(1));
 		batch.end();
+		
 		//Player
 		gameStage.draw();
 		//Decor layer
@@ -111,11 +125,11 @@ public class GameScreen implements Screen {
 		//FPS
 		GameUIStage.labelFPS.setText(Float.toString(1/delta).substring(0, 4));
 		//Physics debug
-		debugRenderer.render(GVars.world, GVars.frCam.combined.scl(GVars.BOX_TO_WORLD));		
+		//debugRenderer.render(GVars.world, GVars.frCam.combined.scl(GVars.BOX_TO_WORLD));		
 		
 		uiStage.draw();
 		//UI debug
-		Table.drawDebug(uiStage);
+		//Table.drawDebug(uiStage);
 		//Table.drawDebug(gameStage);
 	}
 
