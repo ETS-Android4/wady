@@ -7,7 +7,7 @@
   <image source="stone_dark.png" width="320" height="320"/>
  </tileset>
  <tileset firstgid="584" name="bg2" tilewidth="32" tileheight="32">
-  <image source="../../../art/textures/stone.png" width="320" height="320"/>
+  <image source="stone.png" width="320" height="320"/>
  </tileset>
  <layer name="background" width="10" height="300">
   <data encoding="base64" compression="zlib">
