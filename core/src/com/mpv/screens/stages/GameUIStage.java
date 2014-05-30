@@ -4,12 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
+import com.mpv.game.world.GameObject;
 
 public class GameUIStage extends Stage {
 
@@ -20,6 +22,7 @@ public class GameUIStage extends Stage {
 	public GameUIStage(Viewport viewport,	 SpriteBatch batch) {
 		super(viewport, batch);
 		Button bExit = new Button(Assets.skin, "button-exit");
+		final Button bPlay = new Button(Assets.skin, "button-play");
 		//
 		bExit.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
@@ -27,16 +30,29 @@ public class GameUIStage extends Stage {
 				Gdx.app.exit();
 			}
 		});
-		labelFPS = new Label("", Assets.skin, "normal-text");
-		labelDebug = new Label("", Assets.skin, "normal-text");
-		labelTime = new Label("", Assets.skin, "normal-text");
+		bPlay.addListener(new ClickListener() {
+			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
+				//super.touchDown(event, x, y, pointer, button);
+				if (bPlay.isChecked()) {
+					GameObject.getInstance().gameResume();
+				} else {
+					GameObject.getInstance().gamePause();
+				}
+			}
+		});
+		labelFPS = new Label("", Assets.skin, "game-text");
+		labelDebug = new Label("", Assets.skin, "game-text");
+		labelTime = new Label("", Assets.skin, "game-text");
 		Table controlPanel = new Table();
 		controlPanel.setFillParent(true);
-		controlPanel.debug().bottom().right();
-		controlPanel.add(labelDebug).expand(true, false).size(GVars.scrHeight/13);
-		controlPanel.add(labelTime).height(GVars.scrHeight/13).width(getWidth()/5);
-		controlPanel.add(labelFPS).size(GVars.scrHeight/13);
-		controlPanel.add(bExit).size(GVars.scrHeight/15);
+		controlPanel.debug().bottom().left();
+		controlPanel.add(new Image(Assets.skin.getDrawable("timer"))).size(GVars.scrHeight/13);
+		controlPanel.add(labelTime).expand(true, false).height(GVars.scrHeight/13).width(getWidth()/5).left();
+		//controlPanel.add(labelDebug).expand(true, false).size(GVars.scrHeight/13);
+		
+		//controlPanel.add(labelFPS).expand(true, false).size(GVars.scrHeight/13);
+		controlPanel.add(bPlay).size(GVars.scrHeight/13).right();
+		//controlPanel.add(bExit).size(GVars.scrHeight/13);
 		this.addActor(controlPanel);
 	}
 

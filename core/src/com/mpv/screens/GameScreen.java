@@ -8,7 +8,6 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.maps.MapProperties;
@@ -50,9 +49,6 @@ public class GameScreen implements Screen {
 		GVars.tweenManager = new TweenManager();
 		batch = new SpriteBatch();
 		//batch.setShader(Assets.shader);
-		//Camera		
-		GVars.frCam = new OrthographicCamera(GVars.scrWidth, GVars.scrHeight);
-		GVars.bgCam = new OrthographicCamera(GVars.scrWidth, GVars.scrHeight);
 		//Lights		
 		GVars.pointLight = new PointLight(GVars.rayHandler, 24, new Color(1,1,1,1), Const.widthInMeters, Const.BLOCK_SIZE, Const.BLOCK_SIZE);
 		//pointLight.attachToBody(GVars.activePlayer.body, 0f, 0f);

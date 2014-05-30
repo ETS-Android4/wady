@@ -1,6 +1,7 @@
 package com.mpv.game.world;
 
 import java.util.concurrent.TimeUnit;
+
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -11,6 +12,7 @@ import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.game.ContactHandler;
+import com.mpv.game.players.Player;
 
 public class GameObject {
 	
@@ -47,6 +49,7 @@ public class GameObject {
 	}
 	public void gamePause() {
 		state = PAUSE;
+		Player.state = Player.S_FALL;
 	}
 	public void gameResume() {
 		if (state != PAUSE) {

@@ -1,59 +1,74 @@
+
 skin.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-player
-  rotate: false
-  xy: 1, 70
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
 button-cancel-disabled
   rotate: false
-  xy: 1, 4
+  xy: 1, 136
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 button-cancel
   rotate: false
-  xy: 131, 134
+  xy: 1, 70
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 button-exit-down
   rotate: false
-  xy: 197, 134
+  xy: 67, 136
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 button-exit
   rotate: false
-  xy: 263, 134
+  xy: 1, 4
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 button-ok-disabled
   rotate: false
-  xy: 329, 134
+  xy: 67, 70
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 button-ok
   rotate: false
-  xy: 395, 134
+  xy: 133, 136
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+button-pause
+  rotate: false
+  xy: 67, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+button-play
+  rotate: false
+  xy: 133, 70
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+timer
+  rotate: false
+  xy: 199, 136
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 button-disabled
   rotate: false
-  xy: 67, 6
+  xy: 133, 6
   size: 62, 62
   split: 17, 16, 16, 15
   orig: 62, 62
@@ -61,7 +76,7 @@ button-disabled
   index: -1
 button-down
   rotate: false
-  xy: 131, 70
+  xy: 199, 72
   size: 62, 62
   split: 16, 16, 16, 15
   orig: 62, 62
@@ -69,7 +84,7 @@ button-down
   index: -1
 button
   rotate: false
-  xy: 131, 6
+  xy: 265, 138
   size: 62, 62
   split: 16, 15, 16, 15
   orig: 62, 62
@@ -77,15 +92,15 @@ button
   index: -1
 edit
   rotate: false
-  xy: 195, 70
+  xy: 329, 138
   size: 62, 62
-  split: 25, 19, 22, 22
+  split: 7, 7, 6, 6
   orig: 62, 62
   offset: 0, 0
   index: -1
 window
   rotate: false
-  xy: 195, 6
+  xy: 393, 138
   size: 62, 62
   split: 16, 16, 34, 14
   orig: 62, 62
@@ -93,7 +108,7 @@ window
   index: -1
 cursor
   rotate: false
-  xy: 461, 134
+  xy: 457, 136
   size: 8, 64
   orig: 8, 64
   offset: 0, 0

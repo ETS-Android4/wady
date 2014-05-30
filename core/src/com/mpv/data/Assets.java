@@ -69,7 +69,7 @@ public class Assets {
 		buttonSound = null;
 	}
 	
-	public static void Load() {
+	public static void load() {
 		//Music
 		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("music/menu.mp3"));
 		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/game.mp3"));
@@ -82,7 +82,7 @@ public class Assets {
 		buttonSound = Gdx.audio.newSound(Gdx.files.internal("sounds/button.mp3"));
 		//Skin & Font
 		skin = new Skin(Gdx.files.internal("data/skin.json"));
-		skin.getFont("normaltext").setScale(0.5f);
+		skin.getFont("normaltext").setScale(GVars.scrWidth/640f);
 		//Tiled maps
 		map1 = new TmxMapLoader().load("maps/level01.tmx");
 		//

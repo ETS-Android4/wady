@@ -34,16 +34,20 @@ public class GVars {
 	public static int gameTimeMin;
 	
 	public static void resize(float width, float height) {
-		
 		scrWidth = width;
 		scrHeight = height;
+		
 		if (frCam!=null) {
 			frCam.viewportWidth = width;
 			frCam.viewportHeight = height;
+		} else {
+			GVars.frCam = new OrthographicCamera(scrWidth, scrHeight);
 		}
 		if (bgCam!=null) {
 			bgCam.viewportWidth = width;
 			bgCam.viewportHeight = height;
+		} else {
+			GVars.bgCam = new OrthographicCamera(scrWidth, scrHeight);
 		}
 		//Scale
 		BOX_TO_WORLD = scrWidth/Const.widthInMeters;

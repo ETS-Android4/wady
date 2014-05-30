@@ -1,7 +1,6 @@
 package com.mpv.game.players;
 
 import aurelienribon.tweenengine.Tween;
-
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -12,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
-import com.mpv.game.world.GameObject;
 import com.mpv.tween.PlayerAccessor;
 
 public class Player extends AnimatedImage  {
@@ -34,11 +32,6 @@ public class Player extends AnimatedImage  {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
-				if (GameObject.state != GameObject.ACTIVE) {
-					GameObject.getInstance().gameResume();
-				} else {
-					GameObject.getInstance().gamePause();
-				}
 				return super.touchDown(event, x, y, pointer, button);
 			}
 		});

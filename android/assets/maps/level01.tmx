@@ -3,9 +3,15 @@
  <tileset firstgid="1" name="terrain" tilewidth="32" tileheight="32">
   <image source="terrain.png" width="672" height="736"/>
  </tileset>
+ <tileset firstgid="484" name="bg1" tilewidth="32" tileheight="32">
+  <image source="stone_dark.png" width="320" height="320"/>
+ </tileset>
+ <tileset firstgid="584" name="bg2" tilewidth="32" tileheight="32">
+  <image source="../../../art/textures/stone.png" width="320" height="320"/>
+ </tileset>
  <layer name="background" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJydlEFuI0EQw/zu5POLBXIyRiRrDgYSe6a6JFH98/l8fv8+P3+f3/Hd+vv7+e93f2TO97NP8y9zn2Y/vfs06/u8qrNooTNN/9Je97V3LXvL4emZp5woo6fZlLnpoUyWN5ZvnbsYLNnZruYRdfepE0//r/OuDJBm6sHFW/KwzKR8rQfU0bKb3SGW0dJaOrI8pPviwtHSYN4ZI2W/ygnxsTp46bR1ibigLpuna/fiO+1p/F93Nv6sV9bZwq9puWqsXJYsK2uVWTuHeKXnS6+N09pBO6fkRz5en6PZxn1h5cKvcUHnWudrX659p99K74y5dR7tXFiv3Nqu1FvSblwXnkjPpZ/G18VHOou+K32o90Hh6y03hek3XVr6ltcX3TV7Y2/5/eTJ0ml9IN5LF8pzpZeX7tS7ZuVNMyrnNfuln/6/ely8WD5SZ6oO69HSZp22btZeUS4103JOPaPstJ61z9K/crHu0M7WafPR5pWOVt5MX+nDWz6vLBE/5nntIWV76Rz9TpmUOXQ/kA8r8+Ut+UJdKf5UP4z38j4xTvNK74gb6j9xabu9yZw8u3SYfi/7284lP7sH6MziV9F/4f265+KkdPhyFrFdOLa74eLhxf/ix9q7ME770I5l/npuzSp7XjtAOVIuZea1J29m2X7Fz+rJ8nT5td69dmP5Q7mRn6Xjlz6VDl99uez3pK3uuHYwL80fy4XyuGZv/TJ2zRfzy/a1XClj68vqcPF4ZX3J0uas7Evu66zVLTqrvF9yqDOWRxfdxLVxUrkl3cR37SG9a/dN6Txpp8zWb/V+qDqNq7rX0lV6d817ZUO+V13EPs0xbk076SsMEG+2X51x4aucbZ2g+8P2KHeQsVt7YkyYF2tWnW3dLYwZG4XpN6xZZ6uPxJdxWnpX7oeix7RTpvRd0Vt9tr2rd7VnK1/rOJ1VO2HMrDlP/9telZ3VnwuPJavSeeO27Fr0ld5bT////Q+JbpuN
+   eJzt0Wc+EAAAB1A/p0P2VlnZK5uQLYTIzoyscEnvHv4f3gleUWFBQTElfKCUMsqpoJIqqqmhljrqaaCRJj7yic8000IrbbTzhQ466aKbHnrpo58BBhniK8OMMMoY40wwyRTTfGOGWeb4zjwLLLLEMiusssYP1tlgk59ssc0Ov9hlj9/sc8AhRxxzwil/OOOcCy654pq/3HDLP+6454FHnvjPMy+8UpSPfOQjH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+8pGPfOQjH/nIRz7ykY985CMf+chHPvKRj3zkIx/v9OMN2MankA==
   </data>
  </layer>
  <layer name="terrain" width="10" height="300">
@@ -52,8 +58,8 @@
   <object x="259" y="9124" width="31" height="28">
    <ellipse/>
   </object>
-  <object x="320" y="9572">
-   <polyline points="0,0 -321,1"/>
+  <object x="322" y="9563">
+   <polyline points="-3,1 -321,1"/>
   </object>
  </objectgroup>
 </map>

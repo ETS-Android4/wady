@@ -28,21 +28,22 @@ public class ApplicationHandler extends Game {
 		//Loading native libraries
 		GdxNativesLoader.load();
 		
+		//GVars initial setup
+		GVars.app = this;
+		GVars.resize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+		
 		//Initialize configuration and resources
-		Assets.Load();
-		//
+		Assets.load();
+
+		//Custom buttons
 		Gdx.input.setCatchBackKey(true);
 		Gdx.input.setCatchMenuKey(true);
 		
-		GVars.app = this;
-		GVars.resize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-
 		gameObject = GameObject.getInstance();		
 		gameScreen = new GameScreen();
 		menuScreen = new MenuScreen();
-		//Sleep for 2 seconds
-		this.setScreen(gameScreen);
 
+		this.setScreen(gameScreen);
 	}
 	@Override
 	public void dispose() {		

@@ -15,7 +15,7 @@
      },
      com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {  
       default: { font: normaltext, fontColor: white },  
-      gamelabel: { background: edit, font: normaltext, fontColor: white },  
+      game-text: { background: edit, font: normaltext, fontColor: white },  
       normal-text: { font: normaltext, fontColor: white },  
       title-text: { font: titletext, fontColor: red },  
      },
@@ -24,6 +24,7 @@
       button-exit: {up: button-exit, down: button-exit-down},
       button-ok: {up: button-ok, down: button-ok-disabled},
       button-cancel: {up: button-cancel, down: button-cancel-disabled},
+      button-play: {up: button-play, down: button-play, checked: button-pause},
       transparent: { },  
      },
      com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle: {  
