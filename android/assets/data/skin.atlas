@@ -10,65 +10,81 @@ button-cancel-disabled
   orig: 64, 64
   offset: 0, 0
   index: -1
-button-cancel
+button-play
   rotate: false
   xy: 1, 70
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-button-exit-down
+button-exit
   rotate: false
   xy: 67, 136
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-button-exit
+button-ok
   rotate: false
   xy: 1, 4
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-button-ok-disabled
+button-exit-down
   rotate: false
   xy: 67, 70
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-button-ok
+timer
   rotate: false
   xy: 133, 136
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-button-pause
+button-cancel
   rotate: false
   xy: 67, 4
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-button-play
+button-ok-disabled
   rotate: false
   xy: 133, 70
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-timer
+button-pause
   rotate: false
   xy: 199, 136
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-button-disabled
+edit
   rotate: false
   xy: 133, 6
+  size: 62, 62
+  split: 7, 7, 6, 6
+  orig: 62, 62
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 199, 72
+  size: 62, 62
+  split: 16, 15, 16, 15
+  orig: 62, 62
+  offset: 0, 0
+  index: -1
+button-disabled
+  rotate: false
+  xy: 265, 138
   size: 62, 62
   split: 17, 16, 16, 15
   orig: 62, 62
@@ -76,25 +92,9 @@ button-disabled
   index: -1
 button-down
   rotate: false
-  xy: 199, 72
-  size: 62, 62
-  split: 16, 16, 16, 15
-  orig: 62, 62
-  offset: 0, 0
-  index: -1
-button
-  rotate: false
-  xy: 265, 138
-  size: 62, 62
-  split: 16, 15, 16, 15
-  orig: 62, 62
-  offset: 0, 0
-  index: -1
-edit
-  rotate: false
   xy: 329, 138
   size: 62, 62
-  split: 7, 7, 6, 6
+  split: 16, 16, 16, 15
   orig: 62, 62
   offset: 0, 0
   index: -1
