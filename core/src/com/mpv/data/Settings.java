@@ -9,57 +9,66 @@ import java.io.OutputStreamWriter;
 import com.badlogic.gdx.Gdx;
 
 public class Settings {
-        public static boolean soundEnabled = true;
-        public static boolean musicEnabled = true;
-        public final static int[] highscores = new int[] {100, 80, 50, 30, 10};
-        public final static String file = ".sortitout";
+	 public static boolean soundEnabled = true;
+     public static boolean musicEnabled = true;
+     public final static Integer[] highscores = new Integer[] {100, 200, 300, 400, 500};
+     public final static String[] scorenames = new String[] {"Cartman", "Kyle", "Kenny", "Stan", "Butters"};
+     public final static String file = ".sortitout";
+     public static String name = "Player";
 
-        public static void load () {
-                BufferedReader in = null;
-                try {
-                        in = new BufferedReader(new InputStreamReader(Gdx.files.local(file).read()));
-                        soundEnabled = Boolean.parseBoolean(in.readLine());
-                        musicEnabled = Boolean.parseBoolean(in.readLine());
-                        for (int i = 0; i < 5; i++) {
-                                highscores[i] = Integer.parseInt(in.readLine());
-                        }
-                } catch (Throwable e) {
-                        // :( It's ok we have defaults
-                } finally {
-                        try {
-                                if (in != null) in.close();
-                        } catch (IOException e) {
-                        }
-                }
-        }
+     public static void load () {
+             BufferedReader in = null;
+             try {
+                     in = new BufferedReader(new InputStreamReader(Gdx.files.local(file).read()));
+                     name = in.readLine();
+                     soundEnabled = Boolean.parseBoolean(in.readLine());
+                     musicEnabled = Boolean.parseBoolean(in.readLine());
+                     for (int i = 0; i < 5; i++) {
+                             highscores[i] = Integer.parseInt(in.readLine());
+                             scorenames[i] = in.readLine();
+                     }
+             } catch (Throwable e) {
+                     // :( It's ok we have defaults
+             } finally {
+                     try {
+                             if (in != null) in.close();
+                     } catch (IOException e) {
+                     }
+             }
+     }
 
-        public static void save () {
-                BufferedWriter out = null;
-                try {
-                        out = new BufferedWriter(new OutputStreamWriter(Gdx.files.local(file).write(false)));
-                        out.write(Boolean.toString(soundEnabled).concat("\n"));
-                        out.write(Boolean.toString(musicEnabled).concat("\n"));
-                        for (int i = 0; i < 5; i++) {
-                                out.write(Integer.toString(highscores[i]).concat("\n"));
-                        }
+     public static void save () {
+             BufferedWriter out = null;
+             try {
+                     out = new BufferedWriter(new OutputStreamWriter(Gdx.files.local(file).write(false)));
+                     out.write(name.concat("\n"));
+                     out.write(Boolean.toString(soundEnabled).concat("\n"));
+                     out.write(Boolean.toString(musicEnabled).concat("\n"));
+                     for (int i = 0; i < 5; i++) {
+                             out.write(Integer.toString(highscores[i]).concat("\n"));
+                             out.write(scorenames[i].concat("\n"));
+                     }
 
-                } catch (Throwable e) {
-                } finally {
-                        try {
-                                if (out != null) out.close();
-                        } catch (IOException e) {
-                        }
-                }
-        }
+             } catch (Throwable e) {
+             } finally {
+                     try {
+                             if (out != null) out.close();
+                     } catch (IOException e) {
+                     }
+             }
+     }
 
-        public static void addScore (int score) {
-                for (int i = 0; i < 5; i++) {
-                        if (highscores[i] < score) {
-                                for (int j = 4; j > i; j--)
-                                        highscores[j] = highscores[j - 1];
-                                highscores[i] = score;
-                                break;
-                        }
-                }
-        }
+     public static void addScore (String name, int score) {
+             for (int i = 0; i < 5; i++) {
+                     if (highscores[i] > score) {
+                             for (int j = 4; j > i; j--) {
+                                     highscores[j] = highscores[j - 1];
+                                     scorenames[j] = scorenames[j - 1];
+                             }
+                             highscores[i] = score;
+                             scorenames[i] = name;
+                             break;
+                     }
+             }
+     }
 }

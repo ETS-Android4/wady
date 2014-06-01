@@ -54,6 +54,7 @@ public class MainMenuStage extends Stage {
 		bHighScores.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
+				GVars.app.setScreen(GVars.app.scoresScreen);
 			}
 		});
 		bExit.addListener(new ClickListener() {

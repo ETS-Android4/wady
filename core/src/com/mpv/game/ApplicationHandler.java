@@ -8,12 +8,14 @@ import com.mpv.data.GVars;
 import com.mpv.game.world.GameObject;
 import com.mpv.screens.GameScreen;
 import com.mpv.screens.MenuScreen;
+import com.mpv.screens.ScoresScreen;
 
 public class ApplicationHandler extends Game {
 
 	public MenuScreen menuScreen;
 	public GameScreen gameScreen;
 	public GameObject gameObject;
+	public ScoresScreen scoresScreen;
 	public static IReqHandler ExternalHandler;
 	
 	public ApplicationHandler(IReqHandler irh) {
@@ -42,6 +44,7 @@ public class ApplicationHandler extends Game {
 		gameObject = GameObject.getInstance();		
 		gameScreen = new GameScreen();
 		menuScreen = new MenuScreen();
+		scoresScreen = new ScoresScreen();
 
 		this.setScreen(menuScreen);
 	}
@@ -50,7 +53,8 @@ public class ApplicationHandler extends Game {
 		GVars.dispose();
 		Assets.dispose();
 		super.dispose();
-		menuScreen.dispose();		
+		menuScreen.dispose();
+		scoresScreen.dispose();
 	}
 	@Override
 	public void pause() {
