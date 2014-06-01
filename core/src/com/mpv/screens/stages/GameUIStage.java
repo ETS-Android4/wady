@@ -12,15 +12,19 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
 import com.mpv.game.world.GameObject;
+import com.mpv.screens.dialogs.PauseDialog;
 
 public class GameUIStage extends Stage {
 
 	public static Label labelFPS;
 	public static Label labelDebug;
 	public static Label labelTime;
+	public static PauseDialog pauseDialog = new PauseDialog("", Assets.skin, "default");
+	private GameUIStage instance;
 	
 	public GameUIStage(Viewport viewport,	 SpriteBatch batch) {
 		super(viewport, batch);
+		instance = this;
 		Button bExit = new Button(Assets.skin, "button-exit");
 		final Button bPlay = new Button(Assets.skin, "button-play");
 		//
@@ -33,10 +37,9 @@ public class GameUIStage extends Stage {
 		bPlay.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
-				if (bPlay.isChecked()) {
-					GameObject.getInstance().gameResume();
-				} else {
+				if (GameObject.state == GameObject.ACTIVE) {
 					GameObject.getInstance().gamePause();
+					GameUIStage.pauseDialog.show(instance);
 				}
 			}
 		});

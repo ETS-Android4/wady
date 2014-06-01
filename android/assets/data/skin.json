@@ -24,7 +24,7 @@
       button-exit: {up: button-exit, down: button-exit-down},
       button-ok: {up: button-ok, down: button-ok-disabled},
       button-cancel: {up: button-cancel, down: button-cancel-disabled},
-      button-play: {up: button-play, down: button-play, checked: button-pause},
+      button-play: {up: button-pause, down: button, disabled: button-disabled},
       transparent: { },  
      },
      com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle: {  

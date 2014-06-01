@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
+import com.mpv.game.world.GameObject;
 import com.mpv.screens.dialogs.ExitDialog;
 
 public class MainMenuStage extends Stage {
@@ -44,11 +45,12 @@ public class MainMenuStage extends Stage {
 		table.row();
 		table.add(bExit).width(buttonWidth).height(buttonHeight);
 
-
 		bNewGame.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
+				GameObject.getInstance().gameResume();
 				GVars.app.setScreen(GVars.app.gameScreen);
+				
 			}
 		});
 		bHighScores.addListener(new ClickListener() {
