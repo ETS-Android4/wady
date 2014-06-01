@@ -3,6 +3,7 @@ package com.mpv.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mpv.screens.stages.MainMenuStage;
 
 public class MenuScreen implements Screen {
@@ -18,7 +19,7 @@ public class MenuScreen implements Screen {
 	}
 	
 	public void resize (int width, int height) {
-	        mainMenuStage.getViewport().setWorldSize(width, height);
+		mainMenuStage.getViewport().setWorldSize(width, height);
 	}
 
 
@@ -32,7 +33,7 @@ public class MenuScreen implements Screen {
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
         mainMenuStage.act(Gdx.graphics.getDeltaTime());
         mainMenuStage.draw();
-        //Table.drawDebug(stage); // This is optional, but enables debug lines for tables.
+        Table.drawDebug(mainMenuStage); // This is optional, but enables debug lines for tables.
 	}
 
 	@Override

@@ -43,7 +43,7 @@ public class ApplicationHandler extends Game {
 		gameScreen = new GameScreen();
 		menuScreen = new MenuScreen();
 
-		this.setScreen(gameScreen);
+		this.setScreen(menuScreen);
 	}
 	@Override
 	public void dispose() {		
