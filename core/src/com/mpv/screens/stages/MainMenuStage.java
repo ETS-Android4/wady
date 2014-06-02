@@ -20,6 +20,7 @@ public class MainMenuStage extends Stage {
 
 	public MainMenuStage() {
 		// TODO Auto-generated constructor stub
+		super();
 		float buttonWidth=this.getWidth()/1.63f;
 		float buttonHeight=Const.PLAYER_SIZE*GVars.BOX_TO_WORLD/1.63f;
 		Table table = new Table();

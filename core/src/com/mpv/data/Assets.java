@@ -84,7 +84,7 @@ public class Assets {
 		skin = new Skin(Gdx.files.internal("data/skin.json"));
 		skin.getFont("normaltext").setScale(GVars.scrWidth/640f*1.2f);
 		//Tiled maps
-		map1 = new TmxMapLoader().load("maps/level01.tmx");
+		map1 = new TmxMapLoader().load("maps/level002.tmx");
 		//
 		loadAnimation();
 		//Shader

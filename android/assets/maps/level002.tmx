@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="10" height="300" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="terrain" tilewidth="32" tileheight="32">
+  <image source="terrain.png" width="672" height="736"/>
+ </tileset>
+ <tileset firstgid="484" name="bg1" tilewidth="32" tileheight="32">
+  <image source="brick.png" width="320" height="320"/>
+ </tileset>
+ <layer name="background" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJzt0eci1QEAB9D/vUl2QvZKSyI7KyOk93+Hm71Fds57+H04T3AqpaL4wzY77LLHPgcccsQxJ5xyxjkX/OWSK/5xzQ233HHPA4/8pygXRYkyL6jiJdW8ooZa6qingUaaeE0zb2ihlTbe0k4HnXTRTQ+99NHPAIO8Y4j3fOAjn/jMMF8Y4SujjPGNcSaYZIppZpjlO3PMs8AiS/xgmRVWWeMn62ywyS+2+E0lH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+8pGPfOQjH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+nunHE/rLWFk=
+  </data>
+ </layer>
+ <layer name="terrain" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJztz7EJACAMAMGM4hK6/2hWNqIg2ES5gzQhxScCAAAAAAAAAAAAAP5Rp1ntM5g7M7UNu8ZsnSvt8K7EO/+90HirA6kNBlg=
+  </data>
+ </layer>
+ <layer name="decor" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAOBvLuAAAQ==
+  </data>
+ </layer>
+ <objectgroup name="obstacles" width="10" height="300">
+  <object x="0" y="9559">
+   <polyline points="0,0 318,0"/>
+  </object>
+  <object x="2" y="9416">
+   <polyline points="93,0 221,0"/>
+  </object>
+  <object x="2" y="9258">
+   <polyline points="0,0 9,-1 24,31 188,32"/>
+  </object>
+  <object x="95" y="9098">
+   <polyline points="0,0 225,-1"/>
+  </object>
+  <object x="63" y="8969">
+   <polyline points="0,0 191,0"/>
+  </object>
+  <object x="192" y="8842">
+   <polyline points="0,0 95,0"/>
+  </object>
+  <object x="126" y="8840">
+   <polyline points="0,0 -125,1"/>
+  </object>
+ </objectgroup>
+</map>

@@ -7,6 +7,7 @@ import com.mpv.data.Assets;
 import com.mpv.data.GVars;
 import com.mpv.game.world.GameObject;
 import com.mpv.screens.GameScreen;
+import com.mpv.screens.LevelScreen;
 import com.mpv.screens.MenuScreen;
 import com.mpv.screens.ScoresScreen;
 
@@ -16,6 +17,7 @@ public class ApplicationHandler extends Game {
 	public GameScreen gameScreen;
 	public GameObject gameObject;
 	public ScoresScreen scoresScreen;
+	public LevelScreen levelScreen;
 	public static IReqHandler ExternalHandler;
 	
 	public ApplicationHandler(IReqHandler irh) {
@@ -45,8 +47,9 @@ public class ApplicationHandler extends Game {
 		gameScreen = new GameScreen();
 		menuScreen = new MenuScreen();
 		scoresScreen = new ScoresScreen();
+		levelScreen = new LevelScreen();
 
-		this.setScreen(menuScreen);
+		this.setScreen(levelScreen);
 	}
 	@Override
 	public void dispose() {		
@@ -55,6 +58,7 @@ public class ApplicationHandler extends Game {
 		super.dispose();
 		menuScreen.dispose();
 		scoresScreen.dispose();
+		levelScreen.dispose();
 	}
 	@Override
 	public void pause() {

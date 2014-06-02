@@ -3,9 +3,6 @@
  <tileset firstgid="1" name="terrain" tilewidth="32" tileheight="32">
   <image source="terrain.png" width="672" height="736"/>
  </tileset>
- <tileset firstgid="484" name="bg1" tilewidth="32" tileheight="32">
-  <image source="stone_dark.png" width="320" height="320"/>
- </tileset>
  <tileset firstgid="584" name="bg2" tilewidth="32" tileheight="32">
   <image source="stone.png" width="320" height="320"/>
  </tileset>
