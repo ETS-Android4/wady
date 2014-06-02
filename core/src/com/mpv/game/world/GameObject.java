@@ -1,6 +1,5 @@
 package com.mpv.game.world;
 
-import java.util.concurrent.TimeUnit;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -24,7 +23,6 @@ public class GameObject {
 	
 	//Delta time accumulator
 	private float accumulator = 0;
-	private long startTime, lastTime, seconds;
 	private static GameObject instance;
 	
 	
@@ -42,9 +40,7 @@ public class GameObject {
 	}
 	
 	public void gameStart() {
-		startTime = System.currentTimeMillis();
-		lastTime = startTime;
-		seconds = 0;
+		GameTimer.getInstance().setTimer(360f);
 		state = ACTIVE;
 	}
 	public void gamePause() {
@@ -55,8 +51,6 @@ public class GameObject {
 		if (state != PAUSE) {
 			gameStart();
 		} else {
-			lastTime = System.currentTimeMillis();
-			seconds = seconds + TimeUnit.MILLISECONDS.toSeconds((System.currentTimeMillis()-lastTime));
 			state = ACTIVE;
 		}
 	}
@@ -72,15 +66,8 @@ public class GameObject {
 		if (state != ACTIVE) {
 			return;
 		}
+		GameTimer.getInstance().update(delta);
 		worldStep(delta);
-		Long passed;
-		passed = seconds + TimeUnit.MILLISECONDS.toSeconds((System.currentTimeMillis()-lastTime));
-		if (passed >= 3599) {
-			gameOver();
-		} else {
-			GVars.gameTimeMin = (int) (seconds / 60);
-			GVars.gameTimeSec = (int) (seconds % 60);
-		}
 	}
 	
 	private void setWorldBounds() {
