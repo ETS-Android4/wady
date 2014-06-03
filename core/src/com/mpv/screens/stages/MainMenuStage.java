@@ -21,7 +21,7 @@ public class MainMenuStage extends Stage {
 	public MainMenuStage() {
 		// TODO Auto-generated constructor stub
 		super();
-		float buttonWidth=this.getWidth()/1.63f;
+		float buttonWidth=this.getWidth()/3.2f;
 		float buttonHeight=Const.PLAYER_SIZE*GVars.BOX_TO_WORLD/1.63f;
 		Table table = new Table();
 		//Debug
@@ -33,7 +33,7 @@ public class MainMenuStage extends Stage {
 		
 		final TextButton bNewGame = new TextButton("Play", Assets.skin);
 		final Widget widget1 = new Widget();
-		final TextButton bHighScores = new TextButton("High scores", Assets.skin);
+		final TextButton bHighScores = new TextButton("Scores", Assets.skin);
 		final TextButton bExit = new TextButton("Exit", Assets.skin);
 		
 		table.add(bNewGame).width(buttonWidth).height(buttonHeight);

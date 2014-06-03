@@ -3,6 +3,7 @@ package com.mpv.screens;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 import box2dLight.PointLight;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -25,6 +26,7 @@ import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.game.players.Player;
+import com.mpv.game.world.GameObject;
 import com.mpv.screens.stages.GameUIStage;
 import com.mpv.tween.PlayerAccessor;
 
@@ -148,6 +150,7 @@ public class GameScreen implements Screen {
 	@Override
 	public void show() {
 		Gdx.input.setInputProcessor(multiplexer);
+		GameObject.getInstance().gameResume();
 	}
 
 	@Override

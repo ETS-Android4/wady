@@ -3,28 +3,35 @@ skin.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-button-cancel-disabled
+caption-levels
   rotate: false
-  xy: 1, 136
-  size: 64, 64
-  orig: 64, 64
+  xy: 1, 330
+  size: 257, 142
+  orig: 257, 142
   offset: 0, 0
   index: -1
-button-play
+button-start
+  rotate: false
+  xy: 1, 200
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+button
   rotate: false
   xy: 1, 70
-  size: 64, 64
-  orig: 64, 64
+  size: 256, 128
+  orig: 256, 128
   offset: 0, 0
   index: -1
-button-exit
+button-cancel-disabled
   rotate: false
-  xy: 67, 136
+  xy: 260, 408
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-button-ok
+button-cancel
   rotate: false
   xy: 1, 4
   size: 64, 64
@@ -33,58 +40,56 @@ button-ok
   index: -1
 button-exit-down
   rotate: false
-  xy: 67, 70
+  xy: 260, 342
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-timer
+button-exit
   rotate: false
-  xy: 133, 136
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-cancel
-  rotate: false
-  xy: 67, 4
+  xy: 326, 408
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 button-ok-disabled
   rotate: false
-  xy: 133, 70
+  xy: 67, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+button-ok
+  rotate: false
+  xy: 326, 342
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 button-pause
   rotate: false
-  xy: 199, 136
+  xy: 392, 408
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-edit
+button-play
   rotate: false
-  xy: 133, 6
-  size: 62, 62
-  split: 7, 7, 6, 6
-  orig: 62, 62
+  xy: 133, 4
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
-button
+timer
   rotate: false
-  xy: 199, 72
-  size: 62, 62
-  split: 16, 15, 16, 15
-  orig: 62, 62
+  xy: 392, 342
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
 button-disabled
   rotate: false
-  xy: 265, 138
+  xy: 199, 6
   size: 62, 62
   split: 17, 16, 16, 15
   orig: 62, 62
@@ -92,15 +97,23 @@ button-disabled
   index: -1
 button-down
   rotate: false
-  xy: 329, 138
+  xy: 260, 278
   size: 62, 62
   split: 16, 16, 16, 15
   orig: 62, 62
   offset: 0, 0
   index: -1
+edit
+  rotate: false
+  xy: 324, 278
+  size: 62, 62
+  split: 7, 7, 6, 6
+  orig: 62, 62
+  offset: 0, 0
+  index: -1
 window
   rotate: false
-  xy: 393, 138
+  xy: 388, 278
   size: 62, 62
   split: 16, 16, 34, 14
   orig: 62, 62
@@ -108,7 +121,7 @@ window
   index: -1
 cursor
   rotate: false
-  xy: 457, 136
+  xy: 458, 408
   size: 8, 64
   orig: 8, 64
   offset: 0, 0
