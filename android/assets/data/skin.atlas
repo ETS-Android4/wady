@@ -24,72 +24,79 @@ button
   orig: 256, 128
   offset: 0, 0
   index: -1
-button-cancel-disabled
+item
   rotate: false
-  xy: 260, 408
-  size: 64, 64
-  orig: 64, 64
+  xy: 260, 344
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
-button-cancel
+button-cancel-disabled
   rotate: false
   xy: 1, 4
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+button-cancel
+  rotate: false
+  xy: 390, 408
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 button-exit-down
-  rotate: false
-  xy: 260, 342
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-exit
-  rotate: false
-  xy: 326, 408
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-ok-disabled
   rotate: false
   xy: 67, 4
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-button-ok
-  rotate: false
-  xy: 326, 342
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-pause
-  rotate: false
-  xy: 392, 408
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-play
+button-exit
   rotate: false
   xy: 133, 4
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+button-ok-disabled
+  rotate: false
+  xy: 390, 342
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+button-ok
+  rotate: false
+  xy: 199, 4
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+button-pause
+  rotate: false
+  xy: 260, 278
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+button-play
+  rotate: false
+  xy: 259, 212
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 timer
   rotate: false
-  xy: 392, 342
+  xy: 259, 146
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 button-disabled
   rotate: false
-  xy: 199, 6
+  xy: 326, 280
   size: 62, 62
   split: 17, 16, 16, 15
   orig: 62, 62
@@ -97,7 +104,7 @@ button-disabled
   index: -1
 button-down
   rotate: false
-  xy: 260, 278
+  xy: 259, 82
   size: 62, 62
   split: 16, 16, 16, 15
   orig: 62, 62
@@ -105,7 +112,7 @@ button-down
   index: -1
 edit
   rotate: false
-  xy: 324, 278
+  xy: 390, 278
   size: 62, 62
   split: 7, 7, 6, 6
   orig: 62, 62
@@ -113,7 +120,7 @@ edit
   index: -1
 window
   rotate: false
-  xy: 388, 278
+  xy: 265, 18
   size: 62, 62
   split: 16, 16, 34, 14
   orig: 62, 62
@@ -121,7 +128,7 @@ window
   index: -1
 cursor
   rotate: false
-  xy: 458, 408
+  xy: 456, 408
   size: 8, 64
   orig: 8, 64
   offset: 0, 0
