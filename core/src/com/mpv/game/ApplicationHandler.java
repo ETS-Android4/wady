@@ -49,7 +49,7 @@ public class ApplicationHandler extends Game {
 		scoresScreen = new ScoresScreen();
 		levelScreen = new LevelScreen();
 
-		this.setScreen(levelScreen);
+		this.setScreen(menuScreen);
 	}
 	@Override
 	public void dispose() {		

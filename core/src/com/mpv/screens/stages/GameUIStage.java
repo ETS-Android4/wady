@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mpv.data.Assets;
@@ -26,7 +27,7 @@ public class GameUIStage extends Stage {
 		super(viewport, batch);
 		instance = this;
 		Button bExit = new Button(Assets.skin, "button-exit");
-		final Button bPlay = new Button(Assets.skin, "button-play");
+		final TextButton bPlay = new TextButton("@", Assets.skin);
 		//
 		bExit.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
