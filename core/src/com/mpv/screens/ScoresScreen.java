@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -32,7 +33,7 @@ public class ScoresScreen implements Screen {
 		float itemSize=Const.BLOCK_SIZE*GVars.BOX_TO_WORLD*1.6f;
 		stage = new Stage();
 		label1 =new Label("Your score: ", Assets.skin, "default");
-		Button okButton = new Button(Assets.skin, "button-ok");		
+		Button okButton = new TextButton("OK", Assets.skin);		
 		Widget widget = new Widget();
         Table scoresTable = new Table();
         Table table1 = new Table();
@@ -42,7 +43,7 @@ public class ScoresScreen implements Screen {
         table1.add(scoresTable).row();
         //scoresTable.setFillParent(true);
         scoresTable.setBackground(Assets.skin.getDrawable("none"));
-		final Button buttonExit = new Button(Assets.skin, "button-exit");
+		final Button buttonExit = new Button(Assets.skin, "arrow-right");
 		final TextField textField = new TextField(Settings.name, Assets.skin);
 		textField.setMaxLength(10);
 		scoresTable.add(new Label("High scores", Assets.skin, "default")).row();

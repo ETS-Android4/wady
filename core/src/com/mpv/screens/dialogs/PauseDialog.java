@@ -13,7 +13,7 @@ public class PauseDialog extends Dialog {
 
 	public PauseDialog(String title, Skin skin, String styleName) {
 		super(title, skin, styleName);
-		this.getContentTable().add(new Image(skin.getDrawable("edit"))).size(GVars.scrWidth/1.6f);
+		this.getContentTable().add(new Image()).size(GVars.scrWidth/1.6f);
 		this.button("Menu", true).button("Back", false).key(Keys.ENTER, true).key(Keys.ESCAPE, false);
 		for (Cell<?> cell :  this.getButtonTable().getCells()) {
 			cell.size(Const.PLAYER_SIZE*GVars.BOX_TO_WORLD, Const.PLAYER_HALF*GVars.BOX_TO_WORLD);

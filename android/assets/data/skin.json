@@ -17,14 +17,12 @@
       default: { font: normaltext, fontColor: white },  
       game-text: { background: button-disabled, font: normaltext, fontColor: white },  
       normal-text: { font: normaltext, fontColor: white },  
-      title-text: { font: titletext, fontColor: red },  
+      title-text: { font: titletext, fontColor: red },
      },
      com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {  
       default: { up: button, down: button-down, disabled: button-disabled }, 
-      button-exit: {up: button-exit, down: button-exit-down},
-      button-ok: {up: button-ok, down: button-ok-disabled},
-      button-cancel: {up: button-cancel, down: button-cancel-disabled},
-      button-play: {up: button-pause, down: button, disabled: button-disabled},
+      arrow-left: {up: arrow-left, down: arrow-left-down},
+      arrow-right: {up: arrow-right, down: arrow-right-down},
       transparent: { },  
      },
      com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle: {  
@@ -34,10 +32,11 @@
       default: { font: normaltext, background: button-down, cursor: cursor, selection: none, fontColor: white},
      },
      com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {  
-      default: { up: button, down: button-down, disabled: button-disabled, font: normaltext, fontColor: white },  
+      default: { up: button, down: button-down, disabled: button-disabled, font: normaltext, fontColor: white },
+      item: {up: item, disabled: item-disabled, checked: item-checked, font: normaltext},  
      },
 	com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
-	default: { titleFont: titletext, background: window, titleFontColor: white },
-	dialog: { titleFont: titletext, background: window, titleFontColor: white, stageBackground: dialogDim }
+		default: { titleFont: titletext, background: window, titleFontColor: white },
+		dialog: { titleFont: titletext, background: window, titleFontColor: white, stageBackground: dialogDim }
      }   
    }  

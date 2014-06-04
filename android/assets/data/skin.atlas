@@ -5,135 +5,106 @@ filter: Linear,Linear
 repeat: none
 window
   rotate: false
-  xy: 1, 731
+  xy: 1, 200
   size: 254, 254
   split: 57, 55, 82, 40
   orig: 254, 254
   offset: 0, 0
   index: -1
-caption-levels
+button-disabled
   rotate: false
-  xy: 1, 587
-  size: 257, 142
-  orig: 257, 142
-  offset: 0, 0
-  index: -1
-button-start
-  rotate: false
-  xy: 1, 457
-  size: 256, 128
-  orig: 256, 128
-  offset: 0, 0
-  index: -1
-button-down
-  rotate: false
-  xy: 257, 857
+  xy: 1, 70
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-button-disabled
+button-down
   rotate: false
-  xy: 1, 327
+  xy: 257, 326
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 button
   rotate: false
-  xy: 1, 197
+  xy: 387, 326
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+item-checked
+  rotate: false
+  xy: 517, 326
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+item-disabled
+  rotate: false
+  xy: 647, 326
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 item
   rotate: false
-  xy: 1, 67
+  xy: 777, 326
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-button-pause
+arrow-left-down
   rotate: false
-  xy: 257, 791
+  xy: 1, 4
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-button-cancel-disabled
+arrow-left
   rotate: false
-  xy: 387, 921
+  xy: 131, 134
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-button-play
+arrow-right-down
   rotate: false
-  xy: 131, 391
+  xy: 257, 260
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+arrow-right
+  rotate: false
+  xy: 907, 390
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+star
+  rotate: false
+  xy: 323, 260
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 timer
   rotate: false
-  xy: 1, 1
+  xy: 389, 260
   size: 64, 64
   orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-ok-disabled
-  rotate: false
-  xy: 131, 325
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-exit
-  rotate: false
-  xy: 131, 259
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-cancel
-  rotate: false
-  xy: 131, 193
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-exit-down
-  rotate: false
-  xy: 131, 127
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-button-ok
-  rotate: false
-  xy: 323, 791
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-edit
-  rotate: false
-  xy: 387, 857
-  size: 62, 62
-  split: 7, 7, 6, 6
-  orig: 62, 62
   offset: 0, 0
   index: -1
 cursor
   rotate: false
-  xy: 453, 921
+  xy: 67, 4
   size: 8, 64
   orig: 8, 64
   offset: 0, 0
   index: -1
 none
   rotate: false
-  xy: 257, 788
+  xy: 1, 1
   size: 1, 1
   orig: 1, 1
   offset: 0, 0

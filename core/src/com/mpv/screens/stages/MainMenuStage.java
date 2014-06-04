@@ -34,17 +34,18 @@ public class MainMenuStage extends Stage {
 		final TextButton bNewGame = new TextButton("Play", Assets.skin);
 		final Widget widget1 = new Widget();
 		final TextButton bHighScores = new TextButton("Scores", Assets.skin);
+		final TextButton bLevels = new TextButton("Levels", Assets.skin);
 		final TextButton bExit = new TextButton("Exit", Assets.skin);
 		
-		table.add(bNewGame).width(buttonWidth).height(buttonHeight);
+		table.add(bNewGame).width(buttonWidth).height(buttonWidth);
+		table.add(widget1).width(buttonHeight/2);
+		table.add(bLevels).width(buttonWidth).height(buttonWidth);
 		table.row();
 		table.add(widget1).height(buttonHeight/2);
 		table.row();
-		table.add(bHighScores).width(buttonWidth).height(buttonHeight);
-		table.row();
+		table.add(bHighScores).width(buttonWidth).height(buttonWidth);
 		table.add(widget1).height(buttonHeight/2);
-		table.row();
-		table.add(bExit).width(buttonWidth).height(buttonHeight);
+		table.add(bExit).width(buttonWidth).height(buttonWidth);
 
 		bNewGame.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
@@ -60,6 +61,12 @@ public class MainMenuStage extends Stage {
 				GVars.app.setScreen(GVars.app.scoresScreen);
 			}
 		});
+		bLevels.addListener(new ClickListener() {
+			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
+				//super.touchDown(event, x, y, pointer, button);
+				GVars.app.setScreen(GVars.app.levelScreen);
+			}
+		});
 		bExit.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
@@ -69,7 +76,7 @@ public class MainMenuStage extends Stage {
 		this.addListener(new InputListener() {
 			public boolean keyUp (InputEvent event, int keycode) {
 				if (keycode == Keys.BACK || keycode == Keys.ESCAPE) {
-					//
+					exitDialog.show(event.getStage());
 				}
 				return false;
 			}
