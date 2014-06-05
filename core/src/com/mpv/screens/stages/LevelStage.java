@@ -1,23 +1,25 @@
 package com.mpv.screens.stages;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
+import com.mpv.game.world.GameObject;
 
 public class LevelStage extends Stage {
 	
-	public static ArrayList<TextButton> itemsList = new ArrayList<TextButton>(16);
+	private int mapIndex = -1, tmpIndex = 0;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	public LevelStage() {
 		super();
@@ -27,6 +29,7 @@ public class LevelStage extends Stage {
 		Widget emptyWidget = new Widget();
 		Button leftButton = new Button(Assets.skin, "arrow-left");
 		Button rightButton = new Button(Assets.skin, "arrow-right");
+		
 		//Debug
 		//mainTable.debug();
 		//buttonTable.debug();
@@ -38,21 +41,46 @@ public class LevelStage extends Stage {
 		mainTable.add(buttonTable).row();
 		mainTable.add(emptyWidget).height(buttonSize/2).row();
 		//buttonTable.setFillParent(true);
+		TextButton tmp;
 		for (int i=0; i<4; i++) {
 			for (int j=0; j<4; j++) {
 				buttonTable.add(emptyWidget).width(buttonSize/4);
-				itemsList.add(new TextButton(String.valueOf(i*4+j+1),Assets.skin, "item"));
-				buttonTable.add(itemsList.get(itemsList.size()-1)).size(buttonSize);
+				tmp = new TextButton(String.valueOf(i*4+j+1),Assets.skin, "item");
+				tmp.setDisabled(true);
+				buttonGroup.add(tmp);
+				buttonTable.add(tmp).size(buttonSize);
 				buttonTable.add(emptyWidget).width(buttonSize/4);
 			}
 			buttonTable.row();
 			buttonTable.add(emptyWidget).height(buttonSize/2).row();
 		}
+		//Setting first level enebled
+		buttonGroup.getButtons().first().setDisabled(false);
+		//left/right buttons
 		Table controlTable = new Table();
 		mainTable.add(controlTable);
 		controlTable.add(leftButton).left();
 		controlTable.add(emptyWidget).width(buttonSize);
 		controlTable.add(rightButton).right();
+		
+		buttonTable.addListener(new ClickListener(){
+			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
+				//super.touchDown(event, x, y, pointer, button);
+				tmpIndex = buttonGroup.getButtons().indexOf(buttonGroup.getChecked(), true); 
+			}
+		});
+		
+		rightButton.addListener(new ClickListener(){
+			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
+				//super.touchDown(event, x, y, pointer, button);
+				if (tmpIndex != mapIndex) {
+					mapIndex = tmpIndex; 
+					Assets.loadMap(0, mapIndex);
+				}
+				GVars.app.setScreen(GVars.app.gameScreen);
+				GameObject.getInstance().gameResume();
+			}
+		});
 		
 		this.addListener(new InputListener() {
 			public boolean keyUp (InputEvent event, int keycode) {
@@ -61,7 +89,7 @@ public class LevelStage extends Stage {
 				}
 				return false;
 			}
-		});   
+		}); 
 	}
 	
 }

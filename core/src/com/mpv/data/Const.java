@@ -22,18 +22,18 @@ public class Const {
 		public static final float startpointY = 0;
 		public static final float widthInMeters = 10f;
 		public static final float heightInMeters = 300f;
-		//public static final float widthInPixels = 1600f;
-		//public static final float heightInPixels = 1600f;
 		//Render parameters
 		public static final float PLAYER_SIZE = BLOCK_SIZE*2.5f;
 		public static final float PLAYER_HALF = PLAYER_SIZE/2f;
 		public static final float CAM_BORDER = 100f;
 
 		//Collision categories
-		public static final short CATEGORY_BLOCK = 0x0001;  // 0000000000000001 in binary
+		public static final short CATEGORY_PLAYER = 0x0001;  // 0000000000000001 in binary
+		public static final short CATEGORY_MONSTER = 0x0002; // 0000000000000010 in binary
 		public static final short CATEGORY_SCENERY = 0x0002; // 0000000000000100 in binary
 		//Collision masks
-		public static final short MASK_BLOCK = -1;  
+		public static final short MASK_PLAYER = CATEGORY_MONSTER | CATEGORY_SCENERY;  
+		public static final short MASK_MONSTER = CATEGORY_PLAYER | CATEGORY_SCENERY;
 		public static final short MASK_SCENERY = -1;
 		//Strings
 		public static final String TIME_FORMAT = "%s:%s";

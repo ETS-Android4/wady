@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
+
 import com.mpv.tween.PlayerAccessor;
 
 public class Player extends AnimatedImage  {
@@ -22,11 +23,19 @@ public class Player extends AnimatedImage  {
 	public static final int S_HIT = 4;
 	
 	public static int state = Player.S_IDLE;
-	
 	private static final float animFix = 3.5f;
+	
+	private static Player instance;
 	public Body body;
 	
-	public Player() {
+	public static Player getInstance() {
+		if (instance == null)  {
+            instance = new Player();
+        }
+        return instance;
+	}
+	
+	private Player() {
 		GVars.activePlayer = this;
 		this.addListener(new ClickListener() {
 			@Override
@@ -36,11 +45,20 @@ public class Player extends AnimatedImage  {
 			}
 		});
 		
+		//Actor
+		this.setSize(Const.PLAYER_SIZE*GVars.BOX_TO_WORLD, Const.PLAYER_SIZE*GVars.BOX_TO_WORLD);
+		this.setOrigin(this.getWidth()/2f, this.getHeight()/animFix);
+		this.setRotation(360);
+		Tween.set(this, PlayerAccessor.ROTATE).target(this.getRotation());
+	
+	}
+
+	public void createBody() {
 		CircleShape playerShape = new CircleShape();
 		BodyDef bodyDef = new BodyDef();
 		FixtureDef fixtureDef = new FixtureDef();
 		playerShape.setRadius(Const.BLOCK_HALF);
-		fixtureDef.filter.categoryBits = Const.CATEGORY_BLOCK;
+		fixtureDef.filter.categoryBits = Const.CATEGORY_PLAYER;
 		fixtureDef.shape = playerShape;
 		fixtureDef.density = Const.BLOCK_DENSITY;
 		fixtureDef.friction = Const.BLOCK_FRICTION;
@@ -53,16 +71,9 @@ public class Player extends AnimatedImage  {
 	    body.setLinearDamping(Const.BODY_LINEAR_DAMPING);
 	    body.setTransform(5f, Const.BLOCK_SIZE*1.5f, 0);
 		body.setUserData(this);
-		//Actor
-		this.setSize(Const.PLAYER_SIZE*GVars.BOX_TO_WORLD, Const.PLAYER_SIZE*GVars.BOX_TO_WORLD);
-		this.setOrigin(this.getWidth()/2f, this.getHeight()/animFix);
-		this.setRotation(360);
-		Tween.set(this, PlayerAccessor.ROTATE).target(this.getRotation());
-		GVars.pointLight.attachToBody(body, 0f, 0f);
-		//Dispose disposable
+		//Dispose shape
 		playerShape.dispose();
 	}
-
 	public void applyForce(Vector2 impulse) {
 		body.applyLinearImpulse(impulse, body.getWorldCenter().add(0f, Const.BLOCK_HALF).rotateRad(body.getAngle()), true);
 		Player.state = Player.S_LJUMP;
@@ -91,4 +102,5 @@ public class Player extends AnimatedImage  {
 			.target(angle+270f)
 			.start(GVars.tweenManager);
 	}
+
 }

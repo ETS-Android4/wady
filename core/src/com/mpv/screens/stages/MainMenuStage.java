@@ -50,9 +50,11 @@ public class MainMenuStage extends Stage {
 		bNewGame.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
-				GameObject.getInstance().gameResume();
-				GVars.app.setScreen(GVars.app.gameScreen);
-				
+				if (GameObject.state == GameObject.FINISH) {
+					GVars.app.setScreen(GVars.app.levelScreen);
+				} else {
+					GVars.app.setScreen(GVars.app.gameScreen);
+				}
 			}
 		});
 		bHighScores.addListener(new ClickListener() {

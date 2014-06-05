@@ -20,6 +20,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
+import com.mpv.data.Const;
 
 public class MapBodyBuilder {
 
@@ -60,7 +61,8 @@ public class MapBodyBuilder {
             bd.type = BodyType.StaticBody;
             Body body = world.createBody(bd);
             body.createFixture(shape, 1);
-
+            body.getFixtureList().first().getFilterData().categoryBits =  Const.CATEGORY_SCENERY;
+            
             bodies.add(body);
 
             shape.dispose();

@@ -4,6 +4,9 @@ import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
+import com.mpv.data.Assets;
+import com.mpv.data.Const;
+import com.mpv.game.players.Player;
 
 public class ContactHandler implements ContactListener{
 
@@ -14,7 +17,9 @@ public class ContactHandler implements ContactListener{
 	
 	@Override
 	public void beginContact(Contact contact) {
-		
+		if (Player.getInstance().body.getLinearVelocity().len() >= Const.BLOCK_SIZE) {
+			Assets.playSnd(Assets.edgeSound);
+		}
 	}
 
 	@Override

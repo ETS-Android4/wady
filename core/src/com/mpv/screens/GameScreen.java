@@ -2,28 +2,23 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
-import box2dLight.PointLight;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
-import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mpv.control.GestureHandler;
 import com.mpv.control.InputHandler;
 import com.mpv.data.Assets;
-import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.game.players.Player;
 import com.mpv.game.world.GameObject;
@@ -44,20 +39,18 @@ public class GameScreen implements Screen {
 
 	//private TextureRegion currentFrame;
 	//private float stateTime = 0f;
-	private OrthogonalTiledMapRenderer otmRendered;
+	
     	
 	public GameScreen() {
 		Tween.registerAccessor(Player.class, new PlayerAccessor());
 		GVars.tweenManager = new TweenManager();
-		batch = new SpriteBatch();
+		batch = GVars.spriteBatch;
 		//batch.setShader(Assets.shader);
-		//Lights		
-		GVars.pointLight = new PointLight(GVars.rayHandler, 24, new Color(1,1,1,1), Const.widthInMeters, Const.BLOCK_SIZE, Const.BLOCK_SIZE);
-		//pointLight.attachToBody(GVars.activePlayer.body, 0f, 0f);
+
 		//Game Stage
 		uiStage = new GameUIStage(new ScreenViewport(), batch);
 	    gameStage = new Stage(new ScreenViewport(GVars.frCam), batch);
-	    gameStage.addActor(new Player());
+	    gameStage.addActor(Player.getInstance());
 		Gdx.graphics.setVSync(true);
 		//Input processor for gesture detection
 		multiplexer = new InputMultiplexer();
@@ -70,16 +63,8 @@ public class GameScreen implements Screen {
 		debugRenderer = new Box2DDebugRenderer();
 		debugRenderer.setDrawVelocities(true);
 		//Map
-		MapProperties prop = Assets.map1.getProperties();
-
-		int mapWidth = prop.get("width", Integer.class);
-		//int mapHeight = prop.get("height", Integer.class);
-		int tilePixelWidth = prop.get("tilewidth", Integer.class);
-		//int tilePixelHeight = prop.get("tileheight", Integer.class);
-
-		int mapPixelWidth = mapWidth * tilePixelWidth;
-		//int mapPixelHeight = mapHeight * tilePixelHeight;
-		otmRendered = new OrthogonalTiledMapRenderer(Assets.map1,GVars.scrWidth/mapPixelWidth, batch);
+		
+		
 	}
 
 	@Override
@@ -104,21 +89,21 @@ public class GameScreen implements Screen {
 		gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		gl20.glViewport((int)glViewport.x, (int)glViewport.y, (int)glViewport.width, (int)glViewport.height);
 		//Map
-		otmRendered.setView(GVars.bgCam);
+		GVars.otmRendered.setView(GVars.bgCam);
 		batch.begin();
-		otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map1.getLayers().get(0));
+		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get(0));
 		batch.end();
-		otmRendered.setView(GVars.frCam);
+		GVars.otmRendered.setView(GVars.frCam);
 		GVars.rayHandler.updateAndRender();
 		batch.begin();
-		otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map1.getLayers().get(1));
+		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get(1));
 		batch.end();
 		
 		//Player
 		gameStage.draw();
 		//Decor layer
 		batch.begin();
-		otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map1.getLayers().get(2));		
+		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get(2));		
 		batch.end();
 		//FPS
 		GameUIStage.labelFPS.setText(Float.toString(1/delta).substring(0, 4));
@@ -127,7 +112,7 @@ public class GameScreen implements Screen {
 		
 		uiStage.draw();
 		//UI debug
-		//Table.drawDebug(uiStage);
+		Table.drawDebug(uiStage);
 		//Table.drawDebug(gameStage);
 	}
 
@@ -160,7 +145,6 @@ public class GameScreen implements Screen {
 	
 	@Override
 	public void dispose() {
-		otmRendered.dispose();
 		uiStage.dispose();
 		gameStage.dispose();
 	}

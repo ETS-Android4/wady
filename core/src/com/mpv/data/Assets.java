@@ -6,10 +6,13 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.mpv.game.world.GameObject;
 
 public class Assets {
 
@@ -28,7 +31,7 @@ public class Assets {
 	//Skin
 	public static Skin skin;
 	//Maps
-	public static TiledMap map1; 
+	public static TiledMap map; 
 	//Textures & regions
 	private static TextureAtlas textureAtlas;
 	public static Animation animation;
@@ -39,8 +42,7 @@ public class Assets {
 		audioDispose();
 		skin.dispose();
 		skin = null;
-		map1.dispose();
-		map1 = null;
+		disposeMap();
 		//shader.dispose();
 		//shader = null;
 		textureAtlas.dispose();
@@ -83,8 +85,7 @@ public class Assets {
 		//Skin & Font
 		skin = new Skin(Gdx.files.internal("data/skin.json"));
 		skin.getFont("normaltext").setScale(GVars.scrWidth/640f*1.2f);
-		//Tiled maps
-		map1 = new TmxMapLoader().load("maps/level002.tmx");
+		
 		//
 		loadAnimation();
 		//Shader
@@ -94,6 +95,30 @@ public class Assets {
 				Gdx.files.internal("shaders/red.fsh"));
 		System.out.println(shader.isCompiled() ? "shader compiled" : shader.getLog());*/
 
+	}
+	
+	public static void loadMap(int page, int index) {
+		//Tiled maps
+		disposeMap();
+		map = new TmxMapLoader().load("maps/level"+String.format("%d%02d", page, index)+".tmx");
+		GameObject.getInstance().loadWorld();
+		MapProperties prop = Assets.map.getProperties();
+
+		int mapWidth = prop.get("width", Integer.class);
+		//int mapHeight = prop.get("height", Integer.class);
+		int tilePixelWidth = prop.get("tilewidth", Integer.class);
+		//int tilePixelHeight = prop.get("tileheight", Integer.class);
+
+		int mapPixelWidth = mapWidth * tilePixelWidth;
+		//int mapPixelHeight = mapHeight * tilePixelHeight;
+		GVars.otmRendered = new OrthogonalTiledMapRenderer(Assets.map,GVars.scrWidth/mapPixelWidth, GVars.spriteBatch);	
+	}
+	
+	public static void disposeMap() {
+		if (map!=null) {
+			map.dispose();
+			map = null;
+		}
 	}
 	
 	private static void loadAnimation() {
