@@ -11,14 +11,24 @@
    eJzt0eci1QEAB9D/vUl2QvZKSyI7KyOk93+Hm71Fds57+H04T3AqpaL4wzY77LLHPgcccsQxJ5xyxjkX/OWSK/5xzQ233HHPA4/8pygXRYkyL6jiJdW8ooZa6qingUaaeE0zb2ihlTbe0k4HnXTRTQ+99NHPAIO8Y4j3fOAjn/jMMF8Y4SujjPGNcSaYZIppZpjlO3PMs8AiS/xgmRVWWeMn62ywyS+2+E0lH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+8pGPfOQjH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+nunHE/rLWFk=
   </data>
  </layer>
- <layer name="terrain" width="10" height="300">
+ <layer name="bg1" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJztz7EJACAMAMGM4hK6/2hWNqIg2ES5gzQhxScCAAAAAAAAAAAAAP5Rp1ntM5g7M7UNu8ZsnSvt8K7EO/+90HirA6kNBlg=
+   eJzt0bEJgDAURdGM4goquoJDqPuvYRobieSDIBHPgduEFC8kJQAAAAAAAAAAAP6szw2VxtwSjHdE/yPamtsq7a+8DJ6bLpXOW3Dd2dK2093G1naWzMF7XfrO+76w8akDLaQUNg==
   </data>
  </layer>
- <layer name="decor" width="10" height="300">
+ <layer name="bg2" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAOBvLuAAAQ==
+   eJzt0MENRUAUhtFbiiZYoAf0gP5LMInYiJc3iYiRnJP8G7mLb0QAAAAAAAAAAABAvjatS+szbseHW4gYYv/P05+7OW1JWx8vgvfVp119L8G5s6S2w6/G0jqvNJl3VXznfV9ovGsDVoYJeA==
+  </data>
+ </layer>
+ <layer name="cover1" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJztz0EKwCAMBMB8Wf9/sAcPEmxLwJPMwILIkpAIAAAAAAAAAAAAOKc96TOxvHPaR3LvbcauV5n319v9V+7Iu6p7801rDwBuNABhsSd5
+  </data>
+ </layer>
+ <layer name="cover2" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJztzrENwCAMRUHPlbBDlB0C+4+AC3qakAjpTnpy4+JHAAAAAAAAAAAAwPuuce/J35PVrK2ds50jO7Py9xAA+FAHuU0CgQ==
   </data>
  </layer>
  <objectgroup name="obstacles" width="10" height="300">
@@ -43,5 +53,7 @@
   <object x="126" y="8840">
    <polyline points="0,0 -125,1"/>
   </object>
+  <object x="1" y="7871" width="75" height="384"/>
+  <object x="146" y="7874" width="172" height="381"/>
  </objectgroup>
 </map>

@@ -3,17 +3,22 @@
  <tileset firstgid="1" name="terrain" tilewidth="32" tileheight="32">
   <image source="terrain.png" width="672" height="736"/>
  </tileset>
- <tileset firstgid="584" name="bg2" tilewidth="32" tileheight="32">
+ <tileset firstgid="484" name="bg2" tilewidth="32" tileheight="32">
   <image source="stone.png" width="320" height="320"/>
  </tileset>
  <layer name="background" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJzt0Wc+EAAAB1A/p0P2VlnZK5uQLYTIzoyscEnvHv4f3gleUWFBQTElfKCUMsqpoJIqqqmhljrqaaCRJj7yic8000IrbbTzhQ466aKbHnrpo58BBhniK8OMMMoY40wwyRTTfGOGWeb4zjwLLLLEMiusssYP1tlgk59ssc0Ov9hlj9/sc8AhRxxzwil/OOOcCy654pq/3HDLP+6454FHnvjPMy+8UpSPfOQjH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+8pGPfOQjH/nIRz7ykY985CMf+chHPvKRj3zkIx/v9OMN2MankA==
+   eJzt0eci1QEAB9D/vUl2QvZKSyI7KyOk93+Hm71Fds57+H04T3AqpaL4wzY77LLHPgcccsQxJ5xyxjkX/OWSK/5xzQ233HHPA4/8pygXRYkyL6jiJdW8ooZa6qingUaaeE0zb2ihlTbe0k4HnXTRTQ+99NHPAIO8Y4j3fOAjn/jMMF8Y4SujjPGNcSaYZIppZpjlO3PMs8AiS/xgmRVWWeMn62ywyS+2+E0lH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+8pGPfOQjH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+nunHE/rLWFk=
+  </data>
+ </layer>
+ <layer name="scenery" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJzt2stKw0AUxvHTtUV9hEh9AC+t962KpnjZqmgU6/s/gufQGRLGzJygpbj4/+Cji/lIOs0ZyKILEVkMCAAAAAAAAAAAAAAAALBKZ5pzzYXTu9c8aB6d3qcs/+fy9fevBgD4ZzYGdpoBvUpzpHkrZBy6tWaWiV3jptPLqXt6m5qPkK1C704zDfeaO71XWe7f692GxF6l2enpRXP5Kb2eee/sKaYJaxPNSSGn0v4OJZPMfbqJ1zl27rkbevFz1fZGIvuag1G5d6nrV5prp/ek68+al0Lvt+9WNmNxprvSdyubJ3vepXk3Not2jhrNttON7PyO3VY7r0POr4l7K51fkfYMpOqkl7OuXvqMc730GVfSv8d1vz8f6vxOncw035laNNU=
   </data>
  </layer>
  <layer name="terrain" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJzt2ktOwzAUheHbMRWwhKCyAB5teU4BQaoCU4ogIMr+l8CxaiuRie0MeEz+TzqqohwldX0969rM1gMCAAAAAAAAAAAAAAAAAADwH7YGdpoBvUqZK6+ZjH23VmaJuGfcdnopdU9vW3n32cn0lsrUv2tR6L3YZv2l3p1P6FXKXk8vWNh38fOct86aQhp/b6KcZnJm7e+QM0m8p5vwnJPCO/d9L3z+tIOR2aFyNMr3rnT/Wrkp9J50f6U8Z3rnyoVyWfhu98qD8uiv3YyFme76sM1/iD/9tZsnt9+5eXfcLLpz1Ci7hW7gzu+42Grndcj5dcLacufXrD0DsTrqpfxVL97jVC/e48r61xjv8W871vxOC5kpX/ZkMgU=
+   eJzt2stKw0AUxvHTtUV9hEh9AC+t962KpnjZqmgU6/s/gufQGRLGzJygpbj4/+Cji/lIOs0ZyKILEVkMCAAAAAAAAAAAAAAAALBKZ5pzzYXTu9c8aB6d3qcs/+fy9fevBgD4ZzYGdpoBvUpzpHkrZBy6tWaWiV3jptPLqXt6m5qPkK1C704zDfeaO71XWe7f692GxF6l2enpRXP5Kb2eee/sKaYJaxPNSSGn0v4OJZPMfbqJ1zl27rkbevFz1fZGIvuag1G5d6nrV5prp/ek68+al0Lvt+9WNmNxprvSdyubJ3vepXk3Not2jhrNttON7PyO3VY7r0POr4l7K51fkfYMpOqkl7OuXvqMc730GVfSv8d1vz8f6vxOncw035laNNU=
   </data>
  </layer>
  <layer name="decor" width="10" height="300">

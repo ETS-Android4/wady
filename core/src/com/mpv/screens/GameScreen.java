@@ -63,8 +63,6 @@ public class GameScreen implements Screen {
 		debugRenderer = new Box2DDebugRenderer();
 		debugRenderer.setDrawVelocities(true);
 		//Map
-		
-		
 	}
 
 	@Override
@@ -91,19 +89,21 @@ public class GameScreen implements Screen {
 		//Map
 		GVars.otmRendered.setView(GVars.bgCam);
 		batch.begin();
-		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get(0));
+		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("background"));
 		batch.end();
 		GVars.otmRendered.setView(GVars.frCam);
 		GVars.rayHandler.updateAndRender();
 		batch.begin();
-		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get(1));
+		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("bg1"));
+		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("bg2"));
 		batch.end();
 		
 		//Player
 		gameStage.draw();
 		//Decor layer
 		batch.begin();
-		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get(2));		
+		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("cover1"));		
+		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("cover2"));
 		batch.end();
 		//FPS
 		GameUIStage.labelFPS.setText(Float.toString(1/delta).substring(0, 4));
