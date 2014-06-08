@@ -62,7 +62,12 @@ public class MapBodyBuilder {
             Body body = world.createBody(bd);
             body.createFixture(shape, 1);
             body.getFixtureList().first().getFilterData().categoryBits =  Const.CATEGORY_SCENERY;
-            
+            if (object.getProperties().containsKey("START")) {
+            	GameObject.start = body;
+            }else 
+            if (object.getProperties().containsKey("EXIT")) {
+            	GameObject.exit = body;
+            }
             bodies.add(body);
 
             shape.dispose();

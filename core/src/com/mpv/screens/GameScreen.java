@@ -36,10 +36,6 @@ public class GameScreen implements Screen {
 	private Rectangle glViewport;
 	private SpriteBatch batch;
 	private Matrix4 camLight;
-
-	//private TextureRegion currentFrame;
-	//private float stateTime = 0f;
-	
     	
 	public GameScreen() {
 		Tween.registerAccessor(Player.class, new PlayerAccessor());
@@ -108,7 +104,7 @@ public class GameScreen implements Screen {
 		//FPS
 		GameUIStage.labelFPS.setText(Float.toString(1/delta).substring(0, 4));
 		//Physics debug
-		//debugRenderer.render(GVars.world, GVars.frCam.combined.scl(GVars.BOX_TO_WORLD));		
+		debugRenderer.render(GVars.world, GVars.frCam.combined.scl(GVars.BOX_TO_WORLD));		
 		
 		uiStage.draw();
 		//UI debug

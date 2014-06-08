@@ -69,7 +69,7 @@ public class Player extends AnimatedImage  {
 		body.createFixture(fixtureDef);
 		body.setFixedRotation(Const.FIXED_ROTATION);
 	    body.setLinearDamping(Const.BODY_LINEAR_DAMPING);
-	    body.setTransform(5f, Const.BLOCK_SIZE*1.5f, 0);
+	    body.setTransform(5f, Const.BLOCK_SIZE*2.5f, 0);
 		body.setUserData(this);
 		//Dispose shape
 		playerShape.dispose();

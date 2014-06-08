@@ -29,7 +29,7 @@ public class GameObject {
 	//Delta time accumulator
 	private float accumulator = 0;
 	private static GameObject instance;
-	
+	public static Body start, exit;
 	
 	public static GameObject getInstance() {
         if (instance == null)  {

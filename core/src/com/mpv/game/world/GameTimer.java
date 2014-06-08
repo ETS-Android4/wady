@@ -27,7 +27,6 @@ public class GameTimer {
 	public void update(float deltaTime) {
 	    time += deltaTime;
 	    if (time >= gameLimit) {
-	        // TODO: Perform your action here
 	    	GameObject.getInstance().gameOver();
 	        // Reset timer (not set to 0)
 	        time -= gameLimit;

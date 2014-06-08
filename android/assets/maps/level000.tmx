@@ -4,7 +4,7 @@
   <image source="terrain.png" width="672" height="736"/>
  </tileset>
  <tileset firstgid="484" name="bg1" tilewidth="32" tileheight="32">
-  <image source="brick.png" width="320" height="320"/>
+  <image source="stone.png" width="320" height="320"/>
  </tileset>
  <layer name="background" width="10" height="300">
   <data encoding="base64" compression="zlib">
@@ -13,26 +13,26 @@
  </layer>
  <layer name="bg1" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJzt0bEJgDAURdGM4goquoJDqPuvYRobieSDIBHPgduEFC8kJQAAAAAAAAAAAP6szw2VxtwSjHdE/yPamtsq7a+8DJ6bLpXOW3Dd2dK2093G1naWzMF7XfrO+76w8akDLaQUNg==
+   eJztmgtOwzAMhrubcAjGHWB3gB5llF2B7Q6wQ5JJ+VUrc+I0zWhi+ZOsvn5lzctOvA5DXT53s/04+3V29ddHZydnX96o7sbVa6A77u7Lg+5EypicfTs7e6Ocyf1L8MzYnr1gL5nlHBbqPgQbM8tby/Mw1xPne0b36o8Hcs5Bde/DXJ+ULoXp4rq3hnXo+1HQ9cp/+wuwtb8w2oL6bM5AymdTqM/mzOAJ53+sXwDmtdQv0En9Mq56+/6wcV9G7bVuC2MyNRYoNcaCYdyoMX9S+y2qo+M2Nc9S+y2jDIszZUgxBu0aY+n6CDopFqH9W0BD3KL5I+4ahHmDWB4hzBtozyP0Tu38aSt50bXk7AUxz0t9HUdsPaA1zmxFKqbF/HiNfpbWfb30r/b1QTgWYuTG9tI1wCOJxfoQ+8+gHK1trLVeWyH50ZgfWhuTcnIRPcQjQ0bDflUD5juXobm9uDnJ1ZObk1w9c3Xc3B3l11WLxd91SHkk7b+f+17c/RZord04WuzfXHLzqE9DP/Vr8R3xzXf4jfjkDd+H4zn0+GZ88keU8QddxbD4
   </data>
  </layer>
  <layer name="bg2" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJzt0MENRUAUhtFbiiZYoAf0gP5LMInYiJc3iYiRnJP8G7mLb0QAAAAAAAAAAABAvjatS+szbseHW4gYYv/P05+7OW1JWx8vgvfVp119L8G5s6S2w6/G0jqvNJl3VXznfV9ovGsDVoYJeA==
+   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAOBvLuAAAQ==
   </data>
  </layer>
  <layer name="cover1" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJztz0EKwCAMBMB8Wf9/sAcPEmxLwJPMwILIkpAIAAAAAAAAAAAAOKc96TOxvHPaR3LvbcauV5n319v9V+7Iu6p7801rDwBuNABhsSd5
+   eJzty7ENwDAIAEFnc+N4BSfrhoKCMgPcSS8oIK4xdjazyO5q1Zw14+fdbncne7K3/a3aAQAAAAAAAAAAAACg+wDUbA+U
   </data>
  </layer>
  <layer name="cover2" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJztzrENwCAMRUHPlbBDlB0C+4+AC3qakAjpTnpy4+JHAAAAAAAAAAAAwPuuce/J35PVrK2ds50jO7Py9xAA+FAHuU0CgQ==
+   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAOBvLuAAAQ==
   </data>
  </layer>
  <objectgroup name="obstacles" width="10" height="300">
-  <object x="0" y="9559">
+  <object x="1" y="9537">
    <polyline points="0,0 318,0"/>
   </object>
   <object x="2" y="9416">
@@ -53,7 +53,62 @@
   <object x="126" y="8840">
    <polyline points="0,0 -125,1"/>
   </object>
-  <object x="1" y="7871" width="75" height="384"/>
-  <object x="146" y="7874" width="172" height="381"/>
+  <object x="66" y="8714">
+   <polyline points="0,0 255,-1"/>
+  </object>
+  <object x="254" y="8618">
+   <polyline points="0,0 -255,1"/>
+  </object>
+  <object x="206" y="8364" width="115" height="102"/>
+  <object x="0" y="8363" width="144" height="101"/>
+  <object x="79" y="8044" width="164" height="101"/>
+  <object x="111" y="7308" width="207" height="68"/>
+  <object x="-1" y="6829" width="144" height="101"/>
+  <object x="207" y="6828" width="111" height="100"/>
+  <object x="208" y="5901" width="115" height="100"/>
+  <object x="0" y="5739" width="209" height="104"/>
+  <object x="270" y="5740" width="51" height="101"/>
+  <object x="174" y="5484" width="144" height="101"/>
+  <object x="0" y="5484" width="113" height="102"/>
+  <object x="2" y="5102" width="49" height="102"/>
+  <object x="108" y="5101" width="213" height="102"/>
+  <object x="1" y="4874" width="270" height="72"/>
+  <object x="113" y="4300" width="208" height="69"/>
+  <object x="1" y="4076" width="207" height="100"/>
+  <object x="268" y="4078" width="51" height="98"/>
+  <object x="76" y="3820" width="244" height="69"/>
+  <object x="2" y="3437" width="173" height="99"/>
+  <object x="240" y="3469" width="80" height="68"/>
+  <object x="112" y="2924" width="206" height="71"/>
+  <object x="0" y="2764" width="241" height="72"/>
+  <object x="77" y="2509" width="242" height="67"/>
+  <object x="1" y="2221" width="81" height="104"/>
+  <object x="141" y="2220" width="177" height="73"/>
+  <object x="76" y="1900" width="243" height="72"/>
+  <object x="0" y="1389" width="209" height="102"/>
+  <object x="143" y="717" width="69" height="487"/>
+  <object x="241" y="716" width="79" height="72"/>
+  <object x="0" y="525" width="273" height="100"/>
+  <object x="105" y="-15" width="75" height="74">
+   <properties>
+    <property name="EXIT" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object x="49" y="7631" width="65" height="67"/>
+  <object x="239" y="7855" width="65" height="67"/>
+  <object x="80" y="6381" width="65" height="67"/>
+  <object x="209" y="6541" width="65" height="67"/>
+  <object x="112" y="6094" width="65" height="67"/>
+  <object x="80" y="4461" width="65" height="67"/>
+  <object x="210" y="4463" width="65" height="67"/>
+  <object x="146" y="9543" width="28" height="27">
+   <properties>
+    <property name="START" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object x="3" y="1" width="98" height="165"/>
+  <object x="184" y="-3" width="135" height="168"/>
  </objectgroup>
 </map>
