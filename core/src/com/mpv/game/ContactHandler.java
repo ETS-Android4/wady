@@ -1,5 +1,6 @@
 package com.mpv.game;
 
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
@@ -7,17 +8,21 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.game.players.Player;
+import com.mpv.game.world.GameObject;
 
 public class ContactHandler implements ContactListener{
 
-
-	public void init() {
-
-	}
-	
 	@Override
 	public void beginContact(Contact contact) {
-		if (Player.getInstance().body.getLinearVelocity().len() >= Const.BLOCK_SIZE) {
+		Body 
+			a = contact.getFixtureA().getBody(),
+			b = contact.getFixtureB().getBody(),
+			p = Player.getInstance().body,
+			body = (p == a) ? b : a;
+		if (body == GameObject.exit) {
+			GameObject.getInstance().gameFinish();
+		}
+		if (p.getLinearVelocity().len() >= Const.BLOCK_SIZE * 6f) {
 			Assets.playSnd(Assets.edgeSound);
 		}
 	}

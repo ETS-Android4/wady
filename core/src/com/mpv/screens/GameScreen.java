@@ -2,6 +2,7 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -31,7 +32,7 @@ public class GameScreen implements Screen {
 	private GameUIStage uiStage;
 	private Box2DDebugRenderer debugRenderer;
 	private GestureHandler gestureHandler = new GestureHandler();
-	private InputMultiplexer multiplexer;
+	public static InputMultiplexer multiplexer;
 	private GL20 gl20 = Gdx.graphics.getGL20();
 	private Rectangle glViewport;
 	private SpriteBatch batch;
@@ -42,7 +43,6 @@ public class GameScreen implements Screen {
 		GVars.tweenManager = new TweenManager();
 		batch = GVars.spriteBatch;
 		//batch.setShader(Assets.shader);
-
 		//Game Stage
 		uiStage = new GameUIStage(new ScreenViewport(), batch);
 	    gameStage = new Stage(new ScreenViewport(GVars.frCam), batch);
@@ -50,10 +50,10 @@ public class GameScreen implements Screen {
 		Gdx.graphics.setVSync(true);
 		//Input processor for gesture detection
 		multiplexer = new InputMultiplexer();
-		multiplexer.addProcessor(new GestureDetector(gestureHandler));
-		multiplexer.addProcessor(new InputHandler());
 		multiplexer.addProcessor(uiStage);
 		multiplexer.addProcessor(gameStage);
+		multiplexer.addProcessor(new GestureDetector(gestureHandler));
+		multiplexer.addProcessor(new InputHandler());
 		Gdx.input.setInputProcessor(multiplexer);
 		//Physics renderer
 		debugRenderer = new Box2DDebugRenderer();
@@ -104,7 +104,7 @@ public class GameScreen implements Screen {
 		//FPS
 		GameUIStage.labelFPS.setText(Float.toString(1/delta).substring(0, 4));
 		//Physics debug
-		debugRenderer.render(GVars.world, GVars.frCam.combined.scl(GVars.BOX_TO_WORLD));		
+		//debugRenderer.render(GVars.world, GVars.frCam.combined.scl(GVars.BOX_TO_WORLD));		
 		
 		uiStage.draw();
 		//UI debug
@@ -143,8 +143,5 @@ public class GameScreen implements Screen {
 	public void dispose() {
 		uiStage.dispose();
 		gameStage.dispose();
-	}
-	public void showDialog() {
-		Gdx.input.setInputProcessor(uiStage);
 	}
 }

@@ -11,7 +11,7 @@
       black: { hex: "000000" } 
      },  
      com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
-	dialogDim: { name: none, color: { r: 0, g: 0, b: 0, a: 0.45 } }
+		dialogDim: { name: none, color: { r: 0, g: 0, b: 0, a: 0.45 } }
      },
      com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {  
       default: { font: normaltext, fontColor: white },  

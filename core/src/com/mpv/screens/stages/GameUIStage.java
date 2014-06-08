@@ -1,5 +1,6 @@
 package com.mpv.screens.stages;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
 import com.mpv.game.world.GameObject;
+import com.mpv.screens.dialogs.FinishDialog;
 import com.mpv.screens.dialogs.PauseDialog;
 
 public class GameUIStage extends Stage {
@@ -19,7 +21,11 @@ public class GameUIStage extends Stage {
 	public static Label labelDebug;
 	public static Label labelTime;
 	public static PauseDialog pauseDialog = new PauseDialog("", Assets.skin, "default");
-	private GameUIStage instance;
+	public static FinishDialog finishDialog = new FinishDialog("", Assets.skin, "default");
+	private static GameUIStage instance;
+	public static GameUIStage getInstance(){
+		return instance;
+	}
 	
 	public GameUIStage(Viewport viewport,	 SpriteBatch batch) {
 		super(viewport, batch);
@@ -31,10 +37,11 @@ public class GameUIStage extends Stage {
 				//super.touchDown(event, x, y, pointer, button);
 				if (GameObject.state == GameObject.ACTIVE) {
 					GameObject.getInstance().gamePause();
-					GameUIStage.pauseDialog.show(instance);
+					gameFinish();
 				}
 			}
 		});
+
 		labelFPS = new Label("", Assets.skin, "game-text");
 		labelDebug = new Label("", Assets.skin, "game-text");
 		labelTime = new Label("", Assets.skin, "normal-text");
@@ -50,12 +57,20 @@ public class GameUIStage extends Stage {
 		//controlPanel.add(bExit).size(GVars.scrHeight/13);
 		this.addActor(controlPanel);
 	}
+	
 
 	@Override
 	public void draw() {
-		// TODO Auto-generated method stub
 		labelTime.setText(String.format("%02d:%02d", GVars.gameTimeMin, GVars.gameTimeSec));
 		super.draw();
+	}
+	public void gamePause() {
+		Gdx.input.setInputProcessor(instance);
+		GameUIStage.pauseDialog.show(instance);
+	}
+	public void gameFinish() {
+		Gdx.input.setInputProcessor(instance);
+		GameUIStage.finishDialog.show(instance);
 	}
 	
 }
