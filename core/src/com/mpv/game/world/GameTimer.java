@@ -1,8 +1,9 @@
 package com.mpv.game.world;
 
-import com.mpv.data.GVars;
-
 public class GameTimer {
+	
+	public static int gameTimeMin;
+	public static int gameTimeSec;
 	
 	private float time = 0f;
 	private float gameLimit = 0f;
@@ -31,7 +32,19 @@ public class GameTimer {
 	        // Reset timer (not set to 0)
 	        time -= gameLimit;
 	    }
-	    GVars.gameTimeMin = (int) ((gameLimit - time) / 60);
-		GVars.gameTimeSec = (int) ((gameLimit - time) % 60);
+	    gameTimeMin = (int) ((gameLimit - time) / 60);
+		gameTimeSec = (int) ((gameLimit - time) % 60);
 	}
+	public static String getLeftString() {
+		return String.format("%02d:%02d", gameTimeMin, gameTimeSec);
+	}
+	public String getSpentString() {
+		int min = (int) (time / 60);
+		int sec = (int) (time % 60);
+		return String.format("%02d:%02d", min, sec);
+	}
+	public int getLeftSec() {
+		return (int)(gameLimit - time);
+	}
+
 }

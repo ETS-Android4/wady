@@ -13,7 +13,12 @@ public class Settings {
      public static boolean musicEnabled = true;
      public final static Integer[] highscores = new Integer[] {100, 200, 300, 400, 500};
      public final static String[] scorenames = new String[] {"Cartman", "Kyle", "Kenny", "Stan", "Butters"};
-     public final static String file = ".sortitout";
+     public final static Integer[] points = new Integer[] 
+    		 				{0, 0, 0 ,0, 
+    		 				 0, 0, 0, 0,
+    		 				 0, 0, 0, 0,
+    		 				 0, 0, 0, 0};
+     public final static String file = ".mysh";
      public static String name = "Player";
 
      public static void load () {
@@ -26,6 +31,9 @@ public class Settings {
                      for (int i = 0; i < 5; i++) {
                              highscores[i] = Integer.parseInt(in.readLine());
                              scorenames[i] = in.readLine();
+                     }
+                     for (int i = 0; i < 16; i++) {
+                    	 points[i] = Integer.parseInt(in.readLine());
                      }
              } catch (Throwable e) {
                      // :( It's ok we have defaults
@@ -47,6 +55,9 @@ public class Settings {
                      for (int i = 0; i < 5; i++) {
                              out.write(Integer.toString(highscores[i]).concat("\n"));
                              out.write(scorenames[i].concat("\n"));
+                     }
+                     for (int i = 0; i < 16; i++) {
+                    	 out.write(Integer.toString(points[i]).concat("\n"));
                      }
 
              } catch (Throwable e) {

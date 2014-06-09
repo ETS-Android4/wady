@@ -11,7 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
+import com.mpv.data.Settings;
 import com.mpv.game.world.GameObject;
+import com.mpv.game.world.GameTimer;
+import com.mpv.screens.dialogs.FailedDialog;
 import com.mpv.screens.dialogs.FinishDialog;
 import com.mpv.screens.dialogs.PauseDialog;
 
@@ -22,6 +25,7 @@ public class GameUIStage extends Stage {
 	public static Label labelTime;
 	public static PauseDialog pauseDialog = new PauseDialog("", Assets.skin, "default");
 	public static FinishDialog finishDialog = new FinishDialog("", Assets.skin, "default");
+	public static FailedDialog failedDialog = new FailedDialog("", Assets.skin, "default");
 	private static GameUIStage instance;
 	public static GameUIStage getInstance(){
 		return instance;
@@ -37,7 +41,7 @@ public class GameUIStage extends Stage {
 				//super.touchDown(event, x, y, pointer, button);
 				if (GameObject.state == GameObject.ACTIVE) {
 					GameObject.getInstance().gamePause();
-					gameFinish();
+					gamePause();
 				}
 			}
 		});
@@ -61,7 +65,7 @@ public class GameUIStage extends Stage {
 
 	@Override
 	public void draw() {
-		labelTime.setText(String.format("%02d:%02d", GVars.gameTimeMin, GVars.gameTimeSec));
+		labelTime.setText(GameTimer.getLeftString());
 		super.draw();
 	}
 	public void gamePause() {
@@ -70,7 +74,11 @@ public class GameUIStage extends Stage {
 	}
 	public void gameFinish() {
 		Gdx.input.setInputProcessor(instance);
+		FinishDialog.points.setText(String.valueOf(Settings.points[GameObject.mapIndex]));
 		GameUIStage.finishDialog.show(instance);
 	}
-	
+	public void gameOver() {
+		Gdx.input.setInputProcessor(instance);
+		GameUIStage.failedDialog.show(instance);
+	}
 }

@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
+import com.mpv.data.Settings;
 import com.mpv.game.ContactHandler;
 import com.mpv.game.players.Player;
 import com.mpv.screens.stages.GameUIStage;
@@ -29,6 +30,8 @@ public class GameObject {
 	
 	//Delta time accumulator
 	private float accumulator = 0;
+	private float mapLimit;
+	public static int mapIndex = -1;
 	private static GameObject instance;
 	public static Body start, exit;
 	
@@ -49,6 +52,8 @@ public class GameObject {
 		setWorldBounds();
 		MapBodyBuilder.buildShapes(Assets.map, 32f, GVars.world);
 		Player.getInstance().createBody();
+		//Time limit
+		mapLimit = Integer.parseInt((String)Assets.map.getProperties().get("Time"));
 		//Light
 		GVars.rayHandler = new RayHandler(GVars.world);
 		GVars.pointLight = new PointLight(GVars.rayHandler, 24, new Color(1,1,1,1), Const.widthInMeters, Const.BLOCK_SIZE, Const.BLOCK_SIZE);		
@@ -56,7 +61,8 @@ public class GameObject {
 	}
 	
 	public void gameStart() {
-		GameTimer.getInstance().setTimer(360f);
+		GameTimer.getInstance().setTimer(mapLimit);
+		Player.getInstance().resetGame();
 		state = ACTIVE;
 	}
 	public void gamePause() {
@@ -72,11 +78,13 @@ public class GameObject {
 	}
 	public void gameFinish() {
 		state = FINISH;
+		Settings.points[mapIndex] = GameTimer.getInstance().getLeftSec()*10;
 		GameUIStage.getInstance().gameFinish();
 	}
 	
 	public void gameOver() {
 		state = OVER;
+		GameUIStage.getInstance().gameOver();
 	}
 	
 	public void gameUpdate(float delta) {

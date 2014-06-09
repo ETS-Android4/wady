@@ -31,6 +31,7 @@ public class LevelScreen implements Screen {
 
 	@Override
 	public void show() {
+		levelStage.updateButtons();
 		Gdx.input.setInputProcessor(levelStage);
 	}
 

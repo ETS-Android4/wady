@@ -69,11 +69,15 @@ public class Player extends AnimatedImage  {
 		body.createFixture(fixtureDef);
 		body.setFixedRotation(Const.FIXED_ROTATION);
 	    body.setLinearDamping(Const.BODY_LINEAR_DAMPING);
-	    body.setTransform(5f, Const.BLOCK_SIZE*2.5f, 0);
+	    resetGame();
 		body.setUserData(this);
 		//Dispose shape
 		playerShape.dispose();
 	}
+	public void resetGame() {
+		body.setTransform(5f, Const.BLOCK_SIZE*2.5f, 0);
+	}
+	
 	public void applyForce(Vector2 impulse) {
 		body.applyLinearImpulse(impulse, body.getWorldCenter().add(0f, Const.BLOCK_HALF).rotateRad(body.getAngle()), true);
 		Player.state = Player.S_LJUMP;

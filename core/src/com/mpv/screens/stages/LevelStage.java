@@ -14,11 +14,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
+import com.mpv.data.Settings;
 import com.mpv.game.world.GameObject;
 
 public class LevelStage extends Stage {
 	
-	private int mapIndex = -1, tmpIndex = 0;
+	private int tmpIndex = 0;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	public LevelStage() {
@@ -46,7 +47,6 @@ public class LevelStage extends Stage {
 			for (int j=0; j<4; j++) {
 				buttonTable.add(emptyWidget).width(buttonSize/4);
 				tmp = new TextButton(String.valueOf(i*4+j+1),Assets.skin, "item");
-				tmp.setDisabled(true);
 				buttonGroup.add(tmp);
 				buttonTable.add(tmp).size(buttonSize);
 				buttonTable.add(emptyWidget).width(buttonSize/4);
@@ -54,8 +54,7 @@ public class LevelStage extends Stage {
 			buttonTable.row();
 			buttonTable.add(emptyWidget).height(buttonSize/2).row();
 		}
-		//Setting first level enebled
-		buttonGroup.getButtons().first().setDisabled(false);
+		updateButtons();
 		//left/right buttons
 		Table controlTable = new Table();
 		mainTable.add(controlTable);
@@ -73,12 +72,18 @@ public class LevelStage extends Stage {
 		rightButton.addListener(new ClickListener(){
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
-				if (tmpIndex != mapIndex) {
-					mapIndex = tmpIndex; 
-					Assets.loadMap(0, mapIndex);
+				if (tmpIndex != GameObject.mapIndex) {
+					GameObject.mapIndex = tmpIndex; 
+					Assets.loadMap(0, GameObject.mapIndex);
 				}
 				GVars.app.setScreen(GVars.app.gameScreen);
 				GameObject.getInstance().gameResume();
+			}
+		});
+		leftButton.addListener(new ClickListener(){
+			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
+				//super.touchDown(event, x, y, pointer, button);
+				GVars.app.setScreen(GVars.app.menuScreen);
 			}
 		});
 		
@@ -89,7 +94,14 @@ public class LevelStage extends Stage {
 				}
 				return false;
 			}
-		}); 
+		});
 	}
-	
+	public void updateButtons() {
+		for (int i=1; i<16; i++) {
+			if (Settings.points[i-1]==0) {
+				buttonGroup.getButtons().get(i).setDisabled(true);
+			}else
+				buttonGroup.getButtons().get(i).setDisabled(false);
+		}
+	}
 }

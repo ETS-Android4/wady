@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.esotericsoftware.tablelayout.Cell;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
+import com.mpv.data.Settings;
 
 public class ExitDialog extends Dialog {
 
@@ -20,6 +21,7 @@ public class ExitDialog extends Dialog {
 	}
 	protected void result (Object obj) {
 		if (obj.equals(true)){
+			Settings.save();
 			Gdx.app.exit();
 		}else {
 

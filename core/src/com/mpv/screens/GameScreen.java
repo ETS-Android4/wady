@@ -2,7 +2,6 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -10,12 +9,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mpv.control.GestureHandler;
 import com.mpv.control.InputHandler;
@@ -36,7 +32,6 @@ public class GameScreen implements Screen {
 	private GL20 gl20 = Gdx.graphics.getGL20();
 	private Rectangle glViewport;
 	private SpriteBatch batch;
-	private Matrix4 camLight;
     	
 	public GameScreen() {
 		Tween.registerAccessor(Player.class, new PlayerAccessor());
@@ -69,15 +64,8 @@ public class GameScreen implements Screen {
 		
 		uiStage.act(Gdx.graphics.getDeltaTime());
 		gameStage.act(Gdx.graphics.getDeltaTime());
-		GVars.frCam.position.set(GVars.frCam.position.x, 
-					Math.max(MathUtils.round(GVars.activePlayer.getY()), (int)GVars.scrHeight/2),
-					0);
-		GVars.bgCam.position.set(GVars.frCam.position.x, 
-					MathUtils.round(GVars.frCam.position.y/1.6f + GVars.scrHeight/4), 0);
-		GVars.frCam.update();
-		GVars.bgCam.update();
-		camLight = new Matrix4(GVars.frCam.combined);
-		GVars.rayHandler.setCombinedMatrix(camLight.scl(GVars.BOX_TO_WORLD));
+		GVars.update();
+		
 		//Clear
 		gl20.glClearColor(0, 0, 0, 1);
 		gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -108,7 +96,7 @@ public class GameScreen implements Screen {
 		
 		uiStage.draw();
 		//UI debug
-		Table.drawDebug(uiStage);
+		//Table.drawDebug(uiStage);
 		//Table.drawDebug(gameStage);
 	}
 

@@ -2,7 +2,6 @@ package com.mpv.screens.dialogs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -18,8 +17,7 @@ import com.mpv.screens.GameScreen;
 
 public class FinishDialog extends Dialog {
 
-	public static Label points = new Label("12345", Assets.skin, "normal-text");
-	private static Label title = new Label("", Assets.skin, "game-text");
+	public static Label points = new Label("", Assets.skin, "normal-text");
 	
 	public FinishDialog(String title, Skin skin, String styleName) {
 		super(title, skin, styleName);
@@ -49,17 +47,6 @@ public class FinishDialog extends Dialog {
 			GameObject.getInstance().gameResume();
 			Gdx.input.setInputProcessor(GameScreen.multiplexer);
 		}
-	}
-
-	@Override
-	public Dialog show(Stage stage) {
-		if (GameObject.state == GameObject.FINISH) {
-			title.setText("Completed!");
-		}	else 
-		if (GameObject.state == GameObject.OVER) {
-			title.setText("Failed"); 
-		}
-		return super.show(stage);	
 	}
 	
 }
