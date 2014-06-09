@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="10" height="50" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="Time" value="120"/>
+ </properties>
+ <tileset firstgid="1" name="terrain" tilewidth="32" tileheight="32">
+  <image source="terrain.png" width="672" height="736"/>
+ </tileset>
+ <tileset firstgid="484" name="bg1" tilewidth="32" tileheight="32">
+  <image source="stone.png" width="320" height="320"/>
+ </tileset>
+ <layer name="background" width="10" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt0UVCAkAAAMAFu7uxCwOxW7H9/x8wsDsQY97geQ/zgsknQjjjnAsuKXDFNTfccsc9DzzyxDMvvPLGOx98UuSLEt/88EtIhpAgSRnlVFBJFdXUUEsd9TTQSBPNtNBKG+100EkX3fTQSx8p+hlgkCGGGWGUMcaZYJI0U0wzwywZ5sgyzwKLLLHMCqussc4Gm2yxzQ675NhjnwMOOeKYE07Jx4/4ET/iR/yIH//4+AOvyrlb
+  </data>
+ </layer>
+ <layer name="bg1" width="10" height="50">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAuaGRE4FVAvBqI10D5DUDcAsTNUIysDgTWQNXA1DUwYpoHU9eCZEYTEE8F4mlQjAymIYlPR5MbBQMPTAlgMyLN8SZRXTwBnECkeZQCEwaEP2FsUyzqPKG0NxIbG0BWF8eA8A8+dfjAqDrc6rwGsTpY3CcQUEcpoHe+hYGBzrfUAg1IdVgzWr1HjhgAC/M1Nw==
+  </data>
+ </layer>
+ <layer name="bg2" width="10" height="50">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwVAHAAfQAAE=
+  </data>
+ </layer>
+ <layer name="cover1" width="10" height="50">
+  <data encoding="base64" compression="zlib">
+   eJxrZGRgaAHiBiBuBOJmKG6C0g1QupFIdS1I6qYC8TQgno6krwnKHgWjYBSMglEwCkYB9QAAK4wPlA==
+  </data>
+ </layer>
+ <layer name="cover2" width="10" height="50">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwVAHAAfQAAE=
+  </data>
+ </layer>
+ <objectgroup name="obstacles" width="10" height="50">
+  <object x="2" y="1293" width="209" height="102"/>
+  <object x="143" y="717" width="69" height="487"/>
+  <object x="241" y="716" width="79" height="72"/>
+  <object x="0" y="525" width="273" height="100"/>
+  <object x="105" y="-15" width="75" height="74">
+   <properties>
+    <property name="EXIT" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object x="3" y="1" width="98" height="165"/>
+  <object x="184" y="-3" width="135" height="168"/>
+  <object x="1" y="1535">
+   <polyline points="0,0 319,0"/>
+  </object>
+ </objectgroup>
+</map>
