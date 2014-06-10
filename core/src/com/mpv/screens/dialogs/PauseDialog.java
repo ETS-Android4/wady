@@ -25,7 +25,7 @@ public class PauseDialog extends Dialog {
 	protected void result (Object obj) {
 		if (obj.equals(true)){
 			this.hide();
-			GVars.app.setScreen(GVars.app.menuScreen);
+			GVars.app.setScreen(GVars.app.levelScreen);
 		}else {
 			this.hide();
 			Gdx.input.setInputProcessor(GameScreen.multiplexer);

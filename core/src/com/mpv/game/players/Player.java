@@ -1,6 +1,8 @@
 package com.mpv.game.players;
 
 import aurelienribon.tweenengine.Tween;
+
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -11,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
-
+import com.mpv.game.world.GameObject;
 import com.mpv.tween.PlayerAccessor;
 
 public class Player extends AnimatedImage  {
@@ -21,8 +23,10 @@ public class Player extends AnimatedImage  {
 	public static final int S_RJUMP = 2;
 	public static final int S_FALL = 3;
 	public static final int S_HIT = 4;
+	public static final int S_INVISIBLE = 5;
 	
 	public static int state = Player.S_IDLE;
+	
 	private static final float animFix = 3.5f;
 	
 	private static Player instance;
@@ -75,7 +79,10 @@ public class Player extends AnimatedImage  {
 		playerShape.dispose();
 	}
 	public void resetGame() {
-		body.setTransform(5f, Const.BLOCK_SIZE*2.5f, 0);
+		body.setTransform(5f, Const.BLOCK_SIZE*2.5f, 0f);
+		this.setRotation(360f);
+		body.setAwake(false);
+		state = S_IDLE;
 	}
 	
 	public void applyForce(Vector2 impulse) {
@@ -85,6 +92,8 @@ public class Player extends AnimatedImage  {
 	}
 	
 	public void positionSync() {
+		if (Player.state == Player.S_INVISIBLE) return;
+		
 		Vector2 velocity = body.getLinearVelocity();
 		float angle = velocity.angle();
 		
@@ -102,9 +111,18 @@ public class Player extends AnimatedImage  {
 				(body.getPosition().x-Const.PLAYER_HALF)*GVars.BOX_TO_WORLD, 
 				(body.getPosition().y-Const.PLAYER_SIZE/animFix)*GVars.BOX_TO_WORLD
 				);
+		
+		if (GameObject.state != GameObject.ACTIVE) return;
 		Tween.to(this, PlayerAccessor.ROTATE, 0.2f)
 			.target(angle+270f)
 			.start(GVars.tweenManager);
+	}
+
+	@Override
+	public void draw(Batch batch, float parentAlpha) {
+		if (state != S_INVISIBLE) {
+			super.draw(batch, parentAlpha);
+		}
 	}
 
 }

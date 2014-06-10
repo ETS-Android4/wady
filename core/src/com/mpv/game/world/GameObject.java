@@ -64,6 +64,7 @@ public class GameObject {
 		GameTimer.getInstance().setTimer(mapLimit);
 		Player.getInstance().resetGame();
 		state = ACTIVE;
+		Player.state = Player.S_IDLE;
 	}
 	public void gamePause() {
 		state = PAUSE;
@@ -78,12 +79,14 @@ public class GameObject {
 	}
 	public void gameFinish() {
 		state = FINISH;
+		Player.state = Player.S_INVISIBLE;
 		Settings.points[mapIndex] = GameTimer.getInstance().getLeftSec()*10;
 		GameUIStage.getInstance().gameFinish();
 	}
 	
 	public void gameOver() {
 		state = OVER;
+		Player.state = Player.S_INVISIBLE;
 		GameUIStage.getInstance().gameOver();
 	}
 	

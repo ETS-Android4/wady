@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
+import com.mpv.game.players.Player;
 import com.mpv.game.world.GameObject;
 import com.mpv.game.world.GameTimer;
 import com.mpv.screens.dialogs.FailedDialog;
@@ -85,6 +86,7 @@ public class GameUIStage extends Stage {
 	}
 
 	public void gameStart() {
+		Player.getInstance().resetGame();
 		Gdx.input.setInputProcessor(instance);
 		GameUIStage.startDialog.show(instance);
 	}

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.GdxNativesLoader;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
+import com.mpv.data.Settings;
 import com.mpv.game.world.GameObject;
 import com.mpv.screens.GameScreen;
 import com.mpv.screens.LevelScreen;
@@ -37,6 +38,7 @@ public class ApplicationHandler extends Game {
 		GVars.resize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 		
 		//Initialize configuration and resources
+		Settings.load();
 		Assets.load();
 
 		//Custom buttons

@@ -2,7 +2,6 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -14,7 +13,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mpv.control.GestureHandler;
 import com.mpv.control.InputHandler;
@@ -76,10 +74,10 @@ public class GameScreen implements Screen {
 		//Map
 		GVars.otmRendered.setView(GVars.bgCam);
 		batch.begin();
-		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("background"));
+		if (Player.state != Player.S_INVISIBLE) GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("background"));
 		batch.end();
 		GVars.otmRendered.setView(GVars.frCam);
-		GVars.rayHandler.updateAndRender();
+		if (Player.state != Player.S_INVISIBLE) 	GVars.rayHandler.updateAndRender();
 		batch.begin();
 		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("bg1"));
 		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("bg2"));
@@ -99,7 +97,7 @@ public class GameScreen implements Screen {
 		
 		uiStage.draw();
 		//UI debug
-		Table.drawDebug(uiStage);
+		//Table.drawDebug(uiStage);
 		//Table.drawDebug(gameStage);
 	}
 
