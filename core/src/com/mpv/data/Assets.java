@@ -31,7 +31,9 @@ public class Assets {
 	//Skin
 	public static Skin skin;
 	//Maps
-	public static TiledMap map; 
+	public static TiledMap map;
+	public static int mapPixelWidth, mapPixelHeight, mapScaledWidth, mapScaledHeight;
+	public static float mapUnitScale;
 	//Textures & regions
 	private static TextureAtlas textureAtlas;
 	public static Animation animation;
@@ -105,13 +107,17 @@ public class Assets {
 		MapProperties prop = Assets.map.getProperties();
 
 		int mapWidth = prop.get("width", Integer.class);
-		//int mapHeight = prop.get("height", Integer.class);
+		int mapHeight = prop.get("height", Integer.class);
 		int tilePixelWidth = prop.get("tilewidth", Integer.class);
-		//int tilePixelHeight = prop.get("tileheight", Integer.class);
+		int tilePixelHeight = prop.get("tileheight", Integer.class);
 
-		int mapPixelWidth = mapWidth * tilePixelWidth;
+		mapPixelWidth = mapWidth * tilePixelWidth;
+		mapPixelHeight = mapHeight * tilePixelHeight;
+		mapUnitScale = GVars.scrWidth/mapPixelWidth;
+		mapScaledWidth = Math.round(mapPixelWidth * mapUnitScale);
+		mapScaledHeight = Math.round(mapPixelHeight * mapUnitScale); 
 		//int mapPixelHeight = mapHeight * tilePixelHeight;
-		GVars.otmRendered = new OrthogonalTiledMapRenderer(Assets.map,GVars.scrWidth/mapPixelWidth, GVars.spriteBatch);	
+		GVars.otmRendered = new OrthogonalTiledMapRenderer(Assets.map, mapUnitScale, GVars.spriteBatch);	
 	}
 	
 	public static void disposeMap() {

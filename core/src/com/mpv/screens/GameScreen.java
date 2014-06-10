@@ -2,6 +2,7 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -12,13 +13,14 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mpv.control.GestureHandler;
 import com.mpv.control.InputHandler;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
 import com.mpv.game.players.Player;
-import com.mpv.game.world.GameObject;
 import com.mpv.screens.stages.GameUIStage;
 import com.mpv.tween.PlayerAccessor;
 
@@ -64,6 +66,7 @@ public class GameScreen implements Screen {
 		
 		uiStage.act(Gdx.graphics.getDeltaTime());
 		gameStage.act(Gdx.graphics.getDeltaTime());
+		//Camera and various updates
 		GVars.update();
 		
 		//Clear
@@ -96,7 +99,7 @@ public class GameScreen implements Screen {
 		
 		uiStage.draw();
 		//UI debug
-		//Table.drawDebug(uiStage);
+		Table.drawDebug(uiStage);
 		//Table.drawDebug(gameStage);
 	}
 
@@ -118,13 +121,13 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void show() {
-		Gdx.input.setInputProcessor(multiplexer);
-		GameObject.getInstance().gameResume();
+		GameUIStage.getInstance().gameStart();
+		Dialog.fadeDuration = 0f;
 	}
 
 	@Override
 	public void hide() {
-
+		Dialog.fadeDuration = 0.4f;
 	}
 	
 	@Override

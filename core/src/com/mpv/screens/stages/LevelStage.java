@@ -58,9 +58,9 @@ public class LevelStage extends Stage {
 		//left/right buttons
 		Table controlTable = new Table();
 		mainTable.add(controlTable);
-		controlTable.add(leftButton).left();
+		controlTable.add(leftButton).size(buttonSize).left();
 		controlTable.add(emptyWidget).width(buttonSize);
-		controlTable.add(rightButton).right();
+		controlTable.add(rightButton).size(buttonSize).right();
 		
 		buttonTable.addListener(new ClickListener(){
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
@@ -77,7 +77,6 @@ public class LevelStage extends Stage {
 					Assets.loadMap(0, GameObject.mapIndex);
 				}
 				GVars.app.setScreen(GVars.app.gameScreen);
-				GameObject.getInstance().gameResume();
 			}
 		});
 		leftButton.addListener(new ClickListener(){

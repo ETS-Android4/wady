@@ -3,33 +3,32 @@ package com.mpv.screens.dialogs;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.esotericsoftware.tablelayout.Cell;
+import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.game.world.GameObject;
 import com.mpv.screens.GameScreen;
 
-public class PauseDialog extends Dialog {
-
-	public PauseDialog(String title, Skin skin, String styleName) {
+public class StartDialog extends Dialog {
+	
+	public StartDialog(String title, Skin skin, String styleName) {
 		super(title, skin, styleName);
-		this.getContentTable().add(new Image()).size(GVars.scrWidth/1.6f);
-		this.button("Menu", true).button("Back", false).key(Keys.ENTER, true).key(Keys.ESCAPE, false);
+		this.getContentTable().add(new Label("Ready?", Assets.skin)).row();
+		this.getContentTable().add(new Widget()).size(GVars.scrHeight/13);
+		this.getContentTable().setFillParent(false);
+		//this.getContentTable().debug();
+		this.button("Go!", true).key(Keys.ENTER, true);
 		for (Cell<?> cell :  this.getButtonTable().getCells()) {
 			cell.size(Const.PLAYER_SIZE*GVars.BOX_TO_WORLD, Const.PLAYER_HALF*GVars.BOX_TO_WORLD);
 		}
 	}
 	
 	protected void result (Object obj) {
-		if (obj.equals(true)){
-			this.hide();
-			GVars.app.setScreen(GVars.app.menuScreen);
-		}else {
-			this.hide();
-			Gdx.input.setInputProcessor(GameScreen.multiplexer);
-			GameObject.getInstance().gameResume();
-		}
+		GameObject.getInstance().gameStart();
+		Gdx.input.setInputProcessor(GameScreen.multiplexer);
 	}
 }

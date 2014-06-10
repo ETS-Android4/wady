@@ -17,15 +17,17 @@ import com.mpv.game.world.GameTimer;
 import com.mpv.screens.dialogs.FailedDialog;
 import com.mpv.screens.dialogs.FinishDialog;
 import com.mpv.screens.dialogs.PauseDialog;
+import com.mpv.screens.dialogs.StartDialog;
 
 public class GameUIStage extends Stage {
 
 	public static Label labelFPS;
 	public static Label labelDebug;
 	public static Label labelTime;
-	public static PauseDialog pauseDialog = new PauseDialog("", Assets.skin, "default");
-	public static FinishDialog finishDialog = new FinishDialog("", Assets.skin, "default");
-	public static FailedDialog failedDialog = new FailedDialog("", Assets.skin, "default");
+	public static PauseDialog pauseDialog = new PauseDialog("", Assets.skin, "dialog");
+	public static FinishDialog finishDialog = new FinishDialog("", Assets.skin, "dialog");
+	public static FailedDialog failedDialog = new FailedDialog("", Assets.skin, "dialog");
+	public static StartDialog startDialog = new StartDialog("", Assets.skin, "dialog");
 	private static GameUIStage instance;
 	public static GameUIStage getInstance(){
 		return instance;
@@ -80,5 +82,10 @@ public class GameUIStage extends Stage {
 	public void gameOver() {
 		Gdx.input.setInputProcessor(instance);
 		GameUIStage.failedDialog.show(instance);
+	}
+
+	public void gameStart() {
+		Gdx.input.setInputProcessor(instance);
+		GameUIStage.startDialog.show(instance);
 	}
 }

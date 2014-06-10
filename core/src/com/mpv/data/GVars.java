@@ -3,7 +3,6 @@ package com.mpv.data;
 import aurelienribon.tweenengine.TweenManager;
 import box2dLight.PointLight;
 import box2dLight.RayHandler;
-
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -69,14 +68,17 @@ public class GVars {
 		activePlayer = null;
 	}
 	public static void update() {
-		frCam.position.set(frCam.position.x, 
-				Math.max(MathUtils.round(activePlayer.getY()), (int)scrHeight/2),
+		//Calculating cam position to not overlap map borders
+		frCam.position.set(frCam.position.x,
+				Math.min(
+						Math.max(MathUtils.round(activePlayer.getY()), (int)scrHeight/2),
+						Assets.mapScaledHeight - (int)scrHeight/2),
 				0);
+		//Background camera
 		bgCam.position.set(frCam.position.x, 
 				MathUtils.round(frCam.position.y/1.6f + scrHeight/4), 0);
 		frCam.update();
 		bgCam.update();
-		
 		camLight = new Matrix4(frCam.combined);
 		rayHandler.setCombinedMatrix(camLight.scl(BOX_TO_WORLD));
 	}

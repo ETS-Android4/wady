@@ -44,7 +44,7 @@ public class GameTimer {
 		return String.format("%02d:%02d", min, sec);
 	}
 	public int getLeftSec() {
-		return (int)(gameLimit - time);
+		return Math.round(gameLimit - time);
 	}
 
 }
