@@ -34,8 +34,13 @@ public class LevelStage extends Stage {
 		//Debug
 		//mainTable.debug();
 		//buttonTable.debug();
+		Image image = new Image(Assets.skin.getDrawable("menu-screen"));
+		image.setSize(getWidth(), getWidth());
+		image.setPosition(0, 0);
+		this.addActor(image);
 		this.addActor(mainTable);
-		mainTable.setBackground(Assets.skin.getDrawable("none"));
+		
+		//mainTable.setBackground(Assets.skin.getDrawable("menu-bg"));
 		mainTable.setFillParent(true);
 		mainTable.add(new Image(Assets.skin, "button")).size(this.getWidth()/1.6f, this.getHeight()/6.4f).row();
 		mainTable.add(emptyWidget).height(buttonSize/2).row();
@@ -97,10 +102,14 @@ public class LevelStage extends Stage {
 	}
 	public void updateButtons() {
 		for (int i=1; i<16; i++) {
+			TextButton t = (TextButton)buttonGroup.getButtons().get(i);
 			if (Settings.points[i-1]==0) {
-				buttonGroup.getButtons().get(i).setDisabled(true);
-			}else
-				buttonGroup.getButtons().get(i).setDisabled(false);
+				t.setDisabled(true);
+				t.setText("");
+			}else {
+				t.setDisabled(false);
+				t.setText(String.valueOf(i+1));
+			}
 		}
 	}
 }

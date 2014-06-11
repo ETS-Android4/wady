@@ -3,122 +3,150 @@ skin.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+menu-screen
+  rotate: false
+  xy: 1, 489
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
 window
   rotate: false
-  xy: 1, 200
+  xy: 1, 231
   size: 256, 256
-  split: 55, 54, 76, 46
+  split: 58, 54, 77, 50
   orig: 256, 256
   offset: 0, 0
   index: -1
-button-disabled
+cloud
   rotate: false
-  xy: 1, 70
+  xy: 515, 873
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+cloud-down
+  rotate: false
+  xy: 1, 101
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 259, 359
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 button-down
   rotate: false
-  xy: 259, 328
+  xy: 515, 743
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-button
+button-disabled
   rotate: false
-  xy: 389, 328
+  xy: 773, 873
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 item-checked
   rotate: false
-  xy: 519, 328
+  xy: 259, 229
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 item-disabled
   rotate: false
-  xy: 649, 328
+  xy: 515, 613
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 item
   rotate: false
-  xy: 779, 328
+  xy: 645, 743
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 timer
   rotate: false
-  xy: 259, 200
+  xy: 259, 101
   size: 128, 126
   orig: 128, 126
   offset: 0, 0
   index: -1
-arrow-left-down
+star-none
   rotate: false
-  xy: 1, 4
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-arrow-left
-  rotate: false
-  xy: 131, 134
+  xy: 1, 35
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 arrow-right-down
   rotate: false
-  xy: 909, 392
+  xy: 389, 423
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 arrow-right
   rotate: false
-  xy: 389, 262
+  xy: 903, 937
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-star-gold
+arrow-left
   rotate: false
-  xy: 197, 134
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-star-none
-  rotate: false
-  xy: 455, 262
+  xy: 515, 547
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 star-silver
   rotate: false
-  xy: 263, 134
+  xy: 645, 677
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+arrow-left-down
+  rotate: false
+  xy: 775, 807
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+star-gold
+  rotate: false
+  xy: 67, 35
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 cursor
   rotate: false
-  xy: 67, 4
+  xy: 389, 357
   size: 8, 64
   orig: 8, 64
   offset: 0, 0
   index: -1
-none
+menu-bg
   rotate: false
   xy: 1, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+none
+  rotate: false
+  xy: 455, 486
   size: 1, 1
   orig: 1, 1
   offset: 0, 0

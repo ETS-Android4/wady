@@ -4,6 +4,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
@@ -21,31 +22,48 @@ public class MainMenuStage extends Stage {
 	public MainMenuStage() {
 		// TODO Auto-generated constructor stub
 		super();
-		float buttonWidth=this.getWidth()/3.2f;
-		float buttonHeight=Const.PLAYER_SIZE*GVars.BOX_TO_WORLD/1.63f;
-		Table table = new Table();
+		float width=this.getWidth()/3.2f;
+		float height=Const.PLAYER_SIZE*GVars.BOX_TO_WORLD/1.63f;
+		Table tableButtons = new Table(), tableMain = new Table();
 		//Debug
-		//table.debug();
-		this.addActor(table);
-
-		table.setFillParent(true);
+		//tableButtons.debug();
+		//tableMain.debug();
+		Image image = new Image(Assets.skin.getDrawable("menu-screen"));
+		image.setSize(getWidth(), getWidth());
+		image.setPosition(0, 0);
+		this.addActor(image);
+		this.addActor(tableMain);
+		
+		tableMain.setFillParent(true);
+		tableMain.top();
+		tableButtons.setFillParent(true);
+		//tableMain.setBackground(Assets.skin.getTiledDrawable("menu-bg"));
 		exitDialog = 	new ExitDialog("", Assets.skin, "default");
 		
-		final TextButton bNewGame = new TextButton("Play", Assets.skin);
+		final TextButton bNewGame = new TextButton("Play", Assets.skin, "menu-button");
 		final Widget widget1 = new Widget();
-		final TextButton bHighScores = new TextButton("Scores", Assets.skin);
-		final TextButton bLevels = new TextButton("Levels", Assets.skin);
-		final TextButton bExit = new TextButton("Exit", Assets.skin);
+		final TextButton bHighScores = new TextButton("Scores", Assets.skin, "menu-button");
+		final TextButton bLevels = new TextButton("Levels", Assets.skin, "menu-button");
+		final TextButton bExit = new TextButton("Exit", Assets.skin, "menu-button");
 		
-		table.add(bNewGame).width(buttonWidth).height(buttonWidth);
-		table.add(widget1).width(buttonHeight/2);
-		table.add(bLevels).width(buttonWidth).height(buttonWidth);
-		table.row();
-		table.add(widget1).height(buttonHeight/2);
-		table.row();
-		table.add(bHighScores).width(buttonWidth).height(buttonWidth);
-		table.add(widget1).height(buttonHeight/2);
-		table.add(bExit).width(buttonWidth).height(buttonWidth);
+		tableMain.add(widget1).height(height).row();
+		tableMain.add(widget1);
+		tableMain.add(bNewGame).size(width/1.6f, height);
+		tableMain.add(widget1);
+		tableMain.add(bLevels).size(width/1.6f, height);
+		tableMain.add(widget1);
+		tableMain.row();
+		//tableMain.add(tableButtons);
+		
+
+		//tableButtons.row();
+		tableMain.add(bHighScores).size(width, height);
+		tableMain.add(widget1).width(width/4);
+		tableMain.add(widget1).width(width/4);
+		tableMain.add(widget1).width(width/4);
+		tableMain.add(bExit).size(width, height);
+		
+		
 
 		bNewGame.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
