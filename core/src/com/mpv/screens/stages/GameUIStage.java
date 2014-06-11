@@ -55,10 +55,9 @@ public class GameUIStage extends Stage {
 		Table controlPanel = new Table();
 		controlPanel.setFillParent(true);
 		controlPanel.debug().bottom().left();
-		controlPanel.add(new Image(Assets.skin.getDrawable("star"))).size(GVars.scrHeight/13);
+		controlPanel.add(new Image(Assets.skin.getDrawable("timer"))).size(GVars.scrHeight/13);
 		controlPanel.add(labelTime).expand(true, false).height(GVars.scrHeight/13).width(getWidth()/4.3f).left();
-		//controlPanel.add(labelDebug).expand(true, false).size(GVars.scrHeight/13);
-		
+		//controlPanel.add(labelDebug).expand(true, false).size(GVars.scrHeight/13);		
 		//controlPanel.add(labelFPS).expand(true, false).size(GVars.scrHeight/13);
 		controlPanel.add(bPlay).size(GVars.scrHeight/13).right();
 		//controlPanel.add(bExit).size(GVars.scrHeight/13);

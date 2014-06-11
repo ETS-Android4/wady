@@ -24,7 +24,7 @@ public class FinishDialog extends Dialog {
 		Widget empty = new Widget();
 		Table pointsTable = new Table();
 		//pointsTable.debug();
-		pointsTable.add(new Image(Assets.skin.getDrawable("star"))).size(GVars.scrHeight/13).left();
+		pointsTable.add(new Image(Assets.skin.getDrawable("star-none"))).size(GVars.scrHeight/13).left();
 		pointsTable.add(empty).size(GVars.scrHeight/13);
 		pointsTable.add(points);
 		//this.getContentTable().debug();

@@ -6,9 +6,9 @@ repeat: none
 window
   rotate: false
   xy: 1, 200
-  size: 254, 254
-  split: 57, 55, 82, 40
-  orig: 254, 254
+  size: 256, 256
+  split: 55, 54, 76, 46
+  orig: 256, 256
   offset: 0, 0
   index: -1
 button-disabled
@@ -20,37 +20,44 @@ button-disabled
   index: -1
 button-down
   rotate: false
-  xy: 257, 326
+  xy: 259, 328
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 button
   rotate: false
-  xy: 387, 326
+  xy: 389, 328
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 item-checked
   rotate: false
-  xy: 517, 326
+  xy: 519, 328
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 item-disabled
   rotate: false
-  xy: 647, 326
+  xy: 649, 328
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 item
   rotate: false
-  xy: 777, 326
+  xy: 779, 328
   size: 128, 128
   orig: 128, 128
+  offset: 0, 0
+  index: -1
+timer
+  rotate: false
+  xy: 259, 200
+  size: 128, 126
+  orig: 128, 126
   offset: 0, 0
   index: -1
 arrow-left-down
@@ -69,28 +76,35 @@ arrow-left
   index: -1
 arrow-right-down
   rotate: false
-  xy: 257, 260
+  xy: 909, 392
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 arrow-right
   rotate: false
-  xy: 907, 390
+  xy: 389, 262
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-star
+star-gold
   rotate: false
-  xy: 323, 260
+  xy: 197, 134
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-timer
+star-none
   rotate: false
-  xy: 389, 260
+  xy: 455, 262
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+star-silver
+  rotate: false
+  xy: 263, 134
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
