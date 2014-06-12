@@ -14,25 +14,25 @@ window
   rotate: false
   xy: 1, 231
   size: 256, 256
-  split: 58, 54, 77, 50
+  split: 64, 52, 60, 61
   orig: 256, 256
   offset: 0, 0
   index: -1
-cloud
+cloud-down
   rotate: false
   xy: 515, 873
   size: 256, 128
   orig: 256, 128
   offset: 0, 0
   index: -1
-cloud-down
+cloud
   rotate: false
   xy: 1, 101
   size: 256, 128
   orig: 256, 128
   offset: 0, 0
   index: -1
-button
+button-disabled
   rotate: false
   xy: 259, 359
   size: 128, 128
@@ -46,7 +46,7 @@ button-down
   orig: 128, 128
   offset: 0, 0
   index: -1
-button-disabled
+button
   rotate: false
   xy: 773, 873
   size: 128, 128
@@ -81,49 +81,49 @@ timer
   orig: 128, 126
   offset: 0, 0
   index: -1
-star-none
+arrow-left-down
   rotate: false
   xy: 1, 35
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-arrow-right-down
+arrow-left
   rotate: false
   xy: 389, 423
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-arrow-right
+arrow-right-down
   rotate: false
   xy: 903, 937
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-arrow-left
+arrow-right
   rotate: false
   xy: 515, 547
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-star-silver
+star-gold
   rotate: false
   xy: 645, 677
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-arrow-left-down
+star-none
   rotate: false
   xy: 775, 807
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-star-gold
+star-silver
   rotate: false
   xy: 67, 35
   size: 64, 64
