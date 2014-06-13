@@ -42,8 +42,14 @@ public class LevelStage extends Stage {
 		
 		//mainTable.setBackground(Assets.skin.getDrawable("menu-bg"));
 		mainTable.setFillParent(true);
-		mainTable.add(new Image(Assets.skin, "button")).size(this.getWidth()/1.6f, this.getHeight()/6.4f).row();
-		mainTable.add(emptyWidget).height(buttonSize/2).row();
+		//left/right buttons
+		Table controlTable = new Table();
+			
+		controlTable.add(leftButton).size(buttonSize).left();
+		controlTable.add(emptyWidget).width(buttonSize);
+		controlTable.add(rightButton).size(buttonSize).right();
+		mainTable.add(controlTable).row();
+		mainTable.add(emptyWidget).height(buttonSize).row();
 		mainTable.add(buttonTable).row();
 		mainTable.add(emptyWidget).height(buttonSize/2).row();
 		//buttonTable.setFillParent(true);
@@ -60,12 +66,7 @@ public class LevelStage extends Stage {
 			buttonTable.add(emptyWidget).height(buttonSize/2).row();
 		}
 		updateButtons();
-		//left/right buttons
-		Table controlTable = new Table();
-		mainTable.add(controlTable);
-		controlTable.add(leftButton).size(buttonSize).left();
-		controlTable.add(emptyWidget).width(buttonSize);
-		controlTable.add(rightButton).size(buttonSize).right();
+		
 		
 		buttonTable.addListener(new ClickListener(){
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {

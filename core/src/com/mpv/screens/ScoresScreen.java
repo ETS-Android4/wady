@@ -38,11 +38,16 @@ public class ScoresScreen implements Screen {
         Table scoresTable = new Table();
         Table table1 = new Table();
         
+        /*Image image = new Image(Assets.skin.getDrawable("menu-screen"));
+		image.setSize(stage.getWidth(), stage.getWidth());
+		image.setPosition(0, 0);
+		stage.addActor(image);*/
+
         table1.setFillParent(true);
                
-        table1.add(scoresTable).row();
+        table1.add(scoresTable).width(stage.getWidth()/1.1f).row();
         //scoresTable.setFillParent(true);
-        scoresTable.setBackground(Assets.skin.getDrawable("none"));
+        scoresTable.setBackground(Assets.skin.getDrawable("window"));
 		final Button buttonExit = new Button(Assets.skin, "arrow-right");
 		final TextField textField = new TextField(Settings.name, Assets.skin);
 		textField.setMaxLength(10);
@@ -51,8 +56,7 @@ public class ScoresScreen implements Screen {
 		scoresTable.add(list).row();
         scoresTable.add(widget).height(itemSize).row();
         scoresTable.add(label1).height(itemSize/2).row();
-        scoresTable.add(widget).height(itemSize/2);
-        table1.add(widget).height(itemSize).row();
+        table1.add(widget).height(itemSize/4).row();
         table1.add(buttonExit).size(buttonSize);
         
         stage.addActor(table1);

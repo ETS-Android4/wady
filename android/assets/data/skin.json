@@ -23,6 +23,7 @@
       default: { up: button, down: button-down, disabled: button-disabled }, 
       arrow-left: {up: arrow-left, down: arrow-left-down},
       arrow-right: {up: arrow-right, down: arrow-right-down},
+      pause: {up: pause, down: button-disabled},
       transparent: { },  
      },
      com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle: {  
