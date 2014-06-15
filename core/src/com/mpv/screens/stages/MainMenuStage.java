@@ -41,10 +41,10 @@ public class MainMenuStage extends Stage {
 		bCredits.setSize(width, height);
 		bExit.setSize(width, height);
 		
-		bNewGame.setPosition(getWidth()*(-0.01f), getHeight()*0.8f);
-		bHighScores.setPosition(getWidth()*0.22f, getHeight()*0.8f);
-		bCredits.setPosition(getWidth()*0.51f, getHeight()*0.8f);
-		bExit.setPosition(getWidth()*0.75f, getHeight()*0.8f);
+		bNewGame.setPosition(getWidth()*(-0.01f), getWidth()*1.34f);
+		bHighScores.setPosition(getWidth()*0.22f, getWidth()*1.34f);
+		bCredits.setPosition(getWidth()*0.51f, getWidth()*1.34f);
+		bExit.setPosition(getWidth()*0.75f, getWidth()*1.34f);
 		
 		this.addActor(bNewGame);
 		this.addActor(bHighScores);
