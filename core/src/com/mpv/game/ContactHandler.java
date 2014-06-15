@@ -22,8 +22,12 @@ public class ContactHandler implements ContactListener{
 		if (body == GameObject.exit) {
 			GameObject.getInstance().gameFinish();
 		}
-		if (p.getLinearVelocity().len() >= Const.BLOCK_SIZE * 6f) {
-			Assets.playSnd(Assets.blockSound);
+		if (p.getLinearVelocity().len() >= Const.BLOCK_SIZE * 10f) {
+			if ((int)p.getLinearVelocity().len() % 2 == 0) {
+				Assets.playSnd(Assets.oySound);
+			} else 
+				Assets.playSnd(Assets.uffSound);
+				
 		}
 	}
 

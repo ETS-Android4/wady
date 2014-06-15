@@ -121,6 +121,8 @@ public class GameScreen implements Screen {
 	public void show() {
 		GameUIStage.getInstance().gameStart();
 		Dialog.fadeDuration = 0f;
+		Assets.pauseMusic();
+		Assets.playMusic(Assets.gameMusic);
 	}
 
 	@Override

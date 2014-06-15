@@ -14,14 +14,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mpv.game.world.GameObject;
 
 public class Assets {
-
 	//Sound
 	public static Sound 	
-	blockSound,
-	newPosSound,
-	gameOverSound,
-	edgeSound,
-	buttonSound;
+	uffSound,
+	failSound,
+	oySound,
+	buttonSound,
+	winSound;
 	//Music
 	public static Music
 	gameMusic,
@@ -59,16 +58,16 @@ public class Assets {
 		gameMusic = null;
 		menuMusic = null;
 		//Sound
-		blockSound.dispose();
-		blockSound = null;
-		newPosSound.dispose();
-		newPosSound = null;
-		gameOverSound.dispose();
-		gameOverSound = null;
-		edgeSound.dispose();
-		edgeSound = null;
+		uffSound.dispose();
+		uffSound = null;
+		failSound.dispose();
+		failSound = null;
+		oySound.dispose();
+		oySound = null;
 		buttonSound.dispose();
 		buttonSound = null;
+		winSound.dispose();
+		winSound = null;
 	}
 	
 	public static void load() {
@@ -77,16 +76,16 @@ public class Assets {
 		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/game.mp3"));
 		gameMusic.setVolume(0.3f);
 		//Sounds
-		blockSound = Gdx.audio.newSound(Gdx.files.internal("sounds/clack1.mp3"));
-		newPosSound = Gdx.audio.newSound(Gdx.files.internal("sounds/stuck.mp3"));
-		gameOverSound = Gdx.audio.newSound(Gdx.files.internal("sounds/win.mp3"));
-		edgeSound = Gdx.audio.newSound(Gdx.files.internal("sounds/edge_hit.mp3"));
+		uffSound = Gdx.audio.newSound(Gdx.files.internal("sounds/uff.mp3"));
+		//newPosSound = Gdx.audio.newSound(Gdx.files.internal("sounds/stuck.mp3"));
+		failSound = Gdx.audio.newSound(Gdx.files.internal("sounds/ouuu.mp3"));
+		oySound = Gdx.audio.newSound(Gdx.files.internal("sounds/oy.mp3"));
+		winSound = Gdx.audio.newSound(Gdx.files.internal("sounds/wow.mp3"));
 		buttonSound = Gdx.audio.newSound(Gdx.files.internal("sounds/button.mp3"));
 		//Skin & Font
 		skin = new Skin(Gdx.files.internal("data/skin.json"));
 		skin.getFont("normaltext").setScale(GVars.scrWidth/640f*1.2f);
-		
-		//
+
 		loadAnimation();
 		//Shader
 		ShaderProgram.pedantic = false;
@@ -126,14 +125,10 @@ public class Assets {
 	}
 	
 	private static void loadAnimation() {
-
 		textureAtlas = new TextureAtlas(Gdx.files.internal("data/animation.atlas"));
-		animation = new Animation(Const.ANIMATION_SPEED, textureAtlas.getRegions());
-		
+		animation = new Animation(Const.ANIMATION_SPEED, textureAtlas.getRegions());		
 	}
-	
-
-	
+		
 	public static void pauseMusic() {
 		menuMusic.pause();
 		gameMusic.pause();

@@ -115,6 +115,8 @@ public class ScoresScreen implements Screen {
 	public void show() {
 		getScoreList();
 		Gdx.input.setInputProcessor(stage);
+		Assets.pauseMusic();
+		Assets.playMusic(Assets.menuMusic);
 	}
 	
 	@Override

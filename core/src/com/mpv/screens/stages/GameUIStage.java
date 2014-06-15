@@ -78,10 +78,12 @@ public class GameUIStage extends Stage {
 		Gdx.input.setInputProcessor(instance);
 		FinishDialog.points.setText(String.valueOf(Settings.points[GameObject.mapIndex]));
 		GameUIStage.finishDialog.show(instance);
+		Assets.playSnd(Assets.winSound);
 	}
 	public void gameOver() {
 		Gdx.input.setInputProcessor(instance);
 		GameUIStage.failedDialog.show(instance);
+		Assets.playSnd(Assets.failSound);
 	}
 
 	public void gameStart() {
