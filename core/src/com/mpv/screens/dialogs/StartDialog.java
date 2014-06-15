@@ -3,9 +3,9 @@ package com.mpv.screens.dialogs;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.esotericsoftware.tablelayout.Cell;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
@@ -18,7 +18,7 @@ public class StartDialog extends Dialog {
 	public StartDialog(String title, Skin skin, String styleName) {
 		super(title, skin, styleName);
 		this.getContentTable().add(new Label("Ready?", Assets.skin)).row();
-		this.getContentTable().add(new Widget()).size(GVars.scrHeight/13);
+		this.getContentTable().add(new Image(Assets.skin, "instruction")).size(GVars.scrWidth/2f);
 		this.getContentTable().setFillParent(false);
 		//this.getContentTable().debug();
 		this.button("Go!", true).key(Keys.ENTER, true);

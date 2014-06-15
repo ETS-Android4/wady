@@ -31,7 +31,6 @@ public class GVars {
 	public static TweenManager tweenManager;
 	//Player
 	public static Player activePlayer = null;
-
 	public static OrthogonalTiledMapRenderer otmRendered;
 	public static SpriteBatch spriteBatch = new SpriteBatch();
 	private static Matrix4 camLight;

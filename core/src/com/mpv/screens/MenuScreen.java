@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.mpv.data.Assets;
 import com.mpv.screens.stages.MainMenuStage;
 
 public class MenuScreen implements Screen {
@@ -37,6 +38,8 @@ public class MenuScreen implements Screen {
 	@Override
 	public void show() {
 		Gdx.input.setInputProcessor(mainMenuStage);
+		Assets.pauseMusic();
+		Assets.playMusic(Assets.menuMusic);
 	}
 
 	@Override

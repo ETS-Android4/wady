@@ -28,7 +28,7 @@ public class SplashScreen implements Screen {
         	splash.draw(spriteBatch);
         spriteBatch.end();
         if (tweenManager.getRunningTweensCount() == 0 || Gdx.input.justTouched()) 
-            GVars.app.setScreen(GVars.app.gameScreen);
+            GVars.app.setScreen(GVars.app.menuScreen);
 	}
 
 	@Override

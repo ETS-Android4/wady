@@ -10,7 +10,6 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mpv.game.world.GameObject;
 
@@ -27,7 +26,6 @@ public class Assets {
 	public static Music
 	gameMusic,
 	menuMusic;
-	public static Button menuButton, gameButton;
 	//Skin
 	public static Skin skin;
 	//Maps
@@ -139,14 +137,10 @@ public class Assets {
 	public static void pauseMusic() {
 		menuMusic.pause();
 		gameMusic.pause();
-		menuButton.setChecked(true);
-		gameButton.setChecked(true);
 	}
 	public static void playMusic(Music music) {
 		if (Settings.musicEnabled) {
 			music.play();
-			menuButton.setChecked(false);
-			gameButton.setChecked(false);
 		} else {
 			pauseMusic();
 		}

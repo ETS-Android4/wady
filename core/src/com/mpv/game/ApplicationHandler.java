@@ -7,6 +7,7 @@ import com.mpv.data.Assets;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
 import com.mpv.game.world.GameObject;
+import com.mpv.screens.CreditsScreen;
 import com.mpv.screens.GameScreen;
 import com.mpv.screens.LevelScreen;
 import com.mpv.screens.MenuScreen;
@@ -19,6 +20,7 @@ public class ApplicationHandler extends Game {
 	public GameObject gameObject;
 	public ScoresScreen scoresScreen;
 	public LevelScreen levelScreen;
+	public CreditsScreen creditsScreen;
 	public static IReqHandler ExternalHandler;
 	
 	public ApplicationHandler(IReqHandler irh) {

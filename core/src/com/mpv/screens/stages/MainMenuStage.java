@@ -4,12 +4,14 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
+import com.mpv.data.Settings;
 import com.mpv.game.world.GameObject;
 import com.mpv.screens.dialogs.ExitDialog;
 
@@ -30,12 +32,20 @@ public class MainMenuStage extends Stage {
 
 		exitDialog = new ExitDialog("", Assets.skin, "default");
 		
+		final Button bMusic = new Button(Assets.skin, "music-button");
+		final Button bSound  = new Button(Assets.skin, "sound-button");
 		
 		final TextButton bNewGame = new TextButton("Play", Assets.skin, "menu-button");
-
 		final TextButton bHighScores = new TextButton("Scores", Assets.skin, "menu-button");
 		final TextButton bCredits = new TextButton("Credits", Assets.skin, "menu-button");
 		final TextButton bExit = new TextButton("Exit", Assets.skin, "menu-button");
+		
+		bMusic.setSize(width/3.2f, width/3.2f);
+		bMusic.setChecked(!Settings.musicEnabled);
+		
+		bSound.setSize(width/3.2f, width/3.2f);
+		bSound.setChecked(!Settings.soundEnabled);
+		
 		bNewGame.setSize(width, height);
 		bHighScores.setSize(width, height);
 		bCredits.setSize(width, height);
@@ -45,12 +55,31 @@ public class MainMenuStage extends Stage {
 		bHighScores.setPosition(getWidth()*0.22f, getWidth()*1.34f);
 		bCredits.setPosition(getWidth()*0.51f, getWidth()*1.34f);
 		bExit.setPosition(getWidth()*0.75f, getWidth()*1.34f);
+		bSound.setPosition(getWidth()*0.51f, getWidth()*1.5f);
+		bMusic.setPosition(getWidth()*0.39f, getWidth()*1.5f);
 		
 		this.addActor(bNewGame);
 		this.addActor(bHighScores);
 		this.addActor(bCredits);
 		this.addActor(bExit);
+		this.addActor(bSound);
+		this.addActor(bMusic);
 		
+		bMusic.addListener(new ClickListener() {
+			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
+				//super.touchDown(event, x, y, pointer, button);
+				Settings.musicEnabled = !bMusic.isChecked();
+				Assets.playMusic(Assets.menuMusic);
+			}
+		});
+		bSound.addListener(new ClickListener() {
+			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
+				//super.touchDown(event, x, y, pointer, button);
+				Settings.soundEnabled = !bSound.isChecked();
+			}
+		});
+		
+		// MENU buttons
 		bNewGame.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
