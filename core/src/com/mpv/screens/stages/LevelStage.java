@@ -35,7 +35,7 @@ public class LevelStage extends Stage {
 		//mainTable.debug();
 		//buttonTable.debug();
 		Image image = new Image(Assets.skin.getDrawable("menu-screen"));
-		image.setSize(getWidth(), getWidth());
+		image.setWidth(getWidth());
 		image.setPosition(0, 0);
 		this.addActor(image);
 		this.addActor(mainTable);

@@ -37,9 +37,9 @@ public class GameUIStage extends Stage {
 	public GameUIStage(Viewport viewport,	 SpriteBatch batch) {
 		super(viewport, batch);
 		instance = this;
-		final Button bPlay = new Button(Assets.skin, "pause");
+		final Button bPause = new Button(Assets.skin, "pause");
 		//
-		bPlay.addListener(new ClickListener() {
+		bPause.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
 				if (GameObject.state == GameObject.ACTIVE) {
@@ -55,11 +55,11 @@ public class GameUIStage extends Stage {
 		Table controlPanel = new Table();
 		controlPanel.setFillParent(true);
 		controlPanel.debug().bottom().left();
-		controlPanel.add(new Image(Assets.skin.getDrawable("timer"))).size(GVars.scrHeight/9.7f);
+		controlPanel.add(new Image(Assets.skin.getDrawable("timer"))).size(GVars.scrHeight/14f);
 		controlPanel.add(labelTime).expand(true, false).height(GVars.scrHeight/13).width(getWidth()/4.3f).left();
 		//controlPanel.add(labelDebug).expand(true, false).size(GVars.scrHeight/13);		
 		//controlPanel.add(labelFPS).expand(true, false).size(GVars.scrHeight/13);
-		controlPanel.add(bPlay).size(GVars.scrHeight/9.7f).right();
+		controlPanel.add(bPause).size(GVars.scrHeight/9.7f).right();
 		//controlPanel.add(bExit).size(GVars.scrHeight/13);
 		this.addActor(controlPanel);
 	}

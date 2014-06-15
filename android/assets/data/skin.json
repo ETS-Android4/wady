@@ -23,7 +23,7 @@
       default: { up: button, down: button-down, disabled: button-disabled }, 
       arrow-left: {up: arrow-left, down: arrow-left-down},
       arrow-right: {up: arrow-right, down: arrow-right-down},
-      pause: {up: pause, down: button-disabled},
+      pause: {up: pause, down: pause-down},
       transparent: { },  
      },
      com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle: {  
@@ -35,7 +35,7 @@
      com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {  
       default: { up: button, down: button-down, disabled: button-disabled, font: normaltext, fontColor: white },
       item: {up: item, disabled: item-disabled, checked: item-checked, font: normaltext},
-      menu-button: {up: cloud, down: cloud-down, font: normaltext},  
+      menu-button: {up: none, down: none, font: normaltext},  
      },
 	com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
 		default: { titleFont: titletext, background: window, titleFontColor: white },

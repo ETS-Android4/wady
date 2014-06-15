@@ -5,156 +5,149 @@ filter: Linear,Linear
 repeat: none
 menu-screen
   rotate: false
-  xy: 1, 458
-  size: 512, 512
-  orig: 512, 512
+  xy: 1, 4
+  size: 512, 1000
+  orig: 512, 1000
   offset: 0, 0
   index: -1
 window
   rotate: false
-  xy: 1, 200
+  xy: 515, 748
   size: 256, 256
   split: 64, 52, 60, 61
   orig: 256, 256
   offset: 0, 0
   index: -1
-cloud-down
+edit
   rotate: false
-  xy: 515, 842
-  size: 256, 128
-  orig: 256, 128
-  offset: 0, 0
-  index: -1
-cloud
-  rotate: false
-  xy: 1, 70
-  size: 256, 128
-  orig: 256, 128
-  offset: 0, 0
-  index: -1
-button-disabled
-  rotate: false
-  xy: 259, 328
+  xy: 515, 618
   size: 128, 128
+  split: 32, 36, 34, 38
   orig: 128, 128
   offset: 0, 0
   index: -1
-button-down
+pause-down
   rotate: false
-  xy: 515, 712
+  xy: 773, 876
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 button
   rotate: false
-  xy: 773, 842
+  xy: 515, 488
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-edit
+button-down
   rotate: false
-  xy: 259, 198
+  xy: 515, 358
   size: 128, 128
-  split: 32, 36, 34, 38
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+button-disabled
+  rotate: false
+  xy: 515, 228
+  size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 item-checked
   rotate: false
-  xy: 515, 582
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-item-disabled
-  rotate: false
-  xy: 645, 712
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-item
-  rotate: false
-  xy: 645, 582
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-pause
-  rotate: false
-  xy: 259, 68
+  xy: 515, 98
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 timer
   rotate: false
-  xy: 775, 712
+  xy: 645, 618
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-arrow-left-down
+item-disabled
   rotate: false
-  xy: 389, 392
-  size: 64, 64
-  orig: 64, 64
+  xy: 645, 488
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
-arrow-left
+item
   rotate: false
-  xy: 515, 516
+  xy: 645, 358
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+pause
+  rotate: false
+  xy: 645, 228
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+star-none
+  rotate: false
+  xy: 903, 940
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 arrow-right-down
   rotate: false
-  xy: 1, 4
+  xy: 515, 32
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 arrow-right
   rotate: false
-  xy: 903, 906
+  xy: 773, 810
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-star-gold
+arrow-left
   rotate: false
-  xy: 775, 646
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-star-none
-  rotate: false
-  xy: 389, 326
+  xy: 645, 162
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 star-silver
   rotate: false
-  xy: 581, 516
+  xy: 903, 874
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+arrow-left-down
+  rotate: false
+  xy: 581, 32
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+star-gold
+  rotate: false
+  xy: 711, 162
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 cursor
   rotate: false
-  xy: 455, 392
+  xy: 969, 940
   size: 8, 64
   orig: 8, 64
   offset: 0, 0
   index: -1
 menu-bg
   rotate: false
-  xy: 515, 482
+  xy: 773, 776
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

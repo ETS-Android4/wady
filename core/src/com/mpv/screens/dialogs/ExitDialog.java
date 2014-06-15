@@ -2,6 +2,7 @@ package com.mpv.screens.dialogs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.esotericsoftware.tablelayout.Cell;
@@ -27,5 +28,12 @@ public class ExitDialog extends Dialog {
 
 		}
 	}
-
+	@Override
+	public Dialog show(Stage stage) {
+		// TODO Auto-generated method stub
+		super.show(stage);
+		this.setPosition(this.getX(), this.getY()+getHeight()/3f);
+		return this;
+	}
+	
 }
