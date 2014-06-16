@@ -25,7 +25,7 @@ public class MainMenuStage extends Stage {
 		float height=Const.PLAYER_SIZE*GVars.BOX_TO_WORLD/1.63f;
 
 		Image image = new Image(Assets.skin.getDrawable("menu-screen"));
-		image.setWidth(getWidth());
+		image.setSize(getWidth(), getWidth()/image.getWidth()*image.getHeight());
 		image.setPosition(0, 0);
 		this.addActor(image);
 
