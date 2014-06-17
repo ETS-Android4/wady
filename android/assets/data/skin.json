@@ -16,8 +16,8 @@
      com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {  
       default: { font: normaltext, fontColor: white },  
       game-text: { background: button-disabled, font: normaltext, fontColor: white },  
+      title-text: { background: edit, font: normaltext, fontColor: white },
       normal-text: { font: normaltext, fontColor: white },  
-      title-text: { font: titletext, fontColor: red },
      },
      com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {  
       default: { up: button, down: button-down, disabled: button-disabled }, 
@@ -32,7 +32,7 @@
       default: { font: normaltext, selection: none},  
      },
      com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
-      default: { font: normaltext, background: button-down, cursor: cursor, selection: none, fontColor: white},
+      default: { font: normaltext, background: edit, cursor: cursor, selection: none, fontColor: white},
      },
      com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {  
       default: { up: button, down: button-down, disabled: button-disabled, font: normaltext, fontColor: white },

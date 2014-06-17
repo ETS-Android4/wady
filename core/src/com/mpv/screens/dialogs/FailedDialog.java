@@ -15,7 +15,7 @@ public class FailedDialog extends Dialog {
 
 	public FailedDialog(String title, Skin skin, String styleName) {
 		super(title, skin, styleName);
-		this.getContentTable().add(new Label("Failed", skin)).row();
+		this.getContentTable().add(new Label("Failed", skin, "title-text")).row();
 		//this.getContentTable().add(new Image()).size(GVars.scrWidth/3.2f);
 		this.button("Menu", true).button("Retry", false).key(Keys.ENTER, true).key(Keys.ESCAPE, false);
 		for (Cell<?> cell :  this.getButtonTable().getCells()) {

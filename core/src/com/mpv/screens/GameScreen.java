@@ -13,6 +13,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mpv.control.GestureHandler;
 import com.mpv.control.InputHandler;
@@ -20,7 +22,7 @@ import com.mpv.data.Assets;
 import com.mpv.data.GVars;
 import com.mpv.game.players.Player;
 import com.mpv.screens.stages.GameUIStage;
-import com.mpv.tween.PlayerAccessor;
+import com.mpv.tween.ActorAccessor;
 
 public class GameScreen implements Screen {
 
@@ -34,7 +36,10 @@ public class GameScreen implements Screen {
 	private SpriteBatch batch;
     	
 	public GameScreen() {
-		Tween.registerAccessor(Player.class, new PlayerAccessor());
+		ActorAccessor actorAccessor = new ActorAccessor();
+		Tween.registerAccessor(Player.class, actorAccessor);
+		Tween.registerAccessor(Label.class, actorAccessor);
+		Tween.registerAccessor(Image.class, actorAccessor);
 		GVars.tweenManager = new TweenManager();
 		batch = GVars.spriteBatch;
 		//batch.setShader(Assets.shader);
@@ -91,7 +96,7 @@ public class GameScreen implements Screen {
 		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("cover2"));
 		batch.end();
 		//FPS
-		GameUIStage.labelFPS.setText(Float.toString(1/delta).substring(0, 4));
+		//GameUIStage.labelFPS.setText(Float.toString(1/delta).substring(0, 4));
 		//Physics debug
 		//debugRenderer.render(GVars.world, GVars.frCam.combined.scl(GVars.BOX_TO_WORLD));		
 		

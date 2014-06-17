@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
-import com.mpv.data.Settings;
 import com.mpv.game.players.Player;
 import com.mpv.game.world.GameObject;
 import com.mpv.game.world.GameTimer;
@@ -76,9 +75,8 @@ public class GameUIStage extends Stage {
 	}
 	public void gameFinish() {
 		Gdx.input.setInputProcessor(instance);
-		FinishDialog.points.setText(String.valueOf(Settings.points[GameObject.mapIndex]));
+		//FinishDialog.points.setText(String.valueOf(Settings.points[GameObject.mapIndex]));
 		GameUIStage.finishDialog.show(instance);
-		Assets.playSnd(Assets.winSound);
 	}
 	public void gameOver() {
 		Gdx.input.setInputProcessor(instance);

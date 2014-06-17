@@ -17,7 +17,7 @@ public class StartDialog extends Dialog {
 	
 	public StartDialog(String title, Skin skin, String styleName) {
 		super(title, skin, styleName);
-		this.getContentTable().add(new Label("Ready?", Assets.skin)).row();
+		this.getContentTable().add(new Label("Ready?", Assets.skin, "title-text")).height(GVars.scrWidth/6.4f).row();
 		this.getContentTable().add(new Image(Assets.skin, "instruction")).size(GVars.scrWidth/2f);
 		this.getContentTable().setFillParent(false);
 		//this.getContentTable().debug();

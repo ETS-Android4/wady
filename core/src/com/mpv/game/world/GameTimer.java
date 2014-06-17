@@ -20,6 +20,10 @@ public class GameTimer {
 		return gameLimit - time; 
 	}
 	
+	public float getSpent() {
+		return time; 
+	}
+	
 	public void setTimer(float limit) {
 		gameLimit = limit;
 		time = 0;

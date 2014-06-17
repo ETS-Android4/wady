@@ -40,7 +40,6 @@ public class LevelStage extends Stage {
 		this.addActor(image);
 		this.addActor(mainTable);
 		
-		//mainTable.setBackground(Assets.skin.getDrawable("menu-bg"));
 		mainTable.setFillParent(true);
 		//left/right buttons
 		Table controlTable = new Table();

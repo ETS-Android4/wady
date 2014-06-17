@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.game.world.GameObject;
-import com.mpv.tween.PlayerAccessor;
+import com.mpv.tween.ActorAccessor;
 
 public class Player extends AnimatedImage  {
 	
@@ -53,7 +53,7 @@ public class Player extends AnimatedImage  {
 		this.setSize(Const.PLAYER_SIZE*GVars.BOX_TO_WORLD, Const.PLAYER_SIZE*GVars.BOX_TO_WORLD);
 		this.setOrigin(this.getWidth()/2f, this.getHeight()/animFix);
 		this.setRotation(360);
-		Tween.set(this, PlayerAccessor.ROTATE).target(this.getRotation());
+		Tween.set(this, ActorAccessor.ROTATE).target(this.getRotation());
 	
 	}
 
@@ -113,7 +113,7 @@ public class Player extends AnimatedImage  {
 				);
 		
 		if (GameObject.state != GameObject.ACTIVE) return;
-		Tween.to(this, PlayerAccessor.ROTATE, 0.2f)
+		Tween.to(this, ActorAccessor.ROTATE, 0.2f)
 			.target(angle+270f)
 			.start(GVars.tweenManager);
 	}

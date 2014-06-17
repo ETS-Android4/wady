@@ -24,9 +24,9 @@ public class ContactHandler implements ContactListener{
 		}
 		if (p.getLinearVelocity().len() >= Const.BLOCK_SIZE * 10f) {
 			if ((int)p.getLinearVelocity().len() % 2 == 0) {
-				Assets.playSnd(Assets.oySound);
+				Assets.playSnd(Assets.oySound, 0.1f);
 			} else 
-				Assets.playSnd(Assets.uffSound);
+				Assets.playSnd(Assets.uffSound, 0.5f);
 				
 		}
 	}

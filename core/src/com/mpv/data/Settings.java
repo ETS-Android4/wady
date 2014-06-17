@@ -11,7 +11,7 @@ import com.badlogic.gdx.Gdx;
 public class Settings {
 	 public static boolean soundEnabled = true;
      public static boolean musicEnabled = true;
-     public final static Integer[] highscores = new Integer[] {100, 200, 300, 400, 500};
+     public final static Integer[] highscores = new Integer[] {10000, 9000, 8000, 7000, 1000};
      public final static String[] scorenames = new String[] {"Cartman", "Kyle", "Kenny", "Stan", "Butters"};
      public final static Integer[] points = new Integer[] 
     		 				{0, 0, 0 ,0, 
@@ -71,7 +71,7 @@ public class Settings {
 
      public static void addScore (String name, int score) {
              for (int i = 0; i < 5; i++) {
-                     if (highscores[i] > score) {
+                     if (highscores[i] < score) {
                              for (int j = 4; j > i; j--) {
                                      highscores[j] = highscores[j - 1];
                                      scorenames[j] = scorenames[j - 1];
@@ -81,5 +81,13 @@ public class Settings {
                              break;
                      }
              }
+     }
+     public static int getTotalScore () {
+    	 int score = 0;
+    	 for (int i = 0; i < 16; i++) {
+        	score+=points[i];
+         }
+    	 addScore(name, score);
+    	 return score;
      }
 }

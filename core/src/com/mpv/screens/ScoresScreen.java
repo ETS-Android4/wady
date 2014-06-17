@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -23,7 +24,7 @@ import com.mpv.data.Settings;
 
 public class ScoresScreen implements Screen {
 
-	public Stage stage;
+	private Stage stage;
 	private Label label1;
 	public Dialog nameDialog;
 	public static List<String> list = new List<String>(Assets.skin);
@@ -33,21 +34,21 @@ public class ScoresScreen implements Screen {
 		float itemSize=Const.BLOCK_SIZE*GVars.BOX_TO_WORLD*1.6f;
 		stage = new Stage();
 		label1 =new Label("Your score: ", Assets.skin, "default");
-		Button okButton = new TextButton("OK", Assets.skin);		
+		Button okButton = new TextButton("OK", Assets.skin);
 		Widget widget = new Widget();
         Table scoresTable = new Table();
         Table table1 = new Table();
         
-        /*Image image = new Image(Assets.skin.getDrawable("menu-screen"));
-		image.setSize(stage.getWidth(), stage.getWidth());
+        Image image = new Image(Assets.skin.getDrawable("menu-screen"));
+        image.setSize(stage.getWidth(), stage.getWidth()/image.getWidth()*image.getHeight());
 		image.setPosition(0, 0);
-		stage.addActor(image);*/
+		stage.addActor(image);
 
         table1.setFillParent(true);
                
         table1.add(scoresTable).width(stage.getWidth()/1.1f).row();
         //scoresTable.setFillParent(true);
-        scoresTable.setBackground(Assets.skin.getDrawable("window"));
+        scoresTable.setBackground(Assets.skin.getDrawable("edit"));
 		final Button buttonExit = new Button(Assets.skin, "arrow-right");
 		final TextField textField = new TextField(Settings.name, Assets.skin);
 		textField.setMaxLength(10);
@@ -71,6 +72,7 @@ public class ScoresScreen implements Screen {
     			Assets.playSnd(Assets.buttonSound);
     			Settings.name = textField.getText();
     			//Settings.addScore(Settings.name, GameApp.gameObject.getMoves());
+    			label1.setText("Your score: " + String.valueOf(Settings.getTotalScore()));
     			getScoreList();
     			nameDialog.hide();
         	}
@@ -105,7 +107,6 @@ public class ScoresScreen implements Screen {
 		Gdx.gl.glClearColor(0f, 0f, 0f, 1);    
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		//
-		label1.setText("Your score: ");
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
         //Table.drawDebug(stage); // Enables debug lines for tables.
@@ -114,6 +115,7 @@ public class ScoresScreen implements Screen {
 	@Override
 	public void show() {
 		getScoreList();
+		nameDialog.show(stage);
 		Gdx.input.setInputProcessor(stage);
 		Assets.pauseMusic();
 		Assets.playMusic(Assets.menuMusic);

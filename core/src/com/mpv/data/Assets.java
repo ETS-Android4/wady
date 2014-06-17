@@ -74,7 +74,6 @@ public class Assets {
 		//Music
 		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("music/menu.mp3"));
 		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/game.mp3"));
-		gameMusic.setVolume(0.3f);
 		//Sounds
 		uffSound = Gdx.audio.newSound(Gdx.files.internal("sounds/uff.mp3"));
 		//newPosSound = Gdx.audio.newSound(Gdx.files.internal("sounds/stuck.mp3"));

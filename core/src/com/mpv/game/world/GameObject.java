@@ -81,6 +81,7 @@ public class GameObject {
 		state = FINISH;
 		Player.state = Player.S_INVISIBLE;
 		Settings.points[mapIndex] = GameTimer.getInstance().getLeftSec()*10;
+		
 		GameUIStage.getInstance().gameFinish();
 	}
 	
@@ -96,6 +97,10 @@ public class GameObject {
 		}
 		GameTimer.getInstance().update(delta);
 		worldStep(delta);
+	}
+	
+	public float getMapLimit() {
+		return mapLimit;
 	}
 	
 	private void setWorldBounds() {
