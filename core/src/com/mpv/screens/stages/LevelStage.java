@@ -4,7 +4,6 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -12,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
-import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
 import com.mpv.game.world.GameObject;
@@ -24,12 +22,12 @@ public class LevelStage extends Stage {
 	
 	public LevelStage() {
 		super();
-		float buttonSize=Const.PLAYER_SIZE*GVars.BOX_TO_WORLD/1.6f;
+		float buttonSize=getWidth()/6f;
 		Table mainTable = new Table();
 		Table buttonTable = new Table();
 		Widget emptyWidget = new Widget();
-		Button leftButton = new Button(Assets.skin, "arrow-left");
-		Button rightButton = new Button(Assets.skin, "arrow-right");
+		TextButton menuButton = new TextButton("Menu", Assets.skin, "default");
+		TextButton playButton = new TextButton("Play", Assets.skin, "default");
 		
 		//Debug
 		//mainTable.debug();
@@ -44,9 +42,9 @@ public class LevelStage extends Stage {
 		//left/right buttons
 		Table controlTable = new Table();
 			
-		controlTable.add(leftButton).size(buttonSize).left();
+		controlTable.add(menuButton).size(buttonSize * 1.6f, buttonSize).left();
 		controlTable.add(emptyWidget).width(buttonSize);
-		controlTable.add(rightButton).size(buttonSize).right();
+		controlTable.add(playButton).size(buttonSize * 1.6f, buttonSize).right();
 		mainTable.add(controlTable).row();
 		mainTable.add(emptyWidget).height(buttonSize).row();
 		mainTable.add(buttonTable).row();
@@ -74,7 +72,7 @@ public class LevelStage extends Stage {
 			}
 		});
 		
-		rightButton.addListener(new ClickListener(){
+		playButton.addListener(new ClickListener(){
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
 				if (tmpIndex != GameObject.mapIndex) {
@@ -84,7 +82,7 @@ public class LevelStage extends Stage {
 				GVars.app.setScreen(GVars.app.gameScreen);
 			}
 		});
-		leftButton.addListener(new ClickListener(){
+		menuButton.addListener(new ClickListener(){
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
 				GVars.app.setScreen(GVars.app.menuScreen);

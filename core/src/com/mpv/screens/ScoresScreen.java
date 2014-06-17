@@ -49,7 +49,7 @@ public class ScoresScreen implements Screen {
         table1.add(scoresTable).width(stage.getWidth()/1.1f).row();
         //scoresTable.setFillParent(true);
         scoresTable.setBackground(Assets.skin.getDrawable("edit"));
-		final Button buttonExit = new Button(Assets.skin, "arrow-right");
+		final TextButton buttonExit = new TextButton("Menu", Assets.skin, "default");
 		final TextField textField = new TextField(Settings.name, Assets.skin);
 		textField.setMaxLength(10);
 		scoresTable.add(new Label("High scores", Assets.skin, "default")).row();
@@ -58,11 +58,11 @@ public class ScoresScreen implements Screen {
         scoresTable.add(widget).height(itemSize).row();
         scoresTable.add(label1).height(itemSize/2).row();
         table1.add(widget).height(itemSize/4).row();
-        table1.add(buttonExit).size(buttonSize);
+        table1.add(buttonExit).size(buttonSize * 1.6f, buttonSize);
         
         stage.addActor(table1);
-        nameDialog = new Dialog("", Assets.skin, "dialog");
-        nameDialog.getContentTable().add("New score!").row();
+        nameDialog = new Dialog("", Assets.skin, "default");
+        nameDialog.getContentTable().add("Your name:").row();
         nameDialog.getContentTable().add(textField).height(itemSize).width(buttonSize*3);
         nameDialog.getButtonTable().add(okButton).size(buttonSize);
         //nameDialog.button(okButton, true);

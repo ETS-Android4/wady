@@ -25,148 +25,148 @@ instruction
   orig: 192, 192
   offset: 0, 0
   index: -1
-button-disabled
+edit
   rotate: false
   xy: 773, 876
   size: 128, 128
+  split: 37, 41, 43, 45
   orig: 128, 128
   offset: 0, 0
   index: -1
-button-down
+pause-down
   rotate: false
   xy: 515, 424
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-button
+sound-disabled
   rotate: false
   xy: 515, 294
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-edit
+button
   rotate: false
   xy: 515, 164
   size: 128, 128
-  split: 42, 46, 51, 45
   orig: 128, 128
   offset: 0, 0
   index: -1
-item-checked
+button-down
   rotate: false
   xy: 515, 34
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-item-disabled
+button-disabled
   rotate: false
   xy: 773, 746
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-item
+sound
   rotate: false
   xy: 709, 616
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-music-disabled
+item-checked
   rotate: false
   xy: 645, 424
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-music
+timer
   rotate: false
   xy: 645, 294
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-pause-down
+item-disabled
   rotate: false
   xy: 645, 164
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-pause
+item
   rotate: false
   xy: 645, 34
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-sound-disabled
+music-disabled
   rotate: false
   xy: 839, 616
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-sound
+music
   rotate: false
   xy: 775, 486
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-timer
+pause
   rotate: false
   xy: 775, 356
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-arrow-left-down
+star-none
   rotate: false
   xy: 903, 940
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-arrow-left
+arrow-right-down
   rotate: false
   xy: 775, 290
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-arrow-right-down
+arrow-right
   rotate: false
   xy: 903, 874
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-arrow-right
+arrow-left
   rotate: false
   xy: 775, 224
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-star-gold
+star-silver
   rotate: false
   xy: 903, 808
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-star-none
+arrow-left-down
   rotate: false
   xy: 775, 158
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-star-silver
+star-gold
   rotate: false
   xy: 775, 92
   size: 64, 64

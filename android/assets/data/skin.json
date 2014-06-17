@@ -40,7 +40,7 @@
       menu-button: {up: none, down: none, font: normaltext},  
      },
 	com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
-		default: { titleFont: titletext, background: window, titleFontColor: white },
+		default: { titleFont: titletext, background: edit, titleFontColor: white },
 		dialog: { titleFont: titletext, background: window, titleFontColor: white, stageBackground: dialogDim }
      }   
    }  
