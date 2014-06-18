@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.esotericsoftware.tablelayout.Cell;
+import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.game.world.GameObject;
@@ -24,6 +25,7 @@ public class PauseDialog extends Dialog {
 	}
 	
 	protected void result (Object obj) {
+		Assets.playSnd(Assets.buttonSnd);
 		if (obj.equals(true)){
 			this.hide();
 			GVars.app.setScreen(GVars.app.levelScreen);

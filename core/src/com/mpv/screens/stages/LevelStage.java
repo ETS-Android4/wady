@@ -68,6 +68,7 @@ public class LevelStage extends Stage {
 		buttonTable.addListener(new ClickListener(){
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
+				Assets.playSnd(Assets.buttonSnd);
 				tmpIndex = buttonGroup.getButtons().indexOf(buttonGroup.getChecked(), true); 
 			}
 		});
@@ -75,6 +76,7 @@ public class LevelStage extends Stage {
 		playButton.addListener(new ClickListener(){
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
+				Assets.playSnd(Assets.buttonSnd);
 				if (tmpIndex != GameObject.mapIndex) {
 					GameObject.mapIndex = tmpIndex; 
 					Assets.loadMap(0, GameObject.mapIndex);
@@ -85,6 +87,7 @@ public class LevelStage extends Stage {
 		menuButton.addListener(new ClickListener(){
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
+				Assets.playSnd(Assets.buttonSnd);
 				GVars.app.setScreen(GVars.app.menuScreen);
 			}
 		});
@@ -92,6 +95,7 @@ public class LevelStage extends Stage {
 		this.addListener(new InputListener() {
 			public boolean keyUp (InputEvent event, int keycode) {
 				if (keycode == Keys.BACK || keycode == Keys.ESCAPE) {
+					Assets.playSnd(Assets.buttonSnd);
 					GVars.app.setScreen(GVars.app.menuScreen);
 				}
 				return false;

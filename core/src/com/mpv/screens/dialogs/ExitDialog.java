@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.esotericsoftware.tablelayout.Cell;
+import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
@@ -21,6 +22,7 @@ public class ExitDialog extends Dialog {
 		}
 	}
 	protected void result (Object obj) {
+		Assets.playSnd(Assets.buttonSnd);
 		if (obj.equals(true)){
 			Settings.save();
 			Gdx.app.exit();

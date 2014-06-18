@@ -11,24 +11,23 @@ import com.mpv.game.players.Player;
 import com.mpv.game.world.GameObject;
 
 public class ContactHandler implements ContactListener{
-
+	
 	@Override
 	public void beginContact(Contact contact) {
+		Player pl = Player.getInstance();
 		Body 
 			a = contact.getFixtureA().getBody(),
 			b = contact.getFixtureB().getBody(),
-			p = Player.getInstance().body,
+			p = pl.body,
 			body = (p == a) ? b : a;
 		if (body == GameObject.exit) {
 			GameObject.getInstance().gameFinish();
 		}
-		if (p.getLinearVelocity().len() >= Const.BLOCK_SIZE * 10f) {
-			if ((int)p.getLinearVelocity().len() % 2 == 0) {
-				Assets.playSnd(Assets.oySound, 0.1f);
-			} else 
-				Assets.playSnd(Assets.uffSound, 0.5f);
-				
-		}
+		if (p.getLinearVelocity().len() >= Const.BLOCK_SIZE * 13f) {
+			Assets.engineEffect.setPosition(pl.getX() + pl.getOriginX(), pl.getY()+pl.getOriginY());
+			Assets.engineEffect.start();
+			Assets.playSnd(Assets.hit1Snd);
+		}	
 	}
 
 	@Override

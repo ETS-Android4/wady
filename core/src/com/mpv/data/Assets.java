@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.maps.MapProperties;
@@ -16,11 +17,15 @@ import com.mpv.game.world.GameObject;
 public class Assets {
 	//Sound
 	public static Sound 	
-	uffSound,
-	failSound,
-	oySound,
-	buttonSound,
-	winSound;
+	hit1Snd,
+	failSnd,
+	hit2Snd,
+	hit3Snd,
+	buttonSnd,
+	winSnd,
+	gongSnd,
+	dingSnd,
+	wingSnd;
 	//Music
 	public static Music
 	gameMusic,
@@ -34,8 +39,10 @@ public class Assets {
 	//Textures & regions
 	private static TextureAtlas textureAtlas;
 	public static Animation animation;
-	//Shaders
+	 //Shaders
 	//public static ShaderProgram shader;
+	//Particles
+	public static ParticleEffect engineEffect; 
 	
 	public static void dispose() {
 		audioDispose();
@@ -47,6 +54,7 @@ public class Assets {
 		textureAtlas.dispose();
 		textureAtlas = null;
 		animation = null;
+		engineEffect.dispose();
 	}
 
 	private static void audioDispose(){
@@ -58,29 +66,42 @@ public class Assets {
 		gameMusic = null;
 		menuMusic = null;
 		//Sound
-		uffSound.dispose();
-		uffSound = null;
-		failSound.dispose();
-		failSound = null;
-		oySound.dispose();
-		oySound = null;
-		buttonSound.dispose();
-		buttonSound = null;
-		winSound.dispose();
-		winSound = null;
+		hit1Snd.dispose();
+		hit1Snd = null;
+		failSnd.dispose();
+		failSnd = null;
+		hit2Snd.dispose();
+		hit2Snd = null;
+		hit3Snd.dispose();
+		hit3Snd = null;
+		buttonSnd.dispose();
+		buttonSnd = null;
+		winSnd.dispose();
+		winSnd = null;
+		gongSnd.dispose();
+		gongSnd = null;
+		wingSnd.dispose();
+		wingSnd = null;
+		dingSnd.dispose();
+		dingSnd = null;
 	}
 	
 	public static void load() {
 		//Music
 		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("music/menu.mp3"));
+		menuMusic.setLooping(true);
 		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/game.mp3"));
+		gameMusic.setLooping(true);
 		//Sounds
-		uffSound = Gdx.audio.newSound(Gdx.files.internal("sounds/uff.mp3"));
-		//newPosSound = Gdx.audio.newSound(Gdx.files.internal("sounds/stuck.mp3"));
-		failSound = Gdx.audio.newSound(Gdx.files.internal("sounds/ouuu.mp3"));
-		oySound = Gdx.audio.newSound(Gdx.files.internal("sounds/oy.mp3"));
-		winSound = Gdx.audio.newSound(Gdx.files.internal("sounds/wow.mp3"));
-		buttonSound = Gdx.audio.newSound(Gdx.files.internal("sounds/button.mp3"));
+		hit1Snd = Gdx.audio.newSound(Gdx.files.internal("sounds/hit1.mp3"));
+		failSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/ouuu.mp3"));
+		hit2Snd = Gdx.audio.newSound(Gdx.files.internal("sounds/hit2.mp3"));
+		hit3Snd = Gdx.audio.newSound(Gdx.files.internal("sounds/hit3.mp3"));
+		winSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/wow.mp3"));
+		buttonSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/button.mp3"));
+		gongSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/gong.mp3"));
+		wingSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/wing.mp3"));
+		dingSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/ding.mp3"));
 		//Skin & Font
 		skin = new Skin(Gdx.files.internal("data/skin.json"));
 		skin.getFont("normaltext").setScale(GVars.scrWidth/640f*1.2f);
@@ -92,7 +113,9 @@ public class Assets {
 				Gdx.files.internal("shaders/red.vsh"), 
 				Gdx.files.internal("shaders/red.fsh"));
 		System.out.println(shader.isCompiled() ? "shader compiled" : shader.getLog());*/
-
+		//Particles
+		engineEffect = new ParticleEffect();
+		engineEffect.load(Gdx.files.internal("effects/engine.p"), Gdx.files.internal("effects"));
 	}
 	
 	public static void loadMap(int page, int index) {

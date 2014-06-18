@@ -2,7 +2,10 @@ package com.mpv.screens.dialogs;
 
 import java.util.ArrayList;
 
+import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.TweenCallback;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -28,10 +31,16 @@ public class FinishDialog extends Dialog {
 	private ArrayList<Image> stars = new ArrayList<Image>(3);
 	Widget empty = new Widget();
 	Table starsTable = new Table();
+	TweenCallback cb = new TweenCallback() {
+		@Override
+		public void onEvent(int arg0, BaseTween<?> arg1) {
+			Assets.playSnd(Assets.dingSnd);
+		}
+	};
+	
 	public FinishDialog(String title, Skin skin, String styleName) {
 		super(title, skin, styleName);
 		Table pointsTable = new Table();
-		
 		//pointsTable.debug();
 		//starsTable.debug();
 		pointsTable.add(new Label("Points:", Assets.skin, "normal-text")).size(GVars.scrWidth/6.4f);
@@ -71,6 +80,7 @@ public class FinishDialog extends Dialog {
 			GameObject.getInstance().gameResume();
 			Gdx.input.setInputProcessor(GameScreen.multiplexer);
 		}
+		Assets.playSnd(Assets.buttonSnd);
 	}
 	private void animateStar(int i) {
 		float scale = stars.get(i).getScaleX();
@@ -92,7 +102,10 @@ public class FinishDialog extends Dialog {
 				.to(stars.get(i), ActorAccessor.SCALE, 0.5f)
 				.target(scale)
 				.delay(4f + i*0.5f)
+				.setCallback(cb)
+				.setCallbackTriggers(TweenCallback.END)
 				.start(GVars.tweenManager);
+			
 	}
 	@Override
 	public Dialog show(Stage stage) {
@@ -113,7 +126,7 @@ public class FinishDialog extends Dialog {
 		if (mapTiming < 0.75f) 	animateStar(1);
 		if (mapTiming < 0.5f) 	animateStar(2);
 
-		Assets.playSnd(Assets.winSound);
+		Assets.playSnd(Assets.winSnd);
 		return super.show(stage);
 	}
 	

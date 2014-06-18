@@ -41,6 +41,7 @@ public class GameUIStage extends Stage {
 		bPause.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
+				Assets.playSnd(Assets.buttonSnd);
 				if (GameObject.state == GameObject.ACTIVE) {
 					GameObject.getInstance().gamePause();
 					gamePause();
@@ -81,7 +82,7 @@ public class GameUIStage extends Stage {
 	public void gameOver() {
 		Gdx.input.setInputProcessor(instance);
 		GameUIStage.failedDialog.show(instance);
-		Assets.playSnd(Assets.failSound);
+		Assets.playSnd(Assets.failSnd);
 	}
 
 	public void gameStart() {
