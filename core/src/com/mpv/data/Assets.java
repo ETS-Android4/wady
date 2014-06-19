@@ -19,13 +19,13 @@ public class Assets {
 	public static Sound 	
 	hit1Snd,
 	failSnd,
-	hit2Snd,
-	hit3Snd,
 	buttonSnd,
 	winSnd,
 	gongSnd,
 	dingSnd,
-	wingSnd;
+	wingSnd,
+	counterSnd,
+	blopSnd;
 	//Music
 	public static Music
 	gameMusic,
@@ -70,10 +70,6 @@ public class Assets {
 		hit1Snd = null;
 		failSnd.dispose();
 		failSnd = null;
-		hit2Snd.dispose();
-		hit2Snd = null;
-		hit3Snd.dispose();
-		hit3Snd = null;
 		buttonSnd.dispose();
 		buttonSnd = null;
 		winSnd.dispose();
@@ -84,6 +80,10 @@ public class Assets {
 		wingSnd = null;
 		dingSnd.dispose();
 		dingSnd = null;
+		counterSnd.dispose();
+		counterSnd = null;
+		blopSnd.dispose();
+		blopSnd = null;
 	}
 	
 	public static void load() {
@@ -94,14 +94,14 @@ public class Assets {
 		gameMusic.setLooping(true);
 		//Sounds
 		hit1Snd = Gdx.audio.newSound(Gdx.files.internal("sounds/hit1.mp3"));
-		failSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/ouuu.mp3"));
-		hit2Snd = Gdx.audio.newSound(Gdx.files.internal("sounds/hit2.mp3"));
-		hit3Snd = Gdx.audio.newSound(Gdx.files.internal("sounds/hit3.mp3"));
+		failSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/ouuu.mp3"));		
 		winSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/wow.mp3"));
 		buttonSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/button.mp3"));
 		gongSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/gong.mp3"));
 		wingSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/wing.mp3"));
 		dingSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/ding.mp3"));
+		counterSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/counter.mp3"));
+		blopSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/blop.mp3"));
 		//Skin & Font
 		skin = new Skin(Gdx.files.internal("data/skin.json"));
 		skin.getFont("normaltext").setScale(GVars.scrWidth/640f*1.2f);
@@ -167,5 +167,9 @@ public class Assets {
 	public static void playSnd (Sound sound, float volume, float pitch) {
 		if (Settings.soundEnabled) 	sound.play(volume, pitch, 0);
 	}
-	
+	public static void loopSnd (Sound sound) { 		loopSnd(sound, 1, 1); 	}
+	public static void loopSnd (Sound sound, float volume) {	loopSnd(sound, volume, 1); 	}
+	public static void loopSnd (Sound sound, float volume, float pitch) {
+		if (Settings.soundEnabled) 	sound.loop(volume, pitch, 0);
+	}
 }

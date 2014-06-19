@@ -65,7 +65,7 @@ public class GameObject {
 		Player.getInstance().resetGame();
 		state = ACTIVE;
 		Player.state = Player.S_IDLE;
-		Assets.playSnd(Assets.gongSnd);
+		Assets.playSnd(Assets.dingSnd);
 	}
 	public void gamePause() {
 		state = PAUSE;
