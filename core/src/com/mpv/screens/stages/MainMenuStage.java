@@ -36,7 +36,7 @@ public class MainMenuStage extends Stage {
 		final Button bSound  = new Button(Assets.skin, "sound-button");
 		
 		final TextButton bNewGame = new TextButton("Play", Assets.skin, "menu-button");
-		final TextButton bHighScores = new TextButton("Scores", Assets.skin, "menu-button");
+		//final TextButton bHighScores = new TextButton("Scores", Assets.skin, "menu-button");
 		final TextButton bCredits = new TextButton("Credits", Assets.skin, "menu-button");
 		final TextButton bExit = new TextButton("Exit", Assets.skin, "menu-button");
 		
@@ -47,19 +47,19 @@ public class MainMenuStage extends Stage {
 		bSound.setChecked(!Settings.soundEnabled);
 		
 		bNewGame.setSize(width, height);
-		bHighScores.setSize(width, height);
+		//bHighScores.setSize(width, height);
 		bCredits.setSize(width, height);
 		bExit.setSize(width, height);
 		
 		bNewGame.setPosition(getWidth()*(-0.01f), yPos);
-		bHighScores.setPosition(getWidth()*0.22f, yPos);
-		bCredits.setPosition(getWidth()*0.51f, yPos);
+		//bHighScores.setPosition(getWidth()*0.22f, yPos);
+		bCredits.setPosition(getWidth()*0.35f, yPos);
 		bExit.setPosition(getWidth()*0.75f, yPos);
 		bSound.setPosition(getWidth()*0.51f, getWidth()*1.5f);
 		bMusic.setPosition(getWidth()*0.39f, getWidth()*1.5f);
 		
 		this.addActor(bNewGame);
-		this.addActor(bHighScores);
+		//this.addActor(bHighScores);
 		this.addActor(bCredits);
 		this.addActor(bExit);
 		this.addActor(bSound);
@@ -87,13 +87,14 @@ public class MainMenuStage extends Stage {
 				GVars.app.setScreen(GVars.app.levelScreen);				
 			}
 		});
+		/*
 		bHighScores.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
 				Assets.playSnd(Assets.buttonSnd);
 				GVars.app.setScreen(GVars.app.scoresScreen);
 			}
-		});
+		});*/
 		bCredits.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);

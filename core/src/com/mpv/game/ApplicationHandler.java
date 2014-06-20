@@ -11,14 +11,13 @@ import com.mpv.screens.CreditsScreen;
 import com.mpv.screens.GameScreen;
 import com.mpv.screens.LevelScreen;
 import com.mpv.screens.MenuScreen;
-import com.mpv.screens.ScoresScreen;
 
 public class ApplicationHandler extends Game {
 
 	public MenuScreen menuScreen;
 	public GameScreen gameScreen;
 	public GameObject gameObject;
-	public ScoresScreen scoresScreen;
+	//public ScoresScreen scoresScreen;
 	public LevelScreen levelScreen;
 	public CreditsScreen creditsScreen;
 	public static IReqHandler ExternalHandler;
@@ -50,7 +49,7 @@ public class ApplicationHandler extends Game {
 		gameObject = GameObject.getInstance();		
 		gameScreen = new GameScreen();
 		menuScreen = new MenuScreen();
-		scoresScreen = new ScoresScreen();
+		//scoresScreen = new ScoresScreen();
 		levelScreen = new LevelScreen();
 
 		this.setScreen(menuScreen);
@@ -61,7 +60,7 @@ public class ApplicationHandler extends Game {
 		Assets.dispose();
 		super.dispose();
 		menuScreen.dispose();
-		scoresScreen.dispose();
+		//scoresScreen.dispose();
 		levelScreen.dispose();
 	}
 	@Override
