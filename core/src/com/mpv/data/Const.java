@@ -2,7 +2,7 @@ package com.mpv.data;
 
 public class Const {
 		//Animation
-		public static final float ANIMATION_SPEED = 0.008f;
+		public static final float ANIMATION_SPEED = 0.01f;
 		//Physics parameters
 		public static final float BLOCK_SIZE = 1f; //meters
 		public static final float MAX_SPEED = BLOCK_SIZE*6;

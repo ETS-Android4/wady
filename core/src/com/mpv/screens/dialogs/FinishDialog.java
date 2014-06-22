@@ -30,6 +30,7 @@ public class FinishDialog extends Dialog {
 	Widget empty = new Widget();
 	Table starsTable = new Table();
 	Boolean dvisible = false;
+	private FinishDialog instance;
 	TweenCallback cb = new TweenCallback() {
 		@Override
 		public void onEvent(int arg0, BaseTween<?> arg1) {
@@ -42,12 +43,16 @@ public class FinishDialog extends Dialog {
 		@Override
 		public void onEvent(int arg0, BaseTween<?> arg1) {
 			// TODO Auto-generated method stub
-			Assets.playSnd(Assets.counterSnd, 0.3f);
+			instance.getButtonTable().setVisible(true);
+			if (dvisible) {
+				Assets.playSnd(Assets.counterSnd, 0.3f);
+			}
 		}
 	};
 
 	public FinishDialog(String title, Skin skin, String styleName) {
 		super(title, skin, styleName);
+		instance = this;
 		Table pointsTable = new Table();
 		//pointsTable.debug();
 		//starsTable.debug();
@@ -119,6 +124,9 @@ public class FinishDialog extends Dialog {
 	}
 	@Override
 	public Dialog show(Stage stage) {
+		this.getButtonTable().setVisible(false);
+		Assets.playSnd(Assets.winSnd);
+		
 		float mapTiming = GameTimer.getInstance().getSpent() / GameObject.getInstance().getMapLimit();
 		Tween
 			.set(points, ActorAccessor.TEXT).target(0)
@@ -137,8 +145,17 @@ public class FinishDialog extends Dialog {
 		if (mapTiming < 0.75f) 	animateStar(1);
 		if (mapTiming < 0.5f) 	animateStar(2);
 
-		Assets.playSnd(Assets.winSnd);
 		dvisible = true;
+		Tween
+			.set(points, ActorAccessor.TEXT).target(0)
+			.start(GVars.tweenManager);
+		Tween
+			.to(points, ActorAccessor.TEXT, 3.5f)
+			.target(Settings.points[GameObject.mapIndex])
+			.delay(0.5f)
+			.setCallback(cbCounterBegin)
+			.setCallbackTriggers(TweenCallback.BEGIN)
+			.start(GVars.tweenManager);
 		return super.show(stage);
 	}
 	

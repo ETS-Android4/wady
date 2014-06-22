@@ -37,7 +37,16 @@ public class ContactHandler implements ContactListener{
 
 	@Override
 	public void preSolve(Contact contact, Manifold oldManifold) {
-		// TODO Auto-generated method stub
+		Player pl = Player.getInstance();
+		Body 
+			a = contact.getFixtureA().getBody(),
+			b = contact.getFixtureB().getBody(),
+			p = pl.body;
+		if (p != a && p != b) return;
+		
+		if (p.getLinearVelocity().y <= Const.BLOCK_SIZE) {
+			p.setLinearVelocity(0, p.getLinearVelocity().y);
+		}	
 	}
 
 	@Override
