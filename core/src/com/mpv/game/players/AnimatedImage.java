@@ -27,7 +27,7 @@ public class AnimatedImage extends Actor {
 		TextureRegion textureRegion;
 		switch (Player.state) {
 		case Player.S_IDLE:
-			textureRegion = Assets.animation.getKeyFrames()[15];
+			textureRegion = Assets.animation.getKeyFrames()[0];
 			break;
 		case Player.S_LJUMP:
 			textureRegion = Assets.animation.getKeyFrame(stateTime, true);
@@ -36,12 +36,12 @@ public class AnimatedImage extends Actor {
 			textureRegion = Assets.animation.getKeyFrame(stateTime, true);
 			break;
 		case Player.S_FALL:
-			textureRegion = Assets.animation.getKeyFrames()[0];
+			textureRegion = Assets.animation.getKeyFrames()[15];
 			break;
 		case Player.S_HIT:
 			textureRegion = Assets.animation.getKeyFrames()[15];
 			break;
-		default: textureRegion = Assets.animation.getKeyFrames()[15];
+		default: textureRegion = Assets.animation.getKeyFrames()[0];
 			break;
 		}
 		batch.draw(textureRegion, this.getX(), this.getY(), 

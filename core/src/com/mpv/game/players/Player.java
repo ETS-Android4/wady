@@ -28,7 +28,7 @@ public class Player extends AnimatedImage  {
 	
 	public static int state = Player.S_IDLE;
 	
-	private static final float animFix = 3.5f;
+	private static final float animFix = 2.5f;
 	
 	private static Player instance;
 	public Body body;
