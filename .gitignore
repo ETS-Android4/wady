@@ -55,4 +55,4 @@ nb-configuration.xml
 
 .gradle
 build/
-/.project
+.project
