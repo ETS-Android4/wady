@@ -18,11 +18,17 @@ public class Settings {
     		 				 0, 0, 0, 0,
     		 				 0, 0, 0, 0,
     		 				 0, 0, 0, 0};
+     public final static Integer[] stars = new Integer[] 
+				{0, 0, 0 ,0, 
+				 0, 0, 0, 0,
+				 0, 0, 0, 0,
+				 0, 0, 0, 0};
      public final static String file = ".mysh";
      public static String name = "Player";
 
      public static void load () {
              BufferedReader in = null;
+             String tmp;
              try {
                      in = new BufferedReader(new InputStreamReader(Gdx.files.local(file).read()));
                      name = in.readLine();
@@ -33,7 +39,9 @@ public class Settings {
                              scorenames[i] = in.readLine();
                      }
                      for (int i = 0; i < 16; i++) {
-                    	 points[i] = Integer.parseInt(in.readLine());
+                    	 tmp = in.readLine();
+                    	 points[i] = Integer.parseInt(tmp.substring(0, 5));
+                    	 stars[i] = Integer.parseInt(tmp.substring(6, 7));
                      }
              } catch (Throwable e) {
                      // :( It's ok we have defaults
@@ -57,7 +65,8 @@ public class Settings {
                              out.write(scorenames[i].concat("\n"));
                      }
                      for (int i = 0; i < 16; i++) {
-                    	 out.write(Integer.toString(points[i]).concat("\n"));
+                    	 out.write(String.format("%05d", points[i]).concat(" "));
+                    	 out.write(Integer.toString(stars[i]).concat("\n"));
                      }
 
              } catch (Throwable e) {

@@ -76,7 +76,6 @@ public class GameUIStage extends Stage {
 	}
 	public void gameFinish() {
 		Gdx.input.setInputProcessor(instance);
-		//FinishDialog.points.setText(String.valueOf(Settings.points[GameObject.mapIndex]));
 		GameUIStage.finishDialog.show(instance);
 	}
 	public void gameOver() {

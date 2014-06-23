@@ -141,9 +141,18 @@ public class FinishDialog extends Dialog {
 		for (Image img : stars) 
 			img.setDrawable(Assets.skin, "none");
 		
-		if (mapTiming < 0.875f) 	animateStar(0);
-		if (mapTiming < 0.75f) 	animateStar(1);
-		if (mapTiming < 0.5f) 	animateStar(2);
+		if (mapTiming < 0.875f) { 	
+			animateStar(0);
+			Settings.stars[GameObject.mapIndex] = 1;
+		}
+		if (mapTiming < 0.75f) {	
+			animateStar(1);
+			Settings.stars[GameObject.mapIndex] = 2;
+		}
+		if (mapTiming < 0.5f) {	
+			animateStar(2);
+			Settings.stars[GameObject.mapIndex] = 3;
+		}
 
 		dvisible = true;
 		Tween

@@ -6,6 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
@@ -50,11 +52,12 @@ public class LevelStage extends Stage {
 		mainTable.add(buttonTable).row();
 		mainTable.add(emptyWidget).height(buttonSize/2).row();
 		//buttonTable.setFillParent(true);
-		TextButton tmp;
+		ImageButton tmp;
 		for (int i=0; i<4; i++) {
 			for (int j=0; j<4; j++) {
 				buttonTable.add(emptyWidget).width(buttonSize/4);
-				tmp = new TextButton(String.valueOf(i*4+j+1),Assets.skin, "item");
+				tmp = new ImageButton(Assets.skin, "default");
+				tmp.getImageCell().size(buttonSize/1.6f);
 				buttonGroup.add(tmp);
 				buttonTable.add(tmp).size(buttonSize);
 				buttonTable.add(emptyWidget).width(buttonSize/4);
@@ -103,14 +106,29 @@ public class LevelStage extends Stage {
 		});
 	}
 	public void updateButtons() {
-		for (int i=1; i<16; i++) {
-			TextButton t = (TextButton)buttonGroup.getButtons().get(i);
-			if (Settings.points[i-1]==0) {
+		for (int i=0; i<16; i++) {
+			ImageButton t = (ImageButton)buttonGroup.getButtons().get(i);
+			if (i!=0 && Settings.points[i-1]==0) {
+				t.setStyle(Assets.skin.get("default", ImageButtonStyle.class));
 				t.setDisabled(true);
-				t.setText("");
 			}else {
 				t.setDisabled(false);
-				t.setText(String.valueOf(i+1));
+				switch (Settings.stars[i]) {
+					case 0: 
+						t.setStyle(Assets.skin.get("default", ImageButtonStyle.class));
+						t.setChecked(true);
+						tmpIndex = i;
+						break;
+					case 1: t.setStyle(Assets.skin.get("none", ImageButtonStyle.class));
+						break;
+					case 2: t.setStyle(Assets.skin.get("silver", ImageButtonStyle.class));
+						break;
+					case 3: t.setStyle(Assets.skin.get("gold", ImageButtonStyle.class));
+						break;
+					default: t.setStyle(Assets.skin.get("default", ImageButtonStyle.class));
+						break; 
+				}
+				
 			}
 		}
 	}
