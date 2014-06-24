@@ -2,7 +2,9 @@ package com.mpv.data;
 
 import aurelienribon.tweenengine.TweenManager;
 import box2dLight.ConeLight;
+import box2dLight.DirectionalLight;
 import box2dLight.RayHandler;
+
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -27,6 +29,7 @@ public class GVars {
 	public static World world;
 	public static RayHandler rayHandler;
 	public static ConeLight playerLight;
+	public static DirectionalLight directionalLight;
 	//Tweens
 	public static TweenManager tweenManager;
 	//Player
@@ -34,6 +37,7 @@ public class GVars {
 	public static OrthogonalTiledMapRenderer otmRendered;
 	public static SpriteBatch spriteBatch = new SpriteBatch();
 	private static Matrix4 camLight;
+	
 	
 	public static void resize(float width, float height) {
 		scrWidth = width;
