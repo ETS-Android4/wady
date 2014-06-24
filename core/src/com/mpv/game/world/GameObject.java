@@ -58,8 +58,11 @@ public class GameObject {
 			GVars.rayHandler.dispose();
 		}
 		GVars.rayHandler = new RayHandler(GVars.world);
-		GVars.playerLight = new ConeLight(GVars.rayHandler, 24, new Color(1,1,1,1), Const.widthInMeters/1.6f, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 90f, 30f);
-		//GVars.directionalLight = new DirectionalLight(GVars.rayHandler, 24, new Color(1f,1f,1f,1f), 110f);
+		GVars.sceneryLight = new ConeLight(GVars.rayHandler, 24, new Color(0.5f, 0.5f, 0.5f, 1f), Const.widthInMeters/3.2f, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 0f, 180f);
+		GVars.sceneryLight.attachToBody(Player.getInstance().body, 0f, 0f);
+		GVars.playerLight = new ConeLight(GVars.rayHandler, 24, new Color(1,1,1,1), Const.widthInMeters, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 90f, 30f);
+		GVars.playerLight.setSoft(false);
+		
 	}
 	
 	public void gameStart() {
