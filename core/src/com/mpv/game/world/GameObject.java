@@ -1,9 +1,7 @@
 package com.mpv.game.world;
 
 import box2dLight.ConeLight;
-import box2dLight.DirectionalLight;
 import box2dLight.RayHandler;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -60,8 +58,8 @@ public class GameObject {
 			GVars.rayHandler.dispose();
 		}
 		GVars.rayHandler = new RayHandler(GVars.world);
-		GVars.playerLight = new ConeLight(GVars.rayHandler, 24, new Color(1,1,1,1), Const.widthInMeters/2, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 90f, 30f);
-		//GVars.directionalLight = new DirectionalLight(GVars.rayHandler, 24, new Color(0.f,0.1f,0.1f,0.3f), 90f);
+		GVars.playerLight = new ConeLight(GVars.rayHandler, 24, new Color(1,1,1,1), Const.widthInMeters/1.6f, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 90f, 30f);
+		//GVars.directionalLight = new DirectionalLight(GVars.rayHandler, 24, new Color(1f,1f,1f,1f), 110f);
 	}
 	
 	public void gameStart() {
