@@ -1,7 +1,7 @@
 package com.mpv.data;
 
 import aurelienribon.tweenengine.TweenManager;
-import box2dLight.PointLight;
+import box2dLight.ConeLight;
 import box2dLight.RayHandler;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -26,7 +26,7 @@ public class GVars {
 	public static OrthographicCamera bgCam;
 	public static World world;
 	public static RayHandler rayHandler;
-	public static PointLight pointLight;
+	public static ConeLight playerLight;
 	//Tweens
 	public static TweenManager tweenManager;
 	//Player

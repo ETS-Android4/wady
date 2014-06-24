@@ -94,7 +94,7 @@ public class GameScreen implements Screen {
 		batch.begin();
 		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("cover1"));		
 		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("cover2"));
-		Assets.engineEffect.draw(batch, delta);
+		Assets.hitEffect.draw(batch, delta);
 		batch.end();
 		//FPS
 		//GameUIStage.labelFPS.setText(Float.toString(1/delta).substring(0, 4));

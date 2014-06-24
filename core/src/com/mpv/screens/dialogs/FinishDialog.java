@@ -47,7 +47,7 @@ public class FinishDialog extends Dialog {
 			// TODO Auto-generated method stub
 			instance.getButtonTable().setVisible(true);
 			if (dvisible) {
-				Assets.playSnd(Assets.counterSnd, 0.3f);
+				Assets.playSnd(Assets.counterSnd, 0.05f);
 			}
 		}
 	};
@@ -69,7 +69,7 @@ public class FinishDialog extends Dialog {
 		//this.getContentTable().add(empty).size(GVars.scrWidth/6.4f).row();
 		this.getContentTable().add(starsTable).row();
 		this.getContentTable().add(empty).height(GVars.scrWidth/12.8f);
-		this.button("Menu", true).button("Retry", false).key(Keys.ENTER, true).key(Keys.ESCAPE, false);
+		this.button("Retry", false).button("Next", true).key(Keys.ENTER, true).key(Keys.ESCAPE, false);
 		for (Cell<?> cell :  this.getButtonTable().getCells()) {
 			cell.size(Const.PLAYER_SIZE*GVars.BOX_TO_WORLD, Const.PLAYER_HALF*GVars.BOX_TO_WORLD);
 		}

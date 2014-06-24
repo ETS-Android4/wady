@@ -1,6 +1,6 @@
 package com.mpv.game.world;
 
-import box2dLight.PointLight;
+import box2dLight.ConeLight;
 import box2dLight.RayHandler;
 
 import com.badlogic.gdx.graphics.Color;
@@ -55,9 +55,12 @@ public class GameObject {
 		//Time limit
 		mapLimit = Integer.parseInt((String)Assets.map.getProperties().get("Time"));
 		//Light
+		if (GVars.rayHandler!=null) {
+			GVars.rayHandler.dispose();
+		}
 		GVars.rayHandler = new RayHandler(GVars.world);
-		GVars.pointLight = new PointLight(GVars.rayHandler, 24, new Color(1,1,1,1), Const.widthInMeters, Const.BLOCK_SIZE, Const.BLOCK_SIZE);		
-		GVars.pointLight.attachToBody(Player.getInstance().body, 0f, 0f);
+		GVars.playerLight = new ConeLight(GVars.rayHandler, 24, new Color(1,1,1,1), Const.widthInMeters/2, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 90f, 30f);		
+		//GVars.playerLight.attachToBody(Player.getInstance().body, 0f, 0f);
 	}
 	
 	public void gameStart() {

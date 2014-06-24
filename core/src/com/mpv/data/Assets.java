@@ -42,7 +42,7 @@ public class Assets {
 	 //Shaders
 	//public static ShaderProgram shader;
 	//Particles
-	public static ParticleEffect engineEffect; 
+	public static ParticleEffect hitEffect; 
 	
 	public static void dispose() {
 		audioDispose();
@@ -54,7 +54,7 @@ public class Assets {
 		textureAtlas.dispose();
 		textureAtlas = null;
 		animation = null;
-		engineEffect.dispose();
+		hitEffect.dispose();
 	}
 
 	private static void audioDispose(){
@@ -114,8 +114,8 @@ public class Assets {
 				Gdx.files.internal("shaders/red.fsh"));
 		System.out.println(shader.isCompiled() ? "shader compiled" : shader.getLog());*/
 		//Particles
-		engineEffect = new ParticleEffect();
-		engineEffect.load(Gdx.files.internal("effects/engine.p"), Gdx.files.internal("effects"));
+		hitEffect = new ParticleEffect();
+		hitEffect.load(Gdx.files.internal("effects/engine.p"), Gdx.files.internal("effects"));
 	}
 	
 	public static void loadMap(int page, int index) {

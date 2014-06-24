@@ -24,8 +24,8 @@ public class ContactHandler implements ContactListener{
 			GameObject.getInstance().gameFinish();
 		}
 		if (p.getLinearVelocity().len() >= Const.BLOCK_SIZE * 13f) {
-			Assets.engineEffect.setPosition(pl.getX() + pl.getOriginX(), pl.getY()+pl.getOriginY());
-			Assets.engineEffect.start();
+			Assets.hitEffect.setPosition(pl.getX() + pl.getOriginX(), pl.getY()+pl.getOriginY());
+			Assets.hitEffect.start();
 			Assets.playSnd(Assets.hit1Snd);
 		}	
 	}

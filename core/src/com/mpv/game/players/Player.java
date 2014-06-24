@@ -1,7 +1,6 @@
 package com.mpv.game.players;
 
 import aurelienribon.tweenengine.Tween;
-
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -42,6 +41,8 @@ public class Player extends AnimatedImage  {
 	
 	private Player() {
 		GVars.activePlayer = this;
+		
+		
 		this.addListener(new ClickListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -93,6 +94,24 @@ public class Player extends AnimatedImage  {
 		reset();
 	}
 	
+	@Override
+	public void setPosition(float x, float y) {
+		// TODO Auto-generated method stub
+		super.setPosition(x, y);
+		if (GVars.playerLight!=null) {
+			GVars.playerLight.setPosition(body.getPosition());
+		}
+	}
+
+	@Override
+	public void setRotation(float degrees) {
+		// TODO Auto-generated method stub
+		super.setRotation(degrees);
+		if (GVars.playerLight!=null) {
+			GVars.playerLight.setDirection(degrees+90f);
+		}
+	}
+
 	public void positionSync() {
 		if (Player.state == Player.S_INVISIBLE) return;
 		
