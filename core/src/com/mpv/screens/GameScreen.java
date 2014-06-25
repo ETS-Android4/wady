@@ -82,11 +82,12 @@ public class GameScreen implements Screen {
 		if (Player.state != Player.S_INVISIBLE) GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("background"));
 		batch.end();
 		GVars.otmRendered.setView(GVars.frCam);
+		if (Player.state != Player.S_INVISIBLE) 	GVars.rayHandler.updateAndRender();
 		batch.begin();
 		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("bg1"));
 		GVars.otmRendered.renderTileLayer((TiledMapTileLayer)Assets.map.getLayers().get("bg2"));
 		batch.end();
-		if (Player.state != Player.S_INVISIBLE) 	GVars.rayHandler.updateAndRender();
+		
 		//Player
 		gameStage.draw();
 		//Decor layer
