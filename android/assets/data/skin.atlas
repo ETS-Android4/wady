@@ -18,157 +18,178 @@ window
   orig: 256, 256
   offset: 0, 0
   index: -1
-instruction
-  rotate: false
-  xy: 515, 554
-  size: 192, 192
-  orig: 192, 192
-  offset: 0, 0
-  index: -1
-edit
-  rotate: false
-  xy: 773, 876
-  size: 128, 128
-  split: 37, 41, 43, 45
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-pause-down
-  rotate: false
-  xy: 515, 424
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-sound-disabled
-  rotate: false
-  xy: 515, 294
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-button
-  rotate: false
-  xy: 515, 164
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
 button-down
   rotate: false
-  xy: 515, 34
+  xy: 515, 618
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-button-disabled
+rjump-down
   rotate: false
-  xy: 773, 746
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-sound
-  rotate: false
-  xy: 709, 616
+  xy: 773, 876
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 item-checked
   rotate: false
-  xy: 645, 424
+  xy: 515, 488
   size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+edit
+  rotate: false
+  xy: 515, 358
+  size: 128, 128
+  split: 37, 41, 43, 45
   orig: 128, 128
   offset: 0, 0
   index: -1
 timer
   rotate: false
-  xy: 645, 294
+  xy: 515, 228
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-item-disabled
+ljump-down
   rotate: false
-  xy: 645, 164
+  xy: 515, 98
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-item
+ljump
   rotate: false
-  xy: 645, 34
+  xy: 645, 618
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-music-disabled
+button-disabled
   rotate: false
-  xy: 839, 616
+  xy: 645, 488
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-music
+pause-down
   rotate: false
-  xy: 775, 486
+  xy: 645, 358
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 pause
   rotate: false
-  xy: 775, 356
+  xy: 645, 228
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-star-none
+button
+  rotate: false
+  xy: 645, 98
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+arrow-left
   rotate: false
   xy: 903, 940
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+star-gold
+  rotate: false
+  xy: 515, 32
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 arrow-right-down
   rotate: false
-  xy: 775, 290
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-arrow-right
-  rotate: false
-  xy: 903, 874
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-arrow-left
-  rotate: false
-  xy: 775, 224
+  xy: 773, 810
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 star-silver
   rotate: false
-  xy: 903, 808
+  xy: 581, 32
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+music
+  rotate: false
+  xy: 647, 32
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+rjump
+  rotate: false
+  xy: 775, 680
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+item
+  rotate: false
+  xy: 775, 550
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+item-disabled
+  rotate: false
+  xy: 775, 420
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+star-none
+  rotate: false
+  xy: 839, 810
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sound
+  rotate: false
+  xy: 775, 354
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+music-disabled
+  rotate: false
+  xy: 775, 288
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sound-disabled
+  rotate: false
+  xy: 775, 222
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+arrow-right
+  rotate: false
+  xy: 775, 156
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 arrow-left-down
   rotate: false
-  xy: 775, 158
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-star-gold
-  rotate: false
-  xy: 775, 92
+  xy: 841, 354
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -182,7 +203,7 @@ cursor
   index: -1
 menu-bg
   rotate: false
-  xy: 709, 582
+  xy: 713, 64
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

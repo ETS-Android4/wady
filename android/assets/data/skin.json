@@ -29,6 +29,8 @@
       default: { up: button, down: button-down, disabled: button-disabled }, 
       arrow-left: {up: arrow-left, down: arrow-left-down},
       arrow-right: {up: arrow-right, down: arrow-right-down},
+      leftJump: {up: ljump, down: ljump-down},
+      rightJump: {up: rjump, down: rjump-down},
       music-button: {up: music, checked: music-disabled},
       sound-button: {up: sound, checked: sound-disabled},
       pause: {up: pause, down: pause-down},

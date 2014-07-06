@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mpv.data.Assets;
@@ -18,7 +17,6 @@ public class StartDialog extends Dialog {
 	public StartDialog(String title, Skin skin, String styleName) {
 		super(title, skin, styleName);
 		this.getContentTable().add(new Label("Ready?", Assets.skin, "title-text")).height(GVars.scrWidth/6.4f).row();
-		this.getContentTable().add(new Image(Assets.skin, "instruction")).size(GVars.scrWidth/2f);
 		this.getContentTable().setFillParent(false);
 		//this.getContentTable().debug();
 		this.button("Go!", true).key(Keys.ENTER, true);

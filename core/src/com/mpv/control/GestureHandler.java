@@ -2,8 +2,6 @@ package com.mpv.control;
 
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
-import com.mpv.data.GVars;
-import com.mpv.game.world.GameObject;
 
 public class GestureHandler implements GestureListener {
 	
@@ -15,14 +13,14 @@ public class GestureHandler implements GestureListener {
 	@Override
 	public boolean tap(float x, float y, int count, int button) {
 		// TODO Auto-generated method stub
-		if (GameObject.state != GameObject.ACTIVE) {
+		/*if (GameObject.state != GameObject.ACTIVE) {
 			return false;
 		}
 		if (x > GVars.scrWidth/2) {
 			GVars.activePlayer.applyForce(new Vector2(1f, 1f));
 		}else {
 			GVars.activePlayer.applyForce(new Vector2(-1f, 1f));
-		}
+		}*/
 		return false;
 	}
 
