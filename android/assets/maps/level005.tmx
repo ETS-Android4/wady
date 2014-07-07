@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="10" height="300" tilewidth="32" tileheight="32" backgroundcolor="#000000">
+ <properties>
+  <property name="Time" value="120"/>
+ </properties>
+ <tileset firstgid="1" name="terrain" tilewidth="32" tileheight="32">
+  <image source="terrain.png" width="672" height="736"/>
+ </tileset>
+ <tileset firstgid="484" name="bg1" tilewidth="32" tileheight="32">
+  <image source="stone.png" width="320" height="320"/>
+ </tileset>
+ <layer name="background" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJzt0eci1QEAB9D/vUl2QvZKSyI7KyOk93+Hm71Fds57+H04T3AqpaL4wzY77LLHPgcccsQxJ5xyxjkX/OWSK/5xzQ233HHPA4/8pygXRYkyL6jiJdW8ooZa6qingUaaeE0zb2ihlTbe0k4HnXTRTQ+99NHPAIO8Y4j3fOAjn/jMMF8Y4SujjPGNcSaYZIppZpjlO3PMs8AiS/xgmRVWWeMn62ywyS+2+E0lH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+8pGPfOQjH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+nunHE/rLWFk=
+  </data>
+ </layer>
+ <layer name="bg1" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJzlmFuuJEUMRG/vvB69BiS2gFgES2Nacy0dDhGZheAPS6W50+122pF+hOvr6/8l79fX1/n9UO4f/z9+PNfrp87nuYPehe/m3+P7sb35/QWdZG/OvaFrvQP2Rj/FccHWudF74/sD+o5j7NlP45owNC6UU7pN5sy5u7von4hhdBgnfR0d+2ycTpx5IKYbesyBA7qDK20xD3j3jneHycTxli8Ju2brlq/3K9/X6I2/Yy/lwGA4ODT/LumesJ2E9TRP0n0rlmPhw0dGl/XiuMZfxpXubc6/5KNzavRu6CTsb9lg36HQpzl/1UOS3471af61nsG/25m8+1bX/Jy6xoq1MPinGNjDmHfOD+bOk/z8CHtvqyX7m/BL8bd8HyFGq3PHz/fr73W9ssvemvKZOI6vuzzjb5/I+PtEWn36rOZnyq/kZ+ttu3NXerv7m3N3uZN+w3x+iuWuD1CPecI5THFOp141eu63DTPyota7mJeeUcm/sUe7FM+4u/joeURuYvx8J657zgKLucaTumrYW1b2zI2cv+Q8zD3HQPyIkXOVeUyue4TzT31H/pDwZ262GUI/zItaPbLfM+9TDZqPrWbenE++nfKPOJEXt3jISVJOem9JuxJnMe8x8Rz6tOpr3KV478m/C3opXuYr76XV5dgwZxlxvzhk37h4j0z2zCfTrOaO1u5s4jA3tXgnazXPHWDFdYhxu1P6s9tlVnY+4ppJNuj7av4f8Kvh5Xtc7UXeYVOfTPNjh4ttPJFU+2k/aDtJymnbT/0z8a/El1O86bOn3HGVy7T/ZB66vrhjcr44HuY4e9MtfMg3yFWM4/yWvT+9c3jrrNTnvBe5j7SebbzSLtj6zJP96L3RYz6uaqT5m/TYv5vOxND2Ico/2bt3cXzEvTn5ecm3Fsv50LfRTXOUfn2Es2yHNWNuPjKWFTbsOSlf+TdnZhLWMfFx3ZsDphj8noFnNw5qvtjiffpuYDdfzXfbe0BzJcZIv8hhV2fO3Y6tFCtxY45ZVndAIW+hL0n8TuMofhI76iVuSg7Q6o680Fzb9sw7207LOdD6Gzn7bqfhua5Nnu/90MI8X71j876x6kPGpOnRVsod1o13TN8FeS73Lfs6n3PGp37k3Yn42M/r9deHvjZsuLe2Xu39s8Vu39peYP7R+iBzb9VLWHPUdW5c8q/tN6xLzqWGo7Gx8A7JLRLOrM3Gf1uuOAbuHO0s7tvtrHPjs2duysuJq72fYN9+S9dxpTPb+45LfqX9nzvZ2Eo7CnOMtWPMyLHTO4LBjTsg69vnHrLFfdPxcmdNdeXzvGPYT/ep3TuSUz60+cYzjW3CkzikuuY9c9a0XZP6ic+y17R9N+HJ3zRZ5WOLa6W342zUa7j43FbLlBXXoDCHdriQ86z00kxNepzvK/9YY03Ms57EsdPjTFrpkTOu9rgn98sYVvsW+3+zM3GudsdWY/ye/Xp3XtNxj1rdJ/s3+4WF9/iGroU9kbg0e56tiVtQlz3IcZB/tHzy/sKdpuEz8TSe9BFyNM+odD7fCaQ6ci9rcbP+jXuKgxwu8QWfxTpKNm0v9Wjv3M2ed/iWj5yT3m+MDXFe9Ul+z3mTeABjZe42vNP8tO71wNdWq+YWxG61b3L3Yd9J+4z5TuopvH/nGoV3tpqH5E+tPj07Vhxr1d945yk3aWfHQ8zLm/jdwsoesWcPSbq8n9Xs5T7davcjt3RWM8x88r+QlU8rvbP4mupqMFrNAv6OuZL4sG3v5sxHmDdPsBuMf5XuHwGH6Se/fX/3u/7/Ec5i6l3SY99Y2eOMod4tPebrfP7L6+fjOI5wjoV9vOl5Xia96dnszUnvQpzNP/rEukx6q/r6N/In3GtAHQ==
+  </data>
+ </layer>
+ <layer name="bg2" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJzt2tENgzAMBUDYHFJWKOwADFlXskUEA/BzJz1FSZ48gYfhHfN4ZY8ckTPvU2SJfDJ97+/MTvWm8Tmveks3o0W+kTXTW7v37fYHAAAAAAAAAAAAAMBT7XLfd79bpva+67/6tQve8qwZP1kqHcI=
+  </data>
+ </layer>
+ <layer name="cover1" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJzty7ENwDAIAEFnc+N4BSfrhoKCMgPcSS8oIK4xdjazyO5q1Zw14+fdbncne7K3/a3aAQAAAAAAAAAAAACg+wDUbA+U
+  </data>
+ </layer>
+ <layer name="cover2" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAOBvLuAAAQ==
+  </data>
+ </layer>
+ <objectgroup name="obstacles" width="10" height="300">
+  <object x="1" y="9537">
+   <polyline points="0,0 318,0"/>
+  </object>
+  <object x="106" y="8" width="75" height="74">
+   <properties>
+    <property name="EXIT" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object x="146" y="9543" width="28" height="27">
+   <properties>
+    <property name="START" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object x="180" y="3">
+   <polyline points="0,0 15,165 141,165 141,-2 0,-2"/>
+  </object>
+  <object x="6" y="7">
+   <polyline points="-6,-5 -6,160 87,160 102,-6 -5,-7"/>
+  </object>
+ </objectgroup>
+</map>
