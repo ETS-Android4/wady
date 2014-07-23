@@ -84,6 +84,7 @@ project(":gwt") {
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
+        compile fileTree (dir: "../core/libs", includes: ['*.jar'])
     }    
 }
 
