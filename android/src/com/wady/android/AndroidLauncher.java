@@ -7,7 +7,7 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
-import com.mpv.game.ApplicationHandler;
+import com.mpv.ApplicationHandler;
 
 public class AndroidLauncher extends AndroidApplication {
 	//private AdView adView;

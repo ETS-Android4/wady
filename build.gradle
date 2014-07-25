@@ -22,13 +22,14 @@ allprojects {
     ext {
         appName = "wady"
         gdxVersion = "1.2.0"
-        roboVMVersion = "0.0.11"
+        roboVMVersion = "0.0.14"
     }
     
     repositories {
         mavenLocal();
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
     }
 }
 
@@ -77,13 +78,15 @@ project(":android") {
 project(":gwt") {
     apply plugin: "gwt"
     apply plugin: "war"
-    webAppDirName = 'webapp'
 
     dependencies {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
+        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion:sources"
+        compile "com.badlogicgames.gdx:gdx-box2d-gwt:$gdxVersion:sources"
+        compile "com.badlogicgames.box2dlights:box2dlights:1.2:sources"
         compile fileTree (dir: "../core/libs", includes: ['*.jar'])
     }    
 }

@@ -3,13 +3,14 @@ package com.mpv.data;
 import aurelienribon.tweenengine.TweenManager;
 import box2dLight.ConeLight;
 import box2dLight.RayHandler;
+
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.physics.box2d.World;
-import com.mpv.game.ApplicationHandler;
+import com.mpv.ApplicationHandler;
 import com.mpv.game.players.Player;
 
 public class GVars {

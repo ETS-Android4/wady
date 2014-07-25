@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
+import com.mpv.ApplicationHandler;
 import com.mpv.data.GVars;
-import com.mpv.game.ApplicationHandler;
 import com.mpv.game.world.GameObject;
 
 public class InputHandler implements InputProcessor {

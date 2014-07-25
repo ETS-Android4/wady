@@ -1,4 +1,4 @@
-package com.mpv.game;
+package com.mpv;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.GdxNativesLoader;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
+import com.mpv.game.IReqHandler;
 import com.mpv.game.world.GameObject;
 import com.mpv.screens.CreditsScreen;
 import com.mpv.screens.GameScreen;
