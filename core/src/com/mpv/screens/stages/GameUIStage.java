@@ -32,7 +32,7 @@ public class GameUIStage extends Stage {
 	public static FailedDialog failedDialog = new FailedDialog("", Assets.skin, "dialog");
 	public static StartDialog startDialog = new StartDialog("", Assets.skin, "dialog");
 	private static GameUIStage instance;
-	public static GameUIStage getInstance(){
+	public static GameUIStage getInstance() {
 		return instance;
 	}
 	
@@ -70,9 +70,9 @@ public class GameUIStage extends Stage {
 		Table buttonPanel = new Table();
 		buttonPanel.setFillParent(true);
 		buttonPanel.debug().bottom();
-		buttonPanel.add(leftJump).size(GVars.scrWidth/6.4f);
+		buttonPanel.add(leftJump).size(GVars.scrWidth/4.8f);
 		buttonPanel.add(empty).width(GVars.scrWidth/3.2f);
-		buttonPanel.add(rightJump).size(GVars.scrWidth/6.4f).row();
+		buttonPanel.add(rightJump).size(GVars.scrWidth/4.8f).row();
 		buttonPanel.add(empty).size(getWidth()/25f);
 		this.addActor(controlPanel);
 		this.addActor(buttonPanel);
