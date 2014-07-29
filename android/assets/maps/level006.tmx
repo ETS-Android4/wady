@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="10" height="300" tilewidth="32" tileheight="32" backgroundcolor="#000000">
+ <properties>
+  <property name="Time" value="120"/>
+ </properties>
+ <tileset firstgid="1" name="terrain" tilewidth="32" tileheight="32">
+  <image source="terrain.png" width="672" height="736"/>
+ </tileset>
+ <tileset firstgid="484" name="bg1" tilewidth="32" tileheight="32">
+  <image source="stone.png" width="320" height="320"/>
+ </tileset>
+ <layer name="background" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJzt0eci1QEAB9D/vUl2QvZKSyI7KyOk93+Hm71Fds57+H04T3AqpaL4wzY77LLHPgcccsQxJ5xyxjkX/OWSK/5xzQ233HHPA4/8pygXRYkyL6jiJdW8ooZa6qingUaaeE0zb2ihlTbe0k4HnXTRTQ+99NHPAIO8Y4j3fOAjn/jMMF8Y4SujjPGNcSaYZIppZpjlO3PMs8AiS/xgmRVWWeMn62ywyS+2+E0lH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+8pGPfOQjH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+nunHE/rLWFk=
+  </data>
+ </layer>
+ <layer name="bg1" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJy1mQuq40gMRds7928Ts4XBs8fBEMHJ8VWVX9NdEF5eIqv015VyLL9+rZ/X+Xkdn9f92fb5e/+/g24HTdFvn1fR8ux4vt6fH3rTHcvz7xro6u7iU7LzUB7z+BPn5vtv4HvBHveh3Yq+aEq2FXps4nvh8116H+K5i1fRrqI7QVc+3AOdfV3+s4z3OcF3B+91eepj3YuveZJH6UQbkL7oTtDZ7qQrGRgn5MlcoIyHeFpGxjf9U3dZB9unaExnPcq/m+5NdjmWZ/z43tKPMbQGOvq43qe4ZdwzXzt/7Prru2lT+nkTT8azbXOIrr5f8d5+O3AXdVgDXX1Gno7VFXRFS56kY7wxvljPGL/M1y4OeLdj3vLx3i43Uw28T+W5+ZvGfilZ6TP2Az5Lnc7lO5b+9CH/dckxVbK7rzKXWTdYV5i/I7u+kfPNs9fynW8HXmew8748Y2hbnvycj1eQpWhncl4vaTbdl2zgz39Cl/zxE37u02Uj80r9173TdTHZsuNnPerZhCOSHrZz58NreerLOtk9Q/ulHpXuJDbd8L7rW4zxJAuxUeVHsi3xhXEv/cTc9n31LPva7D5iNt/H3pxsxxrDPptkslxJppKHLx5iiOrH7l+U3TXcmJ41xvXTx/iEeCTlLeOi5OtsSMzencq36oGjY3s6x1xn7RN+Zpu5FtO29nuqUZtkSrZLsWQ9ON+M6kbZ4XdO6jX3cbyl+mA+xMsdLWtFwkjFi/hspLtnIseedbCdUg8qn/N0uM72c24aJzqukm6c9cuuqe56rux0Ya52x/V35OdjIFPRcG7q8NUlmtF+gLne9aFEl+b4Q98nO3oGSrMx45T9NMWIeaTYX0XXYSP2iJT37Fuuz8n+nOE6Os7iiY47F9s/8WPPHcWHcf6sDoxikvad0Y3qzt84CVfWKdsXXYezjEMY691+gzOMd0r/LN9+5b2pv53i67mmnrGNTZd2GMkfnKcYK0nfUU2r89bfb+fF0Vw6m9OIE7gP62peZ3PSpZpAuv+Wbzt6n5JwXdm/+Ha6rNChTtf/63AXkGipO/dlqccTl2xLX5dcwzrfpb2XaeiPhLfZ20f7F9LN8DMx/H2oZ5ohyC/5j9hvtmNhP5/RudbM9Ono1uWJvROeKn7cMc7u515vhIu4sxzNpKx53cztnpfqY9H5Psc1e4V39qbzTivFP2cSzqaetU7JUzwTr9Eenjm04m7P8ZR9H9xnLJHq/aV7Orxg2U7x924ozfOzvcUsRm178km6+9k3+fcmT7oZJe14Rth4xJ/1e0Tn2HwzN6f64nnA8jFO+Hzav1SszeZn/9YwomUeE18l+6Y5Y/Y7w7p8x+EMK3NflPLctaeLfe6nzI8+Y10e1Q3uG7uaQHxrOu81jLFNl37HSnnBGY5xlHZZnL225ek7xg7rkOPB+0zPfbbzqu9TzKRZP2GAS9+l3CEdZ+WZvUczc9I51T7P1aM9Lvt4h7nTbN3hcu8Gur0ie5zvLD7klfp42oGk/WIX953d6i7a2nl0Bl6dL1hPiCM6n7H3znZDZb9ZTWAOjegYn519qHPqBdwbMr66uKJsHVbzTqqrldYj4WjimK6GU75uB2f5uHPs6FhHu50Y+aSdh31B23Sx4jix37izce01HX1PnimHjWW7upvwf9d/V73cPxhLxCBJD+Z6h3kdA6N+ZNk6rO2a1cWCe0fnY8dBF8/sHfRNNxtty1PXJN9s98ldReoJxBpva5R3I9SR/cx03A2ty3fsJX7EA2Xb7l72+I7XNqChTRhrHR1zbERnHDDiR4zU8aKNOz849zq7uW6+8WvZudPBOKnTdxffGd3Z6FF0xsx1Uq3lzqCOa4/xQJ2ErRO/riY7L1wDyI8nYbVku1RHU9ylPpjoKi5GPZN1edYzOxzbYdhuf8S4TT2Bn7PWdL2D2HjUs8g34UTHInNsNKuOZhniwg4zUe/RjuDNcbzfx3XENa3y/X9h+FVB
+  </data>
+ </layer>
+ <layer name="bg2" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJzt2tENgzAMBUDYHFJWKOwADFlXskUEA/BzJz1FSZ48gYfhHfN4ZY8ckTPvU2SJfDJ97+/MTvWm8Tmveks3o0W+kTXTW7v37fYHAAAAAAAAAAAAAMBT7XLfd79bpva+67/6tQve8qwZP1kqHcI=
+  </data>
+ </layer>
+ <layer name="cover1" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJzty7ENwDAIAEFnc+N4BSfrhoKCMgPcSS8oIK4xdjazyO5q1Zw14+fdbncne7K3/a3aAQAAAAAAAAAAAACg+wDUbA+U
+  </data>
+ </layer>
+ <layer name="cover2" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAOBvLuAAAQ==
+  </data>
+ </layer>
+ <objectgroup name="obstacles" width="10" height="300">
+  <object x="1" y="9537">
+   <polyline points="0,0 318,0"/>
+  </object>
+  <object x="106" y="8" width="75" height="74">
+   <properties>
+    <property name="EXIT" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object x="146" y="9543" width="28" height="27">
+   <properties>
+    <property name="START" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object x="180" y="3">
+   <polyline points="0,0 15,165 141,165 141,-2 0,-2"/>
+  </object>
+  <object x="6" y="7">
+   <polyline points="-6,-5 -6,160 87,160 102,-6 -5,-7"/>
+  </object>
+ </objectgroup>
+</map>
