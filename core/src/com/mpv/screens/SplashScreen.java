@@ -18,6 +18,7 @@ public class SplashScreen implements Screen {
 	private SpriteBatch spriteBatch;
     private Sprite splash;
     private TweenManager tweenManager;
+    Texture texture;
 
 	@Override
 	public void render(float delta) {
@@ -40,7 +41,7 @@ public class SplashScreen implements Screen {
 	public void show() {
 		tweenManager = new TweenManager();
 		Tween.registerAccessor(Sprite.class, new SpriteAccessor());
-		Texture texture = new Texture(Gdx.files.internal("data/splash.jpg"));
+		texture = new Texture(Gdx.files.internal("data/splash.jpg"));
 		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		w = Gdx.graphics.getWidth();
 		h = Gdx.graphics.getHeight();
@@ -64,6 +65,7 @@ public class SplashScreen implements Screen {
 	@Override
 	public void hide() {
 		spriteBatch.dispose();
+		texture.dispose();
 	}
 
 	@Override
@@ -80,8 +82,7 @@ public class SplashScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }

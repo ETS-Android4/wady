@@ -108,7 +108,7 @@ public class LevelStage extends Stage {
 	public void updateButtons() {
 		for (int i=0; i<16; i++) {
 			ImageButton t = (ImageButton)buttonGroup.getButtons().get(i);
-			if (i!=0 && Settings.points[i-1]==0) {
+			if ((i!=0 && Settings.points[i-1]==0) || i > 6) {
 				t.setStyle(Assets.skin.get("default", ImageButtonStyle.class));
 				t.setDisabled(true);
 			}else {

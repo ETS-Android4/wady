@@ -12,6 +12,7 @@ import com.mpv.screens.CreditsScreen;
 import com.mpv.screens.GameScreen;
 import com.mpv.screens.LevelScreen;
 import com.mpv.screens.MenuScreen;
+import com.mpv.screens.SplashScreen;
 
 public class ApplicationHandler extends Game {
 
@@ -53,7 +54,7 @@ public class ApplicationHandler extends Game {
 		//scoresScreen = new ScoresScreen();
 		levelScreen = new LevelScreen();
 
-		this.setScreen(menuScreen);
+		this.setScreen(new SplashScreen());
 	}
 	@Override
 	public void dispose() {		
