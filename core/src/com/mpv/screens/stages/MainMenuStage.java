@@ -19,11 +19,11 @@ public class MainMenuStage extends Stage {
 	private ExitDialog exitDialog;
 
 	public MainMenuStage() {
-		// TODO Auto-generated constructor stub
 		super();
 		float width=this.getWidth()/3.2f;
 		float height=Const.PLAYER_SIZE*GVars.BOX_TO_WORLD/1.63f;
-		float yPos=this.getWidth()*1.28f;
+		float yPos1=this.getHeight() - this.getHeight()*0.25f;
+		float yPos2=yPos1 + this.getHeight()*0.125f;
 
 		Image image = new Image(Assets.skin.getDrawable("menu-screen"));
 		image.setSize(getWidth(), getWidth()/image.getWidth()*image.getHeight());
@@ -51,12 +51,12 @@ public class MainMenuStage extends Stage {
 		bCredits.setSize(width, height);
 		bExit.setSize(width, height);
 		
-		bNewGame.setPosition(getWidth()*(-0.01f), yPos);
+		bNewGame.setPosition(getWidth()*(-0.01f), yPos1);
 		//bHighScores.setPosition(getWidth()*0.22f, yPos);
-		bCredits.setPosition(getWidth()*0.35f, yPos);
-		bExit.setPosition(getWidth()*0.75f, yPos);
-		bSound.setPosition(getWidth()*0.51f, getWidth()*1.5f);
-		bMusic.setPosition(getWidth()*0.39f, getWidth()*1.5f);
+		bCredits.setPosition(getWidth()*0.35f, yPos1);
+		bExit.setPosition(getWidth()*0.75f, yPos1);
+		bSound.setPosition(getWidth()*0.51f, yPos2);
+		bMusic.setPosition(getWidth()*0.39f, yPos2);
 		
 		this.addActor(bNewGame);
 		//this.addActor(bHighScores);
