@@ -26,8 +26,8 @@ public class ScoresScreen implements Screen {
 
 	private Stage stage;
 	private Label label1;
-	public Dialog nameDialog;
-	public static List<String> list = new List<String>(Assets.skin);
+	private Dialog nameDialog;
+	private static List<String> list = new List<String>(Assets.skin);
 	
 	public ScoresScreen() {
 		float buttonSize=Const.BLOCK_SIZE*GVars.BOX_TO_WORLD*1.6f;

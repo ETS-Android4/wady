@@ -19,7 +19,6 @@ public class ApplicationHandler extends Game {
 	public MenuScreen menuScreen;
 	public GameScreen gameScreen;
 	public GameObject gameObject;
-	//public ScoresScreen scoresScreen;
 	public LevelScreen levelScreen;
 	public CreditsScreen creditsScreen;
 	public static IReqHandler ExternalHandler;
@@ -28,9 +27,8 @@ public class ApplicationHandler extends Game {
 		ApplicationHandler.ExternalHandler = irh;
 	}
 	
-	public ApplicationHandler() {
-		
-	}
+	public ApplicationHandler() {	}
+
 	@Override
 	public void create() {
 		//Loading native libraries
@@ -51,7 +49,7 @@ public class ApplicationHandler extends Game {
 		gameObject = GameObject.getInstance();		
 		gameScreen = new GameScreen();
 		menuScreen = new MenuScreen();
-		//scoresScreen = new ScoresScreen();
+		creditsScreen = new CreditsScreen();
 		levelScreen = new LevelScreen();
 
 		this.setScreen(new SplashScreen());
@@ -67,22 +65,18 @@ public class ApplicationHandler extends Game {
 	}
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 		super.pause();
 	}
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 		super.resume();
 	}
 	@Override
 	public void render() {
-		// TODO Auto-generated method stub
 		super.render();
 	}
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
 		super.resize(width, height);
 	}
 }

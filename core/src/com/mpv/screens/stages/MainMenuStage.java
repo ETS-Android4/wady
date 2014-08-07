@@ -87,19 +87,12 @@ public class MainMenuStage extends Stage {
 				GVars.app.setScreen(GVars.app.levelScreen);				
 			}
 		});
-		/*
-		bHighScores.addListener(new ClickListener() {
-			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
-				//super.touchDown(event, x, y, pointer, button);
-				Assets.playSnd(Assets.buttonSnd);
-				GVars.app.setScreen(GVars.app.scoresScreen);
-			}
-		});*/
+
 		bCredits.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				//super.touchDown(event, x, y, pointer, button);
 				Assets.playSnd(Assets.buttonSnd);
-				//GVars.app.setScreen(GVars.app.creditsScreen);
+				GVars.app.setScreen(GVars.app.creditsScreen);
 			}
 		});
 		bExit.addListener(new ClickListener() {
