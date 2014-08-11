@@ -54,15 +54,14 @@ public class GameObject {
 		//Time limit
 		mapLimit = Integer.parseInt((String)Assets.map.getProperties().get("Time"));
 		//Light
-		if (GVars.rayHandler!=null) {
-			GVars.rayHandler.dispose();
-		}
-		GVars.rayHandler = new RayHandler(GVars.world);
-		GVars.sceneryLight = new ConeLight(GVars.rayHandler, 24, new Color(0.5f, 0.5f, 0.5f, 1f), Const.widthInMeters/3.2f, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 0f, 180f);
-		GVars.sceneryLight.attachToBody(Player.getInstance().body, 0f, 0f);
-		GVars.playerLight = new ConeLight(GVars.rayHandler, 24, new Color(1,1,1,1), Const.widthInMeters, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 90f, 30f);
-		GVars.playerLight.setSoft(false);
+		if (GVars.rayHandler!=null) GVars.rayHandler.dispose();
 		
+		GVars.rayHandler = new RayHandler(GVars.world);
+		GVars.sceneryLight = new ConeLight(GVars.rayHandler, 24, new Color(0.72f, 0.72f, 0.0f, 1f), Const.widthInMeters/3.2f, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 0f, 180f);
+		GVars.sceneryLight.attachToBody(Player.getInstance().body, 0f, 0f);
+		GVars.playerLight = new ConeLight(GVars.rayHandler, 24, new Color(0.72f, 0.72f, 0.72f, 1f), Const.widthInMeters, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 90f, 30f);
+		GVars.playerLight.setSoft(true);
+		GVars.playerLight.setStaticLight(true);
 	}
 	
 	public void gameStart() {

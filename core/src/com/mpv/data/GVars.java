@@ -37,7 +37,6 @@ public class GVars {
 	public static SpriteBatch spriteBatch = new SpriteBatch();
 	private static Matrix4 camLight;
 	
-	
 	public static void resize(float width, float height) {
 		scrWidth = width;
 		scrHeight = height;
