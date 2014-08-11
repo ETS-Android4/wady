@@ -9,9 +9,12 @@
  <tileset firstgid="484" name="bg1" tilewidth="32" tileheight="32">
   <image source="stone.png" width="320" height="320"/>
  </tileset>
+ <tileset firstgid="584" name="gb2" tilewidth="32" tileheight="32">
+  <image source="bricks.png" width="256" height="256"/>
+ </tileset>
  <layer name="background" width="10" height="300">
   <data encoding="base64" compression="zlib">
-   eJzt0eci1QEAB9D/vUl2QvZKSyI7KyOk93+Hm71Fds57+H04T3AqpaL4wzY77LLHPgcccsQxJ5xyxjkX/OWSK/5xzQ233HHPA4/8pygXRYkyL6jiJdW8ooZa6qingUaaeE0zb2ihlTbe0k4HnXTRTQ+99NHPAIO8Y4j3fOAjn/jMMF8Y4SujjPGNcSaYZIppZpjlO3PMs8AiS/xgmRVWWeMn62ywyS+2+E0lH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+8pGPfOQjH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+nunHE/rLWFk=
+   eJzt0LdSQlEAANE3fN0DAyAiEgUVUHI2ARLlt90CZ25vu8Wptts4EUVJpHCBS1zhGmnE555BFjfI4RZ53KEQ9HsUUUIZFVRRw0PQ62jgEU94RhMttIP+gld00EUPfQwwDPoIY0wwxQxzLPAW9Hd84BNfWGKFNb6DvsEWO+xxwBE/OAX974///Oc///nPf/7zn//85z//+c9//vOf//znP//5z3/+85///Oc///nPf/7zn//85z//+c9//vOf//znP//573//fgGoossJ
   </data>
  </layer>
  <layer name="bg1" width="10" height="300">
