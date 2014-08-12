@@ -61,7 +61,7 @@ public class GameObject {
 		GVars.sceneryLight.attachToBody(Player.getInstance().body, 0f, 0f);
 		GVars.playerLight = new ConeLight(GVars.rayHandler, 24, new Color(0.72f, 0.72f, 0.72f, 1f), Const.widthInMeters, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 90f, 30f);
 		GVars.playerLight.setSoft(true);
-		GVars.playerLight.setStaticLight(true);
+		//GVars.playerLight.setStaticLight(true);
 	}
 	
 	public void gameStart() {
