@@ -2,7 +2,6 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -85,6 +84,7 @@ public class GameScreen implements Screen {
 	GVars.otmRendered.renderTileLayer((TiledMapTileLayer) Assets.map.getLayers().get("background"));
 	batch.end();
 	GVars.otmRendered.setView(GVars.frCam);
+	GVars.rayHandler.updateAndRender();
 	batch.begin();
 	GVars.otmRendered.renderTileLayer((TiledMapTileLayer) Assets.map.getLayers().get("bg1"));
 	GVars.otmRendered.renderTileLayer((TiledMapTileLayer) Assets.map.getLayers().get("bg2"));
@@ -93,7 +93,7 @@ public class GameScreen implements Screen {
 	batch.end();
 	// Lights
 	// if (Player.state != Player.S_INVISIBLE)
-	GVars.rayHandler.updateAndRender();
+
 	// Terrain
 	// Player
 	gameStage.draw();

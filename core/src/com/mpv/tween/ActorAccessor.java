@@ -1,9 +1,8 @@
 package com.mpv.tween;
 
+import aurelienribon.tweenengine.TweenAccessor;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mpv.screens.dialogs.FinishDialog;
-
-import aurelienribon.tweenengine.TweenAccessor;
 
 public class ActorAccessor implements TweenAccessor<Actor> {
 	

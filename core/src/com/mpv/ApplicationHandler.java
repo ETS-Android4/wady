@@ -8,11 +8,7 @@ import com.mpv.data.GVars;
 import com.mpv.data.Settings;
 import com.mpv.game.IReqHandler;
 import com.mpv.game.world.GameObject;
-import com.mpv.screens.CreditsScreen;
-import com.mpv.screens.GameScreen;
-import com.mpv.screens.LevelScreen;
-import com.mpv.screens.MenuScreen;
-import com.mpv.screens.SplashScreen;
+import com.mpv.screens.*;
 
 public class ApplicationHandler extends Game {
 

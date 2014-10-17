@@ -1,12 +1,8 @@
 package com.mpv.data;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-
 import com.badlogic.gdx.Gdx;
+
+import java.io.*;
 
 public class Settings {
 	 public static boolean soundEnabled = true;
