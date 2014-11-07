@@ -25,8 +25,8 @@ public class Assets {
     public static TiledMap map;
     public static int mapPixelWidth, mapPixelHeight, mapScaledWidth, mapScaledHeight;
     public static float mapUnitScale;
-    // Textures & regions
-    private static TextureAtlas textureAtlas;
+    // Animation
+    private static TextureAtlas animationAtlas;
     public static Animation animation;
     // Shaders
     // public static ShaderProgram shader;
@@ -40,8 +40,8 @@ public class Assets {
 	disposeMap();
 	// shader.dispose();
 	// shader = null;
-	textureAtlas.dispose();
-	textureAtlas = null;
+	animationAtlas.dispose();
+	animationAtlas = null;
 	animation = null;
 	hitEffect.dispose();
     }
@@ -112,7 +112,7 @@ public class Assets {
     public static void loadMap(int page, int index) {
 	// Tiled maps
 	disposeMap();
-	map = new TmxMapLoader().load("maps/level" + String.format("%d%02d", page, index) + ".tmx");
+	map = new TmxMapLoader().load("maps/templ" + String.format("%d%02d", page, index) + ".tmx");
 
 	MapProperties prop = Assets.map.getProperties();
 
@@ -141,8 +141,8 @@ public class Assets {
     }
 
     private static void loadAnimation() {
-	textureAtlas = new TextureAtlas(Gdx.files.internal("data/animation.atlas"));
-	animation = new Animation(Const.ANIMATION_SPEED, textureAtlas.getRegions());
+	animationAtlas = new TextureAtlas(Gdx.files.internal("data/animation.atlas"));
+	animation = new Animation(Const.ANIMATION_SPEED, animationAtlas.getRegions());
     }
 
     public static void pauseMusic() {

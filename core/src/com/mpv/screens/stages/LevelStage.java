@@ -4,8 +4,13 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
@@ -76,10 +81,8 @@ public class LevelStage extends Stage {
 	    public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 		// super.touchDown(event, x, y, pointer, button);
 		Assets.playSnd(Assets.buttonSnd);
-		if (tmpIndex != GameObject.mapIndex) {
-		    GameObject.mapIndex = tmpIndex;
-		    Assets.loadMap(0, GameObject.mapIndex);
-		}
+		GameObject.mapIndex = tmpIndex;
+		Assets.loadMap(0, GameObject.mapIndex);
 		GVars.app.setScreen(GVars.app.gameScreen);
 	    }
 	});

@@ -1,11 +1,22 @@
 package com.mpv.game.world;
 
+import java.util.Random;
+
 import box2dLight.ConeLight;
 import box2dLight.RayHandler;
+
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.badlogic.gdx.physics.box2d.EdgeShape;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.World;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
@@ -45,7 +56,8 @@ public class GameObject {
 	GVars.world = new World(new Vector2(0, -9.8f), true);
 	GVars.world.setContactListener(new ContactHandler());
 	setWorldBounds();
-	MapBodyBuilder.buildShapes(Assets.map, 32f, GVars.world);
+	generateMap();
+	// MapBodyBuilder.buildShapes(Assets.map, 32f, GVars.world);
 	Player.getInstance().createBody();
 	// Time limit
 	mapLimit = Integer.parseInt((String) Assets.map.getProperties().get("Time"));
@@ -60,7 +72,35 @@ public class GameObject {
 	GVars.playerLight = new ConeLight(GVars.rayHandler, 24, new Color(0.72f, 0.72f, 0.72f, 1f),
 		Const.VIEWPORT_METERS, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 90f, 30f);
 	GVars.playerLight.setSoft(true);
+
 	// GVars.playerLight.setStaticLight(true);
+    }
+
+    private void generateMap() {
+	TiledMapTileLayer tileLayer = (TiledMapTileLayer) Assets.map.getLayers().get("obtacles");
+	Cell cell = new Cell();
+	TiledMapTile tile = Assets.map.getTileSets().getTileSet("obtacles").iterator().next();
+	cell.setTile(tile);
+	Random random = new Random();
+	for (int y = 0; y < tileLayer.getHeight(); y = y + 3) {
+	    if (random.nextBoolean()) {
+		continue;
+	    }
+	    PolygonShape shape;
+	    for (int x = 0; x < tileLayer.getWidth(); x++) {
+		if (random.nextBoolean()) {
+		    tileLayer.setCell(x, y, cell);
+		    shape = new PolygonShape();
+		    shape.setAsBox(0.5f, 0.5f);
+		    BodyDef bd = new BodyDef();
+		    bd.type = BodyType.StaticBody;
+		    Body body = GVars.world.createBody(bd);
+		    body.createFixture(shape, 1);
+		    body.setTransform(x + 0.5f, y + 0.5f, 0f);
+		    body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
+		}
+	    }
+	}
     }
 
     public void gameStart() {
@@ -88,7 +128,6 @@ public class GameObject {
 	state = FINISH;
 	Player.state = Player.S_INVISIBLE;
 	Settings.points[mapIndex] = GameTimer.getInstance().getLeftSec() * 10;
-
 	GameUIStage.getInstance().gameFinish();
     }
 

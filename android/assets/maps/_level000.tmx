@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="10" height="300" tilewidth="32" tileheight="32" backgroundcolor="#000000">
+ <properties>
+  <property name="Time" value="120"/>
+ </properties>
+ <tileset firstgid="1" name="terrain" tilewidth="32" tileheight="32">
+  <image source="terrain.png" width="672" height="736"/>
+ </tileset>
+ <tileset firstgid="484" name="bg1" tilewidth="32" tileheight="32">
+  <image source="stone.png" width="320" height="320"/>
+ </tileset>
+ <layer name="background" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJzt0eci1QEAB9D/vUl2QvZKSyI7KyOk93+Hm71Fds57+H04T3AqpaL4wzY77LLHPgcccsQxJ5xyxjkX/OWSK/5xzQ233HHPA4/8pygXRYkyL6jiJdW8ooZa6qingUaaeE0zb2ihlTbe0k4HnXTRTQ+99NHPAIO8Y4j3fOAjn/jMMF8Y4SujjPGNcSaYZIppZpjlO3PMs8AiS/xgmRVWWeMn62ywyS+2+E0lH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+8pGPfOQjH/nIRz7ykY985CMf+chHPvKRj3zkIx/5yEc+nunHE/rLWFk=
+  </data>
+ </layer>
+ <layer name="bg1" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJzt2n0KhCAQh2E7VPcr1ytUd6gOuRPMsIP7V/SByvvAjygHKUolMIR7jd0vq2ST7Ho+SJLko/F1h11rrG7o/vuzuuT6iJJJMmu82V1fsrYW9S6oQ0nvrKR7AQDgihbXtBafCahBHxh/AIDn5esNaw5wD8YVAJzDnAkAQH347wHwNuYdlIbvsRy25zvfIx41tj/c2q3e9oxHPVofX/vRJnQ=
+  </data>
+ </layer>
+ <layer name="bg2" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAOBvLuAAAQ==
+  </data>
+ </layer>
+ <layer name="cover1" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJzty7ENwDAIAEFnc+N4BSfrhoKCMgPcSS8oIK4xdjazyO5q1Zw14+fdbncne7K3/a3aAQAAAAAAAAAAAACg+wDUbA+U
+  </data>
+ </layer>
+ <layer name="cover2" width="10" height="300">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAOBvLuAAAQ==
+  </data>
+ </layer>
+ <objectgroup name="obstacles" width="10" height="300">
+  <object x="1" y="9537">
+   <polyline points="0,0 318,0"/>
+  </object>
+  <object x="106" y="8" width="75" height="74">
+   <properties>
+    <property name="EXIT" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object x="146" y="9543" width="28" height="27">
+   <properties>
+    <property name="START" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object x="180" y="3">
+   <polyline points="0,0 15,165 141,165 141,-2 0,-2"/>
+  </object>
+  <object x="6" y="7">
+   <polyline points="-6,-5 -6,160 87,160 102,-6 -5,-7"/>
+  </object>
+  <object x="33" y="9226">
+   <polyline points="0,0 94,1"/>
+  </object>
+  <object x="193" y="8683">
+   <polyline points="0,0 126,-2"/>
+  </object>
+  <object x="-1" y="7784">
+   <polyline points="0,0 128,1"/>
+  </object>
+  <object x="130" y="6185">
+   <polyline points="0,0 93,0"/>
+  </object>
+  <object x="0" y="5129">
+   <polyline points="0,0 128,0"/>
+  </object>
+  <object x="162" y="4425">
+   <polyline points="0,0 158,-1"/>
+  </object>
+  <object x="97" y="3115">
+   <polyline points="0,0 127,-1"/>
+  </object>
+  <object x="2" y="2408">
+   <polyline points="0,0 95,1"/>
+  </object>
+  <object x="224" y="2218">
+   <polyline points="0,0 97,-2"/>
+  </object>
+  <object x="2" y="840">
+   <polyline points="0,0 97,0"/>
+  </object>
+  <object x="161" y="717">
+   <polyline points="0,0 95,-4"/>
+  </object>
+  <object x="192" y="362">
+   <polyline points="0,0 97,-1"/>
+  </object>
+ </objectgroup>
+</map>

@@ -67,7 +67,7 @@ public class GVars {
 	    world.dispose();
 	if (rayHandler != null)
 	    rayHandler.dispose();
-	world = null;
+	 world = null;
 	frCam = null;
 	bgCam = null;
 	tweenManager = null;
@@ -82,8 +82,8 @@ public class GVars {
 		Math.min(Math.max(MathUtils.round(activePlayer.getY()), (int) scrHeight / 2), Assets.mapScaledHeight
 			- (int) scrHeight / 2), 0);
 	// Background camera
-	bgCam.position.set(MathUtils.round(frCam.position.x / 1.6f + scrWidth / 4),
-		MathUtils.round(frCam.position.y / 1.6f + scrHeight / 4), 0);
+	bgCam.position.set(MathUtils.round(frCam.position.x / 2f + scrWidth / 4),
+		MathUtils.round(frCam.position.y / 2f + scrHeight / 4), 0);
 	frCam.update();
 	bgCam.update();
 	camLight = new Matrix4(frCam.combined);

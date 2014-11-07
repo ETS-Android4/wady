@@ -2,6 +2,7 @@ package com.mpv.screens;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -81,15 +82,14 @@ public class GameScreen implements Screen {
 	GVars.otmRendered.setView(GVars.bgCam);
 	batch.begin();
 	// if (Player.state != Player.S_INVISIBLE)
-	GVars.otmRendered.renderTileLayer((TiledMapTileLayer) Assets.map.getLayers().get("background"));
+	// GVars.otmRendered.renderTileLayer((TiledMapTileLayer)
+	// Assets.map.getLayers().get("background"));
+	Assets.skin.getTiledDrawable("bricks").draw(batch, 0, 0, Assets.mapScaledWidth, Assets.mapScaledHeight);
 	batch.end();
 	GVars.otmRendered.setView(GVars.frCam);
 	GVars.rayHandler.updateAndRender();
 	batch.begin();
-	GVars.otmRendered.renderTileLayer((TiledMapTileLayer) Assets.map.getLayers().get("bg1"));
-	GVars.otmRendered.renderTileLayer((TiledMapTileLayer) Assets.map.getLayers().get("bg2"));
-	GVars.otmRendered.renderTileLayer((TiledMapTileLayer) Assets.map.getLayers().get("cover1"));
-	GVars.otmRendered.renderTileLayer((TiledMapTileLayer) Assets.map.getLayers().get("cover2"));
+	GVars.otmRendered.renderTileLayer((TiledMapTileLayer) Assets.map.getLayers().get("obtacles"));
 	batch.end();
 	// Lights
 	// if (Player.state != Player.S_INVISIBLE)
