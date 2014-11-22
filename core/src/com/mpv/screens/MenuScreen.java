@@ -8,7 +8,6 @@ import com.mpv.screens.stages.MainMenuStage;
 
 public class MenuScreen implements Screen {
 
-
 	private MainMenuStage mainMenuStage;	
 	
 	public MenuScreen() {
@@ -18,7 +17,6 @@ public class MenuScreen implements Screen {
 	public void resize (int width, int height) {
 		mainMenuStage.getViewport().setWorldSize(width, height);
 	}
-
 
 	public void dispose() {
 		mainMenuStage.dispose();
@@ -53,5 +51,4 @@ public class MenuScreen implements Screen {
 	public void resume() {
 		// TODO Auto-generated method stub
 	}
-
 }
