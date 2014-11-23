@@ -125,7 +125,7 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void hide() {
-		// Dialog.fadeDuration = 0.4f;
+
 	}
 
 	@Override

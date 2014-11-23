@@ -10,6 +10,21 @@
     <property name="obtacle" value="1"/>
    </properties>
   </tile>
+  <tile id="3">
+   <properties>
+    <property name="key" value="0"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="exit" value=""/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="start" value=""/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="obtacles" width="50" height="50">
   <data encoding="base64" compression="zlib">

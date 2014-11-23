@@ -29,7 +29,7 @@ public class GameObject {
 	private float mapLimit;
 	public static int mapIndex = -1;
 	private static GameObject instance;
-	public static Body start, exit;
+	public static Body start, exit, key;
 
 	public static GameObject getInstance() {
 		if (instance == null) {
@@ -50,20 +50,17 @@ public class GameObject {
 		// MapBodyBuilder.buildShapes(Assets.map, 32f, GVars.world);
 		Player.getInstance().createBody();
 		// Time limit
-		mapLimit = Integer.parseInt((String) Assets.map.getProperties().get(
-				"Time"));
+		mapLimit = Integer.parseInt((String) Assets.map.getProperties().get("Time"));
 		// Light
 		if (GVars.rayHandler != null)
 			GVars.rayHandler.dispose();
 
 		GVars.rayHandler = new RayHandler(GVars.world);
-		GVars.sceneryLight = new ConeLight(GVars.rayHandler, 24, new Color(
-				0.72f, 0.72f, 0.0f, 1f), Const.VIEWPORT_METERS / 3.2f,
-				Const.BLOCK_SIZE, Const.BLOCK_SIZE, 0f, 180f);
+		GVars.sceneryLight = new ConeLight(GVars.rayHandler, 24, new Color(0.72f, 0.72f, 0.0f, 1f),
+				Const.VIEWPORT_METERS / 3.2f, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 0f, 180f);
 		GVars.sceneryLight.attachToBody(Player.getInstance().body, 0f, 0f);
-		GVars.playerLight = new ConeLight(GVars.rayHandler, 24, new Color(
-				0.72f, 0.72f, 0.72f, 1f), Const.VIEWPORT_METERS,
-				Const.BLOCK_SIZE, Const.BLOCK_SIZE, 90f, 30f);
+		GVars.playerLight = new ConeLight(GVars.rayHandler, 24, new Color(0.72f, 0.72f, 0.72f, 1f),
+				Const.VIEWPORT_METERS, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 90f, 30f);
 		GVars.playerLight.setSoft(true);
 		// GVars.playerLight.setStaticLight(true);
 	}
@@ -83,6 +80,7 @@ public class GameObject {
 
 	public void gameResume() {
 		if (state != PAUSE) {
+			loadWorld();
 			gameStart();
 		} else {
 			state = ACTIVE;
@@ -117,16 +115,27 @@ public class GameObject {
 	public void worldStep(float delta) {
 		// Should be improved on heavy applications (< 60 FPS)
 		if (delta >= (Const.BOX_STEP / 3)) {
-			GVars.world.step(delta, Const.BOX_VELOCITY_ITERATIONS,
-					Const.BOX_POSITION_ITERATIONS);
+			GVars.world.step(delta, Const.BOX_VELOCITY_ITERATIONS, Const.BOX_POSITION_ITERATIONS);
 			accumulator = 0;
 		} else {
 			accumulator += delta;
 			if (accumulator >= Const.BOX_STEP) {
-				GVars.world.step(accumulator, Const.BOX_VELOCITY_ITERATIONS,
-						Const.BOX_POSITION_ITERATIONS);
+				GVars.world.step(accumulator, Const.BOX_VELOCITY_ITERATIONS, Const.BOX_POSITION_ITERATIONS);
 				accumulator = 0;
 			}
+		}
+	}
+
+	public static void captureKey() {
+		MapManager.removeKey();
+		key.setUserData(null);
+		Assets.playSnd(Assets.dingSnd);
+	}
+
+	public void clearBodies() {
+		if (null != key && null == key.getUserData()) {
+			GVars.world.destroyBody(key);
+			key = null;
 		}
 	}
 }
