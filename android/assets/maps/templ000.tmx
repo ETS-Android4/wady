@@ -7,7 +7,7 @@
   <image source="obtacles.png" width="256" height="256"/>
   <tile id="0">
    <properties>
-    <property name="obtacle" value="1"/>
+    <property name="brick" value=""/>
    </properties>
   </tile>
   <tile id="3">

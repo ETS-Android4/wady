@@ -20,9 +20,18 @@ import com.mpv.data.GVars;
 
 public class MapManager {
 
-	private static int keyX, keyY;
+	private static MapManager instance;
 
-	private static TiledMapTile getTile(String tilename) {
+	public static MapManager getInstance() {
+		if (instance == null) {
+			instance = new MapManager();
+		}
+		return instance;
+	}
+
+	private Position start, exit, key;
+
+	private TiledMapTile getTile(String tilename) {
 		TiledMapTileSet tileSet = Assets.map.getTileSets().getTileSet("obtacles");
 		for (TiledMapTile tile : tileSet) {
 			if (tile.getProperties().containsKey(tilename)) {
@@ -32,64 +41,82 @@ public class MapManager {
 		return tileSet.getTile(0);
 	}
 
-	public static void removeKey() {
-		TiledMapTileLayer tileLayer = (TiledMapTileLayer) Assets.map.getLayers().get("obtacles");
-		tileLayer.setCell(keyX, keyY, null);
+	private TiledMapTileLayer getLayer(String layerName) {
+		return (TiledMapTileLayer) Assets.map.getLayers().get("obtacles");
 	}
 
-	private static void setExit(int x, int y) {
-		TiledMapTileLayer tileLayer = (TiledMapTileLayer) Assets.map.getLayers().get("obtacles");
+	public void removeKey() {
+		getLayer("obtacles").setCell((int) key.x, (int) key.y, null);
+	}
+
+	private void setExit() {
 		Cell cell = new Cell();
 		cell.setTile(getTile("exit"));
-		tileLayer.setCell(x, y, cell);
+		exit = setRandomEmptyCell(cell);
 		CircleShape circleShape = new CircleShape();
 		circleShape.setRadius(0.5f);
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.StaticBody;
 		Body body = GVars.world.createBody(bd);
 		body.createFixture(circleShape, 1);
-		body.setTransform(x + 0.5f, y + 0.5f, 0f);
+		body.setTransform(exit.x + 0.5f, exit.y + 0.5f, 0f);
 		body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
 		GameObject.exit = body;
 	}
 
-	private static void setStart(int x, int y) {
-		TiledMapTileLayer tileLayer = (TiledMapTileLayer) Assets.map.getLayers().get("obtacles");
+	private void setStart() {
 		Cell cell = new Cell();
 		cell.setTile(getTile("start"));
-		tileLayer.setCell(x, y, cell);
+		start = setRandomEmptyCell(cell);
 		CircleShape circleShape = new CircleShape();
 		circleShape.setRadius(0.5f);
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.StaticBody;
 		Body body = GVars.world.createBody(bd);
 		body.createFixture(circleShape, 1);
-		body.setTransform(x + 0.5f, y + 0.5f, 0f);
+		body.setTransform(start.x + 0.5f, start.y + 0.5f, 0f);
 		body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
 		body.setActive(false);
 		GameObject.start = body;
 	}
 
-	private static void setKey(int x, int y) {
-		TiledMapTileLayer tileLayer = (TiledMapTileLayer) Assets.map.getLayers().get("obtacles");
+	/*
+	 * private Position setRandomEmptyCell(Cell cell, Position... positions) { TiledMapTileLayer tileLayer =
+	 * getLayer("obtacles"); return new Position(0, 0); }
+	 */
+
+	private Position setRandomEmptyCell(Cell cell) {
+		TiledMapTileLayer tileLayer = getLayer("obtacles");
+		Random random = new Random();
+		int x, y;
+		x = random.nextInt(tileLayer.getWidth());
+		y = random.nextInt(tileLayer.getHeight());
+		for (int i = 0; i < 1000; i++) {
+			if (null == tileLayer.getCell(x, y)) {
+				tileLayer.setCell(x, y, cell);
+				break;
+			}
+		}
+		return new Position(x, y);
+	}
+
+	private void setKey() {
 		Cell cell = new Cell();
 		cell.setTile(getTile("key"));
-		keyX = x;
-		keyY = y;
-		tileLayer.setCell(x, y, cell);
+		key = setRandomEmptyCell(cell);
 		CircleShape circleShape = new CircleShape();
 		circleShape.setRadius(0.5f);
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.StaticBody;
 		Body body = GVars.world.createBody(bd);
 		body.createFixture(circleShape, 0f);
-		body.setTransform(x + 0.5f, y + 0.5f, 0f);
+		body.setTransform(key.x + 0.5f, key.y + 0.5f, 0f);
 		body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
 		GameObject.key = body;
 		body.setUserData(cell);
 	}
 
-	private static void clearLayer(TiledMapTileLayer layer) {
+	private void clearLayer(TiledMapTileLayer layer) {
 		for (int y = 0; y < layer.getHeight(); y++) {
 			for (int x = 0; x < layer.getWidth(); x++) {
 				layer.setCell(x, y, null);
@@ -97,13 +124,12 @@ public class MapManager {
 		}
 	}
 
-	public static void Generate() {
+	public void Generate() {
 		setWorldBounds();
-		TiledMapTileLayer tileLayer = (TiledMapTileLayer) Assets.map.getLayers().get("obtacles");
+		TiledMapTileLayer tileLayer = getLayer("obtacles");
 		clearLayer(tileLayer);
 		Cell cell = new Cell();
-		TiledMapTile tile = Assets.map.getTileSets().getTileSet("obtacles").iterator().next();
-		cell.setTile(tile);
+		cell.setTile(getTile("brick"));
 		Random random = new Random();
 		for (int y = 0; y < tileLayer.getHeight(); y = y + 3) {
 			if (random.nextBoolean()) {
@@ -124,13 +150,12 @@ public class MapManager {
 				}
 			}
 		}
-		setStart(0, 0);
-		setExit(1, 1);
-		setKey(tileLayer.getWidth() / 2, tileLayer.getHeight() / 2);
+		setStart();
+		setKey();
+		setExit();
 	}
 
-	private static void setWorldBounds() {
-
+	private void setWorldBounds() {
 		Vector2 lowerLeftCorner = new Vector2(Const.startpointX, Const.startpointY);
 		Vector2 lowerRightCorner = new Vector2(GVars.widthInMeters - Const.startpointX, Const.startpointY);
 		Vector2 upperLeftCorner = new Vector2(Const.startpointX, GVars.heightInMeters - Const.startpointY);

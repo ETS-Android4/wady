@@ -46,7 +46,7 @@ public class GameObject {
 
 		GVars.world = new World(new Vector2(0, -9.8f), true);
 		GVars.world.setContactListener(new ContactHandler());
-		MapManager.Generate();
+		MapManager.getInstance().Generate();
 		// MapBodyBuilder.buildShapes(Assets.map, 32f, GVars.world);
 		Player.getInstance().createBody();
 		// Time limit
@@ -127,7 +127,7 @@ public class GameObject {
 	}
 
 	public static void captureKey() {
-		MapManager.removeKey();
+		MapManager.getInstance().removeKey();
 		key.setUserData(null);
 		Assets.playSnd(Assets.dingSnd);
 	}
