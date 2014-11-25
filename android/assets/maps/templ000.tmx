@@ -25,8 +25,18 @@
     <property name="start" value=""/>
    </properties>
   </tile>
+  <tile id="24">
+   <properties>
+    <property name="coin" value=""/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="obtacles" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+  </data>
+ </layer>
+ <layer name="items" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
   </data>

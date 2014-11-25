@@ -1,5 +1,7 @@
 package com.mpv.game.world;
 
+import java.util.HashSet;
+
 import box2dLight.ConeLight;
 import box2dLight.RayHandler;
 
@@ -30,6 +32,7 @@ public class GameObject {
 	public static int mapIndex = -1;
 	private static GameObject instance;
 	public static Body start, exit, key;
+	private static HashSet<Body> bodyTrash = new HashSet<Body>();
 
 	public static GameObject getInstance() {
 		if (instance == null) {
@@ -46,7 +49,7 @@ public class GameObject {
 
 		GVars.world = new World(new Vector2(0, -9.8f), true);
 		GVars.world.setContactListener(new ContactHandler());
-		MapManager.getInstance().Generate();
+		MapManager.getInst().Generate();
 		// MapBodyBuilder.buildShapes(Assets.map, 32f, GVars.world);
 		Player.getInstance().createBody();
 		// Time limit
@@ -127,15 +130,22 @@ public class GameObject {
 	}
 
 	public static void captureKey() {
-		MapManager.getInstance().removeKey();
-		key.setUserData(null);
+		MapManager.getInst().removeKey();
+		bodyTrash.add(key);
 		Assets.playSnd(Assets.dingSnd);
 	}
 
 	public void clearBodies() {
-		if (null != key && null == key.getUserData()) {
-			GVars.world.destroyBody(key);
-			key = null;
+		for (Body body : bodyTrash) {
+			GVars.world.destroyBody(body);
+			body = null;
 		}
+		bodyTrash.clear();
+	}
+
+	public static void collectCoin(Body body) {
+		MapManager.getInst().removeItem((Position) body.getUserData());
+		bodyTrash.add(body);
+		Assets.playSnd(Assets.dingSnd);
 	}
 }

@@ -9,7 +9,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -21,6 +20,7 @@ import com.mpv.control.InputHandler;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
 import com.mpv.game.players.Player;
+import com.mpv.game.world.MapManager;
 import com.mpv.screens.stages.GameUIStage;
 import com.mpv.tween.ActorAccessor;
 
@@ -80,9 +80,13 @@ public class GameScreen implements Screen {
 		Assets.skin.getTiledDrawable("bricks").draw(batch, 0, 0, Assets.mapScaledWidth, Assets.mapScaledHeight);
 		batch.end();
 		GVars.otmRendered.setView(GVars.frCam);
+
+		batch.begin();
+		GVars.otmRendered.renderTileLayer(MapManager.getInst().getLayerObtacles());
+		batch.end();
 		GVars.rayHandler.updateAndRender();
 		batch.begin();
-		GVars.otmRendered.renderTileLayer((TiledMapTileLayer) Assets.map.getLayers().get("obtacles"));
+		GVars.otmRendered.renderTileLayer(MapManager.getInst().getLayerItems());
 		batch.end();
 		// Player
 		gameStage.draw();

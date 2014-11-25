@@ -22,7 +22,7 @@ public class MapManager {
 
 	private static MapManager instance;
 
-	public static MapManager getInstance() {
+	public static MapManager getInst() {
 		if (instance == null) {
 			instance = new MapManager();
 		}
@@ -32,7 +32,7 @@ public class MapManager {
 	private Position start, exit, key;
 
 	private TiledMapTile getTile(String tilename) {
-		TiledMapTileSet tileSet = Assets.map.getTileSets().getTileSet("obtacles");
+		TiledMapTileSet tileSet = Assets.map.getTileSets().getTileSet(Const.Map.TILESET_OBTACLES);
 		for (TiledMapTile tile : tileSet) {
 			if (tile.getProperties().containsKey(tilename)) {
 				return tile;
@@ -41,12 +41,16 @@ public class MapManager {
 		return tileSet.getTile(0);
 	}
 
+	public TiledMapTileLayer getLayerItems() {
+		return getLayer(Const.Map.LAYER_ITEMS);
+	}
+
 	private TiledMapTileLayer getLayer(String layerName) {
-		return (TiledMapTileLayer) Assets.map.getLayers().get("obtacles");
+		return (TiledMapTileLayer) Assets.map.getLayers().get(layerName);
 	}
 
 	public void removeKey() {
-		getLayer("obtacles").setCell((int) key.x, (int) key.y, null);
+		getLayerItems().setCell(key.x, key.y, null);
 	}
 
 	private void setExit() {
@@ -62,6 +66,23 @@ public class MapManager {
 		body.setTransform(exit.x + 0.5f, exit.y + 0.5f, 0f);
 		body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
 		GameObject.exit = body;
+	}
+
+	private void setCoins() {
+		for (int i = 0; i < 50; i++) {
+			Cell cell = new Cell();
+			cell.setTile(getTile("coin"));
+			Position pos = setRandomEmptyCell(cell);
+			CircleShape circleShape = new CircleShape();
+			circleShape.setRadius(0.5f);
+			BodyDef bd = new BodyDef();
+			bd.type = BodyType.StaticBody;
+			Body body = GVars.world.createBody(bd);
+			body.createFixture(circleShape, 0f);
+			body.setTransform(pos.x + 0.5f, pos.y + 0.5f, 0f);
+			body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
+			body.setUserData(pos);
+		}
 	}
 
 	private void setStart() {
@@ -86,18 +107,22 @@ public class MapManager {
 	 */
 
 	private Position setRandomEmptyCell(Cell cell) {
-		TiledMapTileLayer tileLayer = getLayer("obtacles");
+		TiledMapTileLayer itemsLayer = getLayerItems();
 		Random random = new Random();
 		int x, y;
-		x = random.nextInt(tileLayer.getWidth());
-		y = random.nextInt(tileLayer.getHeight());
+		x = random.nextInt(itemsLayer.getWidth());
+		y = random.nextInt(itemsLayer.getHeight());
 		for (int i = 0; i < 1000; i++) {
-			if (null == tileLayer.getCell(x, y)) {
-				tileLayer.setCell(x, y, cell);
+			if (null == itemsLayer.getCell(x, y) && null == getLayerObtacles().getCell(x, y)) {
+				itemsLayer.setCell(x, y, cell);
 				break;
 			}
 		}
 		return new Position(x, y);
+	}
+
+	public TiledMapTileLayer getLayerObtacles() {
+		return getLayer(Const.Map.LAYER_OBTACLES);
 	}
 
 	private void setKey() {
@@ -126,7 +151,7 @@ public class MapManager {
 
 	public void Generate() {
 		setWorldBounds();
-		TiledMapTileLayer tileLayer = getLayer("obtacles");
+		TiledMapTileLayer tileLayer = getLayerObtacles();
 		clearLayer(tileLayer);
 		Cell cell = new Cell();
 		cell.setTile(getTile("brick"));
@@ -153,6 +178,7 @@ public class MapManager {
 		setStart();
 		setKey();
 		setExit();
+		setCoins();
 	}
 
 	private void setWorldBounds() {
@@ -181,5 +207,9 @@ public class MapManager {
 		groundBody.createFixture(groundFixtureDef);
 		// Dispose
 		edgeBoxShape.dispose();
+	}
+
+	public void removeItem(Position pos) {
+		getLayerItems().setCell(pos.x, pos.y, null);
 	}
 }

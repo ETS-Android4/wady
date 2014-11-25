@@ -9,6 +9,7 @@ import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.game.players.Player;
 import com.mpv.game.world.GameObject;
+import com.mpv.game.world.Position;
 
 public class ContactHandler implements ContactListener {
 
@@ -30,8 +31,17 @@ public class ContactHandler implements ContactListener {
 	@Override
 	public void preSolve(Contact contact, Manifold oldManifold) {
 		Player pl = Player.getInstance();
-		Body a = contact.getFixtureA().getBody(), b = contact.getFixtureB().getBody(), p = pl.body, body = (p == a) ? b
-				: a;
+		Body a = contact.getFixtureA().getBody(), b = contact.getFixtureB().getBody(), p = pl.body;
+
+		if (p != a && p != b)
+			return;
+		Body body = (p == a) ? b : a;
+		Object data = body.getUserData();
+
+		if (null != data && data instanceof Position) {
+			GameObject.collectCoin(body);
+		}
+
 		if (null != GameObject.key) {
 			if (body == GameObject.key) {
 				GameObject.captureKey();
@@ -41,8 +51,6 @@ public class ContactHandler implements ContactListener {
 				GameObject.getInstance().gameFinish();
 			}
 		}
-		if (p != a && p != b)
-			return;
 
 		if (p.getLinearVelocity().y <= Const.BLOCK_SIZE) {
 			p.setLinearVelocity(0, p.getLinearVelocity().y);
