@@ -149,10 +149,11 @@ public class MapManager {
 		}
 	}
 
-	public void Generate() {
+	public void generate() {
 		setWorldBounds();
 		TiledMapTileLayer tileLayer = getLayerObtacles();
 		clearLayer(tileLayer);
+		clearLayer(getLayerItems());
 		Cell cell = new Cell();
 		cell.setTile(getTile("brick"));
 		Random random = new Random();

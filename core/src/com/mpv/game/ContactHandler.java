@@ -39,6 +39,7 @@ public class ContactHandler implements ContactListener {
 		Object data = body.getUserData();
 
 		if (null != data && data instanceof Position) {
+			contact.setEnabled(false);
 			GameObject.collectCoin(body);
 		}
 
