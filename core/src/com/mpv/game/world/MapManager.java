@@ -20,6 +20,15 @@ import com.mpv.data.GVars;
 
 public class MapManager {
 
+	// @formatter:off
+	private static int[][] pattern = new int[][]{
+			{1, 1, 1, 0},
+			{0, 0, 0, 0},
+			{0, 0, 0, 0},
+			{1, 1, 1, 1}
+			};
+	// @formatter:on
+
 	private static MapManager instance;
 
 	public static MapManager getInst() {
@@ -101,11 +110,6 @@ public class MapManager {
 		GameObject.start = body;
 	}
 
-	/*
-	 * private Position setRandomEmptyCell(Cell cell, Position... positions) { TiledMapTileLayer tileLayer =
-	 * getLayer("obtacles"); return new Position(0, 0); }
-	 */
-
 	private Position setRandomEmptyCell(Cell cell) {
 		TiledMapTileLayer itemsLayer = getLayerItems();
 		Random random = new Random();
@@ -157,22 +161,25 @@ public class MapManager {
 		Cell cell = new Cell();
 		cell.setTile(getTile("brick"));
 		Random random = new Random();
-		for (int y = 0; y < tileLayer.getHeight(); y = y + 3) {
-			if (random.nextBoolean()) {
-				continue;
-			}
+		for (int y = 0; y < tileLayer.getHeight(); y += 4) {
 			PolygonShape shape;
-			for (int x = 0; x < tileLayer.getWidth(); x++) {
+			for (int x = 0; x < tileLayer.getWidth(); x += 4) {
 				if (random.nextBoolean()) {
-					tileLayer.setCell(x, y, cell);
-					shape = new PolygonShape();
-					shape.setAsBox(0.5f, 0.5f);
-					BodyDef bd = new BodyDef();
-					bd.type = BodyType.StaticBody;
-					Body body = GVars.world.createBody(bd);
-					body.createFixture(shape, 1);
-					body.setTransform(x + 0.5f, y + 0.5f, 0f);
-					body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
+					for (int i = 0; i < 4; i++) {
+						for (int j = 0; j < 4; j++) {
+							if (pattern[j][i] == 1) {
+								tileLayer.setCell(x + i, y + j, cell);
+								shape = new PolygonShape();
+								shape.setAsBox(0.5f, 0.5f);
+								BodyDef bd = new BodyDef();
+								bd.type = BodyType.StaticBody;
+								Body body = GVars.world.createBody(bd);
+								body.createFixture(shape, 1);
+								body.setTransform(x + i + 0.5f, y + j + 0.5f, 0f);
+								body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
+							}
+						}
+					}
 				}
 			}
 		}

@@ -81,11 +81,9 @@ public class GameScreen implements Screen {
 		batch.end();
 		GVars.otmRendered.setView(GVars.frCam);
 
-		batch.begin();
-		GVars.otmRendered.renderTileLayer(MapManager.getInst().getLayerObtacles());
-		batch.end();
 		GVars.rayHandler.updateAndRender();
 		batch.begin();
+		GVars.otmRendered.renderTileLayer(MapManager.getInst().getLayerObtacles());
 		GVars.otmRendered.renderTileLayer(MapManager.getInst().getLayerItems());
 		batch.end();
 		// Player

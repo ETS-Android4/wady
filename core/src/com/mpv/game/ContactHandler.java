@@ -41,19 +41,23 @@ public class ContactHandler implements ContactListener {
 		if (null != data && data instanceof Position) {
 			contact.setEnabled(false);
 			GameObject.collectCoin(body);
+			return;
 		}
 
 		if (null != GameObject.key) {
 			if (body == GameObject.key) {
 				GameObject.captureKey();
+				contact.setEnabled(false);
+				return;
 			}
 		} else {
 			if (body == GameObject.exit) {
 				GameObject.getInstance().gameFinish();
+				return;
 			}
 		}
-
-		if (p.getLinearVelocity().y <= Const.BLOCK_SIZE) {
+		// Removing slide effect
+		if (Math.abs(p.getLinearVelocity().y) <= Const.BLOCK_SIZE) {
 			p.setLinearVelocity(0, p.getLinearVelocity().y);
 		}
 	}
