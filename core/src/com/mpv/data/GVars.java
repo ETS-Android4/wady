@@ -11,7 +11,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mpv.ApplicationHandler;
-import com.mpv.game.players.Player;
+import com.mpv.game.actors.Player;
 import com.mpv.game.world.GameObject;
 
 public class GVars {

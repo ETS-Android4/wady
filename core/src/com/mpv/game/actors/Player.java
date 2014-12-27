@@ -1,4 +1,4 @@
-package com.mpv.game.players;
+package com.mpv.game.actors;
 
 import aurelienribon.tweenengine.Tween;
 

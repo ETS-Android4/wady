@@ -7,7 +7,7 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
-import com.mpv.game.players.Player;
+import com.mpv.game.actors.Player;
 import com.mpv.game.world.GameObject;
 import com.mpv.game.world.Position;
 

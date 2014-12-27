@@ -20,15 +20,6 @@ import com.mpv.data.GVars;
 
 public class MapManager {
 
-	// @formatter:off
-	private static int[][] pattern = new int[][]{
-			{1, 1, 1, 0},
-			{0, 0, 0, 0},
-			{0, 0, 0, 0},
-			{1, 1, 1, 1}
-			};
-	// @formatter:on
-
 	private static MapManager instance;
 
 	public static MapManager getInst() {
@@ -113,10 +104,10 @@ public class MapManager {
 	private Position setRandomEmptyCell(Cell cell) {
 		TiledMapTileLayer itemsLayer = getLayerItems();
 		Random random = new Random();
-		int x, y;
-		x = random.nextInt(itemsLayer.getWidth());
-		y = random.nextInt(itemsLayer.getHeight());
+		int x = 0, y = 0;
 		for (int i = 0; i < 1000; i++) {
+			x = random.nextInt(itemsLayer.getWidth());
+			y = random.nextInt(itemsLayer.getHeight());
 			if (null == itemsLayer.getCell(x, y) && null == getLayerObtacles().getCell(x, y)) {
 				itemsLayer.setCell(x, y, cell);
 				break;
@@ -167,7 +158,7 @@ public class MapManager {
 				if (random.nextBoolean()) {
 					for (int i = 0; i < 4; i++) {
 						for (int j = 0; j < 4; j++) {
-							if (pattern[j][i] == 1) {
+							if (Const.pattern[j][i] == 1) {
 								tileLayer.setCell(x + i, y + j, cell);
 								shape = new PolygonShape();
 								shape.setAsBox(0.5f, 0.5f);

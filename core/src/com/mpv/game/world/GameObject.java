@@ -14,7 +14,7 @@ import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
 import com.mpv.game.ContactHandler;
-import com.mpv.game.players.Player;
+import com.mpv.game.actors.Player;
 import com.mpv.screens.stages.GameUIStage;
 
 public class GameObject {

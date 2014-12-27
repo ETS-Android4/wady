@@ -19,7 +19,7 @@ import com.mpv.control.GestureHandler;
 import com.mpv.control.InputHandler;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
-import com.mpv.game.players.Player;
+import com.mpv.game.actors.Player;
 import com.mpv.game.world.MapManager;
 import com.mpv.screens.stages.GameUIStage;
 import com.mpv.tween.ActorAccessor;
@@ -58,6 +58,9 @@ public class GameScreen implements Screen {
 		// Physics renderer
 		debugRenderer = new Box2DDebugRenderer();
 		debugRenderer.setDrawVelocities(true);
+		// UI debug
+		// uiStage.setDebugAll(true);
+		// gameStage.setDebugAll(true);
 	}
 
 	@Override
@@ -97,9 +100,6 @@ public class GameScreen implements Screen {
 		// Physics debug
 		// debugRenderer.render(GVars.world,
 		uiStage.draw();
-		// UI debug
-		// Table.drawDebug(uiStage);
-		// Table.drawDebug(gameStage);
 	}
 
 	@Override

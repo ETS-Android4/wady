@@ -1,4 +1,4 @@
-package com.mpv.game.players;
+package com.mpv.game.actors;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

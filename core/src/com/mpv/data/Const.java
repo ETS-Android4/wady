@@ -7,6 +7,15 @@ public class Const {
 		public static final String TILESET_OBTACLES = "obtacles";
 	}
 
+	// @formatter:off
+	public static int[][] pattern = new int[][]{
+				{1, 1, 1, 0},
+				{0, 0, 0, 0},
+				{0, 0, 0, 0},
+				{1, 1, 1, 1}
+				};
+	// @formatter:on
+
 	// Animation
 	public static final float ANIMATION_SPEED = 0.01f;
 	// Physics parameters
