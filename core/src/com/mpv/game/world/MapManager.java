@@ -56,7 +56,7 @@ public class MapManager {
 	private void setExit() {
 		Cell cell = new Cell();
 		cell.setTile(getTile("exit"));
-		exit = setRandomEmptyCell(cell);
+		exit = setRandomEmptyCell(cell, key);
 		CircleShape circleShape = new CircleShape();
 		circleShape.setRadius(0.5f);
 		BodyDef bd = new BodyDef();
@@ -102,6 +102,10 @@ public class MapManager {
 	}
 
 	private Position setRandomEmptyCell(Cell cell) {
+		return setRandomEmptyCell(cell, null);
+	}
+
+	private Position setRandomEmptyCell(Cell cell, Position pos) {
 		TiledMapTileLayer itemsLayer = getLayerItems();
 		Random random = new Random();
 		int x = 0, y = 0;
@@ -109,8 +113,16 @@ public class MapManager {
 			x = random.nextInt(itemsLayer.getWidth());
 			y = random.nextInt(itemsLayer.getHeight());
 			if (null == itemsLayer.getCell(x, y) && null == getLayerObtacles().getCell(x, y)) {
-				itemsLayer.setCell(x, y, cell);
-				break;
+				if (null == pos) {
+					itemsLayer.setCell(x, y, cell);
+					break;
+				} else {
+					Vector2 vec = new Vector2(pos.x, pos.y);
+					if (vec.dst(x, y) > itemsLayer.getWidth() / 2.1f) {
+						itemsLayer.setCell(x, y, cell);
+						break;
+					}
+				}
 			}
 		}
 		return new Position(x, y);
@@ -123,7 +135,7 @@ public class MapManager {
 	private void setKey() {
 		Cell cell = new Cell();
 		cell.setTile(getTile("key"));
-		key = setRandomEmptyCell(cell);
+		key = setRandomEmptyCell(cell, start);
 		CircleShape circleShape = new CircleShape();
 		circleShape.setRadius(0.5f);
 		BodyDef bd = new BodyDef();
