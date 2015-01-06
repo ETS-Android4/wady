@@ -147,6 +147,7 @@ public class GameObject {
 	public static void collectCoin(Body body) {
 		MapManager.getInst().removeItem((Position) body.getUserData());
 		bodyTrash.add(body);
-		Assets.playSnd(Assets.dingSnd);
+		Assets.playSnd(Assets.hit1Snd);
+		GameTimer.getInstance().addSeconds(10);
 	}
 }

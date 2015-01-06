@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
-  <property name="Time" value="120"/>
+  <property name="Time" value="10"/>
  </properties>
  <tileset firstgid="1" name="obtacles" tilewidth="32" tileheight="32">
   <image source="obtacles.png" width="256" height="256"/>

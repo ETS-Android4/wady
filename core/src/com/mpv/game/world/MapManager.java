@@ -168,6 +168,7 @@ public class MapManager {
 			PolygonShape shape;
 			for (int x = 0; x < tileLayer.getWidth(); x += 4) {
 				if (random.nextBoolean()) {
+					// Drawing pattern
 					for (int i = 0; i < 4; i++) {
 						for (int j = 0; j < 4; j++) {
 							if (Const.pattern[j][i] == 1) {
