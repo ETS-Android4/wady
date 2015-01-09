@@ -17,7 +17,7 @@ public class GameTimer {
 	}
 
 	public float getLeft() {
-		return gameLimit - time;
+		return gameLimit - time + 1;
 	}
 
 	public float getSpent() {
@@ -38,10 +38,10 @@ public class GameTimer {
 		if (time >= gameLimit) {
 			GameObject.getInstance().gameOver();
 			// Reset timer (not set to 0)
-			time -= gameLimit;
+			// time -= gameLimit;
 		}
-		gameTimeMin = (int) ((gameLimit - time) / 60);
-		gameTimeSec = (int) ((gameLimit - time) % 60);
+		gameTimeMin = (int) ((getLeft()) / 60);
+		gameTimeSec = (int) ((getLeft()) % 60);
 	}
 
 	public static String getLeftString() {

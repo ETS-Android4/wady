@@ -80,9 +80,10 @@ public class GameScreen implements Screen {
 		// Background
 		GVars.bgCam.position.set(GVars.frCam.position).scl(0.25f).add(glViewport.width / 2f, glViewport.height / 2f, 0);
 		GVars.bgCam.update();
-		batch.setProjectionMatrix(GVars.bgCam.combined);
+		GVars.otmRendered.setView(GVars.bgCam);
 		batch.begin();
 		Assets.skin.getTiledDrawable("bricks").draw(batch, 0, 0, Assets.mapScaledWidth, Assets.mapScaledHeight);
+		GVars.otmRendered.renderTileLayer(MapManager.getInst().getLayerObtacles());
 		batch.end();
 		// Parallax layer
 		GVars.bgCam.position.set(GVars.frCam.position).scl(0.5f).add(glViewport.width / 4f, glViewport.height / 4f, 0);

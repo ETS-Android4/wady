@@ -27,13 +27,14 @@ public class GameUIStage extends Stage {
 	public static Label labelFPS;
 	public static Label labelDebug;
 	private final Label labelTime;
+	private final Label labelCoins;
 	private final Button leftJump, rightJump;
 	public static PauseDialog pauseDialog = new PauseDialog("", Assets.skin, "dialog");
 	public static FinishDialog finishDialog = new FinishDialog("", Assets.skin, "dialog");
 	public static FailedDialog failedDialog = new FailedDialog("", Assets.skin, "dialog");
 	public static StartDialog startDialog = new StartDialog("", Assets.skin, "dialog");
 	private static GameUIStage instance;
-	private final Image radar = new Image(Assets.skin, "rjump-down");
+	private final Image radar = new Image(Assets.skin, "radar");
 
 	public static GameUIStage getInstance() {
 		return instance;
@@ -64,18 +65,19 @@ public class GameUIStage extends Stage {
 		labelFPS = new Label("", Assets.skin, "game-text");
 		labelDebug = new Label("", Assets.skin, "game-text");
 		labelTime = new Label("", Assets.skin, "normal-text");
+		labelCoins = new Label("", Assets.skin, "normal-text");
 		leftJump = new Button(Assets.skin, "leftJump");
 		rightJump = new Button(Assets.skin, "rightJump");
 		Widget empty = new Widget();
 		Table controlPanel = new Table();
 		controlPanel.setFillParent(true);
 		controlPanel.top();
-		controlPanel.add(new Image(Assets.skin.getDrawable("timer"))).size(GVars.scrWidth / 12f);
+		controlPanel.add(new Image(Assets.skin.getDrawable("battery"))).size(GVars.scrWidth / 12f);
 		controlPanel.add(labelTime).expand(true, false).height(getWidth() / 13).width(getWidth() / 4.3f).left();
-		// controlPanel.add(labelDebug).expand(true,
-		// false).size(GVars.scrHeight/13);
-		// controlPanel.add(labelFPS).expand(true,
-		// false).size(GVars.scrHeight/13);
+		controlPanel.add(new Image(Assets.skin.getDrawable("star-gold"))).size(GVars.scrWidth / 12f).right();
+		controlPanel.add(labelCoins).expand(false, false).height(getWidth() / 13).width(getWidth() / 8.6f).right();
+		// controlPanel.add(labelDebug).expand(true, false).size(GVars.scrHeight/13);
+		// controlPanel.add(labelFPS).expand(true, false).size(GVars.scrHeight/13);
 		controlPanel.add(bPause).size(GVars.scrWidth / 6.4f).right();
 		Table buttonPanel = new Table();
 		buttonPanel.setFillParent(true);
@@ -110,6 +112,7 @@ public class GameUIStage extends Stage {
 	@Override
 	public void draw() {
 		labelTime.setText(GameTimer.getLeftString());
+		labelCoins.setText(String.format("%02d", GameObject.getInstance().getCoinCount()));
 		// Calculating radar rotation
 		Vector2 player = Player.getInstance().body.getPosition();
 		Vector2 target;
@@ -118,8 +121,7 @@ public class GameUIStage extends Stage {
 		} else {
 			target = GameObject.exit.getPosition();
 		}
-		radar.setRotation(target.sub(player).angle());
-
+		radar.setRotation(target.sub(player).angle() - 90);
 		super.draw();
 	}
 

@@ -8,8 +8,9 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.game.actors.Player;
+import com.mpv.game.world.Coin;
 import com.mpv.game.world.GameObject;
-import com.mpv.game.world.Position;
+import com.mpv.game.world.TimeBonus;
 
 public class ContactHandler implements ContactListener {
 
@@ -38,10 +39,17 @@ public class ContactHandler implements ContactListener {
 		Body body = (p == a) ? b : a;
 		Object data = body.getUserData();
 
-		if (null != data && data instanceof Position) {
-			contact.setEnabled(false);
-			GameObject.collectCoin(body);
-			return;
+		if (null != data) {
+			if (data instanceof Coin) {
+				contact.setEnabled(false);
+				GameObject.getInstance().collectCoin(body);
+				return;
+			}
+			if (data instanceof TimeBonus) {
+				contact.setEnabled(false);
+				GameObject.getInstance().collectTime(body);
+				return;
+			}
 		}
 
 		if (null != GameObject.key) {
@@ -66,5 +74,4 @@ public class ContactHandler implements ContactListener {
 	public void postSolve(Contact contact, ContactImpulse impulse) {
 		// TODO Auto-generated method stub
 	}
-
 }

@@ -84,16 +84,9 @@ public class GVars {
 						- (int) scrWidth / 2),
 				Math.min(Math.max(MathUtils.round(activePlayer.getY()), (int) scrHeight / 2), Assets.mapScaledHeight
 						- (int) scrHeight / 2), 0);
-		// Background camera
-		/*
-		 * bgCam.position.set(MathUtils.round(frCam.position.x / 2f + scrWidth / 4), MathUtils.round(frCam.position.y /
-		 * 2f + scrHeight / 4), 0);
-		 */
-		// bgCam.position.set(frCam.position);
 		frCam.update();
 		camLight = new Matrix4(frCam.combined);
 		rayHandler.setCombinedMatrix(camLight.scl(BOX_TO_WORLD));
 		GameObject.getInstance().clearBodies();
 	}
-
 }

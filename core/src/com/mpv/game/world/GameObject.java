@@ -28,7 +28,11 @@ public class GameObject {
 
 	// Delta time accumulator
 	private float accumulator = 0;
-	private float mapLimit;
+	private float startTime;
+	private float timeBonus;
+	private int bonusCount;
+	private int coinsCount;
+	private int coins;
 	public static int mapIndex = -1;
 	private static GameObject instance;
 	public static Body start, exit, key;
@@ -49,11 +53,16 @@ public class GameObject {
 
 		GVars.world = new World(new Vector2(0, -9.8f), true);
 		GVars.world.setContactListener(new ContactHandler());
+
+		coins = 0;
+		startTime = Float.parseFloat((String) Assets.map.getProperties().get("startTime"));
+		timeBonus = Float.parseFloat((String) Assets.map.getProperties().get("timeBonus"));
+		bonusCount = Integer.parseInt((String) Assets.map.getProperties().get("bonusCount"));
+		coinsCount = Integer.parseInt((String) Assets.map.getProperties().get("coinsCount"));
+
 		MapManager.getInst().generate();
-		// MapBodyBuilder.buildShapes(Assets.map, 32f, GVars.world);
+
 		Player.getInstance().createBody();
-		// Time limit
-		mapLimit = Integer.parseInt((String) Assets.map.getProperties().get("Time"));
 		// Light
 		if (GVars.rayHandler != null)
 			GVars.rayHandler.dispose();
@@ -68,8 +77,20 @@ public class GameObject {
 		// GVars.playerLight.setStaticLight(true);
 	}
 
+	public float getTimeBonus() {
+		return timeBonus;
+	}
+
+	public int getBonusCount() {
+		return bonusCount;
+	}
+
+	public int getCoinsCount() {
+		return coinsCount;
+	}
+
 	public void gameStart() {
-		GameTimer.getInstance().setTimer(mapLimit);
+		GameTimer.getInstance().setTimer(startTime);
 		Player.getInstance().resetGame();
 		state = ACTIVE;
 		Player.state = Player.S_IDLE;
@@ -112,12 +133,12 @@ public class GameObject {
 	}
 
 	public float getMapLimit() {
-		return mapLimit;
+		return startTime;
 	}
 
 	public void worldStep(float delta) {
 		// Should be improved on heavy applications (< 60 FPS)
-		if (delta >= (Const.BOX_STEP / 3)) {
+		if (delta >= (Const.BOX_STEP / 3f)) {
 			GVars.world.step(delta, Const.BOX_VELOCITY_ITERATIONS, Const.BOX_POSITION_ITERATIONS);
 			accumulator = 0;
 		} else {
@@ -130,7 +151,7 @@ public class GameObject {
 	}
 
 	public static void captureKey() {
-		MapManager.getInst().removeKey();
+		MapManager.getInst().removeItem((Position) key.getUserData());
 		bodyTrash.add(key);
 		key = null;
 		Assets.playSnd(Assets.dingSnd);
@@ -144,10 +165,21 @@ public class GameObject {
 		bodyTrash.clear();
 	}
 
-	public static void collectCoin(Body body) {
+	public void collectTime(Body body) {
 		MapManager.getInst().removeItem((Position) body.getUserData());
 		bodyTrash.add(body);
 		Assets.playSnd(Assets.hit1Snd);
 		GameTimer.getInstance().addSeconds(10);
+	}
+
+	public void collectCoin(Body body) {
+		MapManager.getInst().removeItem((Position) body.getUserData());
+		bodyTrash.add(body);
+		Assets.playSnd(Assets.dingSnd);
+		coins++;
+	}
+
+	public int getCoinCount() {
+		return coins;
 	}
 }

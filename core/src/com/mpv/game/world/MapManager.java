@@ -49,10 +49,6 @@ public class MapManager {
 		return (TiledMapTileLayer) Assets.map.getLayers().get(layerName);
 	}
 
-	public void removeKey() {
-		getLayerItems().setCell(key.x, key.y, null);
-	}
-
 	private void setExit() {
 		Cell cell = new Cell();
 		cell.setTile(getTile("exit"));
@@ -68,8 +64,8 @@ public class MapManager {
 		GameObject.exit = body;
 	}
 
-	private void setCoins() {
-		for (int i = 0; i < 50; i++) {
+	private void addCoins() {
+		for (int i = 0; i < GameObject.getInstance().getCoinsCount(); i++) {
 			Cell cell = new Cell();
 			cell.setTile(getTile("coin"));
 			Position pos = setRandomEmptyCell(cell);
@@ -81,7 +77,24 @@ public class MapManager {
 			body.createFixture(circleShape, 0f);
 			body.setTransform(pos.x + 0.5f, pos.y + 0.5f, 0f);
 			body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
-			body.setUserData(pos);
+			body.setUserData(new Coin(pos.x, pos.y));
+		}
+	}
+
+	private void addTimeBonuses() {
+		for (int i = 0; i < GameObject.getInstance().getBonusCount(); i++) {
+			Cell cell = new Cell();
+			cell.setTile(getTile("timeBonus"));
+			Position pos = setRandomEmptyCell(cell);
+			CircleShape circleShape = new CircleShape();
+			circleShape.setRadius(0.5f);
+			BodyDef bd = new BodyDef();
+			bd.type = BodyType.StaticBody;
+			Body body = GVars.world.createBody(bd);
+			body.createFixture(circleShape, 0f);
+			body.setTransform(pos.x + 0.5f, pos.y + 0.5f, 0f);
+			body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
+			body.setUserData(new TimeBonus(pos.x, pos.y));
 		}
 	}
 
@@ -145,7 +158,7 @@ public class MapManager {
 		body.setTransform(key.x + 0.5f, key.y + 0.5f, 0f);
 		body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
 		GameObject.key = body;
-		body.setUserData(cell);
+		body.setUserData(key);
 	}
 
 	private void clearLayer(TiledMapTileLayer layer) {
@@ -190,7 +203,8 @@ public class MapManager {
 		setStart();
 		setKey();
 		setExit();
-		setCoins();
+		addCoins();
+		addTimeBonuses();
 	}
 
 	private void setWorldBounds() {

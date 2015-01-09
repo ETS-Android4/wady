@@ -25,43 +25,42 @@ bricks
   orig: 256, 256
   offset: 0, 0
   index: -1
-button-down
+ljump-down
   rotate: false
   xy: 773, 876
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-rjump-down
+item-disabled
   rotate: false
   xy: 515, 360
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-item-checked
+button-down
   rotate: false
   xy: 773, 746
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-edit
+item
   rotate: false
   xy: 515, 230
   size: 128, 128
-  split: 37, 41, 43, 45
   orig: 128, 128
   offset: 0, 0
   index: -1
-timer
+radar
   rotate: false
   xy: 773, 616
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-ljump-down
+rjump
   rotate: false
   xy: 515, 100
   size: 128, 128
@@ -75,112 +74,113 @@ ljump
   orig: 128, 128
   offset: 0, 0
   index: -1
-button-disabled
+pause-down
   rotate: false
   xy: 645, 230
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-pause-down
+edit
   rotate: false
   xy: 645, 100
   size: 128, 128
+  split: 37, 41, 43, 45
   orig: 128, 128
   offset: 0, 0
   index: -1
-arrow-left
+arrow-left-down
   rotate: false
   xy: 903, 940
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-star-gold
+star-none
   rotate: false
   xy: 515, 34
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-arrow-right-down
+star-gold
   rotate: false
   xy: 773, 550
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-pause
+item-checked
   rotate: false
   xy: 775, 420
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-button
+timer
   rotate: false
   xy: 775, 290
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-rjump
+pause
   rotate: false
   xy: 775, 160
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-star-silver
+sound-disabled
   rotate: false
   xy: 839, 550
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-item
+battery
   rotate: false
   xy: 775, 30
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-music
+arrow-right
   rotate: false
   xy: 903, 874
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-star-none
+music-disabled
   rotate: false
   xy: 581, 34
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-sound
+star-silver
   rotate: false
   xy: 903, 808
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-music-disabled
+sound
   rotate: false
   xy: 647, 34
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-sound-disabled
+arrow-right-down
   rotate: false
   xy: 903, 742
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-arrow-right
+music
   rotate: false
   xy: 903, 676
   size: 64, 64
@@ -194,7 +194,7 @@ cursor
   orig: 8, 64
   offset: 0, 0
   index: -1
-arrow-left-down
+arrow-left
   rotate: false
   xy: 905, 610
   size: 64, 64
@@ -220,9 +220,23 @@ skin2.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-item-disabled
+button-disabled
   rotate: false
   xy: 1, 1
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 131, 1
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+rjump-down
+  rotate: false
+  xy: 261, 1
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
