@@ -44,10 +44,10 @@
      },
      com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {  
       default: { up: button, down: button-down, disabled: button-disabled, font: normaltext, fontColor: white },
-      menu-button: {up: none, down: none, font: normaltext},  
+      text-only: {up: none, down: none, font: normaltext},  
      },
 	com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
-		default: { titleFont: titletext, background: edit, titleFontColor: white },
+		default: { titleFont: titletext, background: window, titleFontColor: white },
 		dialog: { titleFont: titletext, background: window, titleFontColor: white, stageBackground: dialogDim }
      }   
    }  
