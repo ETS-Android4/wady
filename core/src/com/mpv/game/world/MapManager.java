@@ -65,7 +65,7 @@ public class MapManager {
 	}
 
 	private void addCoins() {
-		for (int i = 0; i < GameObject.getInstance().getCoinsCount(); i++) {
+		for (int i = 0; i < GameObject.getInstance().getTotalCoins(); i++) {
 			Cell cell = new Cell();
 			cell.setTile(getTile("coin"));
 			Position pos = setRandomEmptyCell(cell);

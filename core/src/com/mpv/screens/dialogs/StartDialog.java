@@ -2,9 +2,14 @@ package com.mpv.screens.dialogs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
@@ -13,20 +18,40 @@ import com.mpv.screens.GameScreen;
 
 public class StartDialog extends CustomDialog {
 
-    public StartDialog(String title, Skin skin, String styleName) {
-	super(title, skin, styleName);
-	this.getContentTable().add(new Label("Ready?", Assets.skin, "title-text")).height(GVars.scrWidth / 6.4f).row();
-	this.getContentTable().setFillParent(false);
-	// this.getContentTable().debug();
-	this.button("Go!", true).key(Keys.ENTER, true);
-	for (Cell<?> cell : this.getButtonTable().getCells()) {
-	    cell.size(Const.PLAYER_SIZE * GVars.BOX_TO_WORLD, Const.PLAYER_HALF * GVars.BOX_TO_WORLD);
-	}
-    }
+	private Label lTitle;
+	private Label lPoints;
+	private float bWidth = Gdx.graphics.getWidth() / 3.2f;
+	private float bHeight = Const.PLAYER_SIZE * GVars.BOX_TO_WORLD / 1.6f;
 
-    @Override
-    protected void result(Object obj) {
-	GameObject.getInstance().gameStart();
-	Gdx.input.setInputProcessor(GameScreen.multiplexer);
-    }
+	public StartDialog(String title, Skin skin, String styleName) {
+		super(title, skin, styleName);
+		lTitle = new Label("", Assets.skin, "title-text");
+		lPoints = new Label("", Assets.skin, "normal-text");
+		Table goals = new Table();
+		Table content = this.getContentTable();
+		content.setFillParent(false);
+		content.add(lTitle).height(bHeight / 1.6f).pad(bHeight / 6f).center().row();
+		content.add(new Label("Collect:", Assets.skin, "normal-text")).pad(bHeight / 6f).row();
+		content.add(goals).height(bHeight / 1.6f).pad(bHeight / 6f).row();
+		goals.add(new Image(Assets.skin.getDrawable("star-gold"))).size(bHeight / 1.6f);
+		goals.add(lPoints).height(bHeight / 1.6f).pad(bHeight / 6f);
+		this.button("Start", true).key(Keys.ENTER, true);
+
+		for (Cell<?> cell : this.getButtonTable().getCells()) {
+			cell.size(bWidth, bHeight).pad((bHeight / 6f), (bHeight / 4f), (bHeight / 6f), (bHeight / 4f));
+		}
+	}
+
+	@Override
+	protected void result(Object obj) {
+		GameObject.getInstance().gameStart();
+		Gdx.input.setInputProcessor(GameScreen.multiplexer);
+	}
+
+	@Override
+	public Dialog show(Stage stage, Action action) {
+		lTitle.setText(String.format("Level %02d", GameObject.mapIndex + 1));
+		lPoints.setText(String.valueOf(GameObject.getInstance().getPoints(0)));
+		return super.show(stage, action);
+	}
 }

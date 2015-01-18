@@ -48,35 +48,24 @@ public class LevelStage extends Stage {
 		Table mainTable = new Table();
 		Table controlTable = new Table();
 		Table scrollTable = new Table();
+		Table scrollBg = new Table();
+		scrollBg.setBackground(Assets.skin.getDrawable("edit"));
+		scrollBg.add(scrollPane);
 		scrollTable.setBackground(Assets.skin.getDrawable("window"));
-		scrollTable.add(scrollPane);
-		TextButton menuButton = new TextButton("Menu", Assets.skin, "default");
-		TextButton playButton = new TextButton("Play", Assets.skin, "default");
-		// Debug
-		// mainTable.debug();
-		// buttonTable.debug();
+		scrollTable.add(new Label("Select level", Assets.skin, "title-text")).height(bHeight / 1.6f).pad(bHeight / 6f)
+				.row();
+		scrollTable.add(scrollBg).pad(bHeight / 6f);
+		TextButton exitButton = new TextButton("Exit", Assets.skin, "default");
 		mainTable.setBackground(Assets.skin.getTiledDrawable("menu-screen"));
 		mainTable.setFillParent(true);
 		this.addActor(mainTable);
 
-		controlTable.add(menuButton).size(bWidth, bHeight).pad(bHeight / 2f).center();
-		controlTable.add(playButton).size(bWidth, bHeight).pad(bHeight / 2f).center();
-		controlTable.align(Align.top);
+		controlTable.add(exitButton).size(bWidth, bHeight).center();
 
-		mainTable.add(controlTable).pad(bHeight / 4f).row();
-		mainTable.add(scrollTable).pad(bHeight / 4f);
+		mainTable.add(scrollTable).pad(bHeight / 2f, bHeight / 6f, bHeight / 4f, bHeight / 6f).row();
+		mainTable.add(controlTable).pad(bHeight / 4f);
 
-		playButton.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				// super.touchDown(event, x, y, pointer, button);
-				Assets.playSnd(Assets.buttonSnd);
-				GameObject.mapIndex = 0;
-				Assets.loadMap(GameObject.mapIndex);
-				GVars.app.setScreen(GVars.app.gameScreen);
-			}
-		});
-		menuButton.addListener(new ClickListener() {
+		exitButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);

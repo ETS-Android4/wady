@@ -6,6 +6,7 @@ import box2dLight.ConeLight;
 import box2dLight.RayHandler;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
@@ -28,11 +29,15 @@ public class GameObject {
 
 	// Delta time accumulator
 	private float accumulator = 0;
+	// Map data
+	MapProperties mapProps;
 	private float startTime;
 	private float timeBonus;
 	private int bonusCount;
-	private int coinsCount;
-	private int coins;
+	private int totalCoins;
+	private int[] points = new int[3];
+	//
+	private int collectedCoins;
 	public static int mapIndex = -1;
 	private static GameObject instance;
 	public static Body start, exit, key;
@@ -54,11 +59,15 @@ public class GameObject {
 		GVars.world = new World(new Vector2(0, -9.8f), true);
 		GVars.world.setContactListener(new ContactHandler());
 
-		coins = 0;
-		startTime = Float.parseFloat((String) Assets.map.getProperties().get("startTime"));
-		timeBonus = Float.parseFloat((String) Assets.map.getProperties().get("timeBonus"));
-		bonusCount = Integer.parseInt((String) Assets.map.getProperties().get("bonusCount"));
-		coinsCount = Integer.parseInt((String) Assets.map.getProperties().get("coinsCount"));
+		collectedCoins = 0;
+		mapProps = Assets.map.getProperties();
+		startTime = Float.parseFloat((String) mapProps.get("startTime"));
+		timeBonus = Float.parseFloat((String) mapProps.get("timeBonus"));
+		bonusCount = Integer.parseInt((String) mapProps.get("bonusCount"));
+		totalCoins = Integer.parseInt((String) mapProps.get("coinsCount"));
+		points[0] = Integer.parseInt((String) mapProps.get("points1"));
+		points[1] = Integer.parseInt((String) mapProps.get("points2"));
+		points[2] = Integer.parseInt((String) mapProps.get("points3"));
 
 		MapManager.getInst().generate();
 
@@ -85,8 +94,8 @@ public class GameObject {
 		return bonusCount;
 	}
 
-	public int getCoinsCount() {
-		return coinsCount;
+	public int getTotalCoins() {
+		return totalCoins;
 	}
 
 	public void gameStart() {
@@ -176,10 +185,14 @@ public class GameObject {
 		MapManager.getInst().removeItem((Position) body.getUserData());
 		bodyTrash.add(body);
 		Assets.playSnd(Assets.dingSnd);
-		coins++;
+		collectedCoins++;
+	}
+
+	public int getPoints(int index) {
+		return points[index];
 	}
 
 	public int getCoinCount() {
-		return coins;
+		return collectedCoins;
 	}
 }

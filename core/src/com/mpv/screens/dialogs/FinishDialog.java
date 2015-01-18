@@ -27,6 +27,8 @@ import com.mpv.tween.ActorAccessor;
 
 public class FinishDialog extends CustomDialog {
 
+	private float bWidth = Gdx.graphics.getWidth() / 3.2f;
+	private float bHeight = Const.PLAYER_SIZE * GVars.BOX_TO_WORLD / 1.6f;
 	public static Label points = new Label("", Assets.skin, "normal-text");
 	private ArrayList<Image> stars = new ArrayList<Image>(3);
 	Widget empty = new Widget();
@@ -56,22 +58,24 @@ public class FinishDialog extends CustomDialog {
 		super(title, skin, styleName);
 		instance = this;
 		Table pointsTable = new Table();
+		Table content = this.getContentTable();
 		// pointsTable.debug();
 		// starsTable.debug();
+		pointsTable.setBackground(Assets.skin.getDrawable("edit"));
 		pointsTable.add(new Label("Points:", Assets.skin, "normal-text")).size(GVars.scrWidth / 6.4f);
 		pointsTable.add(empty).size(GVars.scrWidth / 6.4f);
 		pointsTable.add(points).size(GVars.scrWidth / 4.8f).row();
+		starsTable.setBackground(Assets.skin.getDrawable("edit"));
 		setStars();
 		// this.getContentTable().debug();
-		this.getContentTable().add(new Label("Completed!", skin, "title-text")).height(GVars.scrWidth / 6.4f).row();
-		this.getContentTable().add(empty).width(GVars.scrWidth / 1.6f).height(GVars.scrWidth / 12.8f).row();
-		this.getContentTable().add(pointsTable).row();
-		// this.getContentTable().add(empty).size(GVars.scrWidth/6.4f).row();
-		this.getContentTable().add(starsTable).row();
-		this.getContentTable().add(empty).height(GVars.scrWidth / 12.8f);
+		content.add(new Label("Completed!", skin, "title-text")).height(bHeight / 1.6f).pad(bHeight / 6f).row();
+		content.add(empty).width(GVars.scrWidth / 1.6f).height(GVars.scrWidth / 12.8f).row();
+		content.add(pointsTable).row();
+		content.add(starsTable).row();
+		content.add(empty).height(GVars.scrWidth / 12.8f);
 		this.button("Retry", false).button("Next", true).key(Keys.ENTER, true).key(Keys.ESCAPE, false);
 		for (Cell<?> cell : this.getButtonTable().getCells()) {
-			cell.size(Const.PLAYER_SIZE * GVars.BOX_TO_WORLD, Const.PLAYER_HALF * GVars.BOX_TO_WORLD);
+			cell.size(bWidth, bHeight).pad(bHeight / 6f);
 		}
 		points.setUserObject(Integer.valueOf(0));
 	}
@@ -147,5 +151,4 @@ public class FinishDialog extends CustomDialog {
 				.setCallback(cbCounterBegin).setCallbackTriggers(TweenCallback.BEGIN).start(GVars.tweenManager);
 		return super.show(stage);
 	}
-
 }

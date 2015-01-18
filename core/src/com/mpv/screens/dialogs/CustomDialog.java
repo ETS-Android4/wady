@@ -7,18 +7,18 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class CustomDialog extends Dialog {
 
-    public CustomDialog(String title, Skin skin, String windowStyleName) {
-	super(title, skin, windowStyleName);
-    }
+	public CustomDialog(String title, Skin skin, String windowStyleName) {
+		super(title, skin, windowStyleName);
+	}
 
-    @Override
-    public Dialog show(Stage stage, Action action) {
-	return super.show(stage, null);
-    }
+	@Override
+	public Dialog show(Stage stage, Action action) {
+		return super.show(stage, null);
+	}
 
-    @Override
-    public void hide(Action action) {
-	super.hide(null);
-    }
+	@Override
+	public void hide(Action action) {
+		super.hide(null);
+	}
 
 }

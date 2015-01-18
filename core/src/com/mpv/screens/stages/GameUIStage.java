@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -43,7 +44,7 @@ public class GameUIStage extends Stage {
 	public GameUIStage(Viewport viewport, SpriteBatch batch) {
 		super(viewport, batch);
 		instance = this;
-		final Button bPause = new Button(Assets.skin, "pause");
+		final TextButton bPause = new TextButton("II", Assets.skin);
 		//
 		bPause.addListener(new ClickListener() {
 			@Override
@@ -74,16 +75,17 @@ public class GameUIStage extends Stage {
 		controlPanel.top();
 		controlPanel.add(new Image(Assets.skin.getDrawable("battery"))).size(GVars.scrWidth / 12f);
 		controlPanel.add(labelTime).expand(true, false).height(getWidth() / 13).width(getWidth() / 4.3f).left();
-		controlPanel.add(new Image(Assets.skin.getDrawable("star-gold"))).size(GVars.scrWidth / 12f).right();
 		controlPanel.add(labelCoins).expand(false, false).height(getWidth() / 13).width(getWidth() / 8.6f).right();
+		controlPanel.add(new Image(Assets.skin.getDrawable("star-gold"))).size(GVars.scrWidth / 12f).right();
+
 		// controlPanel.add(labelDebug).expand(true, false).size(GVars.scrHeight/13);
 		// controlPanel.add(labelFPS).expand(true, false).size(GVars.scrHeight/13);
-		controlPanel.add(bPause).size(GVars.scrWidth / 6.4f).right();
 		Table buttonPanel = new Table();
 		buttonPanel.setFillParent(true);
 		buttonPanel.bottom();
+		float bw = GVars.scrWidth / 3.2f / 24f;
 		buttonPanel.add(leftJump).size(GVars.scrWidth / 4.8f);
-		buttonPanel.add(empty).width(GVars.scrWidth / 3.2f);
+		buttonPanel.add(bPause).size(bw * 10f).pad(bw * 14f, bw * 7f, 0, bw * 7f);
 		buttonPanel.add(rightJump).size(GVars.scrWidth / 4.8f).row();
 		buttonPanel.add(empty).size(getWidth() / 25f);
 		this.addActor(controlPanel);
