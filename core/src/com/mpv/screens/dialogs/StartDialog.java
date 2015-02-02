@@ -32,8 +32,9 @@ public class StartDialog extends CustomDialog {
 		content.setFillParent(false);
 		content.add(lTitle).height(bHeight / 1.6f).pad(bHeight / 6f).center().row();
 		content.add(new Label("Collect:", Assets.skin, "normal-text")).pad(bHeight / 6f).row();
-		content.add(goals).height(bHeight / 1.6f).pad(bHeight / 6f).row();
-		goals.add(new Image(Assets.skin.getDrawable("star-gold"))).size(bHeight / 1.6f);
+		content.add(goals).height(bHeight).width(bWidth * 1.6f).pad(bHeight / 6f).row();
+		goals.setBackground(Assets.skin.getDrawable("edit"));
+		goals.add(new Image(Assets.skin.getDrawable("diamond"))).size(bHeight / 1.6f).pad(bHeight / 6f);
 		goals.add(lPoints).height(bHeight / 1.6f).pad(bHeight / 6f);
 		this.button("Start", true).key(Keys.ENTER, true);
 

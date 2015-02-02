@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mpv.ApplicationHandler;
 import com.mpv.game.actors.Player;
 import com.mpv.game.world.GameObject;
+import com.mpv.game.world.GameTimer;
 
 public class GVars {
 
@@ -85,6 +86,14 @@ public class GVars {
 				Math.min(Math.max(MathUtils.round(activePlayer.getY()), (int) scrHeight / 2), Assets.mapScaledHeight
 						- (int) scrHeight / 2), 0);
 		frCam.update();
+		// Dim light on low battery :)
+		int sec = GameTimer.getInstance().getLeftSec();
+		if (sec < 10) {
+			playerLight.setDistance(Const.VIEWPORT_METERS * 0.1f * sec);
+		} else {
+			playerLight.setDistance(Const.VIEWPORT_METERS);
+		}
+
 		camLight = new Matrix4(frCam.combined);
 		rayHandler.setCombinedMatrix(camLight.scl(BOX_TO_WORLD));
 		GameObject.getInstance().clearBodies();

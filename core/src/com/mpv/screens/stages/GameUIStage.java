@@ -8,12 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mpv.data.Assets;
+import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.game.actors.Player;
 import com.mpv.game.world.GameObject;
@@ -44,7 +44,7 @@ public class GameUIStage extends Stage {
 	public GameUIStage(Viewport viewport, SpriteBatch batch) {
 		super(viewport, batch);
 		instance = this;
-		final TextButton bPause = new TextButton("II", Assets.skin);
+		final Button bPause = new Button(Assets.skin, "pause");
 		//
 		bPause.addListener(new ClickListener() {
 			@Override
@@ -67,6 +67,7 @@ public class GameUIStage extends Stage {
 		labelDebug = new Label("", Assets.skin, "game-text");
 		labelTime = new Label("", Assets.skin, "normal-text");
 		labelCoins = new Label("", Assets.skin, "normal-text");
+		labelCoins.setAlignment(Align.right);
 		leftJump = new Button(Assets.skin, "leftJump");
 		rightJump = new Button(Assets.skin, "rightJump");
 		Widget empty = new Widget();
@@ -75,8 +76,8 @@ public class GameUIStage extends Stage {
 		controlPanel.top();
 		controlPanel.add(new Image(Assets.skin.getDrawable("battery"))).size(GVars.scrWidth / 12f);
 		controlPanel.add(labelTime).expand(true, false).height(getWidth() / 13).width(getWidth() / 4.3f).left();
-		controlPanel.add(labelCoins).expand(false, false).height(getWidth() / 13).width(getWidth() / 8.6f).right();
-		controlPanel.add(new Image(Assets.skin.getDrawable("star-gold"))).size(GVars.scrWidth / 12f).right();
+		controlPanel.add(labelCoins).expand(true, false).height(getWidth() / 13).width(getWidth() / 8.6f).right();
+		controlPanel.add(new Image(Assets.skin.getDrawable("diamond"))).size(GVars.scrWidth / 12f).right();
 
 		// controlPanel.add(labelDebug).expand(true, false).size(GVars.scrHeight/13);
 		// controlPanel.add(labelFPS).expand(true, false).size(GVars.scrHeight/13);
@@ -92,7 +93,7 @@ public class GameUIStage extends Stage {
 		this.addActor(buttonPanel);
 
 		leftJump.addListener(new ClickListener() {
-			Vector2 leftForce = new Vector2(-1f, 1f);
+			Vector2 leftForce = new Vector2(-Const.BLOCK_HALF, Const.BLOCK_HALF);
 
 			@Override
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
@@ -101,7 +102,7 @@ public class GameUIStage extends Stage {
 			}
 		});
 		rightJump.addListener(new ClickListener() {
-			Vector2 rightForce = new Vector2(1f, 1f);
+			Vector2 rightForce = new Vector2(Const.BLOCK_HALF, Const.BLOCK_HALF);
 
 			@Override
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {

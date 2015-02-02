@@ -19,16 +19,8 @@
       title-text: { background: edit, font: normaltext, fontColor: white },
       normal-text: { font: normaltext, fontColor: white },  
      },
-     com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {  
-      default: {up: item, disabled: item-disabled, checked: item-checked}, 
-      none: { up: item, checked: item-checked, imageUp: star-none, imageDown: star-none},
-      silver: { up: item, checked: item-checked, imageUp: star-silver, imageDown: star-silver},
-      gold: { up: item, checked: item-checked, imageUp: star-gold, imageDown: star-gold},
-     },
      com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {  
-      default: { up: button, down: button-down, disabled: button-disabled }, 
-      arrow-left: {up: arrow-left, down: arrow-left-down},
-      arrow-right: {up: arrow-right, down: arrow-right-down},
+      default: { up: button, down: button-down, disabled: button-disabled },
       leftJump: {up: ljump, down: ljump-down},
       rightJump: {up: rjump, down: rjump-down},
       music-button: {up: music, checked: music-disabled},

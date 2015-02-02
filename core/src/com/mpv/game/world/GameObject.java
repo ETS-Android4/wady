@@ -13,7 +13,6 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
-import com.mpv.data.Settings;
 import com.mpv.game.ContactHandler;
 import com.mpv.game.actors.Player;
 import com.mpv.screens.stages.GameUIStage;
@@ -123,7 +122,6 @@ public class GameObject {
 	public void gameFinish() {
 		state = FINISH;
 		Player.state = Player.S_INVISIBLE;
-		Settings.points[mapIndex] = GameTimer.getInstance().getLeftSec() * 10;
 		GameUIStage.getInstance().gameFinish();
 	}
 

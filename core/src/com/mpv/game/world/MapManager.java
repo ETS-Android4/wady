@@ -67,7 +67,7 @@ public class MapManager {
 	private void addCoins() {
 		for (int i = 0; i < GameObject.getInstance().getTotalCoins(); i++) {
 			Cell cell = new Cell();
-			cell.setTile(getTile("coin"));
+			cell.setTile(getTile("diamond"));
 			Position pos = setRandomEmptyCell(cell);
 			CircleShape circleShape = new CircleShape();
 			circleShape.setRadius(0.5f);
@@ -100,7 +100,7 @@ public class MapManager {
 
 	private void setStart() {
 		Cell cell = new Cell();
-		cell.setTile(getTile("start"));
+		cell.setTile(getTile("enter"));
 		start = setRandomEmptyCell(cell);
 		CircleShape circleShape = new CircleShape();
 		circleShape.setRadius(0.5f);

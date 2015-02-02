@@ -6,44 +6,49 @@
   <property name="points1" value="200"/>
   <property name="points2" value="300"/>
   <property name="points3" value="500"/>
-  <property name="startTime" value="10"/>
+  <property name="startTime" value="20"/>
   <property name="timeBonus" value="10"/>
  </properties>
  <tileset firstgid="1" name="obtacles" tilewidth="32" tileheight="32">
   <image source="obtacles.png" width="256" height="256"/>
-  <tile id="3">
-   <properties>
-    <property name="key" value=""/>
-   </properties>
-  </tile>
-  <tile id="4">
-   <properties>
-    <property name="lock" value=""/>
-   </properties>
-  </tile>
-  <tile id="5">
-   <properties>
-    <property name="start" value=""/>
-   </properties>
-  </tile>
-  <tile id="6">
-   <properties>
-    <property name="exit" value=""/>
-   </properties>
-  </tile>
-  <tile id="7">
-   <properties>
-    <property name="coin" value=""/>
-   </properties>
-  </tile>
   <tile id="10">
    <properties>
     <property name="brick" value=""/>
    </properties>
   </tile>
-  <tile id="11">
+  <tile id="56">
    <properties>
     <property name="timeBonus" value=""/>
+   </properties>
+  </tile>
+  <tile id="57">
+   <properties>
+    <property name="lock" value=""/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="key" value=""/>
+   </properties>
+  </tile>
+  <tile id="59">
+   <properties>
+    <property name="diamond" value=""/>
+   </properties>
+  </tile>
+  <tile id="60">
+   <properties>
+    <property name="star" value=""/>
+   </properties>
+  </tile>
+  <tile id="61">
+   <properties>
+    <property name="exit" value=""/>
+   </properties>
+  </tile>
+  <tile id="62">
+   <properties>
+    <property name="enter" value=""/>
    </properties>
   </tile>
  </tileset>
