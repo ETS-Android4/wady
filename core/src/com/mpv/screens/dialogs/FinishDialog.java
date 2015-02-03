@@ -68,9 +68,9 @@ public class FinishDialog extends CustomDialog {
 		// pointsTable.debug();
 		// starsTable.debug();
 		diamondsTable.add(new Image(Assets.skin.getDrawable("diamond"))).size(bHeight / 1.6f).pad(bHeight / 6f);
-		diamondsTable.add(ldiam).height(bHeight / 1.6f).pad(bHeight / 6f);
+		diamondsTable.add(ldiam).height(bHeight / 1.6f).width(bWidth / 2).pad(bHeight / 6f);
 		timeTable.add(new Image(Assets.skin.getDrawable("battery"))).size(bHeight / 1.6f).pad(bHeight / 6f);
-		timeTable.add(ltime).height(bHeight / 1.6f).pad(bHeight / 6f);
+		timeTable.add(ltime).height(bHeight / 1.6f).width(bWidth / 2).pad(bHeight / 6f);
 		pointsTable.setBackground(Assets.skin.getDrawable("edit"));
 		pointsTable.add(diamondsTable).height(bHeight / 1.6f).pad(bHeight / 6f).row();
 		pointsTable.add(timeTable).height(bHeight / 1.6f).pad(bHeight / 6f).row();
@@ -87,9 +87,9 @@ public class FinishDialog extends CustomDialog {
 		for (Cell<?> cell : this.getButtonTable().getCells()) {
 			cell.size(bWidth, bHeight).pad(bHeight / 6f);
 		}
-		points.setUserObject(Integer.valueOf(0));
-		ldiam.setUserObject(Integer.valueOf(0));
-		ltime.setUserObject(Integer.valueOf(0));
+		points.setUserObject(Float.valueOf(0));
+		ldiam.setUserObject(Float.valueOf(0));
+		ltime.setUserObject(Float.valueOf(0));
 	}
 
 	private void setStars() {
@@ -119,70 +119,84 @@ public class FinishDialog extends CustomDialog {
 		Assets.playSnd(Assets.buttonSnd);
 	}
 
-	private void animateStar(int i) {
+	private void animateStar(int i, float delay) {
 		float scale = stars.get(i).getScaleX();
 
 		stars.get(i).setDrawable(Assets.skin, "star-gold");
 		Tween.set(stars.get(i), ActorAccessor.ALPHA).target(0f).start(GVars.tweenManager);
-		Tween.to(stars.get(i), ActorAccessor.ALPHA, 0.5f).target(1f).delay(8f + i * 0.5f).start(GVars.tweenManager);
+		Tween.to(stars.get(i), ActorAccessor.ALPHA, 0.5f).target(1f).delay(delay + i * 0.5f).start(GVars.tweenManager);
 		// Scale animation
 		Tween.set(stars.get(i), ActorAccessor.SCALE).target(scale * 7).start(GVars.tweenManager);
-		Tween.to(stars.get(i), ActorAccessor.SCALE, 0.5f).target(scale).delay(8f + i * 0.5f).setCallback(cb)
+		Tween.to(stars.get(i), ActorAccessor.SCALE, 0.5f).target(scale).delay(delay + i * 0.5f).setCallback(cb)
 				.setCallbackTriggers(TweenCallback.END).start(GVars.tweenManager);
 
 	}
 
 	@Override
 	public Dialog show(Stage stage) {
+		float diamDelay = 0.3f * GameObject.getInstance().getCoinCount();
+		float timeDelay = 3.5f;
+		float pause = 0.5f;
+		int totalPoints = GameObject.getInstance().getCoinCount() * 10;
 		this.getButtonTable().setVisible(false);
-		Assets.playSnd(Assets.winSnd);
-
-		float mapTiming = GameTimer.getInstance().getSpent() / GameObject.getInstance().getMapLimit();
 
 		Tween.set(ldiam, ActorAccessor.TEXT).target(GameObject.getInstance().getCoinCount()).start(GVars.tweenManager);
-		Tween.to(ldiam, ActorAccessor.TEXT, 3.5f).target(0).delay(0.5f).start(GVars.tweenManager);
+		Tween.to(ldiam, ActorAccessor.TEXT, diamDelay).target(0).delay(pause).start(GVars.tweenManager);
 		Tween.set(ltime, ActorAccessor.TEXT).target(GameTimer.getInstance().getLeftSec()).start(GVars.tweenManager);
-		Tween.to(ltime, ActorAccessor.TEXT, 3.5f).target(0).delay(4.5f).start(GVars.tweenManager);
-		int totalPoints = GameObject.getInstance().getCoinCount() * 10;
+		Tween.to(ltime, ActorAccessor.TEXT, timeDelay).target(0).delay(diamDelay + pause * 2).start(GVars.tweenManager);
+
 		Tween.set(points, ActorAccessor.TEXT).target(0).start(GVars.tweenManager);
-		Tween.to(points, ActorAccessor.TEXT, 3.5f).target(totalPoints).delay(0.5f).setCallback(cbCounterBegin)
-				.setCallbackTriggers(TweenCallback.BEGIN).start(GVars.tweenManager);
+		Tween.to(points, ActorAccessor.TEXT, diamDelay).target(totalPoints).delay(pause)
+				.setCallback(new TweenCallback() {
+					@Override
+					public void onEvent(int arg0, BaseTween<?> arg1) {
+						if (dvisible) {
+							Assets.playSnd(Assets.dingSnd);
+						}
+					}
+				}).setCallbackTriggers(TweenCallback.BEGIN).start(GVars.tweenManager);
+
 		totalPoints += GameTimer.getInstance().getLeftSec() * 5;
-		Tween.to(points, ActorAccessor.TEXT, 3.5f).target(totalPoints).delay(4.5f).setCallback(cbCounterBegin)
-				.setCallbackTriggers(TweenCallback.BEGIN).start(GVars.tweenManager);
+		Tween.to(points, ActorAccessor.TEXT, timeDelay).target(totalPoints).delay(diamDelay + pause * 2)
+				.setCallback(cbCounterBegin).setCallbackTriggers(TweenCallback.BEGIN).start(GVars.tweenManager);
 		if (Settings.points[GameObject.mapIndex] < totalPoints) {
 			Settings.points[GameObject.mapIndex] = totalPoints;
 		}
-		for (Image img : stars)
+		float totalDelay = diamDelay + pause * 2 + timeDelay;
+		int star = 0;
+		for (Image img : stars) {
 			img.setDrawable(Assets.skin, "none");
+		}
 
 		if (totalPoints >= GameObject.getInstance().getPoints(0)) {
-			animateStar(0);
-			Settings.stars[GameObject.mapIndex] = 1;
+			animateStar(0, totalDelay);
+			star = 1;
 		}
 		if (totalPoints >= GameObject.getInstance().getPoints(1)) {
-			animateStar(1);
-			Settings.stars[GameObject.mapIndex] = 2;
+			animateStar(1, totalDelay);
+			star = 2;
 		}
 		if (totalPoints >= GameObject.getInstance().getPoints(2)) {
-			animateStar(2);
-			Settings.stars[GameObject.mapIndex] = 3;
+			animateStar(2, totalDelay);
+			star = 3;
 		}
-
+		if (Settings.stars[GameObject.mapIndex] < star) {
+			Settings.stars[GameObject.mapIndex] = star;
+		}
+		if (star == 0) {
+			Assets.playSnd(Assets.failSnd);
+		} else {
+			Assets.playSnd(Assets.winSnd);
+		}
 		dvisible = true;
-		/*
-		 * Tween.set(points, ActorAccessor.TEXT).target(0).start(GVars.tweenManager); Tween.to(points,
-		 * ActorAccessor.TEXT, 3.5f).target(Settings.points[GameObject.mapIndex]).delay(0.5f)
-		 * .setCallback(cbCounterBegin).setCallbackTriggers(TweenCallback.BEGIN).start(GVars.tweenManager);
-		 */
 		return super.show(stage);
 	}
 
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
-		points.setText(String.format("%04d", (Integer) points.getUserObject()));
-		ldiam.setText(String.format("%03d", (Integer) ldiam.getUserObject()));
-		ltime.setText(String.format("%03d", (Integer) ltime.getUserObject()));
+		points.setText(String.format("%04d", Math.round((Float) points.getUserObject())));
+		ldiam.setText(String.format("%03d", Math.round((Float) ldiam.getUserObject())));
+		ltime.setText(String.format("%03d", Math.round((Float) ltime.getUserObject())));
 		super.draw(batch, parentAlpha);
 	}
 

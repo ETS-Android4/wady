@@ -23,7 +23,7 @@ public class ActorAccessor implements TweenAccessor<Actor> {
 			returnValues[0] = target.getRotation();
 			return 1;
 		case TEXT:
-			returnValues[0] = ((Integer) target.getUserObject()).floatValue();
+			returnValues[0] = ((Float) target.getUserObject());
 			return 1;
 		case SCALE:
 			returnValues[0] = target.getScaleX();
@@ -53,7 +53,7 @@ public class ActorAccessor implements TweenAccessor<Actor> {
 			target.setScale(newValues[0]);
 			return;
 		case TEXT:
-			target.setUserObject(Integer.valueOf((int) newValues[0]));
+			target.setUserObject(Float.valueOf(newValues[0]));
 			return;
 		default:
 			assert false;
