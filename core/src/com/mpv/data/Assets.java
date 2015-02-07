@@ -12,7 +12,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.mpv.game.world.GameObject;
+import com.mpv.game.world.GameObj;
 
 public class Assets {
 	// Sound
@@ -128,7 +128,7 @@ public class Assets {
 		GVars.otmRendered = new OrthogonalTiledMapRenderer(Assets.map, mapUnitScale, GVars.spriteBatch);
 		GVars.widthInMeters = mapScaledWidth * GVars.WORLD_TO_BOX;
 		GVars.heightInMeters = mapScaledHeight * GVars.WORLD_TO_BOX;
-		GameObject.getInstance().loadWorld();
+		GameObj.get().loadWorld();
 	}
 
 	public static void disposeMap() {

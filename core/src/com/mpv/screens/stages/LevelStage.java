@@ -16,7 +16,7 @@ import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
-import com.mpv.game.world.GameObject;
+import com.mpv.game.world.GameObj;
 
 public class LevelStage extends Stage {
 
@@ -30,8 +30,8 @@ public class LevelStage extends Stage {
 			// super.touchDown(event, x, y, pointer, button);
 			if (!((Button) event.getListenerActor()).isDisabled()) {
 				Assets.playSnd(Assets.buttonSnd);
-				GameObject.mapIndex = (Integer) event.getListenerActor().getUserObject();
-				Assets.loadMap(GameObject.mapIndex);
+				GameObj.mapIndex = (Integer) event.getListenerActor().getUserObject();
+				Assets.loadMap(GameObj.mapIndex);
 				GVars.app.setScreen(GVars.app.gameScreen);
 			}
 		}

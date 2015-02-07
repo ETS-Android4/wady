@@ -17,7 +17,7 @@ import com.mpv.game.ContactHandler;
 import com.mpv.game.actors.Player;
 import com.mpv.screens.stages.GameUIStage;
 
-public class GameObject {
+public class GameObj {
 
 	public static final int ACTIVE = 0;
 	public static final int PAUSE = 1;
@@ -38,13 +38,13 @@ public class GameObject {
 	//
 	private int collectedCoins;
 	public static int mapIndex = -1;
-	private static GameObject instance;
-	public static Body start, exit, key;
+	private static GameObj instance;
+	public static Body start, key, lock;
 	private static HashSet<Body> bodyTrash = new HashSet<Body>();
 
-	public static GameObject getInstance() {
+	public static GameObj get() {
 		if (instance == null) {
-			instance = new GameObject();
+			instance = new GameObj();
 		}
 		return instance;
 	}
@@ -68,9 +68,9 @@ public class GameObject {
 		points[1] = Integer.parseInt((String) mapProps.get("points2"));
 		points[2] = Integer.parseInt((String) mapProps.get("points3"));
 
-		MapManager.getInst().generate();
+		MapManager.get().generate();
 
-		Player.getInstance().createBody();
+		Player.get().createBody();
 		// Light
 		if (GVars.rayHandler != null)
 			GVars.rayHandler.dispose();
@@ -78,7 +78,7 @@ public class GameObject {
 		GVars.rayHandler = new RayHandler(GVars.world);
 		GVars.sceneryLight = new ConeLight(GVars.rayHandler, 24, new Color(0.72f, 0.72f, 0.0f, 1f),
 				Const.VIEWPORT_METERS / 3.2f, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 0f, 180f);
-		GVars.sceneryLight.attachToBody(Player.getInstance().body, 0f, 0f);
+		GVars.sceneryLight.attachToBody(Player.get().body, 0f, 0f);
 		GVars.playerLight = new ConeLight(GVars.rayHandler, 24, new Color(0.72f, 0.72f, 0.72f, 1f),
 				Const.VIEWPORT_METERS, Const.BLOCK_SIZE, Const.BLOCK_SIZE, 90f, 30f);
 		GVars.playerLight.setSoft(true);
@@ -98,8 +98,8 @@ public class GameObject {
 	}
 
 	public void gameStart() {
-		GameTimer.getInstance().setTimer(startTime);
-		Player.getInstance().resetGame();
+		GameTimer.get().setTimer(startTime);
+		Player.get().resetGame();
 		state = ACTIVE;
 		Player.state = Player.S_IDLE;
 		Assets.playSnd(Assets.dingSnd);
@@ -135,7 +135,7 @@ public class GameObject {
 		if (state != ACTIVE) {
 			return;
 		}
-		GameTimer.getInstance().update(delta);
+		GameTimer.get().update(delta);
 		worldStep(delta);
 	}
 
@@ -158,7 +158,7 @@ public class GameObject {
 	}
 
 	public static void captureKey() {
-		MapManager.getInst().removeItem((Position) key.getUserData());
+		MapManager.get().removeItem((Position) key.getUserData());
 		bodyTrash.add(key);
 		key = null;
 		Assets.playSnd(Assets.dingSnd);
@@ -166,6 +166,11 @@ public class GameObject {
 
 	public void clearBodies() {
 		for (Body body : bodyTrash) {
+			// Unlocking door here. Not the best place
+			if (body == lock) {
+				lock = null;
+				start.setActive(true);
+			}
 			GVars.world.destroyBody(body);
 			body = null;
 		}
@@ -173,14 +178,14 @@ public class GameObject {
 	}
 
 	public void collectTime(Body body) {
-		MapManager.getInst().removeItem((Position) body.getUserData());
+		MapManager.get().removeItem((Position) body.getUserData());
 		bodyTrash.add(body);
 		Assets.playSnd(Assets.hit1Snd);
-		GameTimer.getInstance().addSeconds(10);
+		GameTimer.get().addSeconds(10);
 	}
 
 	public void collectCoin(Body body) {
-		MapManager.getInst().removeItem((Position) body.getUserData());
+		MapManager.get().removeItem((Position) body.getUserData());
 		bodyTrash.add(body);
 		Assets.playSnd(Assets.dingSnd);
 		collectedCoins++;
@@ -192,5 +197,12 @@ public class GameObject {
 
 	public int getCoinCount() {
 		return collectedCoins;
+	}
+
+	public static void captureLock() {
+		MapManager.get().removeItem((Position) lock.getUserData());
+		MapManager.get().unlockExit();
+		bodyTrash.add(lock);
+		Assets.playSnd(Assets.dingSnd);
 	}
 }

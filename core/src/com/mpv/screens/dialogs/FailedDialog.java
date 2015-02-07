@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
-import com.mpv.game.world.GameObject;
+import com.mpv.game.world.GameObj;
 import com.mpv.screens.GameScreen;
 
 public class FailedDialog extends CustomDialog {
@@ -34,7 +34,7 @@ public class FailedDialog extends CustomDialog {
 			GVars.app.setScreen(GVars.app.levelScreen);
 		} else {
 			this.hide();
-			GameObject.getInstance().gameResume();
+			GameObj.get().gameResume();
 			Gdx.input.setInputProcessor(GameScreen.multiplexer);
 		}
 	}

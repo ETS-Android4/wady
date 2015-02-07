@@ -5,16 +5,8 @@ public class Const {
 		public static final String LAYER_ITEMS = "items";
 		public static final String LAYER_OBTACLES = "obtacles";
 		public static final String TILESET_OBTACLES = "obtacles";
+		public static final String LAYER_PATTERN = "pattern";
 	}
-
-	// @formatter:off
-	public static int[][] pattern = new int[][]{
-				{1, 1, 1, 0},
-				{0, 0, 0, 0},
-				{0, 0, 0, 0},
-				{1, 1, 1, 1}
-				};
-	// @formatter:on
 
 	// Animation
 	public static final float ANIMATION_SPEED = 0.01f;

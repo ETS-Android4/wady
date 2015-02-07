@@ -9,7 +9,7 @@ public class GameTimer {
 	private float gameLimit = 0f;
 	private static GameTimer instance;
 
-	public static GameTimer getInstance() {
+	public static GameTimer get() {
 		if (instance == null) {
 			instance = new GameTimer();
 		}
@@ -36,7 +36,7 @@ public class GameTimer {
 	public void update(float deltaTime) {
 		time += deltaTime;
 		if (time >= gameLimit) {
-			GameObject.getInstance().gameOver();
+			GameObj.get().gameOver();
 			// Reset timer (not set to 0)
 			// time -= gameLimit;
 		}

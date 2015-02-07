@@ -3,10 +3,9 @@ package com.mpv.control;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.math.Vector2;
 import com.mpv.ApplicationHandler;
-import com.mpv.data.GVars;
-import com.mpv.game.world.GameObject;
+import com.mpv.game.actors.Player;
+import com.mpv.game.world.GameObj;
 
 public class InputHandler implements InputProcessor {
 
@@ -15,13 +14,15 @@ public class InputHandler implements InputProcessor {
 	@Override
 	public boolean keyDown(int keycode) {
 		// TODO Auto-generated method stub
-		if (GameObject.state != GameObject.ACTIVE) {
+		if (GameObj.state != GameObj.ACTIVE) {
 			return false;
 		}
 		switch (keycode) {
-			case Keys.LEFT: GVars.activePlayer.applyForce(new Vector2(-1f, 1f)); 
-				break;
-			case Keys.RIGHT: GVars.activePlayer.applyForce(new Vector2(1f, 1f));
+		case Keys.LEFT:
+			Player.get().jumpLeft();
+			break;
+		case Keys.RIGHT:
+			Player.get().jumpRigth();
 		}
 		return false;
 	}
@@ -31,7 +32,7 @@ public class InputHandler implements InputProcessor {
 		// TODO Auto-generated method stub
 		if (keycode == Keys.BACK) {
 			Gdx.app.exit();
-			//GVars.app.setScreen(GVars.app.menuScreen);
+			// GVars.app.setScreen(GVars.app.menuScreen);
 		}
 		return false;
 	}

@@ -9,14 +9,14 @@ import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.game.actors.Player;
 import com.mpv.game.world.Coin;
-import com.mpv.game.world.GameObject;
+import com.mpv.game.world.GameObj;
 import com.mpv.game.world.TimeBonus;
 
 public class ContactHandler implements ContactListener {
 
 	@Override
 	public void beginContact(Contact contact) {
-		Player pl = Player.getInstance();
+		Player pl = Player.get();
 		if (pl.body.getLinearVelocity().len() >= Const.BLOCK_SIZE * 13f) {
 			Assets.hitEffect.setPosition(pl.getX() + pl.getOriginX(), pl.getY() + pl.getOriginY());
 			Assets.hitEffect.start();
@@ -31,7 +31,7 @@ public class ContactHandler implements ContactListener {
 
 	@Override
 	public void preSolve(Contact contact, Manifold oldManifold) {
-		Player pl = Player.getInstance();
+		Player pl = Player.get();
 		Body a = contact.getFixtureA().getBody(), b = contact.getFixtureB().getBody(), p = pl.body;
 
 		if (p != a && p != b)
@@ -42,25 +42,31 @@ public class ContactHandler implements ContactListener {
 		if (null != data) {
 			if (data instanceof Coin) {
 				contact.setEnabled(false);
-				GameObject.getInstance().collectCoin(body);
+				GameObj.get().collectCoin(body);
 				return;
 			}
 			if (data instanceof TimeBonus) {
 				contact.setEnabled(false);
-				GameObject.getInstance().collectTime(body);
+				GameObj.get().collectTime(body);
 				return;
 			}
 		}
 
-		if (null != GameObject.key) {
-			if (body == GameObject.key) {
-				GameObject.captureKey();
+		if (null != GameObj.key) {
+			if (body == GameObj.key) {
+				GameObj.captureKey();
+				contact.setEnabled(false);
+				return;
+			}
+		} else if (null != GameObj.lock) {
+			if (body == GameObj.lock) {
+				GameObj.captureLock();
 				contact.setEnabled(false);
 				return;
 			}
 		} else {
-			if (body == GameObject.exit) {
-				GameObject.getInstance().gameFinish();
+			if (body == GameObj.start) {
+				GameObj.get().gameFinish();
 				return;
 			}
 		}

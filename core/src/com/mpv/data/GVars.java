@@ -12,7 +12,7 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mpv.ApplicationHandler;
 import com.mpv.game.actors.Player;
-import com.mpv.game.world.GameObject;
+import com.mpv.game.world.GameObj;
 import com.mpv.game.world.GameTimer;
 
 public class GVars {
@@ -36,7 +36,6 @@ public class GVars {
 	// Tweens
 	public static TweenManager tweenManager;
 	// Player
-	public static Player activePlayer = null;
 	public static OrthogonalTiledMapRenderer otmRendered;
 	public static SpriteBatch spriteBatch = new SpriteBatch();
 	private static Matrix4 camLight;
@@ -75,19 +74,18 @@ public class GVars {
 		frCam = null;
 		bgCam = null;
 		tweenManager = null;
-		activePlayer = null;
 	}
 
 	public static void update() {
 		// Calculating cam position to not overlap map borders
 		frCam.position.set(
-				Math.min(Math.max(MathUtils.round(activePlayer.getX()), (int) scrWidth / 2), Assets.mapScaledWidth
+				Math.min(Math.max(MathUtils.round(Player.get().getX()), (int) scrWidth / 2), Assets.mapScaledWidth
 						- (int) scrWidth / 2),
-				Math.min(Math.max(MathUtils.round(activePlayer.getY()), (int) scrHeight / 2), Assets.mapScaledHeight
+				Math.min(Math.max(MathUtils.round(Player.get().getY()), (int) scrHeight / 2), Assets.mapScaledHeight
 						- (int) scrHeight / 2), 0);
 		frCam.update();
 		// Dim light on low battery :)
-		int sec = GameTimer.getInstance().getLeftSec();
+		int sec = GameTimer.get().getLeftSec();
 		if (sec < 10) {
 			playerLight.setDistance(Const.VIEWPORT_METERS * 0.1f * sec);
 		} else {
@@ -96,6 +94,6 @@ public class GVars {
 
 		camLight = new Matrix4(frCam.combined);
 		rayHandler.setCombinedMatrix(camLight.scl(BOX_TO_WORLD));
-		GameObject.getInstance().clearBodies();
+		GameObj.get().clearBodies();
 	}
 }

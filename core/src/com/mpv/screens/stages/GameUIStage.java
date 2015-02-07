@@ -13,10 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mpv.data.Assets;
-import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.game.actors.Player;
-import com.mpv.game.world.GameObject;
+import com.mpv.game.world.GameObj;
 import com.mpv.game.world.GameTimer;
 import com.mpv.screens.dialogs.FailedDialog;
 import com.mpv.screens.dialogs.FinishDialog;
@@ -51,8 +50,8 @@ public class GameUIStage extends Stage {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);
 				Assets.playSnd(Assets.buttonSnd);
-				if (GameObject.state == GameObject.ACTIVE) {
-					GameObject.getInstance().gamePause();
+				if (GameObj.state == GameObj.ACTIVE) {
+					GameObj.get().gamePause();
 					gamePause();
 				}
 			}
@@ -93,21 +92,17 @@ public class GameUIStage extends Stage {
 		this.addActor(buttonPanel);
 
 		leftJump.addListener(new ClickListener() {
-			Vector2 leftForce = new Vector2(-Const.BLOCK_HALF, Const.BLOCK_HALF);
-
 			@Override
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);
-				GVars.activePlayer.applyForce(leftForce);
+				Player.get().jumpLeft();
 			}
 		});
 		rightJump.addListener(new ClickListener() {
-			Vector2 rightForce = new Vector2(Const.BLOCK_HALF, Const.BLOCK_HALF);
-
 			@Override
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);
-				GVars.activePlayer.applyForce(rightForce);
+				Player.get().jumpRigth();
 			}
 		});
 	}
@@ -115,15 +110,18 @@ public class GameUIStage extends Stage {
 	@Override
 	public void draw() {
 		labelTime.setText(GameTimer.getLeftString());
-		labelCoins.setText(String.format("%02d", GameObject.getInstance().getCoinCount()));
+		labelCoins.setText(String.format("%02d", GameObj.get().getCoinCount()));
 		// Calculating radar rotation
-		Vector2 player = Player.getInstance().body.getPosition();
+		Vector2 player = Player.get().body.getPosition();
 		Vector2 target;
-		if (null != GameObject.key) {
-			target = GameObject.key.getPosition();
+		if (null != GameObj.key) {
+			target = GameObj.key.getPosition();
+		} else if (null != GameObj.lock) {
+			target = GameObj.lock.getPosition();
 		} else {
-			target = GameObject.exit.getPosition();
+			target = GameObj.start.getPosition();
 		}
+
 		radar.setRotation(target.sub(player).angle() - 90);
 		super.draw();
 	}
@@ -145,7 +143,7 @@ public class GameUIStage extends Stage {
 	}
 
 	public void gameStart() {
-		Player.getInstance().resetGame();
+		Player.get().resetGame();
 		Gdx.input.setInputProcessor(instance);
 		GameUIStage.startDialog.show(instance);
 	}

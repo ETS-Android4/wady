@@ -20,6 +20,7 @@ import com.mpv.control.InputHandler;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
 import com.mpv.game.actors.Player;
+import com.mpv.game.world.GameObj;
 import com.mpv.game.world.MapManager;
 import com.mpv.screens.stages.GameUIStage;
 import com.mpv.tween.ActorAccessor;
@@ -46,7 +47,7 @@ public class GameScreen implements Screen {
 		// Game Stage
 		uiStage = new GameUIStage(new ScreenViewport(), batch);
 		gameStage = new Stage(new ScreenViewport(GVars.frCam), batch);
-		gameStage.addActor(Player.getInstance());
+		gameStage.addActor(Player.get());
 		Gdx.graphics.setVSync(true);
 		// Input processor for gesture detection
 		multiplexer = new InputMultiplexer();
@@ -65,9 +66,9 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		GVars.app.gameObject.gameUpdate(delta);
+		GameObj.get().gameUpdate(delta);
 		GVars.tweenManager.update(delta);
-		GVars.activePlayer.positionSync();
+		Player.get().positionSync();
 
 		uiStage.act(Gdx.graphics.getDeltaTime());
 		gameStage.act(Gdx.graphics.getDeltaTime());
@@ -83,22 +84,22 @@ public class GameScreen implements Screen {
 		GVars.otmRendered.setView(GVars.bgCam);
 		batch.begin();
 		Assets.skin.getTiledDrawable("bricks").draw(batch, 0, 0, Assets.mapScaledWidth, Assets.mapScaledHeight);
-		GVars.otmRendered.renderTileLayer(MapManager.getInst().getLayerObtacles());
+		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerObtacles());
 		batch.end();
 		// Parallax layer
 		GVars.bgCam.position.set(GVars.frCam.position).scl(0.5f).add(glViewport.width / 4f, glViewport.height / 4f, 0);
 		GVars.bgCam.update();
 		GVars.otmRendered.setView(GVars.bgCam);
 		batch.begin();
-		GVars.otmRendered.renderTileLayer(MapManager.getInst().getLayerObtacles());
+		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerObtacles());
 		batch.end();
 		// Main scene
 		GVars.otmRendered.setView(GVars.frCam);
 
 		GVars.rayHandler.updateAndRender();
 		batch.begin();
-		GVars.otmRendered.renderTileLayer(MapManager.getInst().getLayerObtacles());
-		GVars.otmRendered.renderTileLayer(MapManager.getInst().getLayerItems());
+		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerObtacles());
+		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerItems());
 		batch.end();
 		// Player
 		gameStage.draw();

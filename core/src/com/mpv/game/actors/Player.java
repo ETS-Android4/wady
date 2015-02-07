@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
-import com.mpv.game.world.GameObject;
+import com.mpv.game.world.GameObj;
 import com.mpv.tween.ActorAccessor;
 
 public class Player extends AnimatedImage {
@@ -29,11 +29,13 @@ public class Player extends AnimatedImage {
 	public static int state = Player.S_IDLE;
 
 	private static final float animFix = 2.5f;
+	private static final Vector2 rightForce = new Vector2(Const.BLOCK_SIZE * 0.8f, Const.BLOCK_SIZE * 0.8f);
+	private static final Vector2 leftForce = new Vector2(-Const.BLOCK_SIZE * 0.8f, Const.BLOCK_SIZE * 0.8f);
 
 	private static Player instance;
 	public Body body;
 
-	public static Player getInstance() {
+	public static Player get() {
 		if (instance == null) {
 			instance = new Player();
 		}
@@ -41,8 +43,6 @@ public class Player extends AnimatedImage {
 	}
 
 	private Player() {
-		GVars.activePlayer = this;
-
 		this.addListener(new ClickListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -80,8 +80,7 @@ public class Player extends AnimatedImage {
 	}
 
 	public void resetGame() {
-		body.setTransform(GameObject.start.getTransform().getPosition(), 0f);
-		// body.setTransform(5f, Const.BLOCK_SIZE * 2.5f, 0f);
+		body.setTransform(GameObj.start.getTransform().getPosition(), 0f);
 		this.setRotation(360f);
 		body.setAwake(false);
 		state = S_IDLE;
@@ -133,7 +132,7 @@ public class Player extends AnimatedImage {
 		this.setPosition((body.getPosition().x - Const.PLAYER_HALF) * GVars.BOX_TO_WORLD,
 				(body.getPosition().y - Const.PLAYER_SIZE / animFix) * GVars.BOX_TO_WORLD);
 
-		if (GameObject.state != GameObject.ACTIVE)
+		if (GameObj.state != GameObj.ACTIVE)
 			return;
 		Tween.to(this, ActorAccessor.ROTATE, 0.2f).target(angle + 270f).start(GVars.tweenManager);
 	}
@@ -145,4 +144,11 @@ public class Player extends AnimatedImage {
 		}
 	}
 
+	public void jumpLeft() {
+		applyForce(leftForce);
+	}
+
+	public void jumpRigth() {
+		applyForce(rightForce);
+	}
 }

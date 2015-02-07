@@ -22,14 +22,14 @@ public class MapManager {
 
 	private static MapManager instance;
 
-	public static MapManager getInst() {
+	public static MapManager get() {
 		if (instance == null) {
 			instance = new MapManager();
 		}
 		return instance;
 	}
 
-	private Position start, exit, key;
+	private Position start, key, lock;
 
 	private TiledMapTile getTile(String tilename) {
 		TiledMapTileSet tileSet = Assets.map.getTileSets().getTileSet(Const.Map.TILESET_OBTACLES);
@@ -49,23 +49,24 @@ public class MapManager {
 		return (TiledMapTileLayer) Assets.map.getLayers().get(layerName);
 	}
 
-	private void setExit() {
+	private void setLock() {
 		Cell cell = new Cell();
-		cell.setTile(getTile("exit"));
-		exit = setRandomEmptyCell(cell, key);
+		cell.setTile(getTile("lock"));
+		lock = setRandomEmptyCell(cell, key);
 		CircleShape circleShape = new CircleShape();
 		circleShape.setRadius(0.5f);
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.StaticBody;
 		Body body = GVars.world.createBody(bd);
 		body.createFixture(circleShape, 1);
-		body.setTransform(exit.x + 0.5f, exit.y + 0.5f, 0f);
+		body.setTransform(lock.x + 0.5f, lock.y + 0.5f, 0f);
 		body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
-		GameObject.exit = body;
+		body.setUserData(lock);
+		GameObj.lock = body;
 	}
 
 	private void addCoins() {
-		for (int i = 0; i < GameObject.getInstance().getTotalCoins(); i++) {
+		for (int i = 0; i < GameObj.get().getTotalCoins(); i++) {
 			Cell cell = new Cell();
 			cell.setTile(getTile("diamond"));
 			Position pos = setRandomEmptyCell(cell);
@@ -82,7 +83,7 @@ public class MapManager {
 	}
 
 	private void addTimeBonuses() {
-		for (int i = 0; i < GameObject.getInstance().getBonusCount(); i++) {
+		for (int i = 0; i < GameObj.get().getBonusCount(); i++) {
 			Cell cell = new Cell();
 			cell.setTile(getTile("timeBonus"));
 			Position pos = setRandomEmptyCell(cell);
@@ -111,7 +112,7 @@ public class MapManager {
 		body.setTransform(start.x + 0.5f, start.y + 0.5f, 0f);
 		body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
 		body.setActive(false);
-		GameObject.start = body;
+		GameObj.start = body;
 	}
 
 	private Position setRandomEmptyCell(Cell cell) {
@@ -157,7 +158,7 @@ public class MapManager {
 		body.createFixture(circleShape, 0f);
 		body.setTransform(key.x + 0.5f, key.y + 0.5f, 0f);
 		body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
-		GameObject.key = body;
+		GameObj.key = body;
 		body.setUserData(key);
 	}
 
@@ -172,20 +173,22 @@ public class MapManager {
 	public void generate() {
 		setWorldBounds();
 		TiledMapTileLayer tileLayer = getLayerObtacles();
+		TiledMapTileLayer patternLayer = getLayerPattern();
+		int pSize = Integer.parseInt((String) getLayerPattern().getProperties().get("pattern"));
 		clearLayer(tileLayer);
 		clearLayer(getLayerItems());
 		Cell cell = new Cell();
 		cell.setTile(getTile("brick"));
 		Random random = new Random();
-		for (int y = 0; y < tileLayer.getHeight(); y += 4) {
+		for (int y = 0; y < tileLayer.getHeight(); y += pSize) {
 			PolygonShape shape;
-			for (int x = 0; x < tileLayer.getWidth(); x += 4) {
+			for (int x = 0; x < tileLayer.getWidth(); x += pSize) {
 				if (random.nextBoolean()) {
 					// Drawing pattern
-					for (int i = 0; i < 4; i++) {
-						for (int j = 0; j < 4; j++) {
-							if (Const.pattern[j][i] == 1) {
-								tileLayer.setCell(x + i, y + j, cell);
+					for (int i = 0; i < pSize; i++) {
+						for (int j = 0; j < pSize; j++) {
+							if (null != patternLayer.getCell(i, j)) {
+								tileLayer.setCell(x + i, y + j, patternLayer.getCell(i, j));
 								shape = new PolygonShape();
 								shape.setAsBox(0.5f, 0.5f);
 								BodyDef bd = new BodyDef();
@@ -202,9 +205,13 @@ public class MapManager {
 		}
 		setStart();
 		setKey();
-		setExit();
+		setLock();
 		addCoins();
 		addTimeBonuses();
+	}
+
+	private TiledMapTileLayer getLayerPattern() {
+		return getLayer(Const.Map.LAYER_PATTERN);
 	}
 
 	private void setWorldBounds() {
@@ -237,5 +244,11 @@ public class MapManager {
 
 	public void removeItem(Position pos) {
 		getLayerItems().setCell(pos.x, pos.y, null);
+	}
+
+	public void unlockExit() {
+		Cell cell = new Cell();
+		cell.setTile(getTile("exit"));
+		getLayerItems().setCell(start.x, start.y, cell);
 	}
 }

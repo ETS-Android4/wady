@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
-import com.mpv.game.world.GameObject;
+import com.mpv.game.world.GameObj;
 import com.mpv.screens.GameScreen;
 
 public class StartDialog extends CustomDialog {
@@ -34,7 +34,7 @@ public class StartDialog extends CustomDialog {
 		content.add(new Label("Collect:", Assets.skin, "normal-text")).pad(bHeight / 6f).row();
 		content.add(goals).height(bHeight).width(bWidth * 1.6f).pad(bHeight / 6f).row();
 		goals.setBackground(Assets.skin.getDrawable("edit"));
-		goals.add(new Image(Assets.skin.getDrawable("diamond"))).size(bHeight / 1.6f).pad(bHeight / 6f);
+		goals.add(new Image(Assets.skin.getDrawable("star-silver"))).size(bHeight / 1.2f).pad(bHeight / 6f);
 		goals.add(lPoints).height(bHeight / 1.6f).pad(bHeight / 6f);
 		this.button("Start", true).key(Keys.ENTER, true);
 
@@ -45,14 +45,14 @@ public class StartDialog extends CustomDialog {
 
 	@Override
 	protected void result(Object obj) {
-		GameObject.getInstance().gameStart();
+		GameObj.get().gameStart();
 		Gdx.input.setInputProcessor(GameScreen.multiplexer);
 	}
 
 	@Override
 	public Dialog show(Stage stage, Action action) {
-		lTitle.setText(String.format("Level %02d", GameObject.mapIndex + 1));
-		lPoints.setText(String.valueOf(GameObject.getInstance().getPoints(0)));
+		lTitle.setText(String.format("Level %d", GameObj.mapIndex + 1));
+		lPoints.setText(String.valueOf(GameObj.get().getPoints(0)));
 		return super.show(stage, action);
 	}
 }

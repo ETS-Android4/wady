@@ -62,4 +62,12 @@
    eJxjYBgFo2AUjIJRMApIBwAGQAAB
   </data>
  </layer>
+ <layer name="pattern" width="20" height="20">
+  <properties>
+   <property name="pattern" value="5"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIKhBTipZA4jEDMBMTOVzBtKgBr+BgAcsAAV
+  </data>
+ </layer>
 </map>
