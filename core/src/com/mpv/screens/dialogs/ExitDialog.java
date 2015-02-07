@@ -7,8 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.mpv.data.Assets;
 import com.mpv.data.Const;
+import com.mpv.data.Effect;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
 
@@ -28,7 +28,7 @@ public class ExitDialog extends Dialog {
 	}
 
 	protected void result(Object obj) {
-		Assets.playSnd(Assets.buttonSnd);
+		Effect.button();
 		if (obj.equals(true)) {
 			Settings.save();
 			Gdx.app.exit();

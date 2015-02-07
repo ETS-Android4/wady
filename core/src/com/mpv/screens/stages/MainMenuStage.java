@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
+import com.mpv.data.Effect;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
 import com.mpv.screens.dialogs.ExitDialog;
@@ -75,7 +76,7 @@ public class MainMenuStage extends Stage {
 		bNewGame.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);
-				Assets.playSnd(Assets.buttonSnd);
+				Effect.button();
 				GVars.app.setScreen(GVars.app.levelScreen);
 			}
 		});
@@ -83,14 +84,14 @@ public class MainMenuStage extends Stage {
 		bCredits.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);
-				Assets.playSnd(Assets.buttonSnd);
+				Effect.button();
 				GVars.app.setScreen(GVars.app.creditsScreen);
 			}
 		});
 		bExit.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);
-				Assets.playSnd(Assets.buttonSnd);
+				Effect.button();
 				exitDialog.show(event.getStage());
 			}
 		});

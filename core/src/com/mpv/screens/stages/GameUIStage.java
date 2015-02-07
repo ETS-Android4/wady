@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mpv.data.Assets;
+import com.mpv.data.Effect;
 import com.mpv.data.GVars;
 import com.mpv.game.actors.Player;
 import com.mpv.game.world.GameObj;
@@ -49,7 +50,7 @@ public class GameUIStage extends Stage {
 			@Override
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);
-				Assets.playSnd(Assets.buttonSnd);
+				Effect.button();
 				if (GameObj.state == GameObj.ACTIVE) {
 					GameObj.get().gamePause();
 					gamePause();
@@ -139,7 +140,7 @@ public class GameUIStage extends Stage {
 	public void gameOver() {
 		Gdx.input.setInputProcessor(instance);
 		GameUIStage.failedDialog.show(instance);
-		Assets.playSnd(Assets.failSnd);
+		Effect.fail();
 	}
 
 	public void gameStart() {

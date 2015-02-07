@@ -11,8 +11,8 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.mpv.data.Assets;
 import com.mpv.data.Const;
+import com.mpv.data.Effect;
 import com.mpv.data.GVars;
 import com.mpv.game.world.GameObj;
 import com.mpv.tween.ActorAccessor;
@@ -90,7 +90,7 @@ public class Player extends AnimatedImage {
 		body.applyLinearImpulse(impulse, body.getWorldCenter().add(0f, Const.BLOCK_HALF).rotateRad(body.getAngle()),
 				true);
 		Player.state = Player.S_LJUMP;
-		Assets.playSnd(Assets.wingSnd);
+		Effect.wing();
 		reset();
 	}
 

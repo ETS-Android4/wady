@@ -12,6 +12,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
+import com.mpv.data.Effect;
 import com.mpv.data.GVars;
 import com.mpv.game.ContactHandler;
 import com.mpv.game.actors.Player;
@@ -102,7 +103,7 @@ public class GameObj {
 		Player.get().resetGame();
 		state = ACTIVE;
 		Player.state = Player.S_IDLE;
-		Assets.playSnd(Assets.dingSnd);
+		Effect.start();
 	}
 
 	public void gamePause() {
@@ -161,7 +162,7 @@ public class GameObj {
 		MapManager.get().removeItem((Position) key.getUserData());
 		bodyTrash.add(key);
 		key = null;
-		Assets.playSnd(Assets.dingSnd);
+		Effect.key();
 	}
 
 	public void clearBodies() {
@@ -180,14 +181,14 @@ public class GameObj {
 	public void collectTime(Body body) {
 		MapManager.get().removeItem((Position) body.getUserData());
 		bodyTrash.add(body);
-		Assets.playSnd(Assets.hit1Snd);
+		Effect.get_battery();
 		GameTimer.get().addSeconds(10);
 	}
 
 	public void collectCoin(Body body) {
 		MapManager.get().removeItem((Position) body.getUserData());
 		bodyTrash.add(body);
-		Assets.playSnd(Assets.dingSnd);
+		Effect.diamond();
 		collectedCoins++;
 	}
 
@@ -203,6 +204,6 @@ public class GameObj {
 		MapManager.get().removeItem((Position) lock.getUserData());
 		MapManager.get().unlockExit();
 		bodyTrash.add(lock);
-		Assets.playSnd(Assets.dingSnd);
+		Effect.lock();
 	}
 }

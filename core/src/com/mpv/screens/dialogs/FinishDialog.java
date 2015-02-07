@@ -21,6 +21,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.Timer;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
+import com.mpv.data.Effect;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
 import com.mpv.game.world.GameObj;
@@ -45,7 +46,7 @@ public class FinishDialog extends CustomDialog {
 		@Override
 		public void onEvent(int arg0, BaseTween<?> arg1) {
 			if (dvisible) {
-				Assets.playSnd(Assets.blopSnd);
+				Effect.star();
 			}
 		}
 	};
@@ -55,7 +56,7 @@ public class FinishDialog extends CustomDialog {
 			// TODO Auto-generated method stub
 			instance.getButtonTable().setVisible(true);
 			if (dvisible) {
-				Assets.playSnd(Assets.counterSnd, 0.05f);
+				Effect.counter();
 			}
 		}
 	};
@@ -77,7 +78,7 @@ public class FinishDialog extends CustomDialog {
 		timeTable.add(ltime).height(bHeight / 1.6f).width(bWidth / 2).pad(bHeight / 6f);
 		resultTable.setBackground(Assets.skin.getDrawable("edit"));
 		resultTable.add(new Image(Assets.skin.getDrawable("star-silver"))).size(bHeight / 1.2f).pad(bHeight / 6f);
-		resultTable.add(lpoints).width(bWidth / 1.2f);
+		resultTable.add(lpoints).width(bWidth / 1.4f);
 		pointsTable.setBackground(Assets.skin.getDrawable("edit"));
 		pointsTable.add(diamondsTable).height(bHeight / 1.6f).pad(bHeight / 6f).row();
 		pointsTable.add(timeTable).height(bHeight / 1.6f).pad(bHeight / 6f).row();
@@ -120,9 +121,9 @@ public class FinishDialog extends CustomDialog {
 			GameObj.get().gameResume();
 			Gdx.input.setInputProcessor(GameScreen.multiplexer);
 		}
-		Assets.counterSnd.stop();
+		Effect.stopSnd(Effect.COUNTER);
 		dvisible = false;
-		Assets.playSnd(Assets.buttonSnd);
+		Effect.button();
 	}
 
 	private void animateStar(int i, float delay) {
@@ -140,6 +141,7 @@ public class FinishDialog extends CustomDialog {
 
 	@Override
 	public Dialog show(Stage stage) {
+		Effect.finish();
 		int coinCount = GameObj.get().getCoinCount();
 		float diamDelay = 0.3f * coinCount;
 		float timeDelay = 3.5f;
@@ -153,7 +155,7 @@ public class FinishDialog extends CustomDialog {
 			@Override
 			public void run() {
 				if (dvisible) {
-					Assets.playSnd(Assets.dingSnd);
+					Effect.count_diamond();
 				}
 				Float tmp = (Float) lpoints.getUserObject();
 				lpoints.setUserObject(tmp + 10);
@@ -202,9 +204,9 @@ public class FinishDialog extends CustomDialog {
 					return;
 				}
 				if (tmpStar == 0) {
-					Assets.playSnd(Assets.failSnd);
+					Effect.fail();
 				} else {
-					Assets.playSnd(Assets.winSnd);
+					Effect.win();
 				}
 			}
 		}, totalDelay);

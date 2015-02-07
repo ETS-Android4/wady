@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
+import com.mpv.data.Effect;
 import com.mpv.game.actors.Player;
 import com.mpv.game.world.Coin;
 import com.mpv.game.world.GameObj;
@@ -20,7 +21,7 @@ public class ContactHandler implements ContactListener {
 		if (pl.body.getLinearVelocity().len() >= Const.BLOCK_SIZE * 13f) {
 			Assets.hitEffect.setPosition(pl.getX() + pl.getOriginX(), pl.getY() + pl.getOriginY());
 			Assets.hitEffect.start();
-			Assets.playSnd(Assets.hit1Snd);
+			Effect.hit();
 		}
 	}
 

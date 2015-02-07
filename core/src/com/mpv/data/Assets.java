@@ -1,6 +1,7 @@
 package com.mpv.data;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -15,8 +16,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mpv.game.world.GameObj;
 
 public class Assets {
+
+	// AssetManager
+	public static AssetManager am = new AssetManager();
 	// Sound
-	public static Sound hit1Snd, failSnd, buttonSnd, winSnd, gongSnd, dingSnd, wingSnd, counterSnd, blopSnd;
+	// public static Sound hit1Snd, failSnd, buttonSnd, winSnd, gongSnd, dingSnd, wingSnd, counterSnd, blopSnd;
 	// Music
 	public static Music gameMusic, menuMusic;
 	// Skin
@@ -34,6 +38,7 @@ public class Assets {
 	public static ParticleEffect hitEffect;
 
 	public static void dispose() {
+		am.dispose();
 		audioDispose();
 		skin.dispose();
 		skin = null;
@@ -54,25 +59,6 @@ public class Assets {
 		menuMusic.dispose();
 		gameMusic = null;
 		menuMusic = null;
-		// Sound
-		hit1Snd.dispose();
-		hit1Snd = null;
-		failSnd.dispose();
-		failSnd = null;
-		buttonSnd.dispose();
-		buttonSnd = null;
-		winSnd.dispose();
-		winSnd = null;
-		gongSnd.dispose();
-		gongSnd = null;
-		wingSnd.dispose();
-		wingSnd = null;
-		dingSnd.dispose();
-		dingSnd = null;
-		counterSnd.dispose();
-		counterSnd = null;
-		blopSnd.dispose();
-		blopSnd = null;
 	}
 
 	public static void load() {
@@ -82,15 +68,35 @@ public class Assets {
 		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/game.mp3"));
 		gameMusic.setLooping(true);
 		// Sounds
-		hit1Snd = Gdx.audio.newSound(Gdx.files.internal("sounds/hit1.mp3"));
-		failSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/ouuu.mp3"));
-		winSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/wow.mp3"));
-		buttonSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/button.mp3"));
-		gongSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/gong.mp3"));
-		wingSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/wing.mp3"));
-		dingSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/ding.mp3"));
-		counterSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/counter.mp3"));
-		blopSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/blop.mp3"));
+		am.load(Effect.BUTTON, Sound.class);
+		am.load(Effect.COUNT_DIAMOND, Sound.class);
+		am.load(Effect.COUNTER, Sound.class);
+		am.load(Effect.DIAMOND, Sound.class);
+		am.load(Effect.FAIL, Sound.class);
+		am.load(Effect.FINISH, Sound.class);
+		am.load(Effect.GET_BATTERY, Sound.class);
+		am.load(Effect.KEY, Sound.class);
+		am.load(Effect.LOCK, Sound.class);
+		am.load(Effect.STAR, Sound.class);
+		am.load(Effect.START, Sound.class);
+		am.load(Effect.TIMER, Sound.class);
+		am.load(Effect.WING, Sound.class);
+		am.load(Effect.WIN, Sound.class);
+		am.load(Effect.HIT, Sound.class);
+		am.finishLoading();
+		// am.update();
+
+		/*
+		 * hit1Snd = Gdx.audio.newSound(Gdx.files.internal("sounds/hit1.mp3")); failSnd =
+		 * Gdx.audio.newSound(Gdx.files.internal("sounds/ouuu.mp3")); winSnd =
+		 * Gdx.audio.newSound(Gdx.files.internal("sounds/wow.mp3")); buttonSnd =
+		 * Gdx.audio.newSound(Gdx.files.internal("sounds/button.mp3")); gongSnd =
+		 * Gdx.audio.newSound(Gdx.files.internal("sounds/gong.mp3")); wingSnd =
+		 * Gdx.audio.newSound(Gdx.files.internal("sounds/wing.mp3")); dingSnd =
+		 * Gdx.audio.newSound(Gdx.files.internal("sounds/ding.mp3")); counterSnd =
+		 * Gdx.audio.newSound(Gdx.files.internal("sounds/counter.mp3")); blopSnd =
+		 * Gdx.audio.newSound(Gdx.files.internal("sounds/blop.mp3"));
+		 */
 		// Skin & Font
 		skin = new Skin(Gdx.files.internal("data/skin.json"));
 		skin.getFont("normaltext").setScale(GVars.scrWidth / 640f * 1.2f);
@@ -155,30 +161,19 @@ public class Assets {
 			pauseMusic();
 		}
 	}
-
-	public static void playSnd(Sound sound) {
-		playSnd(sound, 1, 1);
-	}
-
-	public static void playSnd(Sound sound, float volume) {
-		playSnd(sound, volume, 1);
-	}
-
-	public static void playSnd(Sound sound, float volume, float pitch) {
-		if (Settings.soundEnabled)
-			sound.play(volume, pitch, 0);
-	}
-
-	public static void loopSnd(Sound sound) {
-		loopSnd(sound, 1, 1);
-	}
-
-	public static void loopSnd(Sound sound, float volume) {
-		loopSnd(sound, volume, 1);
-	}
-
-	public static void loopSnd(Sound sound, float volume, float pitch) {
-		if (Settings.soundEnabled)
-			sound.loop(volume, pitch, 0);
-	}
+	/*
+	 * public static void playSnd(Sound sound) { playSnd(sound, 1, 1); }
+	 * 
+	 * public static void playSnd(Sound sound, float volume) { playSnd(sound, volume, 1); }
+	 * 
+	 * public static void playSnd(Sound sound, float volume, float pitch) { if (Settings.soundEnabled)
+	 * sound.play(volume, pitch, 0); }
+	 * 
+	 * public static void loopSnd(Sound sound) { loopSnd(sound, 1, 1); }
+	 * 
+	 * public static void loopSnd(Sound sound, float volume) { loopSnd(sound, volume, 1); }
+	 * 
+	 * public static void loopSnd(Sound sound, float volume, float pitch) { if (Settings.soundEnabled)
+	 * sound.loop(volume, pitch, 0); }
+	 */
 }

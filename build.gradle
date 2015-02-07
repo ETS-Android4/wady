@@ -21,7 +21,7 @@ allprojects {
     version = "1.0"
     ext {
         appName = "wady"
-        gdxVersion = "1.5.0"
+        gdxVersion = "1.5.3"
         roboVMVersion = "0.0.14"
     }
     

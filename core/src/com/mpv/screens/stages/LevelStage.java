@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
+import com.mpv.data.Effect;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
 import com.mpv.game.world.GameObj;
@@ -29,7 +30,7 @@ public class LevelStage extends Stage {
 		public void clicked(InputEvent event, float x, float y) {
 			// super.touchDown(event, x, y, pointer, button);
 			if (!((Button) event.getListenerActor()).isDisabled()) {
-				Assets.playSnd(Assets.buttonSnd);
+				Effect.button();
 				GameObj.mapIndex = (Integer) event.getListenerActor().getUserObject();
 				Assets.loadMap(GameObj.mapIndex);
 				GVars.app.setScreen(GVars.app.gameScreen);
@@ -69,7 +70,7 @@ public class LevelStage extends Stage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);
-				Assets.playSnd(Assets.buttonSnd);
+				Effect.button();
 				GVars.app.setScreen(GVars.app.menuScreen);
 			}
 		});
@@ -78,7 +79,7 @@ public class LevelStage extends Stage {
 			@Override
 			public boolean keyUp(InputEvent event, int keycode) {
 				if (keycode == Keys.BACK || keycode == Keys.ESCAPE) {
-					Assets.playSnd(Assets.buttonSnd);
+					Effect.button();
 					GVars.app.setScreen(GVars.app.menuScreen);
 				}
 				return false;

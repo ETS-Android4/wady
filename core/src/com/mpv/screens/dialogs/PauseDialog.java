@@ -5,8 +5,8 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.mpv.data.Assets;
 import com.mpv.data.Const;
+import com.mpv.data.Effect;
 import com.mpv.data.GVars;
 import com.mpv.game.world.GameObj;
 import com.mpv.screens.GameScreen;
@@ -29,7 +29,7 @@ public class PauseDialog extends CustomDialog {
 
 	@Override
 	protected void result(Object obj) {
-		Assets.playSnd(Assets.buttonSnd);
+		Effect.button();
 		if (obj.equals(true)) {
 			this.hide();
 			GVars.app.setScreen(GVars.app.levelScreen);
