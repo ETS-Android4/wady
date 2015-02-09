@@ -30,15 +30,15 @@ public class Effect {
 		playSnd(BUTTON);
 	}
 
-	private static void playSnd(String name) {
+	public static void playSnd(String name) {
 		playSnd(name, 1, 1);
 	}
 
-	private static void playSnd(String name, float volume) {
+	public static void playSnd(String name, float volume) {
 		playSnd(name, volume, 1);
 	}
 
-	private static void playSnd(String name, float volume, float pitch) {
+	public static void playSnd(String name, float volume, float pitch) {
 		if (Settings.soundEnabled)
 			((Sound) Assets.am.get(name)).play(volume, pitch, 0);
 	}
@@ -85,7 +85,7 @@ public class Effect {
 	}
 
 	public static void counter() {
-		playSnd(COUNTER, 0.05f);
+		playSnd(COUNTER);
 	}
 
 	public static void stopSnd(String name) {

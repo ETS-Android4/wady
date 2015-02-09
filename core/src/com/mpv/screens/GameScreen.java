@@ -134,7 +134,6 @@ public class GameScreen implements Screen {
 	public void show() {
 		GameUIStage.getInstance().gameStart();
 		Assets.pauseMusic();
-		Assets.playMusic(Assets.gameMusic);
 	}
 
 	@Override

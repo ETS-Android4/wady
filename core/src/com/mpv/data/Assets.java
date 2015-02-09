@@ -22,7 +22,7 @@ public class Assets {
 	// Sound
 	// public static Sound hit1Snd, failSnd, buttonSnd, winSnd, gongSnd, dingSnd, wingSnd, counterSnd, blopSnd;
 	// Music
-	public static Music gameMusic, menuMusic;
+	public static Music gameMusic, menuMusic, gameAmbient;
 	// Skin
 	public static Skin skin;
 	// Maps
@@ -55,9 +55,11 @@ public class Assets {
 		// Music
 		gameMusic.stop();
 		menuMusic.stop();
+		gameAmbient.stop();
 		gameMusic.dispose();
 		menuMusic.dispose();
 		gameMusic = null;
+		gameAmbient = null;
 		menuMusic = null;
 	}
 
@@ -65,8 +67,10 @@ public class Assets {
 		// Music
 		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("music/menu.mp3"));
 		menuMusic.setLooping(true);
-		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/game.mp3"));
+		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/gameloop.mp3"));
 		gameMusic.setLooping(true);
+		gameAmbient = Gdx.audio.newMusic(Gdx.files.internal("music/game.mp3"));
+		gameAmbient.setLooping(true);
 		// Sounds
 		am.load(Effect.BUTTON, Sound.class);
 		am.load(Effect.COUNT_DIAMOND, Sound.class);
@@ -152,6 +156,7 @@ public class Assets {
 	public static void pauseMusic() {
 		menuMusic.pause();
 		gameMusic.pause();
+		gameAmbient.pause();
 	}
 
 	public static void playMusic(Music music) {
@@ -160,6 +165,11 @@ public class Assets {
 		} else {
 			pauseMusic();
 		}
+	}
+
+	public static void gameMusic() {
+		playMusic(gameMusic);
+		playMusic(gameAmbient);
 	}
 	/*
 	 * public static void playSnd(Sound sound) { playSnd(sound, 1, 1); }

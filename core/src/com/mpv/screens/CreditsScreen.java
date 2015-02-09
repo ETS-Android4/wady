@@ -7,40 +7,44 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
+import com.mpv.data.Const;
 import com.mpv.data.Effect;
 import com.mpv.data.GVars;
 
 public class CreditsScreen implements Screen {
 
 	private Stage stage;
-	private static List<String> list = new List<String>(Assets.skin);
-	private static String[] stringlist = { " SOFTWARE & TOOLS:", "    LibGDX, Eclipse,", "    InkScape, Gimp,",
-			"     Tiled, Synfig", " ", "      RESOURCES:", "   opengameart.org", "    soundbible.com",
-			"     soundjay.com" };
+	private String text = "SOFTWARE & TOOLS:\nLibGDX, Eclipse, InkScape, Gimp, Tiled, Synfig\n\n"
+			+ "RESOURCES:\nopengameart.org\nsoundbible.com\nfreesound.org";
+	private TextArea textArea = new TextArea("", Assets.skin);
+	private float bWidth = Gdx.graphics.getWidth() / 3.2f;
+	private float bHeight = Const.PLAYER_SIZE * GVars.BOX_TO_WORLD / 1.6f;
 
 	public CreditsScreen() {
 		stage = new Stage();
 		final TextButton button = new TextButton("Ok", Assets.skin);
-
+		textArea.setAlignment(Align.center);
+		textArea.setTouchable(Touchable.disabled);
+		textArea.setText(text);
 		Table table = new Table();
-		Image image = new Image(Assets.skin.getDrawable("window"));
-		image.setSize(stage.getWidth(), stage.getHeight());
+		Image image = new Image(Assets.skin.getDrawable("menu-screen"));
+		image.setSize(stage.getWidth(), stage.getWidth() / image.getWidth() * image.getHeight());
 		image.setPosition(0, 0);
 		stage.addActor(image);
 		stage.addActor(table);
 		table.setFillParent(true);
-		table.add(list).row();
+		table.add(textArea).size(stage.getWidth() / 1.2f, stage.getHeight() / 1.6f).row();
 		table.add(new Widget()).height(stage.getWidth() / 12.8f).row();
-		table.add(button).size(stage.getWidth() / 6.4f, stage.getWidth() / 6.4f);
-
-		list.setItems(stringlist);
+		table.add(button).size(bWidth, bHeight);
 
 		button.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
@@ -58,7 +62,6 @@ public class CreditsScreen implements Screen {
 				return false;
 			}
 		});
-
 	}
 
 	@Override

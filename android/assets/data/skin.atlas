@@ -28,7 +28,7 @@ window
   rotate: false
   xy: 483, 611
   size: 128, 128
-  split: 24, 25, 24, 23
+  split: 25, 25, 24, 24
   orig: 128, 128
   offset: 0, 0
   index: -1

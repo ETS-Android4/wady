@@ -82,8 +82,8 @@ public class FinishDialog extends CustomDialog {
 		pointsTable.setBackground(Assets.skin.getDrawable("edit"));
 		pointsTable.add(diamondsTable).height(bHeight / 1.6f).pad(bHeight / 6f).row();
 		pointsTable.add(timeTable).height(bHeight / 1.6f).pad(bHeight / 6f).row();
-		pointsTable.add(resultTable).size(bWidth * 1.6f, bHeight)
-				.pad(bHeight / 1.6f, bHeight / 6f, bHeight / 6f, bHeight / 6f).row();
+		pointsTable.add(resultTable).size(bWidth * 1.6f, bHeight).pad(0f, bHeight / 6f, bHeight / 6f, bHeight / 6f)
+				.row();
 		starsTable.setBackground(Assets.skin.getDrawable("edit"));
 		setStars();
 		// this.getContentTable().debug();
@@ -119,6 +119,7 @@ public class FinishDialog extends CustomDialog {
 		} else {
 			this.hide();
 			GameObj.get().gameResume();
+			Assets.gameMusic();
 			Gdx.input.setInputProcessor(GameScreen.multiplexer);
 		}
 		Effect.stopSnd(Effect.COUNTER);
@@ -141,6 +142,7 @@ public class FinishDialog extends CustomDialog {
 
 	@Override
 	public Dialog show(Stage stage) {
+		Assets.pauseMusic();
 		Effect.finish();
 		int coinCount = GameObj.get().getCoinCount();
 		float diamDelay = 0.3f * coinCount;

@@ -46,6 +46,7 @@ public class StartDialog extends CustomDialog {
 	@Override
 	protected void result(Object obj) {
 		GameObj.get().gameStart();
+		Assets.gameMusic();
 		Gdx.input.setInputProcessor(GameScreen.multiplexer);
 	}
 

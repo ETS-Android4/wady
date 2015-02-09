@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.Effect;
 import com.mpv.data.GVars;
@@ -35,6 +36,7 @@ public class FailedDialog extends CustomDialog {
 		} else {
 			this.hide();
 			GameObj.get().gameResume();
+			Assets.gameMusic();
 			Gdx.input.setInputProcessor(GameScreen.multiplexer);
 		}
 	}
