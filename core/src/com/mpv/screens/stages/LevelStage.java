@@ -57,7 +57,12 @@ public class LevelStage extends Stage {
 				.row();
 		scrollTable.add(scrollBg).pad(bHeight / 6f);
 		TextButton exitButton = new TextButton("Exit", Assets.skin, "default");
-		mainTable.setBackground(Assets.skin.getTiledDrawable("menu-screen"));
+
+		Image image = new Image(Assets.skin.getDrawable("menu-screen"));
+		image.setSize(getWidth(), getWidth() / image.getWidth() * image.getHeight());
+		image.setPosition(0, 0);
+		this.addActor(image);
+
 		mainTable.setFillParent(true);
 		this.addActor(mainTable);
 

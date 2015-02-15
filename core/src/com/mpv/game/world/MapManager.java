@@ -183,7 +183,7 @@ public class MapManager {
 		for (int y = 0; y < tileLayer.getHeight(); y += pSize) {
 			PolygonShape shape;
 			for (int x = 0; x < tileLayer.getWidth(); x += pSize) {
-				if (random.nextBoolean()) {
+				if ((random.nextBoolean() || random.nextBoolean()) || random.nextBoolean()) {
 					// Drawing pattern
 					for (int i = 0; i < pSize; i++) {
 						for (int j = 0; j < pSize; j++) {

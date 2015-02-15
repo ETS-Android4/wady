@@ -3,9 +3,9 @@
  <properties>
   <property name="bonusCount" value="5"/>
   <property name="coinsCount" value="5"/>
-  <property name="points1" value="200"/>
-  <property name="points2" value="300"/>
-  <property name="points3" value="500"/>
+  <property name="points1" value="70"/>
+  <property name="points2" value="100"/>
+  <property name="points3" value="150"/>
   <property name="startTime" value="10"/>
   <property name="timeBonus" value="10"/>
  </properties>

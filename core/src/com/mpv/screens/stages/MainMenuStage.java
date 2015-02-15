@@ -45,8 +45,8 @@ public class MainMenuStage extends Stage {
 		Table sndTable = new Table();
 		Table parentTable = new Table();
 		parentTable.setFillParent(true);
-		sndTable.add(bSound).center().pad(height / 4f);
-		sndTable.add(bMusic).center().pad(height / 4f);
+		sndTable.add(bSound).center().size(height).pad(height / 4f);
+		sndTable.add(bMusic).center().size(height).pad(height / 4f);
 
 		buttonTable.setBackground(Assets.skin.getDrawable("window"));
 		buttonTable.align(Align.center);
@@ -57,6 +57,9 @@ public class MainMenuStage extends Stage {
 		buttonTable.add(bNewGame).size(width, height).pad(height / 4f).row();
 		buttonTable.add(bCredits).size(width, height).pad(height / 4f).row();
 		buttonTable.add(bExit).size(width, height).pad(height / 4f);
+
+		bMusic.setChecked(!Settings.musicEnabled);
+		bSound.setChecked(!Settings.soundEnabled);
 
 		bMusic.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {

@@ -5,7 +5,7 @@
   <property name="coinsCount" value="10"/>
   <property name="points1" value="200"/>
   <property name="points2" value="300"/>
-  <property name="points3" value="500"/>
+  <property name="points3" value="400"/>
   <property name="startTime" value="20"/>
   <property name="timeBonus" value="10"/>
  </properties>
@@ -67,7 +67,7 @@
    <property name="pattern" value="5"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgYBaNgFAwVwD3QDhjmgJkAn1YAPV7pFc8ANpAAKA==
+   eJzt0LENACAQA7EAFfsvzDMALRTY0vVREgAAgLNWzWq8HvKB/XPPva8XLAAAHA==
   </data>
  </layer>
 </map>

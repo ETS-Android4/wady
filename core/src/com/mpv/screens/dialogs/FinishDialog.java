@@ -89,7 +89,7 @@ public class FinishDialog extends CustomDialog {
 		// this.getContentTable().debug();
 		content.add(ltitle).height(bHeight / 1.6f).pad(bHeight / 6f).row();
 		content.add(pointsTable).width(bWidth * 2f).pad(bHeight / 6f).row();
-		content.add(starsTable).width(bWidth * 2f).pad(bHeight / 16f).row();
+		content.add(starsTable).size(bWidth * 2f, bHeight).pad(bHeight / 16f).row();
 		this.button("Retry", false).button("Menu", true).key(Keys.ENTER, true).key(Keys.ESCAPE, false);
 		for (Cell<?> cell : this.getButtonTable().getCells()) {
 			cell.size(bWidth, bHeight).pad(bHeight / 6f);
@@ -106,7 +106,7 @@ public class FinishDialog extends CustomDialog {
 			img = new Image(Assets.skin.getDrawable("star-none"));
 			img.setOrigin(img.getWidth() / 2, img.getHeight() / 2);
 			stars.add(img);
-			starsTable.add(img).width(GVars.scrWidth / 6.4f);
+			starsTable.add(img).size(bHeight / 1.2f);
 			starsTable.add(empty).size(GVars.scrWidth / 50f);
 		}
 	}

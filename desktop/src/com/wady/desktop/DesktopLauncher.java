@@ -9,7 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "Organizo";
 		config.width = 480;
-		config.height = 640;
+		config.height = 800;
 		config.samples = 4;
 		config.resizable = false;
 		config.vSyncEnabled = true;
