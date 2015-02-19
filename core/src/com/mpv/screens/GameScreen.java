@@ -108,9 +108,9 @@ public class GameScreen implements Screen {
 		Assets.hitEffect.draw(batch, delta);
 		batch.end();
 		// FPS
-		// GameUIStage.labelFPS.setText(Float.toString(1/delta).substring(0, 4));
+		GameUIStage.labelFPS.setText(Float.toString(1 / delta).substring(0, 4));
 		// Physics debug
-		// debugRenderer.render(GVars.world,
+		// debugRenderer.render(GVars.world, GVars.frCam.combined.scl(GVars.BOX_TO_WORLD));
 		uiStage.draw();
 	}
 

@@ -98,7 +98,7 @@ public class LevelStage extends Stage {
 			TextButton tb = new TextButton(String.valueOf(i + 1), Assets.skin, "default");
 			tb.addListener(itemClick);
 			tb.setUserObject(new Integer(i));
-			if (i != 0 && Settings.points[i - 1] == 0 && Settings.points[i] == 0) {
+			if (i != 0 && Settings.stars[i - 1] == 0 && Settings.stars[i] == 0) {
 				tb.setDisabled(true);
 			}
 			Label lb = new Label(String.valueOf(Settings.points[i]), Assets.skin);

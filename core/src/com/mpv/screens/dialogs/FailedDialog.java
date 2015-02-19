@@ -19,7 +19,7 @@ public class FailedDialog extends CustomDialog {
 
 	public FailedDialog(String title, Skin skin, String styleName) {
 		super(title, skin, styleName);
-		this.getContentTable().add(new Label("Failed", skin, "title-text")).height(bHeight / 1.6f).row();
+		this.getContentTable().add(new Label("Time's Up!", skin, "title-text")).height(bHeight / 1.6f).row();
 		// this.getContentTable().add(new Image()).size(GVars.scrWidth/3.2f);
 		this.button("Menu", true).button("Retry", false).key(Keys.ENTER, true).key(Keys.ESCAPE, false);
 		for (Cell<?> cell : this.getButtonTable().getCells()) {

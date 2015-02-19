@@ -94,8 +94,8 @@ public class FinishDialog extends CustomDialog {
 		for (Cell<?> cell : this.getButtonTable().getCells()) {
 			cell.size(bWidth, bHeight).pad(bHeight / 6f);
 		}
-		lpoints.setUserObject(Float.valueOf(0));
-		ldiam.setUserObject(Float.valueOf(0));
+		// lpoints.setUserObject(Float.valueOf(0));
+		// ldiam.setUserObject(Float.valueOf(0));
 		ltime.setUserObject(Float.valueOf(0));
 	}
 
@@ -151,8 +151,8 @@ public class FinishDialog extends CustomDialog {
 		int totalPoints = coinCount * 10;
 		this.getButtonTable().setVisible(false);
 		ltitle.setText(String.format("Level %d", GameObj.mapIndex + 1));
-		lpoints.setUserObject(new Float(0));
-		ldiam.setUserObject(new Float(coinCount));
+		lpoints.setUserObject(Float.valueOf(0f));
+		ldiam.setUserObject(Float.valueOf(coinCount));
 		Timer.schedule(new Timer.Task() {
 			@Override
 			public void run() {
@@ -160,16 +160,14 @@ public class FinishDialog extends CustomDialog {
 					Effect.count_diamond();
 				}
 				Float tmp = (Float) lpoints.getUserObject();
-				lpoints.setUserObject(tmp + 10);
+				lpoints.setUserObject(tmp + 10f);
 				tmp = (Float) ldiam.getUserObject();
-				ldiam.setUserObject(tmp - 1);
+				ldiam.setUserObject(tmp - 1f);
 			}
 		}, pause, 0.3f, coinCount - 1);
 
 		Tween.set(ltime, ActorAccessor.TEXT).target(GameTimer.get().getLeftSec()).start(GVars.tweenManager);
 		Tween.to(ltime, ActorAccessor.TEXT, timeDelay).target(0).delay(diamDelay + pause * 2).start(GVars.tweenManager);
-
-		// Tween.set(lpoints, ActorAccessor.TEXT).target(totalPoints).start(GVars.tweenManager);
 		totalPoints += GameTimer.get().getLeftSec() * 5;
 		Tween.to(lpoints, ActorAccessor.TEXT, timeDelay).target(totalPoints).delay(diamDelay + pause * 2)
 				.setCallback(cbCounterBegin).setCallbackTriggers(TweenCallback.BEGIN).start(GVars.tweenManager);

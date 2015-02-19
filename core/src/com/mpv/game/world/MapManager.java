@@ -170,37 +170,43 @@ public class MapManager {
 		}
 	}
 
+	private void drawPattern(int x, int y, int id, int size) {
+		TiledMapTileLayer patternLayer = getLayerPattern();
+		TiledMapTileLayer tileLayer = getLayerObtacles();
+		PolygonShape shape;
+		Cell cell;
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				cell = patternLayer.getCell(i + size * id, j);
+				if (null != cell) {
+					tileLayer.setCell(x + i, y + j, cell);
+					shape = new PolygonShape();
+					shape.setAsBox(0.5f, 0.5f);
+					BodyDef bd = new BodyDef();
+					bd.type = BodyType.StaticBody;
+					Body body = GVars.world.createBody(bd);
+					body.createFixture(shape, 1);
+					body.setTransform(x + i + 0.5f, y + j + 0.5f, 0f);
+					body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
+					shape.dispose();
+				}
+			}
+		}
+	}
+
 	public void generate() {
 		setWorldBounds();
 		TiledMapTileLayer tileLayer = getLayerObtacles();
-		TiledMapTileLayer patternLayer = getLayerPattern();
 		int pSize = Integer.parseInt((String) getLayerPattern().getProperties().get("pattern"));
 		clearLayer(tileLayer);
 		clearLayer(getLayerItems());
-		Cell cell = new Cell();
-		cell.setTile(getTile("brick"));
 		Random random = new Random();
 		for (int y = 0; y < tileLayer.getHeight(); y += pSize) {
-			PolygonShape shape;
 			for (int x = 0; x < tileLayer.getWidth(); x += pSize) {
-				if ((random.nextBoolean() || random.nextBoolean()) || random.nextBoolean()) {
-					// Drawing pattern
-					for (int i = 0; i < pSize; i++) {
-						for (int j = 0; j < pSize; j++) {
-							if (null != patternLayer.getCell(i, j)) {
-								tileLayer.setCell(x + i, y + j, patternLayer.getCell(i, j));
-								shape = new PolygonShape();
-								shape.setAsBox(0.5f, 0.5f);
-								BodyDef bd = new BodyDef();
-								bd.type = BodyType.StaticBody;
-								Body body = GVars.world.createBody(bd);
-								body.createFixture(shape, 1);
-								body.setTransform(x + i + 0.5f, y + j + 0.5f, 0f);
-								body.getFixtureList().first().getFilterData().categoryBits = Const.CATEGORY_SCENERY;
-							}
-						}
-					}
-				}
+				// if ((random.nextBoolean() || random.nextBoolean()) || random.nextBoolean()) {
+				// Drawing pattern
+				drawPattern(x, y, random.nextInt(2), pSize);
+				// }
 			}
 		}
 		setStart();
