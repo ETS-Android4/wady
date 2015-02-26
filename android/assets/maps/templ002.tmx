@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="30" height="30" tilewidth="32" tileheight="32" backgroundcolor="#414141">
+<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
   <property name="bonusCount" value="10"/>
   <property name="coinsCount" value="10"/>
@@ -52,22 +52,22 @@
    </properties>
   </tile>
  </tileset>
- <layer name="obtacles" width="30" height="30">
+ <layer name="obtacles" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
   </data>
  </layer>
- <layer name="items" width="30" height="30">
+ <layer name="items" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
   </data>
  </layer>
- <layer name="pattern" width="30" height="30">
+ <layer name="pattern" width="40" height="40">
   <properties>
-   <property name="pattern" value="5"/>
+   <property name="pattern" value="10"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0bENACAMA0ETKsT++8IApjQI6U9K4+aLSAAAAAB+UWbr4WbbN8w+L7RPXreTSv7PCQtg1AA7
+   eJzt09EKwCAIhWFbV7X3f98RdGFiYzBCL/4PJBChg6AIAAAAAAAAkNu1qb+ziHfPt6henfWmq8qom3doEUE2vHyn6Dsc/1Xx79LO2d5pTdZ9ePky+Zov6kYy7OsBuFYAzg==
   </data>
  </layer>
 </map>

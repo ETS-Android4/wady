@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
-  <property name="bonusCount" value="50"/>
-  <property name="coinsCount" value="100"/>
+  <property name="bonusCount" value="5"/>
+  <property name="coinsCount" value="3"/>
   <property name="points1" value="70"/>
   <property name="points2" value="100"/>
   <property name="points3" value="150"/>
@@ -67,7 +67,7 @@
    <property name="pattern" value="5"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKhBThxiDMBMTc9HTLEATMDZeEFACngACU=
+   eJxjYBgFo2AUjIKhBziBmIuKZnGiiTGRaRYTFvNgYuSaSU33IetnptAMAGScAGI=
   </data>
  </layer>
 </map>

@@ -82,25 +82,37 @@ public class GameScreen implements Screen {
 		GVars.bgCam.position.set(GVars.frCam.position).scl(0.25f).add(glViewport.width / 2f, glViewport.height / 2f, 0);
 		GVars.bgCam.update();
 		GVars.otmRendered.setView(GVars.bgCam);
+		Assets.sm.beginFB("bg_fb");
 		batch.begin();
 		Assets.skin.getTiledDrawable("bricks").draw(batch, 0, 0, Assets.mapScaledWidth, Assets.mapScaledHeight);
 		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerObtacles());
 		batch.end();
-		// Parallax layer
+		// Parallax layers
 		GVars.bgCam.position.set(GVars.frCam.position).scl(0.5f).add(glViewport.width / 4f, glViewport.height / 4f, 0);
 		GVars.bgCam.update();
 		GVars.otmRendered.setView(GVars.bgCam);
 		batch.begin();
+
 		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerObtacles());
+
 		batch.end();
+		Assets.sm.endFB();
 		// Main scene
 		GVars.otmRendered.setView(GVars.frCam);
+		// -----------------------------
+
+		// Assets.sm.begin("empty");
+		Assets.sm.begin("bloom");
+		Assets.sm.renderFB("bg_fb");
+		Assets.sm.end();
 
 		GVars.rayHandler.updateAndRender();
+
 		batch.begin();
 		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerObtacles());
 		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerItems());
 		batch.end();
+
 		// Player
 		gameStage.draw();
 		// Effects

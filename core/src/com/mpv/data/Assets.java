@@ -7,18 +7,19 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mpv.game.world.GameObj;
+import com.thesecretpie.shader.ShaderManager;
 
 public class Assets {
 
 	// AssetManager
 	public static AssetManager am = new AssetManager();
+	public static ShaderManager sm = new ShaderManager("shaders", am);
 	// Sound
 	// public static Sound hit1Snd, failSnd, buttonSnd, winSnd, gongSnd, dingSnd, wingSnd, counterSnd, blopSnd;
 	// Music
@@ -39,6 +40,7 @@ public class Assets {
 
 	public static void dispose() {
 		am.dispose();
+		sm.dispose();
 		audioDispose();
 		skin.dispose();
 		skin = null;
@@ -107,7 +109,9 @@ public class Assets {
 
 		loadAnimation();
 		// Shader
-		ShaderProgram.pedantic = false;
+		sm.add("bloom", "default.vert", "bloom.frag");
+		sm.createFB("bloom_fb");
+		sm.createFB("bg_fb");
 		/*
 		 * shader = new ShaderProgram( Gdx.files.internal("shaders/red.vsh"), Gdx.files.internal("shaders/red.fsh"));
 		 * System.out.println(shader.isCompiled() ? "shader compiled" : shader.getLog());

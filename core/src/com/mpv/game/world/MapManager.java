@@ -30,6 +30,7 @@ public class MapManager {
 	}
 
 	private Position start, key, lock;
+	private Random rand = new Random();
 
 	private TiledMapTile getTile(String tilename) {
 		TiledMapTileSet tileSet = Assets.map.getTileSets().getTileSet(Const.Map.TILESET_OBTACLES);
@@ -52,7 +53,7 @@ public class MapManager {
 	private void setLock() {
 		Cell cell = new Cell();
 		cell.setTile(getTile("lock"));
-		lock = setRandomEmptyCell(cell, key);
+		lock = setRandomEmptyCell(cell, key, start);
 		CircleShape circleShape = new CircleShape();
 		circleShape.setRadius(0.5f);
 		BodyDef bd = new BodyDef();
@@ -116,23 +117,29 @@ public class MapManager {
 	}
 
 	private Position setRandomEmptyCell(Cell cell) {
-		return setRandomEmptyCell(cell, null);
+		return setRandomEmptyCell(cell, (Position) null);
 	}
 
-	private Position setRandomEmptyCell(Cell cell, Position pos) {
+	private Position setRandomEmptyCell(Cell cell, Position... pos) {
 		TiledMapTileLayer itemsLayer = getLayerItems();
 		Random random = new Random();
 		int x = 0, y = 0;
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 10000; i++) {
 			x = random.nextInt(itemsLayer.getWidth());
 			y = random.nextInt(itemsLayer.getHeight());
 			if (null == itemsLayer.getCell(x, y) && null == getLayerObtacles().getCell(x, y)) {
-				if (null == pos) {
+				if (null == pos[0]) {
 					itemsLayer.setCell(x, y, cell);
 					break;
 				} else {
-					Vector2 vec = new Vector2(pos.x, pos.y);
-					if (vec.dst(x, y) > itemsLayer.getWidth() / 2.1f) {
+					Vector2 vec = new Vector2(x, y);
+					int condition = 0;
+					for (int j = 0; j < pos.length; j++) {
+						if (vec.dst(pos[j].x, pos[j].y) >= itemsLayer.getWidth() / 2.1f) {
+							condition++;
+						}
+					}
+					if (condition == pos.length) {
 						itemsLayer.setCell(x, y, cell);
 						break;
 					}
@@ -178,7 +185,7 @@ public class MapManager {
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				cell = patternLayer.getCell(i + size * id, j);
-				if (null != cell) {
+				if (null != cell && rand.nextBoolean()) {
 					tileLayer.setCell(x + i, y + j, cell);
 					shape = new PolygonShape();
 					shape.setAsBox(0.5f, 0.5f);
@@ -200,12 +207,11 @@ public class MapManager {
 		int pSize = Integer.parseInt((String) getLayerPattern().getProperties().get("pattern"));
 		clearLayer(tileLayer);
 		clearLayer(getLayerItems());
-		Random random = new Random();
 		for (int y = 0; y < tileLayer.getHeight(); y += pSize) {
 			for (int x = 0; x < tileLayer.getWidth(); x += pSize) {
 				// if ((random.nextBoolean() || random.nextBoolean()) || random.nextBoolean()) {
 				// Drawing pattern
-				drawPattern(x, y, random.nextInt(2), pSize);
+				drawPattern(x, y, rand.nextInt(2), pSize);
 				// }
 			}
 		}

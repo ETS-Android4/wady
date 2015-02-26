@@ -153,6 +153,7 @@ public class FinishDialog extends CustomDialog {
 		ltitle.setText(String.format("Level %d", GameObj.mapIndex + 1));
 		lpoints.setUserObject(Float.valueOf(0f));
 		ldiam.setUserObject(Float.valueOf(coinCount));
+		Timer.instance().clear();
 		Timer.schedule(new Timer.Task() {
 			@Override
 			public void run() {
