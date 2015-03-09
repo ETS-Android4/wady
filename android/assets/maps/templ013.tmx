@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
+<map version="1.0" orientation="orthogonal" width="60" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
   <property name="bonusCount" value="10"/>
   <property name="coinsCount" value="10"/>
@@ -55,23 +55,31 @@
  <tileset firstgid="65" name="terrain" tilewidth="32" tileheight="32">
   <image source="terrain.png" width="512" height="480"/>
  </tileset>
- <layer name="obtacles" width="40" height="40">
+ <layer name="obtacles" width="60" height="40">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+   eJztwTEBAAAAwqD1T20Hb6AAAAAAAAAAAAB4DCWAAAE=
   </data>
  </layer>
- <layer name="items" width="40" height="40">
+ <layer name="items" width="60" height="40">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+   eJztwTEBAAAAwqD1T20Hb6AAAAAAAAAAAAB4DCWAAAE=
   </data>
  </layer>
- <layer name="pattern" width="40" height="40">
+ <layer name="tmp" width="60" height="40">
   <properties>
-   <property name="pattern" value="10"/>
+   <property name="pattern" value="20"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztz0ENAAAIxDAUIgT/AjBxDxLaZAJWBQAAAAB3dbgJ59evX79+/fr169evX79+/fr16/f37wJq0B+Q
+  </data>
+ </layer>
+ <layer name="pattern" width="60" height="40">
+  <properties>
+   <property name="pattern" value="20"/>
    <property name="random" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0UEKgDAMRNFeTW+kYPcV6rmN4CIMAd1os/gPhjSLwkBKAQAAAAAAAHKbLHMwI91y3OluR05d5mWz1Id/1SWjKlPfo0X9vrK4rLJrJ73rn3dult3tUb9M3vYb1Vv7jXACIP4UWg==
+   eJztlosNgzAMRNmPbtBu0G5AN4Chi6Vask52Ej51UHVPimgDxDl/iIeBEEIIIYQQQgghhBByJabCeJvrvyB6ZmegdmWE/8J9HQ9nbZ0v+dSz8Us8O1Y3ahm/8/b95zpezjo67/nT828GYkc03Jx5AbVgfHWvR3M+K9ayX0/v7DyreHqPonWVmdtov+We5iNSq11vTckRz/cZlOJm9xw9V6vd6DzopXcYYr1WY6S3lpOeD3rTGl9vr601aGPbmwl+656sxlJ8t2rOwn5bcB96Fa0L3LO9ChLVqNebZJ6/gn5b0M82Zxd4p9YrqI+wRqPepMc5ZGOivXOExjbqJffYPmutVjD3om+mzeMoXnvsnrFWiy2NZcsZieflEbvo24wzqRTLWn+/pd4ifdln796aqdUb9pNX6S2O1EzpXewnST4fSdOIiA==
   </data>
  </layer>
 </map>

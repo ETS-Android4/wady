@@ -38,6 +38,7 @@ public class ApplicationHandler extends Game {
 		GVars.app = this;
 		GVars.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
+		this.setScreen(new SplashScreen());
 		// Initialize configuration and resources
 		Settings.load();
 		Assets.load();
@@ -51,8 +52,6 @@ public class ApplicationHandler extends Game {
 		menuScreen = new MenuScreen();
 		creditsScreen = new CreditsScreen();
 		levelScreen = new LevelScreen();
-
-		this.setScreen(new SplashScreen());
 	}
 
 	@Override

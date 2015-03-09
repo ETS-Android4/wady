@@ -30,7 +30,7 @@ public class SplashScreen implements Screen {
 		splash.draw(spriteBatch);
 		spriteBatch.end();
 		if (tweenManager.getRunningTweensCount() == 0 || Gdx.input.justTouched())
-			GVars.app.setScreen(GVars.app.menuScreen);
+			GVars.app.setScreen(new LogoScreen());
 	}
 
 	@Override
@@ -61,6 +61,7 @@ public class SplashScreen implements Screen {
 
 	@Override
 	public void hide() {
+		tweenManager.killAll();
 		spriteBatch.dispose();
 		texture.dispose();
 	}

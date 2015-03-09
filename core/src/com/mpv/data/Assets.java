@@ -110,12 +110,7 @@ public class Assets {
 		loadAnimation();
 		// Shader
 		sm.add("bloom", "default.vert", "bloom.frag");
-		sm.createFB("bloom_fb");
 		sm.createFB("bg_fb");
-		/*
-		 * shader = new ShaderProgram( Gdx.files.internal("shaders/red.vsh"), Gdx.files.internal("shaders/red.fsh"));
-		 * System.out.println(shader.isCompiled() ? "shader compiled" : shader.getLog());
-		 */
 		// Particles
 		hitEffect = new ParticleEffect();
 		hitEffect.load(Gdx.files.internal("effects/engine.p"), Gdx.files.internal("effects"));

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
+<map version="1.0" orientation="orthogonal" width="45" height="45" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
   <property name="bonusCount" value="10"/>
   <property name="coinsCount" value="10"/>
@@ -55,23 +55,31 @@
  <tileset firstgid="65" name="terrain" tilewidth="32" tileheight="32">
   <image source="terrain.png" width="512" height="480"/>
  </tileset>
- <layer name="obtacles" width="40" height="40">
+ <layer name="obtacles" width="45" height="45">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAgIcBH6QAAQ==
   </data>
  </layer>
- <layer name="items" width="40" height="40">
+ <layer name="items" width="45" height="45">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAgIcBH6QAAQ==
   </data>
  </layer>
- <layer name="pattern" width="40" height="40">
+ <layer name="pattern" width="45" height="45">
   <properties>
-   <property name="pattern" value="10"/>
+   <property name="pattern" value="15"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztljEOwyAMRblacoOwtgtZ2/vPpVIsfVkOGPBQqf9JVhLjj6NgQ1IihBBCCCGEEEIIIYSQ/+JR7al8e7Xtsl2NbTAuWivOAjUrvKq9qx3gy9dzVv6k/KjNjlyoWaFUO6+r5W/F470V6801izfvijbqXb15W+Pe7xf1zthTcm2No7+ntXJFIPmsntO9iH12dLQWvXEvks9at1Z/FaXVMSO9OYrMa62bVRPCtqBdBddXY9XEF32WjKy5p4Z6zNSGPktG9oPI/TkS7z7yS3j3kVmkNnF+rIm7M70obb6J0drIfySc33vGoPa8idHnUMQ/0gf0rD/9
+  </data>
+ </layer>
+ <layer name="tmp" width="45" height="45">
+  <properties>
+   <property name="pattern" value="15"/>
    <property name="random" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0UEKgDAMRNFeTW+kYPcV6rmN4CIMAd1os/gPhjSLwkBKAQAAAAAAAHKbLHMwI91y3OluR05d5mWz1Id/1SWjKlPfo0X9vrK4rLJrJ73rn3dult3tUb9M3vYb1Vv7jXACIP4UWg==
+   eJztzrENAAAIw7BeyIu8yhEdsaXsSQAAAAAAftmiKfLs2bNnz549e/bs+QA5c9BO
   </data>
  </layer>
 </map>

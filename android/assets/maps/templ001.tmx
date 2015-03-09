@@ -9,8 +9,8 @@
   <property name="startTime" value="20"/>
   <property name="timeBonus" value="10"/>
  </properties>
- <tileset firstgid="1" name="obtacles" tilewidth="32" tileheight="32">
-  <image source="obtacles.png" width="256" height="256"/>
+ <tileset firstgid="1" name="items" tilewidth="32" tileheight="32">
+  <image source="items.png" width="256" height="256"/>
   <tile id="10">
    <properties>
     <property name="brick" value=""/>
@@ -52,6 +52,9 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="65" name="terrain" tilewidth="32" tileheight="32">
+  <image source="terrain.png" width="512" height="480"/>
+ </tileset>
  <layer name="obtacles" width="30" height="30">
   <data encoding="base64" compression="zlib">
    eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
@@ -65,9 +68,10 @@
  <layer name="pattern" width="30" height="30">
   <properties>
    <property name="pattern" value="5"/>
+   <property name="random" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0bENACAMA0ETKsT++8IApjQI6U9K4+aLSAAAAAB+UWbr4WbbN8w+L7RPXreTSv7PCQtg1AA7
+   eJxjYBgFo2AUjIJRMApGwSgYBaNgFAwV4IJFrITGdgYDcQgW8RY62I0LDLTdtATJQJxCYztgAACPogSb
   </data>
  </layer>
 </map>

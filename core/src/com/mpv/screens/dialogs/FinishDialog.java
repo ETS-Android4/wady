@@ -148,7 +148,7 @@ public class FinishDialog extends CustomDialog {
 		float diamDelay = 0.3f * coinCount;
 		float timeDelay = 3.5f;
 		float pause = 0.5f;
-		int totalPoints = coinCount * 10;
+		int totalPoints = coinCount * 100;
 		this.getButtonTable().setVisible(false);
 		ltitle.setText(String.format("Level %d", GameObj.mapIndex + 1));
 		lpoints.setUserObject(Float.valueOf(0f));
@@ -161,7 +161,7 @@ public class FinishDialog extends CustomDialog {
 					Effect.count_diamond();
 				}
 				Float tmp = (Float) lpoints.getUserObject();
-				lpoints.setUserObject(tmp + 10f);
+				lpoints.setUserObject(tmp + 100f);
 				tmp = (Float) ldiam.getUserObject();
 				ldiam.setUserObject(tmp - 1f);
 			}

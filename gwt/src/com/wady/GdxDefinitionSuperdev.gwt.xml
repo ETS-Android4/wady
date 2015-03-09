@@ -3,7 +3,6 @@
 <module rename-to="html">
 	<inherits name='com.badlogic.gdx.backends.gdx_backends_gwt' />
 	<inherits name='com.mpv.ApplicationHandler' />
-	<inherits name='wady-core'/>
 	
 	<entry-point class='com.wady.client.GwtLauncher' />
 	

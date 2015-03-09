@@ -67,11 +67,10 @@
  </layer>
  <layer name="pattern" width="40" height="40">
   <properties>
-   <property name="pattern" value="10"/>
-   <property name="random" value=""/>
+   <property name="pattern" value="15"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0UEKgDAMRNFeTW+kYPcV6rmN4CIMAd1os/gPhjSLwkBKAQAAAAAAAHKbLHMwI91y3OluR05d5mWz1Id/1SWjKlPfo0X9vrK4rLJrJ73rn3dult3tUb9M3vYb1Vv7jXACIP4UWg==
+   eJztleEOwiAMhHnl4V4Atgd3JCNezpZ1bkZ/3Jc0jZZWuFJMSQghhBBCCCGEEL9m2iwbPgfWWGujeWdoOY/NZvB1EOf94NpR3ky5UVrNZbMVfB7EeT+F9jSqi7kRen8i+lkacOxu/foZI/pZGnDsbv28O4x1ihH38usgxrmfwjP5b9R0vg/fwnqTanrv4dEb6L2bV3s8gXX4d9r94zn0PN/bAufFtVEKWIf72/bOc+h5Txue5SgRvbt+R9qxfkje43fNMNL18zSb0quPrDt+v8Lnq/vhez7SrHCBneKc5ex8WHWte24Z//9yHVyDPsoTq5SERQ==
   </data>
  </layer>
 </map>

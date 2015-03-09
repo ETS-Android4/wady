@@ -8,13 +8,13 @@ import com.mpv.screens.stages.MainMenuStage;
 
 public class MenuScreen implements Screen {
 
-	private MainMenuStage mainMenuStage;	
-	
+	private MainMenuStage mainMenuStage;
+
 	public MenuScreen() {
 		mainMenuStage = new MainMenuStage();
 	}
-	
-	public void resize (int width, int height) {
+
+	public void resize(int width, int height) {
 		mainMenuStage.getViewport().setWorldSize(width, height);
 	}
 
@@ -24,11 +24,10 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl20.glClearColor(0f, 0f, 0f, 1);    
+		Gdx.gl20.glClearColor(0f, 0f, 0f, 1);
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        mainMenuStage.act(Gdx.graphics.getDeltaTime());
-        mainMenuStage.draw();
-        //Table.drawDebug(mainMenuStage); // This is optional, but enables debug lines for tables.
+		mainMenuStage.act(Gdx.graphics.getDeltaTime());
+		mainMenuStage.draw();
 	}
 
 	@Override
@@ -44,7 +43,7 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
 	}
 
 	@Override

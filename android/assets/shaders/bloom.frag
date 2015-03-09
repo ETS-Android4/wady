@@ -7,12 +7,10 @@ void main()
    vec4 sum = vec4(0);
    //vec2 texcoord = vec2(gl_TexCoord[0]);
    vec2 texcoord = v_texCoords;
-   int j;
-   int i;
 
-   for( i= -4 ;i < 4; i++)
+   for(int i= -4 ;i < 4; i++)
    {
-        for (j = -3; j < 3; j++)
+        for (int j = -3; j < 3; j++)
         {
             sum += texture2D(u_texture, texcoord + vec2(j, i)*0.004) * 0.25;
         }

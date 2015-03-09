@@ -33,7 +33,7 @@ public class MapManager {
 	private Random rand = new Random();
 
 	private TiledMapTile getTile(String tilename) {
-		TiledMapTileSet tileSet = Assets.map.getTileSets().getTileSet(Const.Map.TILESET_OBTACLES);
+		TiledMapTileSet tileSet = Assets.map.getTileSets().getTileSet(Const.Map.TILESET_ITEMS);
 		for (TiledMapTile tile : tileSet) {
 			if (tile.getProperties().containsKey(tilename)) {
 				return tile;
@@ -182,10 +182,12 @@ public class MapManager {
 		TiledMapTileLayer tileLayer = getLayerObtacles();
 		PolygonShape shape;
 		Cell cell;
+		boolean isRandom = patternLayer.getProperties().containsKey("random");
+		int offset = tileLayer.getWidth() == size ? 0 : id;
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
-				cell = patternLayer.getCell(i + size * id, j);
-				if (null != cell && rand.nextBoolean()) {
+				cell = patternLayer.getCell(i + size * offset, j);
+				if (null != cell && (!isRandom || rand.nextBoolean())) {
 					tileLayer.setCell(x + i, y + j, cell);
 					shape = new PolygonShape();
 					shape.setAsBox(0.5f, 0.5f);

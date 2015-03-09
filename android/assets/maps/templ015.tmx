@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
+<map version="1.0" orientation="orthogonal" width="60" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
   <property name="bonusCount" value="10"/>
   <property name="coinsCount" value="10"/>
@@ -55,23 +55,30 @@
  <tileset firstgid="65" name="terrain" tilewidth="32" tileheight="32">
   <image source="terrain.png" width="512" height="480"/>
  </tileset>
- <layer name="obtacles" width="40" height="40">
+ <layer name="obtacles" width="60" height="40">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+   eJztwTEBAAAAwqD1T20Hb6AAAAAAAAAAAAB4DCWAAAE=
   </data>
  </layer>
- <layer name="items" width="40" height="40">
+ <layer name="items" width="60" height="40">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+   eJztwTEBAAAAwqD1T20Hb6AAAAAAAAAAAAB4DCWAAAE=
   </data>
  </layer>
- <layer name="pattern" width="40" height="40">
+ <layer name="tmp" width="60" height="40">
   <properties>
-   <property name="pattern" value="10"/>
-   <property name="random" value=""/>
+   <property name="pattern" value="20"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0UEKgDAMRNFeTW+kYPcV6rmN4CIMAd1os/gPhjSLwkBKAQAAAAAAAHKbLHMwI91y3OluR05d5mWz1Id/1SWjKlPfo0X9vrK4rLJrJ73rn3dult3tUb9M3vYb1Vv7jXACIP4UWg==
+   eJztz0ENAAAIxDAUIgT/AjBxDxLaZAJWBQAAAAB3dbgJ59evX79+/fr169evX79+/fr16/f37wJq0B+Q
+  </data>
+ </layer>
+ <layer name="pattern" width="60" height="40">
+  <properties>
+   <property name="pattern" value="20"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmE1uwyAQhTlkjtBbhE27NRdrbtCepraUUV9e5mFsg5PFfBKyGMGYYX7ATikIgiAIgiAIgiAIgiAI3pfPuX3N7Xtut4anjd87v1Ufy3ux6LzeW648De7jGLXGq5DlijwLXUdZdE73VipPg/s4Zou9rIflReg6ysWRqb1v0cX6Fl1oA79DvSuLtR3lw5F5/mjVxfomMRblnp9NX29sD3GPOdYwv1N6zDHD/HFJ2+OD6wOvrSfLHnr2WaxZH8d48VnSv385PtZil+sDrq03nj+wVmHfMHuUf1WNUzWqpMe9tdgZ6V8E/eP5xctJ9C/rMjtV3Ob0vLfZ0dUD5Q/D84tXz0ry67OqS2vnnel7B7z89fDuJh57zr5XUFunxTFSi6Gz4HpayzEG64zlm+mbnPkt/sV6Nbo+q1xSd2irZZhvWA+8uyfrxjF8Fzvr/PVQNUXdn/bAMTHyflVDnc8j8g7376zz12Ptjsj5q+IfZThXra039v2L60rU5/ukB34P1s5UlOFcZvT3b+3sr9mKtmy1d+2+McJeW+PP3H4bnur/S+v8Vn2j/uf8AXIf1Fc=
   </data>
  </layer>
 </map>

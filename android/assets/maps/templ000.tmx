@@ -6,11 +6,11 @@
   <property name="points1" value="70"/>
   <property name="points2" value="100"/>
   <property name="points3" value="150"/>
-  <property name="startTime" value="10"/>
+  <property name="startTime" value="15"/>
   <property name="timeBonus" value="10"/>
  </properties>
- <tileset firstgid="1" name="obtacles" tilewidth="32" tileheight="32">
-  <image source="obtacles.png" width="256" height="256"/>
+ <tileset firstgid="1" name="items" tilewidth="32" tileheight="32">
+  <image source="items.png" width="256" height="256"/>
   <tile id="10">
    <properties>
     <property name="brick" value=""/>
@@ -52,6 +52,9 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="65" name="terrain" tilewidth="32" tileheight="32">
+  <image source="terrain.png" width="512" height="480"/>
+ </tileset>
  <layer name="obtacles" width="20" height="20">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApIBwAGQAAB
@@ -65,9 +68,10 @@
  <layer name="pattern" width="20" height="20">
   <properties>
    <property name="pattern" value="5"/>
+   <property name="random" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKhBziBmIuKZnGiiTGRaRYTFvNgYuSaSU33IetnptAMAGScAGI=
+   eJxjYBgFo2AUjIKhB5ygmBogCIqRQRGZZiViMa8ICZMDqOk+fGaSCgDjSAWw
   </data>
  </layer>
 </map>

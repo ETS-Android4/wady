@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
+<map version="1.0" orientation="orthogonal" width="60" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
   <property name="bonusCount" value="10"/>
   <property name="coinsCount" value="10"/>
@@ -55,23 +55,30 @@
  <tileset firstgid="65" name="terrain" tilewidth="32" tileheight="32">
   <image source="terrain.png" width="512" height="480"/>
  </tileset>
- <layer name="obtacles" width="40" height="40">
+ <layer name="obtacles" width="60" height="40">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+   eJztwTEBAAAAwqD1T20Hb6AAAAAAAAAAAAB4DCWAAAE=
   </data>
  </layer>
- <layer name="items" width="40" height="40">
+ <layer name="items" width="60" height="40">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+   eJztwTEBAAAAwqD1T20Hb6AAAAAAAAAAAAB4DCWAAAE=
   </data>
  </layer>
- <layer name="pattern" width="40" height="40">
+ <layer name="tmp" width="60" height="40">
   <properties>
-   <property name="pattern" value="10"/>
-   <property name="random" value=""/>
+   <property name="pattern" value="20"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0UEKgDAMRNFeTW+kYPcV6rmN4CIMAd1os/gPhjSLwkBKAQAAAAAAAHKbLHMwI91y3OluR05d5mWz1Id/1SWjKlPfo0X9vrK4rLJrJ73rn3dult3tUb9M3vYb1Vv7jXACIP4UWg==
+   eJztz0ENAAAIxDAUIgT/AjBxDxLaZAJWBQAAAAB3dbgJ59evX79+/fr169evX79+/fr16/f37wJq0B+Q
+  </data>
+ </layer>
+ <layer name="pattern" width="60" height="40">
+  <properties>
+   <property name="pattern" value="20"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmFsOhDAIRbtPZwfjDuoOdNHTz4ZACwWMTu5Jmr6UUC9NkFIAAAAAAAAAAAAAAHguW2ufbl5bOww9tUPtSRyTfa0dK9/W9m5eheekdWqH2pOYnVdrx8tpXF/lCra3SnWMOSx3g96RDKj90zGO9ifj7DSuovX1+JMR85H6cvFYiy6OOX+erq903hn9N3u7vpr7DX153yK4U19NLvNP+mpyGegbC/T1jamP3P7Vjek7b9KXw5p/ZetLic6frfl1tr4jJG0sftC4nfXZ+o7qCJI2Iz+y6hJRcHUEz//qXXWJVX7zbnwC
   </data>
  </layer>
 </map>

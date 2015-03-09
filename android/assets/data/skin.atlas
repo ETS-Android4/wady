@@ -10,6 +10,13 @@ menu-screen
   orig: 480, 800
   offset: 0, 0
   index: -1
+batcho
+  rotate: false
+  xy: 1, 67
+  size: 448, 128
+  orig: 448, 128
+  offset: 0, 0
+  index: -1
 bricks
   rotate: false
   xy: 483, 741
@@ -19,14 +26,14 @@ bricks
   index: -1
 ljump-down
   rotate: false
-  xy: 1, 67
+  xy: 483, 611
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 window
   rotate: false
-  xy: 483, 611
+  xy: 741, 869
   size: 128, 128
   split: 25, 25, 24, 24
   orig: 128, 128
@@ -34,7 +41,7 @@ window
   index: -1
 button
   rotate: false
-  xy: 741, 869
+  xy: 483, 481
   size: 128, 128
   split: 35, 35, 37, 35
   orig: 128, 128
@@ -42,42 +49,42 @@ button
   index: -1
 radar
   rotate: false
-  xy: 131, 67
+  xy: 871, 869
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 rjump
   rotate: false
-  xy: 483, 481
+  xy: 483, 351
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 ljump
   rotate: false
-  xy: 871, 869
+  xy: 483, 221
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 pause-down
   rotate: false
-  xy: 261, 67
+  xy: 613, 611
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 pause
   rotate: false
-  xy: 483, 351
+  xy: 613, 481
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 button-down
   rotate: false
-  xy: 483, 221
+  xy: 613, 351
   size: 128, 128
   split: 40, 37, 36, 34
   orig: 128, 128
@@ -85,21 +92,21 @@ button-down
   index: -1
 battery
   rotate: false
-  xy: 613, 611
+  xy: 613, 221
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 diamond
   rotate: false
-  xy: 613, 481
+  xy: 451, 67
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 button-disabled
   rotate: false
-  xy: 613, 351
+  xy: 581, 91
   size: 128, 128
   split: 44, 45, 45, 44
   orig: 128, 128
@@ -107,7 +114,7 @@ button-disabled
   index: -1
 rjump-down
   rotate: false
-  xy: 613, 221
+  xy: 711, 91
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
@@ -121,21 +128,21 @@ star-none
   index: -1
 star-gold
   rotate: false
-  xy: 391, 131
+  xy: 741, 803
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 sound-disabled
   rotate: false
-  xy: 741, 803
+  xy: 67, 1
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 edit
   rotate: false
-  xy: 67, 1
+  xy: 807, 803
   size: 64, 64
   split: 14, 15, 12, 13
   orig: 64, 64
@@ -143,28 +150,28 @@ edit
   index: -1
 music-disabled
   rotate: false
-  xy: 807, 803
+  xy: 133, 1
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 star-silver
   rotate: false
-  xy: 133, 1
+  xy: 873, 803
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 sound
   rotate: false
-  xy: 873, 803
+  xy: 199, 1
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 music
   rotate: false
-  xy: 199, 1
+  xy: 265, 1
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -178,7 +185,7 @@ cursor
   index: -1
 menu-bg
   rotate: false
-  xy: 391, 97
+  xy: 741, 769
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

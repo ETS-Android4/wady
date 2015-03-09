@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
+<map version="1.0" orientation="orthogonal" width="45" height="45" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
   <property name="bonusCount" value="10"/>
   <property name="coinsCount" value="10"/>
@@ -55,23 +55,22 @@
  <tileset firstgid="65" name="terrain" tilewidth="32" tileheight="32">
   <image source="terrain.png" width="512" height="480"/>
  </tileset>
- <layer name="obtacles" width="40" height="40">
+ <layer name="obtacles" width="45" height="45">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAgIcBH6QAAQ==
   </data>
  </layer>
- <layer name="items" width="40" height="40">
+ <layer name="items" width="45" height="45">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAgIcBH6QAAQ==
   </data>
  </layer>
- <layer name="pattern" width="40" height="40">
+ <layer name="pattern" width="45" height="45">
   <properties>
-   <property name="pattern" value="10"/>
-   <property name="random" value=""/>
+   <property name="pattern" value="45"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0UEKgDAMRNFeTW+kYPcV6rmN4CIMAd1os/gPhjSLwkBKAQAAAAAAAHKbLHMwI91y3OluR05d5mWz1Id/1SWjKlPfo0X9vrK4rLJrJ73rn3dult3tUb9M3vYb1Vv7jXACIP4UWg==
+   eJztmeEKgzAMhH3lDdz/Ddxzz8GEEnLmUs9WmQdSOGuxX9NQ4zgMw2PAGn/3Uduj/zRf75V3Xu6jtkd/NJ9It/m6O37EUzFOxBnpOV8vx494KsaJOCMOSFnONeNEnBEHpCznmnGi+SvjsFU8K+OwVTxnubXwazn39C/OfTkv+zniYPe9ur/nR/s54mD3vbq/51/xXO/bmDkDZxszZ+CMfI8/y7l2v7P5B/kef5Zz7X5n80/GP0o8Z/yjx7PnX5z/g3PL7xSV3/K7W8UNaY/vbhU3pD3qSCpuaF3W1qu2jqTihtZlbb1sHdLOL4rPsfC8573+TP0TqeSMzhVRfE6F5z3v9Wfqn0geZztvpm68SFlntufBso3mzdSNFynrzPY8WLZZzlvPwyxnJj+znLeeh1nOTH6ujWfWV9VRFfHM+qo6astzHdKRz3VIR64/K//LtOKs/C/Dcs7m1WyLnvfGZzln82q2ZbWWn1u3rL79P+H5isY=
   </data>
  </layer>
 </map>

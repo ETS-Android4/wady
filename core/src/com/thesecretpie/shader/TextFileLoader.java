@@ -6,22 +6,20 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.SynchronousAssetLoader;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * @author Przemek Müller
- * Loads text files using AssetManager.
+ * @author Przemek Müller Loads text files using AssetManager.
  *
  */
 public class TextFileLoader extends SynchronousAssetLoader<String, TextFileLoader.TextFileParameter> {
-	
-	public TextFileLoader (FileHandleResolver resolver) {
+
+	public TextFileLoader(FileHandleResolver resolver) {
 		super(resolver);
 	}
 
 	@Override
-	public String load (AssetManager assetManager, String fileName, FileHandle file, TextFileParameter parameter) {
+	public String load(AssetManager assetManager, String fileName, FileHandle file, TextFileParameter parameter) {
 		String result = null;
 		FileHandle fh = resolve(fileName);
 		if (fh.exists()) {
@@ -30,8 +28,9 @@ public class TextFileLoader extends SynchronousAssetLoader<String, TextFileLoade
 		return result;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
-	public Array<AssetDescriptor> getDependencies (String fileName, FileHandle file, TextFileParameter parameter) {
+	public Array<AssetDescriptor> getDependencies(String fileName, FileHandle file, TextFileParameter parameter) {
 		return null;
 	}
 

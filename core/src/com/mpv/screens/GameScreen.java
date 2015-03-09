@@ -43,6 +43,7 @@ public class GameScreen implements Screen {
 		Tween.registerAccessor(Image.class, actorAccessor);
 		GVars.tweenManager = new TweenManager();
 		batch = GVars.spriteBatch;
+		batch.setBlendFunction(GL20.GL_BLEND_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		// batch.setShader(Assets.shader);
 		// Game Stage
 		uiStage = new GameUIStage(new ScreenViewport(), batch);
@@ -72,39 +73,34 @@ public class GameScreen implements Screen {
 
 		uiStage.act(Gdx.graphics.getDeltaTime());
 		gameStage.act(Gdx.graphics.getDeltaTime());
+
 		// Camera and various updates
 		GVars.update();
 		// Clear
-		gl20.glClearColor(0, 0, 0, 1);
+		gl20.glClearColor(0, 0, 0, 0);
 		gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		gl20.glViewport((int) glViewport.x, (int) glViewport.y, (int) glViewport.width, (int) glViewport.height);
 		// Background
 		GVars.bgCam.position.set(GVars.frCam.position).scl(0.25f).add(glViewport.width / 2f, glViewport.height / 2f, 0);
 		GVars.bgCam.update();
 		GVars.otmRendered.setView(GVars.bgCam);
-		Assets.sm.beginFB("bg_fb");
+
 		batch.begin();
 		Assets.skin.getTiledDrawable("bricks").draw(batch, 0, 0, Assets.mapScaledWidth, Assets.mapScaledHeight);
+
 		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerObtacles());
 		batch.end();
 		// Parallax layers
 		GVars.bgCam.position.set(GVars.frCam.position).scl(0.5f).add(glViewport.width / 4f, glViewport.height / 4f, 0);
 		GVars.bgCam.update();
 		GVars.otmRendered.setView(GVars.bgCam);
+
 		batch.begin();
-
 		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerObtacles());
-
 		batch.end();
-		Assets.sm.endFB();
+
 		// Main scene
 		GVars.otmRendered.setView(GVars.frCam);
-		// -----------------------------
-
-		// Assets.sm.begin("empty");
-		Assets.sm.begin("bloom");
-		Assets.sm.renderFB("bg_fb");
-		Assets.sm.end();
 
 		GVars.rayHandler.updateAndRender();
 
