@@ -64,6 +64,8 @@ public class GameUIStage extends Stage {
 		radar.setRotation(360);
 		this.addActor(radar);
 		labelFPS = new Label("", Assets.skin, "game-text");
+		labelFPS.setPosition(getWidth() / 3, getHeight() / 3);
+		this.addActor(labelFPS);
 		labelDebug = new Label("", Assets.skin, "game-text");
 		labelTime = new Label("", Assets.skin, "normal-text");
 		labelCoins = new Label("", Assets.skin, "normal-text");

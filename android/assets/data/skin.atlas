@@ -35,7 +35,7 @@ window
   rotate: false
   xy: 741, 869
   size: 128, 128
-  split: 25, 25, 24, 24
+  split: 18, 17, 20, 17
   orig: 128, 128
   offset: 0, 0
   index: -1
@@ -144,7 +144,7 @@ edit
   rotate: false
   xy: 807, 803
   size: 64, 64
-  split: 14, 15, 12, 13
+  split: 11, 10, 10, 9
   orig: 64, 64
   offset: 0, 0
   index: -1
