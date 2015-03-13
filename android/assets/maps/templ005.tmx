@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
+<map version="1.0" orientation="orthogonal" width="45" height="45" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
-  <property name="bonusCount" value="10"/>
-  <property name="coinsCount" value="10"/>
-  <property name="points1" value="200"/>
-  <property name="points2" value="300"/>
-  <property name="points3" value="400"/>
+  <property name="bonusCount" value="6"/>
+  <property name="coinsCount" value="8"/>
+  <property name="points1" value="500"/>
+  <property name="points2" value="700"/>
+  <property name="points3" value="900"/>
   <property name="startTime" value="20"/>
   <property name="timeBonus" value="10"/>
  </properties>
@@ -55,22 +55,22 @@
  <tileset firstgid="65" name="terrain" tilewidth="32" tileheight="32">
   <image source="terrain.png" width="512" height="480"/>
  </tileset>
- <layer name="obtacles" width="40" height="40">
+ <layer name="obtacles" width="45" height="45">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAgIcBH6QAAQ==
   </data>
  </layer>
- <layer name="items" width="40" height="40">
+ <layer name="items" width="45" height="45">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAgIcBH6QAAQ==
   </data>
  </layer>
- <layer name="pattern" width="40" height="40">
+ <layer name="pattern" width="45" height="45">
   <properties>
    <property name="pattern" value="15"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1QEKgzAMBdBcudkuULeDTxiD7NP4GyyI8B+IgWjJYpeaiYiIiIiIiIjcWwuxL1zXk7iqh3izb71u/3X/NJKPtiSuwv499utp49/M8vjsivqwf6/9eidrsnxW35nv2yD2cPeDXCN5/L4d7rM6f+RSbJ9f7U79i/uuuv9wf+G72XtMT+KRyvzB/8fsXELYvyOV+YPzZXYuodgzVh87P2Ie65s9d0Zrjmo9a9X59gHwpDyU
+   eJzt1dEKgzAMheG+cnu33dW77aknDCE7WJNuERz8H4iBaK2hTUsBAAAAAAAAACBfNXFLHLcN4gzdxEt5/0Mrn/+yqU7eWgZxBq3zbb3uZb82Xl6f3WTPWev8WK/n4Dte3jpzbVSJm7m3g1x18ro2utx/0f1HLsfbS1f073W263h2Pet61XdH732jD+I9M71Q92C0R0ZonY/M9ELtddEeGWFr683ZOwdtXuccPT8j7BiZ+/HMs/sFt3Y9DA==
   </data>
  </layer>
 </map>

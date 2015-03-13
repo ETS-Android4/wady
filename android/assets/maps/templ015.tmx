@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="60" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
-  <property name="bonusCount" value="10"/>
-  <property name="coinsCount" value="10"/>
-  <property name="points1" value="200"/>
-  <property name="points2" value="300"/>
-  <property name="points3" value="400"/>
-  <property name="startTime" value="20"/>
+  <property name="bonusCount" value="15"/>
+  <property name="coinsCount" value="30"/>
+  <property name="points1" value="2500"/>
+  <property name="points2" value="2700"/>
+  <property name="points3" value="3100"/>
+  <property name="startTime" value="5"/>
   <property name="timeBonus" value="10"/>
  </properties>
  <tileset firstgid="1" name="items" tilewidth="32" tileheight="32">

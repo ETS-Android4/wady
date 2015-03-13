@@ -3,10 +3,10 @@
  <properties>
   <property name="bonusCount" value="5"/>
   <property name="coinsCount" value="3"/>
-  <property name="points1" value="70"/>
-  <property name="points2" value="100"/>
-  <property name="points3" value="150"/>
-  <property name="startTime" value="15"/>
+  <property name="points1" value="150"/>
+  <property name="points2" value="200"/>
+  <property name="points3" value="300"/>
+  <property name="startTime" value="20"/>
   <property name="timeBonus" value="10"/>
  </properties>
  <tileset firstgid="1" name="items" tilewidth="32" tileheight="32">
@@ -65,13 +65,17 @@
    eJxjYBgFo2AUjIJRMApIBwAGQAAB
   </data>
  </layer>
+ <layer name="tmp" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU4AJ+RGINRuLwqHmj5g0n8wAp+i59
+  </data>
+ </layer>
  <layer name="pattern" width="20" height="20">
   <properties>
-   <property name="pattern" value="5"/>
-   <property name="random" value=""/>
+   <property name="pattern" value="10"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKhB5ygmBogCIqRQRGZZiViMa8ICZMDqOk+fGaSCgDjSAWw
+   eJxjYBgFo2AUkAOKqGxeE4X6E4E4iYCaIiSMDAKBOIgMO3G5mVi3ECOGCzhBMT63kBKm6P6n1H3YzEPXT4l5xAJcdgSRaSZymAIAi+IMKg==
   </data>
  </layer>
 </map>

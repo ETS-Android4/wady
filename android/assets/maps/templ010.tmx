@@ -2,11 +2,11 @@
 <map version="1.0" orientation="orthogonal" width="60" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
   <property name="bonusCount" value="10"/>
-  <property name="coinsCount" value="10"/>
-  <property name="points1" value="200"/>
-  <property name="points2" value="300"/>
-  <property name="points3" value="400"/>
-  <property name="startTime" value="20"/>
+  <property name="coinsCount" value="15"/>
+  <property name="points1" value="1000"/>
+  <property name="points2" value="1200"/>
+  <property name="points3" value="1400"/>
+  <property name="startTime" value="15"/>
   <property name="timeBonus" value="10"/>
  </properties>
  <tileset firstgid="1" name="items" tilewidth="32" tileheight="32">
@@ -78,7 +78,7 @@
    <property name="pattern" value="20"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmLEOwjAMRPuPHWErGyyo/ECBD6+XSJZlklg5kgz3JCuqcQ7oya3bZSGEEEIIIYQQQgghZF42iVtg/bVvVRHRTHifr+D/mn43UguthwZ5DpO/SL1/cpG4AuvRemjuEg+JQ+Kt8unYrqm+Vs+uVr+kh8D2yDOw19Z6/duqh8b2yBHYa2u9/m3VQ5PzY5d4OWtOK+eJ3W+PR/u7O/VeTmvlPPHOlc6N9vfj1OtctH+/jp7Oze5vtH9n9FfT219L7/mqdH2J+hu9/vXu3xK8/85//9Wk+bV2/qudn2vn01HzM6oerYeAz79tWrM//yLf52wqou9zSt+H4gRBp2wP
+   eJztmNENwjAMRLtjRygLoLJAKYPjH0uWZZJYOZJ83JOsqMa5Qg+nabeNEEIIIYQQQgghhJB1OSQeifHXvN1ERlOJPt/Bv1W/N1ILrYcGeQ3VX6TePzklXsB6tB6aW+IjcUm8TV6P/aj1rXp+9Po1PQS+R56Jub426t9ePTS+R67EXF8b9W+vHpqSH9pPfixplTzx8/3xbH/PoD7KWa2SJ9G1srnZ/t5Bvc1l+zdai2xudX+z/buiv5bR/npG769q60vW3+z6N7p/a/D+u/7916L/r9b9X+v+uXV/Omv/jKpH6yHg82+f1urPv8j3OYeJ7Puc2vlQfAHhS28P
   </data>
  </layer>
 </map>

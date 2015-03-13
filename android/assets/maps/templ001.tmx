@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="30" height="30" tilewidth="32" tileheight="32" backgroundcolor="#414141">
+<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
-  <property name="bonusCount" value="10"/>
-  <property name="coinsCount" value="10"/>
+  <property name="bonusCount" value="5"/>
+  <property name="coinsCount" value="3"/>
   <property name="points1" value="200"/>
-  <property name="points2" value="300"/>
+  <property name="points2" value="250"/>
   <property name="points3" value="400"/>
-  <property name="startTime" value="20"/>
+  <property name="startTime" value="15"/>
   <property name="timeBonus" value="10"/>
  </properties>
  <tileset firstgid="1" name="items" tilewidth="32" tileheight="32">
@@ -55,23 +55,27 @@
  <tileset firstgid="65" name="terrain" tilewidth="32" tileheight="32">
   <image source="terrain.png" width="512" height="480"/>
  </tileset>
- <layer name="obtacles" width="30" height="30">
+ <layer name="obtacles" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+   eJxjYBgFo2AUjIJRMApIBwAGQAAB
   </data>
  </layer>
- <layer name="items" width="30" height="30">
+ <layer name="items" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+   eJxjYBgFo2AUjIJRMApIBwAGQAAB
   </data>
  </layer>
- <layer name="pattern" width="30" height="30">
+ <layer name="tmp" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU4AJ+RGINRuLwqHmj5g0n8wAp+i59
+  </data>
+ </layer>
+ <layer name="pattern" width="20" height="20">
   <properties>
-   <property name="pattern" value="5"/>
-   <property name="random" value=""/>
+   <property name="pattern" value="10"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgYBaNgFAwV4IJFrITGdgYDcQgW8RY62I0LDLTdtATJQJxCYztgAACPogSb
+   eJxjYBgFo2AUDHVQCMRFePiE9KKDRiBuAuJiIC5B4mMDxVj0UgKa0fjY3EcswBYOuNwHUwvzMzKNLxxwuQ9fmOEDlIYfPQEAJ5wPdA==
   </data>
  </layer>
 </map>

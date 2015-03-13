@@ -35,6 +35,7 @@ public class GameScreen implements Screen {
 	private GL20 gl20 = Gdx.graphics.getGL20();
 	private Rectangle glViewport;
 	private SpriteBatch batch;
+	private MapManager mm;
 
 	public GameScreen() {
 		ActorAccessor actorAccessor = new ActorAccessor();
@@ -60,6 +61,7 @@ public class GameScreen implements Screen {
 		// Physics renderer
 		debugRenderer = new Box2DDebugRenderer();
 		debugRenderer.setDrawVelocities(true);
+		mm = MapManager.get();
 		// UI debug
 		// uiStage.setDebugAll(true);
 		// gameStage.setDebugAll(true);
@@ -88,7 +90,7 @@ public class GameScreen implements Screen {
 		batch.begin();
 		Assets.skin.getTiledDrawable("bricks").draw(batch, 0, 0, Assets.mapScaledWidth, Assets.mapScaledHeight);
 
-		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerObtacles());
+		GVars.otmRendered.renderTileLayer(mm.getLayerObtacles());
 		batch.end();
 		// Parallax layers
 		GVars.bgCam.position.set(GVars.frCam.position).scl(0.5f).add(glViewport.width / 4f, glViewport.height / 4f, 0);
@@ -96,17 +98,16 @@ public class GameScreen implements Screen {
 		GVars.otmRendered.setView(GVars.bgCam);
 
 		batch.begin();
-		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerObtacles());
+		GVars.otmRendered.renderTileLayer(mm.getLayerObtacles());
 		batch.end();
 
 		// Main scene
 		GVars.otmRendered.setView(GVars.frCam);
-
 		GVars.rayHandler.updateAndRender();
 
 		batch.begin();
-		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerObtacles());
-		GVars.otmRendered.renderTileLayer(MapManager.get().getLayerItems());
+		GVars.otmRendered.renderTileLayer(mm.getLayerObtacles());
+		GVars.otmRendered.renderTileLayer(mm.getLayerItems());
 		batch.end();
 
 		// Player

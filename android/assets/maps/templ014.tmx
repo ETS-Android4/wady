@@ -2,10 +2,10 @@
 <map version="1.0" orientation="orthogonal" width="60" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
   <property name="bonusCount" value="10"/>
-  <property name="coinsCount" value="10"/>
-  <property name="points1" value="200"/>
-  <property name="points2" value="300"/>
-  <property name="points3" value="400"/>
+  <property name="coinsCount" value="15"/>
+  <property name="points1" value="1200"/>
+  <property name="points2" value="1400"/>
+  <property name="points3" value="1600"/>
   <property name="startTime" value="20"/>
   <property name="timeBonus" value="10"/>
  </properties>

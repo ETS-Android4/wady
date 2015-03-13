@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="45" height="45" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
-  <property name="bonusCount" value="10"/>
+  <property name="bonusCount" value="5"/>
   <property name="coinsCount" value="10"/>
-  <property name="points1" value="200"/>
-  <property name="points2" value="300"/>
-  <property name="points3" value="400"/>
+  <property name="points1" value="700"/>
+  <property name="points2" value="900"/>
+  <property name="points3" value="1100"/>
   <property name="startTime" value="20"/>
   <property name="timeBonus" value="10"/>
  </properties>
@@ -65,14 +65,6 @@
    eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAgIcBH6QAAQ==
   </data>
  </layer>
- <layer name="pattern" width="45" height="45">
-  <properties>
-   <property name="pattern" value="15"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztljEOwyAMRblacoOwtgtZ2/vPpVIsfVkOGPBQqf9JVhLjj6NgQ1IihBBCCCGEEEIIIYSQ/+JR7al8e7Xtsl2NbTAuWivOAjUrvKq9qx3gy9dzVv6k/KjNjlyoWaFUO6+r5W/F470V6801izfvijbqXb15W+Pe7xf1zthTcm2No7+ntXJFIPmsntO9iH12dLQWvXEvks9at1Z/FaXVMSO9OYrMa62bVRPCtqBdBddXY9XEF32WjKy5p4Z6zNSGPktG9oPI/TkS7z7yS3j3kVmkNnF+rIm7M70obb6J0drIfySc33vGoPa8idHnUMQ/0gf0rD/9
-  </data>
- </layer>
  <layer name="tmp" width="45" height="45">
   <properties>
    <property name="pattern" value="15"/>
@@ -80,6 +72,14 @@
   </properties>
   <data encoding="base64" compression="zlib">
    eJztzrENAAAIw7BeyIu8yhEdsaXsSQAAAAAAftmiKfLs2bNnz549e/bs+QA5c9BO
+  </data>
+ </layer>
+ <layer name="pattern" width="45" height="45">
+  <properties>
+   <property name="pattern" value="15"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlgsKwyAQRL2auYHewFyjvUF76BrIwrCsfwuFzgNJcFyVybrROUIIIYQQQgghhBBCCPkvHrk9VV/MLdzPqDTsl9hgjLPAmBVeub3Vmmdu6X6eajz2S2wyxllgzAqtvZXGJ/Xes+cI43fQu+5K7Oz8s+vWdNFaOd2T8z3I+WmdOX3OvKG1fNzls85JnDcauhAMLTTWaum9lPx1sA9LS6BZeWN9m12U6sbFUdjPhQfNG/pIPRml5nPJK/0vGfnmO7yv+VzySv9LRurtt7xfRby0cuZX6a0js0huYo6t3pGwniC770iYY6t3JKwnh5p3xx3pA0CYSIk=
   </data>
  </layer>
 </map>

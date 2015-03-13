@@ -29,6 +29,9 @@ public class MapManager {
 		return instance;
 	}
 
+	private TiledMapTileLayer obtacles;
+	private TiledMapTileLayer items;
+
 	private Position start, key, lock;
 	private Random rand = new Random();
 
@@ -43,7 +46,7 @@ public class MapManager {
 	}
 
 	public TiledMapTileLayer getLayerItems() {
-		return getLayer(Const.Map.LAYER_ITEMS);
+		return items;
 	}
 
 	private TiledMapTileLayer getLayer(String layerName) {
@@ -150,7 +153,7 @@ public class MapManager {
 	}
 
 	public TiledMapTileLayer getLayerObtacles() {
-		return getLayer(Const.Map.LAYER_OBTACLES);
+		return obtacles;
 	}
 
 	private void setKey() {
@@ -205,6 +208,7 @@ public class MapManager {
 
 	public void generate() {
 		setWorldBounds();
+		initLayers();
 		TiledMapTileLayer tileLayer = getLayerObtacles();
 		int pSize = Integer.parseInt((String) getLayerPattern().getProperties().get("pattern"));
 		clearLayer(tileLayer);
@@ -222,6 +226,11 @@ public class MapManager {
 		setLock();
 		addCoins();
 		addTimeBonuses();
+	}
+
+	private void initLayers() {
+		obtacles = getLayer(Const.Map.LAYER_OBTACLES);
+		items = getLayer(Const.Map.LAYER_ITEMS);
 	}
 
 	private TiledMapTileLayer getLayerPattern() {
