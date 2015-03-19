@@ -31,6 +31,7 @@ public class MapManager {
 
 	private TiledMapTileLayer obtacles;
 	private TiledMapTileLayer items;
+	private TiledMapTileLayer bg;
 
 	private Position start, key, lock;
 	private Random rand = new Random();
@@ -47,6 +48,10 @@ public class MapManager {
 
 	public TiledMapTileLayer getLayerItems() {
 		return items;
+	}
+
+	public TiledMapTileLayer getLayerBG() {
+		return bg;
 	}
 
 	private TiledMapTileLayer getLayer(String layerName) {
@@ -231,6 +236,16 @@ public class MapManager {
 	private void initLayers() {
 		obtacles = getLayer(Const.Map.LAYER_OBTACLES);
 		items = getLayer(Const.Map.LAYER_ITEMS);
+		bg = new TiledMapTileLayer(obtacles.getWidth(), obtacles.getHeight(), (int) obtacles.getTileWidth(),
+				(int) obtacles.getTileHeight());
+		TiledMapTile tile = getTile("brick");
+		Cell cell = new Cell();
+		cell.setTile(tile);
+		for (int y = 0; y < bg.getHeight(); y++) {
+			for (int x = 0; x < bg.getWidth(); x++) {
+				bg.setCell(x, y, cell);
+			}
+		}
 	}
 
 	private TiledMapTileLayer getLayerPattern() {

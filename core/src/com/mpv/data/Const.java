@@ -5,6 +5,7 @@ public class Const {
 		public static final String LAYER_ITEMS = "items";
 		public static final String LAYER_OBTACLES = "obtacles";
 		public static final String TILESET_ITEMS = "items";
+		public static final String TILESET_TERRAIN = "terrain";
 		public static final String LAYER_PATTERN = "pattern";
 	}
 

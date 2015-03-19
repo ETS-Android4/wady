@@ -119,7 +119,7 @@ public class Player extends AnimatedImage {
 		Vector2 velocity = body.getLinearVelocity();
 		float angle = velocity.angle();
 
-		if (velocity.len() < Const.BLOCK_HALF) {
+		if (velocity.len() < Const.BLOCK_SIZE * 2f) {
 			Player.state = Player.S_IDLE;
 			angle = 90f;
 		} else if (angle > 180) {

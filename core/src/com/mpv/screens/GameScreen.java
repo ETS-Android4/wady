@@ -88,8 +88,7 @@ public class GameScreen implements Screen {
 		GVars.otmRendered.setView(GVars.bgCam);
 
 		batch.begin();
-		Assets.skin.getTiledDrawable("bricks").draw(batch, 0, 0, Assets.mapScaledWidth, Assets.mapScaledHeight);
-
+		GVars.otmRendered.renderTileLayer(mm.getLayerBG());
 		GVars.otmRendered.renderTileLayer(mm.getLayerObtacles());
 		batch.end();
 		// Parallax layers
@@ -117,7 +116,7 @@ public class GameScreen implements Screen {
 		Assets.hitEffect.draw(batch, delta);
 		batch.end();
 		// FPS
-		GameUIStage.labelFPS.setText(Float.toString(1 / delta).substring(0, 4));
+		// GameUIStage.labelFPS.setText(Float.toString(1 / delta).substring(0, 4));
 		// Physics debug
 		// debugRenderer.render(GVars.world, GVars.frCam.combined.scl(GVars.BOX_TO_WORLD));
 		uiStage.draw();
