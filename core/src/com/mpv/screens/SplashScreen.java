@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mpv.data.Assets;
 import com.mpv.data.GVars;
 import com.mpv.tween.SpriteAccessor;
 
@@ -57,6 +58,7 @@ public class SplashScreen implements Screen {
 		Tween.to(splash, SpriteAccessor.ALPHA, 2).target(1).delay(2).start(tweenManager);
 		Tween.to(splash, SpriteAccessor.SCALE, 2).target(1).delay(2).ease(Quad.INOUT).start(tweenManager);
 		Tween.to(splash, SpriteAccessor.ALPHA, 2).target(0).delay(6).start(tweenManager);
+		Assets.load();
 	}
 
 	@Override

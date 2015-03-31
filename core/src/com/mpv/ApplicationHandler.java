@@ -41,7 +41,6 @@ public class ApplicationHandler extends Game {
 		this.setScreen(new SplashScreen());
 		// Initialize configuration and resources
 		Settings.load();
-		Assets.load();
 
 		// Custom buttons
 		Gdx.input.setCatchBackKey(true);
