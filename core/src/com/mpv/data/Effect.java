@@ -57,7 +57,7 @@ public class Effect {
 	}
 
 	public static void wing() {
-		playSnd(WING);
+		loopSnd(WING);
 	}
 
 	public static void key() {

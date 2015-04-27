@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -20,26 +21,26 @@ public class StartDialog extends CustomDialog {
 
 	private Label lTitle;
 	private Label lPoints;
-	private float bWidth = Gdx.graphics.getWidth() / 3.2f;
-	private float bHeight = Const.PLAYER_SIZE * GVars.BOX_TO_WORLD / 1.6f;
+	private float bSize = Const.PLAYER_SIZE * GVars.BOX_TO_WORLD * 1.2f;
 
 	public StartDialog(String title, Skin skin, String styleName) {
 		super(title, skin, styleName);
+		Button play = new Button(Assets.skin, "play-button");
 		lTitle = new Label("", Assets.skin, "title-text");
 		lPoints = new Label("", Assets.skin, "normal-text");
 		Table goals = new Table();
 		Table content = this.getContentTable();
 		content.setFillParent(false);
-		content.add(lTitle).height(bHeight / 1.6f).pad(bHeight / 6f).center().row();
-		content.add(new Label("Collect:", Assets.skin, "normal-text")).pad(bHeight / 6f).row();
-		content.add(goals).height(bHeight).width(bWidth * 1.6f).pad(bHeight / 6f).row();
+		content.add(lTitle).height(bSize / 2f).center().row();
+		content.add(new Label("Collect:", Assets.skin, "normal-text")).row();
+		content.add(goals).height(bSize / 1.6f).width(bSize * 1.6f).row();
 		goals.setBackground(Assets.skin.getDrawable("edit"));
-		goals.add(new Image(Assets.skin.getDrawable("star-silver"))).size(bHeight / 1.2f).pad(bHeight / 6f);
-		goals.add(lPoints).height(bHeight / 1.6f).pad(bHeight / 6f);
-		this.button("Start", true).key(Keys.ENTER, true);
+		goals.add(new Image(Assets.skin.getDrawable("star-silver"))).size(bSize / 2f);
+		goals.add(lPoints).height(bSize / 1.4f);
+		this.button(play, true).key(Keys.ENTER, true);
 
 		for (Cell<?> cell : this.getButtonTable().getCells()) {
-			cell.size(bWidth, bHeight).pad((bHeight / 6f), (bHeight / 4f), (bHeight / 6f), (bHeight / 4f));
+			cell.size(bSize);
 		}
 	}
 

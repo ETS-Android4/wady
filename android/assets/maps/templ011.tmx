@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="60" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
  <properties>
-  <property name="bonusCount" value="5"/>
+  <property name="bonusCount" value="8"/>
   <property name="coinsCount" value="8"/>
   <property name="points1" value="600"/>
   <property name="points2" value="700"/>

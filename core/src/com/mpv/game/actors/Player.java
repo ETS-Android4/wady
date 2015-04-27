@@ -29,8 +29,13 @@ public class Player extends AnimatedImage {
 	public static int state = Player.S_IDLE;
 
 	private static final float animFix = 2.5f;
-	private static final Vector2 rightForce = new Vector2(Const.BLOCK_SIZE * 0.8f, Const.BLOCK_SIZE * 0.8f);
-	private static final Vector2 leftForce = new Vector2(-Const.BLOCK_SIZE * 0.8f, Const.BLOCK_SIZE * 0.8f);
+	// private static final Vector2 rightForce = new Vector2(Const.BLOCK_SIZE * 0.8f, Const.BLOCK_SIZE * 0.8f);
+	// private static final Vector2 leftForce = new Vector2(-Const.BLOCK_SIZE * 0.8f, Const.BLOCK_SIZE * 0.8f);
+	private static boolean right = false;
+	private static boolean left = false;
+	private static final float force = 3f;
+	private static final Vector2 rightForce = new Vector2(force, force);
+	private static final Vector2 leftForce = new Vector2(-force, force);
 
 	private static Player instance;
 	public Body body;
@@ -83,15 +88,29 @@ public class Player extends AnimatedImage {
 		body.setTransform(GameObj.start.getTransform().getPosition(), 0f);
 		this.setRotation(360f);
 		body.setAwake(false);
-		state = S_IDLE;
+		left = false;
+		right = false;
+		state = S_INVISIBLE;
 	}
 
-	public void applyForce(Vector2 impulse) {
+	public void applyImpulse(Vector2 impulse) {
 		body.applyLinearImpulse(impulse, body.getWorldCenter().add(0f, Const.BLOCK_HALF).rotateRad(body.getAngle()),
 				true);
 		Player.state = Player.S_LJUMP;
 		Effect.wing();
 		reset();
+	}
+
+	public void applyForces() {
+		if (left || right) {
+			if (left) {
+				body.applyForceToCenter(leftForce, true);
+			}
+			if (right) {
+				body.applyForceToCenter(rightForce, true);
+			}
+			Player.state = Player.S_LJUMP;
+		}
 	}
 
 	@Override
@@ -112,14 +131,16 @@ public class Player extends AnimatedImage {
 		}
 	}
 
-	public void positionSync() {
-		if (Player.state == Player.S_INVISIBLE)
+	public void update() {
+		if (Player.state == Player.S_INVISIBLE) {
+			Effect.stopSnd(Effect.WING);
 			return;
+		}
 
 		Vector2 velocity = body.getLinearVelocity();
 		float angle = velocity.angle();
 
-		if (velocity.len() < Const.BLOCK_SIZE * 2f) {
+		if (velocity.len() < Const.BLOCK_SIZE * 2f && !(left || right)) {
 			Player.state = Player.S_IDLE;
 			angle = 90f;
 		} else if (angle > 180) {
@@ -132,8 +153,10 @@ public class Player extends AnimatedImage {
 		this.setPosition((body.getPosition().x - Const.PLAYER_HALF) * GVars.BOX_TO_WORLD,
 				(body.getPosition().y - Const.PLAYER_SIZE / animFix) * GVars.BOX_TO_WORLD);
 
-		if (GameObj.state != GameObj.ACTIVE)
+		if (GameObj.state != GameObj.ACTIVE) {
+			Effect.stopSnd(Effect.WING);
 			return;
+		}
 		Tween.to(this, ActorAccessor.ROTATE, 0.2f).target(angle + 270f).start(GVars.tweenManager);
 	}
 
@@ -144,11 +167,25 @@ public class Player extends AnimatedImage {
 		}
 	}
 
-	public void jumpLeft() {
-		applyForce(leftForce);
+	public void powerLeft(boolean enable) {
+		left = enable;
+		if (enable && !right) {
+			Effect.wing();
+		}
+		if (!(left || right)) {
+			Effect.stopSnd(Effect.WING);
+		}
+		reset();
 	}
 
-	public void jumpRigth() {
-		applyForce(rightForce);
+	public void powerRigth(boolean enable) {
+		right = enable;
+		if (enable && !left) {
+			Effect.wing();
+		}
+		if (!(left || right)) {
+			Effect.stopSnd(Effect.WING);
+		}
+		reset();
 	}
 }

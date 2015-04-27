@@ -87,7 +87,7 @@ public class FinishDialog extends CustomDialog {
 		starsTable.setBackground(Assets.skin.getDrawable("edit"));
 		setStars();
 		// this.getContentTable().debug();
-		content.add(ltitle).height(bHeight / 1.6f).pad(bHeight / 6f).row();
+		content.add(ltitle).height(bHeight).pad(bHeight / 6f).row();
 		content.add(pointsTable).width(bWidth * 2f).pad(bHeight / 6f).row();
 		content.add(starsTable).size(bWidth * 2f, bHeight).pad(bHeight / 16f).row();
 		this.button("Retry", false).button("Menu", true).key(Keys.ENTER, true).key(Keys.ESCAPE, false);
@@ -104,10 +104,11 @@ public class FinishDialog extends CustomDialog {
 		for (int i = 0; i < 3; i++) {
 			starsTable.add(empty).size(GVars.scrWidth / 50f);
 			img = new Image(Assets.skin.getDrawable("star-none"));
-			img.setOrigin(img.getWidth() / 2, img.getHeight() / 2);
 			stars.add(img);
 			starsTable.add(img).size(bHeight / 1.2f);
 			starsTable.add(empty).size(GVars.scrWidth / 50f);
+			// img.setOrigin(Align.top);
+			// img.setOrigin(img.getWidth() / 2f, img.getHeight() / 2f);
 		}
 	}
 

@@ -71,7 +71,6 @@ public class GameScreen implements Screen {
 	public void render(float delta) {
 		GameObj.get().gameUpdate(delta);
 		GVars.tweenManager.update(delta);
-		Player.get().positionSync();
 
 		uiStage.act(Gdx.graphics.getDeltaTime());
 		gameStage.act(Gdx.graphics.getDeltaTime());
@@ -140,7 +139,7 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void show() {
-		GameUIStage.getInstance().gameStart();
+		GameUIStage.get().gameStart();
 		Assets.pauseMusic();
 	}
 

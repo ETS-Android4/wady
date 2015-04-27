@@ -25,6 +25,9 @@
       rightJump: {up: rjump, down: rjump-down},
       music-button: {up: music, checked: music-disabled},
       sound-button: {up: sound, checked: sound-disabled},
+      yes-button: {up: yes-up, down: yes-down},
+      no-button: {up: no-up, down: no-down},
+      play-button: {up: play-up, down: play-down},
       pause: {up: pause, down: pause-down},
       transparent: { },  
      },
@@ -40,6 +43,6 @@
      },
 	com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
 		default: { titleFont: titletext, background: window, titleFontColor: white },
-		dialog: { titleFont: titletext, background: window, titleFontColor: white, stageBackground: dialogDim }
+		dialog: { titleFont: titletext, background: dialog, titleFontColor: white, stageBackground: dialogDim }
      }   
    }  

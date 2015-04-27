@@ -123,13 +123,13 @@ public class GameObj {
 	public void gameFinish() {
 		state = FINISH;
 		Player.state = Player.S_INVISIBLE;
-		GameUIStage.getInstance().gameFinish();
+		GameUIStage.get().gameFinish();
 	}
 
 	public void gameOver() {
 		state = OVER;
 		Player.state = Player.S_INVISIBLE;
-		GameUIStage.getInstance().gameOver();
+		GameUIStage.get().gameOver();
 	}
 
 	public void gameUpdate(float delta) {
@@ -137,25 +137,30 @@ public class GameObj {
 			return;
 		}
 		GameTimer.get().update(delta);
-		worldStep(delta);
+		worldUpdate(delta);
 	}
 
 	public float getMapLimit() {
 		return startTime;
 	}
 
-	public void worldStep(float delta) {
+	public void worldUpdate(float delta) {
 		// Should be improved on heavy applications (< 60 FPS)
 		if (delta >= (Const.BOX_STEP / 3f)) {
-			GVars.world.step(delta, Const.BOX_VELOCITY_ITERATIONS, Const.BOX_POSITION_ITERATIONS);
-			accumulator = 0;
+			update(delta);
 		} else {
 			accumulator += delta;
 			if (accumulator >= Const.BOX_STEP) {
-				GVars.world.step(accumulator, Const.BOX_VELOCITY_ITERATIONS, Const.BOX_POSITION_ITERATIONS);
-				accumulator = 0;
+				update(accumulator);
 			}
 		}
+	}
+
+	private void update(float value) {
+		Player.get().applyForces();
+		GVars.world.step(value, Const.BOX_VELOCITY_ITERATIONS, Const.BOX_POSITION_ITERATIONS);
+		Player.get().update();
+		accumulator = 0;
 	}
 
 	public static void captureKey() {

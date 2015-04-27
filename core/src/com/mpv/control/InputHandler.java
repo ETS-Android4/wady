@@ -13,26 +13,31 @@ public class InputHandler implements InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
 		if (GameObj.state != GameObj.ACTIVE) {
 			return false;
 		}
 		switch (keycode) {
 		case Keys.LEFT:
-			Player.get().jumpLeft();
+			Player.get().powerLeft(true);
 			break;
 		case Keys.RIGHT:
-			Player.get().jumpRigth();
+			Player.get().powerRigth(true);
 		}
 		return false;
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
-		// TODO Auto-generated method stub
 		if (keycode == Keys.BACK) {
 			Gdx.app.exit();
 			// GVars.app.setScreen(GVars.app.menuScreen);
+		}
+		switch (keycode) {
+		case Keys.LEFT:
+			Player.get().powerLeft(false);
+			break;
+		case Keys.RIGHT:
+			Player.get().powerRigth(false);
 		}
 		return false;
 	}

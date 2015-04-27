@@ -12,6 +12,7 @@ public class MenuScreen implements Screen {
 
 	public MenuScreen() {
 		mainMenuStage = new MainMenuStage();
+		// mainMenuStage.setDebugAll(true);
 	}
 
 	public void resize(int width, int height) {

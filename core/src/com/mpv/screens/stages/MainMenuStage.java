@@ -23,7 +23,7 @@ public class MainMenuStage extends Stage {
 
 	public MainMenuStage() {
 		super();
-		float width = this.getWidth() / 1.6f;
+		float width = this.getWidth() / 1.7f;
 		float height = Const.PLAYER_SIZE * GVars.BOX_TO_WORLD / 1.6f;
 
 		Image image = new Image(Assets.skin.getDrawable("menu-screen"));
@@ -31,7 +31,7 @@ public class MainMenuStage extends Stage {
 		image.setPosition(0, 0);
 		this.addActor(image);
 
-		exitDialog = new ExitDialog("", Assets.skin, "default");
+		exitDialog = new ExitDialog("", Assets.skin, "dialog");
 
 		final Button bMusic = new Button(Assets.skin, "music-button");
 		final Button bSound = new Button(Assets.skin, "sound-button");
@@ -45,13 +45,13 @@ public class MainMenuStage extends Stage {
 		Table sndTable = new Table();
 		Table parentTable = new Table();
 		parentTable.setFillParent(true);
-		sndTable.add(bSound).center().size(height).pad(height / 4f);
-		sndTable.add(bMusic).center().size(height).pad(height / 4f);
+		sndTable.add(bSound).center().size(height * 1.6f).pad(height / 6f);
+		sndTable.add(bMusic).center().size(height * 1.6f).pad(height / 6f);
 
 		buttonTable.setBackground(Assets.skin.getDrawable("window"));
 		buttonTable.align(Align.center);
 		this.addActor(parentTable);
-		parentTable.add(buttonTable);
+		parentTable.add(buttonTable).size(width * 1.4f, height * 8f);
 
 		buttonTable.add(sndTable).size(height).pad(height / 4f).row();
 		buttonTable.add(bNewGame).size(width, height).pad(height / 4f).row();

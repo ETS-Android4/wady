@@ -2,9 +2,11 @@ package com.mpv.screens.dialogs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.Effect;
 import com.mpv.data.GVars;
@@ -13,17 +15,17 @@ import com.mpv.screens.GameScreen;
 
 public class PauseDialog extends CustomDialog {
 
-	private float bWidth = Gdx.graphics.getWidth() / 3.2f;
-	private float bHeight = Const.PLAYER_SIZE * GVars.BOX_TO_WORLD / 1.6f;
+	private float bSize = Const.PLAYER_SIZE * GVars.BOX_TO_WORLD * 1.2f;
 
 	public PauseDialog(String title, Skin skin, String styleName) {
 		super(title, skin, styleName);
-		this.getContentTable().add(new Label("PAUSE", skin, "title-text")).height(bHeight / 1.6f).pad(bHeight / 6f)
-				.row();
+		Button play = new Button(Assets.skin, "play-button");
+		Button no = new Button(Assets.skin, "no-button");
+		this.getContentTable().add(new Label("PAUSE", skin, "title-text")).height(bSize / 1.6f).row();
 		// this.getContentTable().add(new Image()).size(GVars.scrWidth/3.2f);
-		this.button("Menu", true).button("Back", false).key(Keys.ENTER, true).key(Keys.ESCAPE, false);
+		this.button(no, true).button(play, false).key(Keys.ENTER, true).key(Keys.ESCAPE, false);
 		for (Cell<?> cell : this.getButtonTable().getCells()) {
-			cell.size(bWidth, bHeight).pad(bHeight / 6f);
+			cell.size(bSize);
 		}
 	}
 

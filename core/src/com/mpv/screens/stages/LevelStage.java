@@ -53,8 +53,7 @@ public class LevelStage extends Stage {
 		scrollBg.setBackground(Assets.skin.getDrawable("edit"));
 		scrollBg.add(scrollPane);
 		scrollTable.setBackground(Assets.skin.getDrawable("window"));
-		scrollTable.add(new Label("Select level", Assets.skin, "title-text")).height(bHeight / 1.6f).pad(bHeight / 6f)
-				.row();
+		scrollTable.add(new Label("Select level", Assets.skin, "title-text")).height(bHeight).pad(bHeight / 6f).row();
 		scrollTable.add(scrollBg).pad(bHeight / 6f);
 		TextButton exitButton = new TextButton("Exit", Assets.skin, "default");
 
@@ -104,7 +103,7 @@ public class LevelStage extends Stage {
 			Label lb = new Label(String.valueOf(Settings.points[i]), Assets.skin);
 			lb.setAlignment(Align.right);
 			levelList.add(tb).size(bHeight).pad(bHeight / 8f);
-			levelList.add(lb).width(bWidth).pad(bHeight / 8f);
+			levelList.add(lb).width(bWidth / 1.4f).pad(bHeight / 8f);
 			for (int j = 0; j < Settings.stars[i]; j++) {
 				levelList.add(new Image(Assets.skin.getDrawable("star-gold"))).size(bHeight / 3f);
 			}

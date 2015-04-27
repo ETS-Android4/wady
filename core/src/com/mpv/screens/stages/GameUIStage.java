@@ -3,6 +3,8 @@ package com.mpv.screens.stages;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -31,13 +33,13 @@ public class GameUIStage extends Stage {
 	private final Label labelCoins;
 	private final Button leftJump, rightJump;
 	public static PauseDialog pauseDialog = new PauseDialog("", Assets.skin, "dialog");
-	public static FinishDialog finishDialog = new FinishDialog("", Assets.skin, "dialog");
+	public static FinishDialog finishDialog = new FinishDialog("", Assets.skin, "default");
 	public static FailedDialog failedDialog = new FailedDialog("", Assets.skin, "dialog");
-	public static StartDialog startDialog = new StartDialog("", Assets.skin, "dialog");
+	public static StartDialog startDialog = new StartDialog("", Assets.skin, "default");
 	private static GameUIStage instance;
 	private final Image radar = new Image(Assets.skin, "radar");
 
-	public static GameUIStage getInstance() {
+	public static GameUIStage get() {
 		return instance;
 	}
 
@@ -94,19 +96,31 @@ public class GameUIStage extends Stage {
 		this.addActor(controlPanel);
 		this.addActor(buttonPanel);
 
-		leftJump.addListener(new ClickListener() {
+		leftJump.addListener(new InputListener() {
 			@Override
-			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
-				// super.touchDown(event, x, y, pointer, button);
-				Player.get().jumpLeft();
-			}
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				Player.get().powerLeft(true);
+				return true;
+			};
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				Player.get().powerLeft(false);
+			};
+
 		});
-		rightJump.addListener(new ClickListener() {
+		rightJump.addListener(new InputListener() {
 			@Override
-			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
-				// super.touchDown(event, x, y, pointer, button);
-				Player.get().jumpRigth();
-			}
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				Player.get().powerRigth(true);
+				return true;
+			};
+
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				Player.get().powerRigth(false);
+			};
+
 		});
 	}
 
