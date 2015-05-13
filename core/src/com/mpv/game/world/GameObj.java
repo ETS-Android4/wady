@@ -1,5 +1,7 @@
 package com.mpv.game.world;
 
+import static com.mpv.data.Const.STEP;
+
 import java.util.HashSet;
 
 import box2dLight.ConeLight;
@@ -145,22 +147,21 @@ public class GameObj {
 	}
 
 	public void worldUpdate(float delta) {
-		// Should be improved on heavy applications (< 60 FPS)
-		if (delta >= (Const.BOX_STEP / 3f)) {
-			update(delta);
-		} else {
-			accumulator += delta;
-			if (accumulator >= Const.BOX_STEP) {
-				update(accumulator);
-			}
+		// No interpolation
+		accumulator += delta;
+		while (accumulator >= STEP) {
+			update(STEP);
+			accumulator -= STEP;
 		}
+		/*
+		 * if (accumulator >= STEP / 2f) { Player.get().interpolate(accumulator); }
+		 */
 	}
 
 	private void update(float value) {
 		Player.get().applyForces();
 		GVars.world.step(value, Const.BOX_VELOCITY_ITERATIONS, Const.BOX_POSITION_ITERATIONS);
 		Player.get().update();
-		accumulator = 0;
 	}
 
 	public static void captureKey() {

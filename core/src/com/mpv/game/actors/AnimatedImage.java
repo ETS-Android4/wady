@@ -8,17 +8,15 @@ import com.mpv.data.Assets;
 public class AnimatedImage extends Actor {
 
 	private float stateTime = 0;
-	
+
 	@Override
-	public void act(float delta)
-	{
+	public void act(float delta) {
 		stateTime += delta;
-	    super.act(delta);
+		super.act(delta);
 	}
-	
-	public void reset()
-	{
-	    stateTime = 0;
+
+	public void reset() {
+		stateTime = 0;
 	}
 
 	@Override
@@ -29,10 +27,7 @@ public class AnimatedImage extends Actor {
 		case Player.S_IDLE:
 			textureRegion = Assets.animation.getKeyFrames()[0];
 			break;
-		case Player.S_LJUMP:
-			textureRegion = Assets.animation.getKeyFrame(stateTime, true);
-			break;
-		case Player.S_RJUMP:
+		case Player.S_FLY:
 			textureRegion = Assets.animation.getKeyFrame(stateTime, true);
 			break;
 		case Player.S_FALL:
@@ -41,12 +36,12 @@ public class AnimatedImage extends Actor {
 		case Player.S_HIT:
 			textureRegion = Assets.animation.getKeyFrames()[15];
 			break;
-		default: textureRegion = Assets.animation.getKeyFrames()[0];
+		default:
+			textureRegion = Assets.animation.getKeyFrames()[0];
 			break;
 		}
-		batch.draw(textureRegion, this.getX(), this.getY(), 
-					this.getOriginX(), this.getOriginY(), this.getWidth(), this.getHeight(), 
-					this.getScaleX(), this.getScaleY(), this.getRotation());
+		batch.draw(textureRegion, this.getX(), this.getY(), this.getOriginX(), this.getOriginY(), this.getWidth(),
+				this.getHeight(), this.getScaleX(), this.getScaleY(), this.getRotation());
 	}
-	
+
 }

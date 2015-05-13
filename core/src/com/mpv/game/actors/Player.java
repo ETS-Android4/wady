@@ -20,11 +20,10 @@ import com.mpv.tween.ActorAccessor;
 public class Player extends AnimatedImage {
 
 	public static final int S_IDLE = 0;
-	public static final int S_LJUMP = 1;
-	public static final int S_RJUMP = 2;
-	public static final int S_FALL = 3;
-	public static final int S_HIT = 4;
-	public static final int S_INVISIBLE = 5;
+	public static final int S_FLY = 1;
+	public static final int S_FALL = 2;
+	public static final int S_HIT = 3;
+	public static final int S_INVISIBLE = 4;
 
 	public static int state = Player.S_IDLE;
 
@@ -96,21 +95,27 @@ public class Player extends AnimatedImage {
 	public void applyImpulse(Vector2 impulse) {
 		body.applyLinearImpulse(impulse, body.getWorldCenter().add(0f, Const.BLOCK_HALF).rotateRad(body.getAngle()),
 				true);
-		Player.state = Player.S_LJUMP;
+		Player.state = Player.S_FLY;
 		Effect.wing();
 		reset();
 	}
 
 	public void applyForces() {
-		if (left || right) {
-			if (left) {
-				body.applyForceToCenter(leftForce, true);
-			}
-			if (right) {
-				body.applyForceToCenter(rightForce, true);
-			}
-			Player.state = Player.S_LJUMP;
+		if (left) {
+			body.applyForceToCenter(leftForce, true);
+			Player.state = Player.S_FLY;
 		}
+		if (right) {
+			body.applyForceToCenter(rightForce, true);
+			Player.state = Player.S_FLY;
+		}
+	}
+
+	public void interpolate(float alpha) {
+		Tween.to(this, ActorAccessor.MOVE, alpha)
+				.target((body.getPosition().x - Const.PLAYER_HALF) * GVars.BOX_TO_WORLD,
+						(body.getPosition().y - Const.PLAYER_SIZE / animFix) * GVars.BOX_TO_WORLD)
+				.start(GVars.tweenManager);
 	}
 
 	@Override
