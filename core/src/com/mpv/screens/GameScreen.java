@@ -1,5 +1,8 @@
 package com.mpv.screens;
 
+import static com.mpv.data.GVars.bgCam;
+import static com.mpv.data.GVars.frCam;
+import static com.mpv.data.GVars.otmRendered;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 
@@ -48,7 +51,7 @@ public class GameScreen implements Screen {
 		// batch.setShader(Assets.shader);
 		// Game Stage
 		uiStage = new GameUIStage(new ScreenViewport(), batch);
-		gameStage = new Stage(new ScreenViewport(GVars.frCam), batch);
+		gameStage = new Stage(new ScreenViewport(frCam), batch);
 		gameStage.addActor(Player.get());
 		Gdx.graphics.setVSync(true);
 		// Input processor for gesture detection
@@ -82,30 +85,30 @@ public class GameScreen implements Screen {
 		gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		gl20.glViewport((int) glViewport.x, (int) glViewport.y, (int) glViewport.width, (int) glViewport.height);
 		// Background
-		GVars.bgCam.position.set(GVars.frCam.position).scl(0.25f).add(glViewport.width / 2f, glViewport.height / 2f, 0);
-		GVars.bgCam.update();
-		GVars.otmRendered.setView(GVars.bgCam);
+		bgCam.position.set(frCam.position).scl(0.25f).add(glViewport.width / 2f, glViewport.height / 2f, 0);
+		bgCam.update();
+		otmRendered.setView(bgCam);
 
 		batch.begin();
-		GVars.otmRendered.renderTileLayer(mm.getLayerBG());
-		GVars.otmRendered.renderTileLayer(mm.getLayerObtacles());
+		otmRendered.renderTileLayer(mm.getLayerBG());
+		otmRendered.renderTileLayer(mm.getLayerObtacles());
 		batch.end();
 		// Parallax layers
-		GVars.bgCam.position.set(GVars.frCam.position).scl(0.5f).add(glViewport.width / 4f, glViewport.height / 4f, 0);
-		GVars.bgCam.update();
-		GVars.otmRendered.setView(GVars.bgCam);
+		bgCam.position.set(frCam.position).scl(0.5f).add(glViewport.width / 4f, glViewport.height / 4f, 0);
+		bgCam.update();
+		otmRendered.setView(bgCam);
 
 		batch.begin();
-		GVars.otmRendered.renderTileLayer(mm.getLayerObtacles());
+		otmRendered.renderTileLayer(mm.getLayerObtacles());
 		batch.end();
 
 		// Main scene
-		GVars.otmRendered.setView(GVars.frCam);
+		otmRendered.setView(frCam);
 		GVars.rayHandler.updateAndRender();
 
 		batch.begin();
-		GVars.otmRendered.renderTileLayer(mm.getLayerObtacles());
-		GVars.otmRendered.renderTileLayer(mm.getLayerItems());
+		otmRendered.renderTileLayer(mm.getLayerObtacles());
+		otmRendered.renderTileLayer(mm.getLayerItems());
 		batch.end();
 
 		// Player

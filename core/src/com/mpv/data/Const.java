@@ -19,8 +19,8 @@ public class Const {
 	public static final float BLOCK_HALF = BLOCK_SIZE / 2;
 	public static final float BODY_SIZE = BLOCK_SIZE * 0.8f;
 	public static final float STEP = 1 / 60f;
-	public static final int BOX_VELOCITY_ITERATIONS = 15;
-	public static final int BOX_POSITION_ITERATIONS = 8;
+	public static final int BOX_VELOCITY_ITERATIONS = 8;
+	public static final int BOX_POSITION_ITERATIONS = 3;
 	public static final float BLOCK_DENSITY = 0.3f;
 	public static final float BLOCK_FRICTION = 0f;
 	public static final float BLOCK_RESTITUTION = 0.5f;
