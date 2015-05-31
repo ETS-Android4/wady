@@ -1,54 +1,62 @@
-package com.mpv.screens;
+package com.mpv.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.mpv.data.Assets;
-import com.mpv.screens.stages.MainMenuStage;
+import com.mpv.ui.stages.LevelStage;
 
-public class MenuScreen implements Screen {
+public class LevelScreen implements Screen {
 
-	private MainMenuStage mainMenuStage;
+	private LevelStage levelStage;
 
-	public MenuScreen() {
-		mainMenuStage = new MainMenuStage();
-		// mainMenuStage.setDebugAll(true);
-	}
-
-	public void resize(int width, int height) {
-		mainMenuStage.getViewport().setWorldSize(width, height);
-	}
-
-	public void dispose() {
-		mainMenuStage.dispose();
+	public LevelScreen() {
+		levelStage = new LevelStage();
 	}
 
 	@Override
 	public void render(float delta) {
 		Gdx.gl20.glClearColor(0f, 0f, 0f, 1);
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		mainMenuStage.act(Gdx.graphics.getDeltaTime());
-		mainMenuStage.draw();
+		levelStage.act(Gdx.graphics.getDeltaTime());
+		levelStage.draw();
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void show() {
-		Gdx.input.setInputProcessor(mainMenuStage);
+		levelStage.updateList();
+		Gdx.input.setInputProcessor(levelStage);
 		Assets.pauseMusic();
 		Assets.playMusic(Assets.menuMusic);
 	}
 
 	@Override
 	public void hide() {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
+
 	}
+
+	@Override
+	public void dispose() {
+		levelStage.dispose();
+	}
+
 }

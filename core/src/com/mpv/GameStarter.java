@@ -8,13 +8,13 @@ import com.mpv.data.GVars;
 import com.mpv.data.Settings;
 import com.mpv.game.IReqHandler;
 import com.mpv.game.world.GameObj;
-import com.mpv.screens.CreditsScreen;
-import com.mpv.screens.GameScreen;
-import com.mpv.screens.LevelScreen;
-import com.mpv.screens.MenuScreen;
-import com.mpv.screens.SplashScreen;
+import com.mpv.ui.CreditsScreen;
+import com.mpv.ui.GameScreen;
+import com.mpv.ui.LevelScreen;
+import com.mpv.ui.MenuScreen;
+import com.mpv.ui.SplashScreen;
 
-public class ApplicationHandler extends Game {
+public class GameStarter extends Game {
 
 	public MenuScreen menuScreen;
 	public GameScreen gameScreen;
@@ -22,11 +22,11 @@ public class ApplicationHandler extends Game {
 	public CreditsScreen creditsScreen;
 	public static IReqHandler ExternalHandler;
 
-	public ApplicationHandler(IReqHandler irh) {
-		ApplicationHandler.ExternalHandler = irh;
+	public GameStarter(IReqHandler irh) {
+		GameStarter.ExternalHandler = irh;
 	}
 
-	public ApplicationHandler() {
+	public GameStarter() {
 	}
 
 	@Override

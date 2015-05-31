@@ -1,4 +1,4 @@
-package com.mpv.screens.dialogs;
+package com.mpv.ui.dialogs;
 
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;

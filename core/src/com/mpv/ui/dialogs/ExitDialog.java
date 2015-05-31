@@ -1,4 +1,6 @@
-package com.mpv.screens.dialogs;
+package com.mpv.ui.dialogs;
+
+import static com.mpv.data.Sounds.ID.BUTTON;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -10,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
-import com.mpv.data.Effect;
+import com.mpv.data.Sounds;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
 
@@ -30,7 +32,7 @@ public class ExitDialog extends Dialog {
 	}
 
 	protected void result(Object obj) {
-		Effect.button();
+		Sounds.play(BUTTON);
 		if (obj.equals(true)) {
 			Settings.save();
 			Gdx.app.exit();

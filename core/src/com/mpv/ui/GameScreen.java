@@ -1,4 +1,4 @@
-package com.mpv.screens;
+package com.mpv.ui;
 
 import static com.mpv.data.GVars.bgCam;
 import static com.mpv.data.GVars.frCam;
@@ -18,22 +18,22 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.mpv.control.GestureHandler;
-import com.mpv.control.InputHandler;
+import com.mpv.control.Gesture;
+import com.mpv.control.Input;
 import com.mpv.data.Assets;
 import com.mpv.data.GVars;
 import com.mpv.game.actors.Player;
 import com.mpv.game.world.GameObj;
 import com.mpv.game.world.MapManager;
-import com.mpv.screens.stages.GameUIStage;
 import com.mpv.tween.ActorAccessor;
+import com.mpv.ui.stages.GameUIStage;
 
 public class GameScreen implements Screen {
 
 	private Stage gameStage;
 	private GameUIStage uiStage;
 	private Box2DDebugRenderer debugRenderer;
-	private GestureHandler gestureHandler = new GestureHandler();
+	private Gesture gestureHandler = new Gesture();
 	public static InputMultiplexer multiplexer;
 	private GL20 gl20 = Gdx.graphics.getGL20();
 	private Rectangle glViewport;
@@ -59,7 +59,7 @@ public class GameScreen implements Screen {
 		multiplexer.addProcessor(uiStage);
 		multiplexer.addProcessor(gameStage);
 		multiplexer.addProcessor(new GestureDetector(gestureHandler));
-		multiplexer.addProcessor(new InputHandler());
+		multiplexer.addProcessor(new Input());
 		Gdx.input.setInputProcessor(multiplexer);
 		// Physics renderer
 		debugRenderer = new Box2DDebugRenderer();

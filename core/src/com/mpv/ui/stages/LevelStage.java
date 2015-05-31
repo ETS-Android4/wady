@@ -1,4 +1,4 @@
-package com.mpv.screens.stages;
+package com.mpv.ui.stages;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -14,7 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
-import com.mpv.data.Effect;
+import com.mpv.data.Sounds;
+import com.mpv.data.Sounds.ID;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
 import com.mpv.game.world.GameObj;
@@ -30,7 +31,7 @@ public class LevelStage extends Stage {
 		public void clicked(InputEvent event, float x, float y) {
 			// super.touchDown(event, x, y, pointer, button);
 			if (!((Button) event.getListenerActor()).isDisabled()) {
-				Effect.button();
+				Sounds.play(ID.BUTTON);
 				GameObj.mapIndex = (Integer) event.getListenerActor().getUserObject();
 				Assets.loadMap(GameObj.mapIndex);
 				GVars.app.setScreen(GVars.app.gameScreen);
@@ -74,7 +75,7 @@ public class LevelStage extends Stage {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);
-				Effect.button();
+				Sounds.play(ID.BUTTON);
 				GVars.app.setScreen(GVars.app.menuScreen);
 			}
 		});
@@ -83,7 +84,7 @@ public class LevelStage extends Stage {
 			@Override
 			public boolean keyUp(InputEvent event, int keycode) {
 				if (keycode == Keys.BACK || keycode == Keys.ESCAPE) {
-					Effect.button();
+					Sounds.play(ID.BUTTON);
 					GVars.app.setScreen(GVars.app.menuScreen);
 				}
 				return false;

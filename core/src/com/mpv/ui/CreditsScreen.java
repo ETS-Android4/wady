@@ -1,4 +1,4 @@
-package com.mpv.screens;
+package com.mpv.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -17,7 +17,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
-import com.mpv.data.Effect;
+import com.mpv.data.Sounds;
+import com.mpv.data.Sounds.ID;
 import com.mpv.data.GVars;
 
 public class CreditsScreen implements Screen {
@@ -49,14 +50,14 @@ public class CreditsScreen implements Screen {
 		button.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);
-				Effect.button();
+				Sounds.play(ID.BUTTON);
 				GVars.app.setScreen(GVars.app.menuScreen);
 			}
 		});
 		stage.addListener(new InputListener() {
 			public boolean keyUp(InputEvent event, int keycode) {
 				if (keycode == Keys.BACK || keycode == Keys.ESCAPE) {
-					Effect.button();
+					Sounds.play(ID.BUTTON);
 					GVars.app.setScreen(GVars.app.menuScreen);
 				}
 				return false;

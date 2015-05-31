@@ -1,4 +1,4 @@
-package com.mpv.screens.stages;
+package com.mpv.ui.stages;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,15 +15,16 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mpv.data.Assets;
-import com.mpv.data.Effect;
+import com.mpv.data.Sounds;
+import com.mpv.data.Sounds.ID;
 import com.mpv.data.GVars;
 import com.mpv.game.actors.Player;
 import com.mpv.game.world.GameObj;
 import com.mpv.game.world.GameTimer;
-import com.mpv.screens.dialogs.FailedDialog;
-import com.mpv.screens.dialogs.FinishDialog;
-import com.mpv.screens.dialogs.PauseDialog;
-import com.mpv.screens.dialogs.StartDialog;
+import com.mpv.ui.dialogs.FailedDialog;
+import com.mpv.ui.dialogs.FinishDialog;
+import com.mpv.ui.dialogs.PauseDialog;
+import com.mpv.ui.dialogs.StartDialog;
 
 public class GameUIStage extends Stage {
 
@@ -52,7 +53,7 @@ public class GameUIStage extends Stage {
 			@Override
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);
-				Effect.button();
+				Sounds.play(ID.BUTTON);
 				if (GameObj.state == GameObj.ACTIVE) {
 					GameObj.get().gamePause();
 					gamePause();
@@ -156,7 +157,7 @@ public class GameUIStage extends Stage {
 	public void gameOver() {
 		Gdx.input.setInputProcessor(instance);
 		GameUIStage.failedDialog.show(instance);
-		Effect.fail();
+		Sounds.play(ID.FAIL);
 	}
 
 	public void gameStart() {

@@ -1,5 +1,6 @@
 package com.mpv.game.actors;
 
+import static com.mpv.data.Sounds.ID.WING;
 import aurelienribon.tweenengine.Tween;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -12,7 +13,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Const;
-import com.mpv.data.Effect;
+import com.mpv.data.Sounds;
 import com.mpv.data.GVars;
 import com.mpv.game.world.GameObj;
 import com.mpv.tween.ActorAccessor;
@@ -96,7 +97,7 @@ public class Player extends AnimatedImage {
 		body.applyLinearImpulse(impulse, body.getWorldCenter().add(0f, Const.BLOCK_HALF).rotateRad(body.getAngle()),
 				true);
 		Player.state = Player.S_FLY;
-		Effect.wing();
+		Sounds.play(WING);
 		reset();
 	}
 
@@ -138,7 +139,7 @@ public class Player extends AnimatedImage {
 
 	public void update() {
 		if (Player.state == Player.S_INVISIBLE) {
-			Effect.stopSnd(Effect.WING);
+			Sounds.stop(WING);
 			return;
 		}
 
@@ -159,7 +160,7 @@ public class Player extends AnimatedImage {
 				(body.getPosition().y - Const.PLAYER_SIZE / animFix) * GVars.BOX_TO_WORLD);
 
 		if (GameObj.state != GameObj.ACTIVE) {
-			Effect.stopSnd(Effect.WING);
+			Sounds.stop(WING);
 			return;
 		}
 		Tween.to(this, ActorAccessor.ROTATE, 0.2f).target(angle + 270f).start(GVars.tweenManager);
@@ -175,10 +176,10 @@ public class Player extends AnimatedImage {
 	public void powerLeft(boolean enable) {
 		left = enable;
 		if (enable && !right) {
-			Effect.wing();
+			Sounds.play(WING);
 		}
 		if (!(left || right)) {
-			Effect.stopSnd(Effect.WING);
+			Sounds.stop(WING);
 		}
 		reset();
 	}
@@ -186,10 +187,11 @@ public class Player extends AnimatedImage {
 	public void powerRigth(boolean enable) {
 		right = enable;
 		if (enable && !left) {
-			Effect.wing();
+			Sounds.play(WING);
+			;
 		}
 		if (!(left || right)) {
-			Effect.stopSnd(Effect.WING);
+			Sounds.stop(WING);
 		}
 		reset();
 	}

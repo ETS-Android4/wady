@@ -1,6 +1,7 @@
 package com.mpv.game.world;
 
 import static com.mpv.data.Const.STEP;
+import static com.mpv.data.Sounds.ID.*;
 
 import java.util.HashSet;
 
@@ -14,11 +15,11 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
-import com.mpv.data.Effect;
+import com.mpv.data.Sounds;
 import com.mpv.data.GVars;
-import com.mpv.game.ContactHandler;
+import com.mpv.game.Collisions;
 import com.mpv.game.actors.Player;
-import com.mpv.screens.stages.GameUIStage;
+import com.mpv.ui.stages.GameUIStage;
 
 public class GameObj {
 
@@ -59,7 +60,7 @@ public class GameObj {
 		}
 
 		GVars.world = new World(new Vector2(0, -9.8f), true);
-		GVars.world.setContactListener(new ContactHandler());
+		GVars.world.setContactListener(new Collisions());
 
 		collectedCoins = 0;
 		mapProps = Assets.map.getProperties();
@@ -105,7 +106,7 @@ public class GameObj {
 		Player.get().resetGame();
 		state = ACTIVE;
 		Player.state = Player.S_IDLE;
-		Effect.start();
+		Sounds.play(START);
 	}
 
 	public void gamePause() {
@@ -168,7 +169,7 @@ public class GameObj {
 		MapManager.get().removeItem((Position) key.getUserData());
 		bodyTrash.add(key);
 		key = null;
-		Effect.key();
+		Sounds.play(KEY);
 	}
 
 	public void clearBodies() {
@@ -187,14 +188,14 @@ public class GameObj {
 	public void collectTime(Body body) {
 		MapManager.get().removeItem((Position) body.getUserData());
 		bodyTrash.add(body);
-		Effect.get_battery();
+		Sounds.play(GET_BATTERY);
 		GameTimer.get().addSeconds(10);
 	}
 
-	public void collectCoin(Body body) {
+	public void collectDiamond(Body body) {
 		MapManager.get().removeItem((Position) body.getUserData());
 		bodyTrash.add(body);
-		Effect.diamond();
+		Sounds.play(GET_DIAMOND);
 		collectedCoins++;
 	}
 
@@ -210,6 +211,6 @@ public class GameObj {
 		MapManager.get().removeItem((Position) lock.getUserData());
 		MapManager.get().unlockExit();
 		bodyTrash.add(lock);
-		Effect.lock();
+		Sounds.play(LOCK);
 	}
 }

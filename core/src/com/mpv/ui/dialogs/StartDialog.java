@@ -1,4 +1,4 @@
-package com.mpv.screens.dialogs;
+package com.mpv.ui.dialogs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -15,7 +15,7 @@ import com.mpv.data.Assets;
 import com.mpv.data.Const;
 import com.mpv.data.GVars;
 import com.mpv.game.world.GameObj;
-import com.mpv.screens.GameScreen;
+import com.mpv.ui.GameScreen;
 
 public class StartDialog extends CustomDialog {
 

@@ -1,4 +1,4 @@
-package com.mpv.screens;
+package com.mpv.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -19,7 +19,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
-import com.mpv.data.Effect;
+import com.mpv.data.Sounds;
+import com.mpv.data.Sounds.ID;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
 
@@ -70,7 +71,7 @@ public class ScoresScreen implements Screen {
 		okButton.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);
-				Effect.button();
+				Sounds.play(ID.BUTTON);
 				Settings.name = textField.getText();
 				// Settings.addScore(Settings.name, GameApp.gameObject.getMoves());
 				label1.setText("Your score: " + String.valueOf(Settings.getTotalScore()));
@@ -81,7 +82,7 @@ public class ScoresScreen implements Screen {
 		buttonExit.addListener(new ClickListener() {
 			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
 				// super.touchDown(event, x, y, pointer, button);
-				Effect.button();
+				Sounds.play(ID.BUTTON);
 				GVars.app.setScreen(GVars.app.menuScreen);
 			}
 		});

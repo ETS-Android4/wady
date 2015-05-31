@@ -1,4 +1,6 @@
-package com.mpv.screens.dialogs;
+package com.mpv.ui.dialogs;
+
+import static com.mpv.data.Sounds.ID.*;
 
 import java.util.ArrayList;
 
@@ -21,13 +23,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.Timer;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
-import com.mpv.data.Effect;
+import com.mpv.data.Sounds;
 import com.mpv.data.GVars;
 import com.mpv.data.Settings;
 import com.mpv.game.world.GameObj;
 import com.mpv.game.world.GameTimer;
-import com.mpv.screens.GameScreen;
 import com.mpv.tween.ActorAccessor;
+import com.mpv.ui.GameScreen;
 
 public class FinishDialog extends CustomDialog {
 
@@ -46,7 +48,7 @@ public class FinishDialog extends CustomDialog {
 		@Override
 		public void onEvent(int arg0, BaseTween<?> arg1) {
 			if (dvisible) {
-				Effect.star();
+				Sounds.play(STAR);
 			}
 		}
 	};
@@ -56,7 +58,7 @@ public class FinishDialog extends CustomDialog {
 			// TODO Auto-generated method stub
 			instance.getButtonTable().setVisible(true);
 			if (dvisible) {
-				Effect.counter();
+				Sounds.play(COUNTER);
 			}
 		}
 	};
@@ -123,9 +125,9 @@ public class FinishDialog extends CustomDialog {
 			Assets.gameMusic();
 			Gdx.input.setInputProcessor(GameScreen.multiplexer);
 		}
-		Effect.stopSnd(Effect.COUNTER);
+		Sounds.stop(Sounds.ID.COUNTER);
 		dvisible = false;
-		Effect.button();
+		Sounds.play(BUTTON);
 	}
 
 	private void animateStar(int i, float delay) {
@@ -144,7 +146,7 @@ public class FinishDialog extends CustomDialog {
 	@Override
 	public Dialog show(Stage stage) {
 		Assets.pauseMusic();
-		Effect.finish();
+		Sounds.play(FINISH);
 		int coinCount = GameObj.get().getCoinCount();
 		float diamDelay = 0.3f * coinCount;
 		float timeDelay = 3.5f;
@@ -159,7 +161,7 @@ public class FinishDialog extends CustomDialog {
 			@Override
 			public void run() {
 				if (dvisible) {
-					Effect.count_diamond();
+					Sounds.play(COUNT_DIAMOND);
 				}
 				Float tmp = (Float) lpoints.getUserObject();
 				lpoints.setUserObject(tmp + 100f);
@@ -206,9 +208,9 @@ public class FinishDialog extends CustomDialog {
 					return;
 				}
 				if (tmpStar == 0) {
-					Effect.fail();
+					Sounds.play(FAIL);
 				} else {
-					Effect.win();
+					Sounds.play(WIN);
 				}
 			}
 		}, totalDelay);

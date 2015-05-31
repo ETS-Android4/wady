@@ -3,13 +3,13 @@ package com.mpv.control;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
-import com.mpv.ApplicationHandler;
+import com.mpv.GameStarter;
 import com.mpv.game.actors.Player;
 import com.mpv.game.world.GameObj;
 
-public class InputHandler implements InputProcessor {
+public class Input implements InputProcessor {
 
-	ApplicationHandler app;
+	GameStarter app;
 
 	@Override
 	public boolean keyDown(int keycode) {

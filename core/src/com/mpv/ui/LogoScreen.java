@@ -1,4 +1,4 @@
-package com.mpv.screens;
+package com.mpv.ui;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;

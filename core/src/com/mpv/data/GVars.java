@@ -10,7 +10,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.physics.box2d.World;
-import com.mpv.ApplicationHandler;
+import com.mpv.GameStarter;
 import com.mpv.game.actors.Player;
 import com.mpv.game.world.GameObj;
 import com.mpv.game.world.GameTimer;
@@ -26,7 +26,7 @@ public class GVars {
 	// Global items
 	public static float widthInMeters;
 	public static float heightInMeters;
-	public static ApplicationHandler app;
+	public static GameStarter app;
 	public static OrthographicCamera frCam;
 	public static OrthographicCamera bgCam;
 	public static World world;

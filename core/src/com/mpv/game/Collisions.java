@@ -7,13 +7,14 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.mpv.data.Assets;
 import com.mpv.data.Const;
-import com.mpv.data.Effect;
+import com.mpv.data.Sounds;
+import com.mpv.data.Sounds.ID;
 import com.mpv.game.actors.Player;
 import com.mpv.game.world.Coin;
 import com.mpv.game.world.GameObj;
 import com.mpv.game.world.TimeBonus;
 
-public class ContactHandler implements ContactListener {
+public class Collisions implements ContactListener {
 
 	@Override
 	public void beginContact(Contact contact) {
@@ -21,7 +22,7 @@ public class ContactHandler implements ContactListener {
 		if (pl.body.getLinearVelocity().len() >= Const.BLOCK_SIZE * 13f) {
 			Assets.hitEffect.setPosition(pl.getX() + pl.getOriginX(), pl.getY() + pl.getOriginY());
 			Assets.hitEffect.start();
-			Effect.hit();
+			Sounds.play(ID.HIT);
 		}
 	}
 
@@ -43,7 +44,7 @@ public class ContactHandler implements ContactListener {
 		if (null != data) {
 			if (data instanceof Coin) {
 				contact.setEnabled(false);
-				GameObj.get().collectCoin(body);
+				GameObj.get().collectDiamond(body);
 				return;
 			}
 			if (data instanceof TimeBonus) {
