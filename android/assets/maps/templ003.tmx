@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="45" height="45" tilewidth="32" tileheight="32" backgroundcolor="#414141">
+ <properties>
+  <property name="bonusCount" value="10"/>
+  <property name="coinsCount" value="7"/>
+  <property name="points1" value="400"/>
+  <property name="points2" value="550"/>
+  <property name="points3" value="650"/>
+  <property name="startTime" value="20"/>
+  <property name="timeBonus" value="10"/>
+ </properties>
+ <tileset firstgid="1" name="items" tilewidth="32" tileheight="32">
+  <image source="items.png" width="256" height="256"/>
+  <tile id="10">
+   <properties>
+    <property name="brick" value=""/>
+   </properties>
+  </tile>
+  <tile id="56">
+   <properties>
+    <property name="timeBonus" value=""/>
+   </properties>
+  </tile>
+  <tile id="57">
+   <properties>
+    <property name="lock" value=""/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="key" value=""/>
+   </properties>
+  </tile>
+  <tile id="59">
+   <properties>
+    <property name="diamond" value=""/>
+   </properties>
+  </tile>
+  <tile id="60">
+   <properties>
+    <property name="star" value=""/>
+   </properties>
+  </tile>
+  <tile id="61">
+   <properties>
+    <property name="exit" value=""/>
+   </properties>
+  </tile>
+  <tile id="62">
+   <properties>
+    <property name="enter" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="65" name="terrain" tilewidth="32" tileheight="32">
+  <image source="terrain.png" width="512" height="480"/>
+ </tileset>
+ <layer name="obtacles" width="45" height="45">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAgIcBH6QAAQ==
+  </data>
+ </layer>
+ <layer name="items" width="45" height="45">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAgIcBH6QAAQ==
+  </data>
+ </layer>
+ <layer name="pattern" width="45" height="45">
+  <properties>
+   <property name="pattern" value="15"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlkEPwjAIhfnL9Vov29X9aLtEIkEoyOzJ9yWkcemj2xPaEgEAAAAAAAAAAAAAAMB/0UbcxMhsI/bC6OX1xgqPEYeRg3/3EffE6H1zF6F1rfjOnEP7pP3jb/PGyGc9v780FTjHPpnTKPa5or/ic1RXpx8zn6O1Lf1Vn73/VD6b+azXnvXGCp9lHctnWZ8b+b3RaZ3Plge6J9kv7l+pv9FnvemevOKzfmf2NPLgXO+g9z4p9TvNe5L1VZ+t2pP7l8fmzMueGRvVfbZqT/acd85ZWjLmR/pfIT2snK/S5+r5XCFbl6v0mdzenpq9G3n6lXckb0+N7hmR/pv6zvIE8FeZeA==
+  </data>
+ </layer>
+</map>

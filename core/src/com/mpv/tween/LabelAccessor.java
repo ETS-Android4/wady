@@ -1,8 +1,7 @@
 package com.mpv.tween;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-
 import aurelienribon.tweenengine.TweenAccessor;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public class LabelAccessor implements TweenAccessor<Label> {
 

@@ -2,10 +2,10 @@ package com.wady.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.mpv.ApplicationHandler;
+import com.mpv.GameStarter;
 
 public class DesktopLauncher {
-	public static void main (String[] arg) {
+	public static void main(String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "Organizo";
 		config.width = 480;
@@ -13,6 +13,6 @@ public class DesktopLauncher {
 		config.samples = 4;
 		config.resizable = false;
 		config.vSyncEnabled = true;
-		new LwjglApplication(new ApplicationHandler(), config);
+		new LwjglApplication(new GameStarter(), config);
 	}
 }

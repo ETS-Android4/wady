@@ -7,7 +7,7 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
-import com.mpv.ApplicationHandler;
+import com.mpv.GameStarter;
 
 public class AndroidLauncher extends AndroidApplication {
 	//private AdView adView;
@@ -36,7 +36,7 @@ public class AndroidLauncher extends AndroidApplication {
         					.build();
         adView.loadAd(adRequest);*/
         // Add the libgdx view
-        View gameView = initializeForView(new ApplicationHandler());
+        View gameView = initializeForView(new GameStarter());
         layout.addView(gameView);
         // Add the AdMob view
         RelativeLayout.LayoutParams adParams = 

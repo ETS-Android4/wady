@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="60" height="40" tilewidth="32" tileheight="32" backgroundcolor="#414141">
+ <properties>
+  <property name="bonusCount" value="10"/>
+  <property name="coinsCount" value="15"/>
+  <property name="points1" value="1200"/>
+  <property name="points2" value="1400"/>
+  <property name="points3" value="1600"/>
+  <property name="startTime" value="20"/>
+  <property name="timeBonus" value="10"/>
+ </properties>
+ <tileset firstgid="1" name="items" tilewidth="32" tileheight="32">
+  <image source="items.png" width="256" height="256"/>
+  <tile id="10">
+   <properties>
+    <property name="brick" value=""/>
+   </properties>
+  </tile>
+  <tile id="56">
+   <properties>
+    <property name="timeBonus" value=""/>
+   </properties>
+  </tile>
+  <tile id="57">
+   <properties>
+    <property name="lock" value=""/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="key" value=""/>
+   </properties>
+  </tile>
+  <tile id="59">
+   <properties>
+    <property name="diamond" value=""/>
+   </properties>
+  </tile>
+  <tile id="60">
+   <properties>
+    <property name="star" value=""/>
+   </properties>
+  </tile>
+  <tile id="61">
+   <properties>
+    <property name="exit" value=""/>
+   </properties>
+  </tile>
+  <tile id="62">
+   <properties>
+    <property name="enter" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="65" name="terrain" tilewidth="32" tileheight="32">
+  <image source="terrain.png" width="512" height="480"/>
+ </tileset>
+ <layer name="obtacles" width="60" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20Hb6AAAAAAAAAAAAB4DCWAAAE=
+  </data>
+ </layer>
+ <layer name="items" width="60" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20Hb6AAAAAAAAAAAAB4DCWAAAE=
+  </data>
+ </layer>
+ <layer name="tmp" width="60" height="40">
+  <properties>
+   <property name="pattern" value="20"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztz0ENAAAIxDAUIgT/AjBxDxLaZAJWBQAAAAB3dbgJ59evX79+/fr169evX79+/fr16/f37wJq0B+Q
+  </data>
+ </layer>
+ <layer name="pattern" width="60" height="40">
+  <properties>
+   <property name="pattern" value="20"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlsEOwyAIQPvTXbLdt6T96nHxwoVSgdHuvYR4UNRoHrosAAAAAAAAAAAAfVklHhJPiZejHXnWPEfHWXlRvCU+EpvE7mhHnjXP0XFW3t0Z9/wvjHuORvtk+Tbb760H0WifLN9m+731IJounlTtI8sTL1X70Ofaxdcsf/W5dvH1bv5a62bt61f+Wute5f2N8jXrfrv62uXdOIvX16z6XIXX16z6HOWr188qXzVRvnr9xNea/1UWs75m+fsFeqWxdw==
+  </data>
+ </layer>
+</map>

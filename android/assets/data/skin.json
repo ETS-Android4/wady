@@ -19,20 +19,15 @@
       title-text: { background: edit, font: normaltext, fontColor: white },
       normal-text: { font: normaltext, fontColor: white },  
      },
-     com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle: {  
-      default: {up: item, disabled: item-disabled, checked: item-checked}, 
-      none: { up: item, checked: item-checked, imageUp: star-none, imageDown: star-none},
-      silver: { up: item, checked: item-checked, imageUp: star-silver, imageDown: star-silver},
-      gold: { up: item, checked: item-checked, imageUp: star-gold, imageDown: star-gold},
-     },
      com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {  
-      default: { up: button, down: button-down, disabled: button-disabled }, 
-      arrow-left: {up: arrow-left, down: arrow-left-down},
-      arrow-right: {up: arrow-right, down: arrow-right-down},
+      default: { up: button, down: button-down, disabled: button-disabled },
       leftJump: {up: ljump, down: ljump-down},
       rightJump: {up: rjump, down: rjump-down},
       music-button: {up: music, checked: music-disabled},
       sound-button: {up: sound, checked: sound-disabled},
+      yes-button: {up: yes-up, down: yes-down},
+      no-button: {up: no-up, down: no-down},
+      play-button: {up: play-up, down: play-down},
       pause: {up: pause, down: pause-down},
       transparent: { },  
      },
@@ -44,10 +39,10 @@
      },
      com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {  
       default: { up: button, down: button-down, disabled: button-disabled, font: normaltext, fontColor: white },
-      menu-button: {up: none, down: none, font: normaltext},  
+      text-only: {up: none, down: none, font: normaltext},  
      },
 	com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
-		default: { titleFont: titletext, background: edit, titleFontColor: white },
-		dialog: { titleFont: titletext, background: window, titleFontColor: white, stageBackground: dialogDim }
+		default: { titleFont: titletext, background: window, titleFontColor: white },
+		dialog: { titleFont: titletext, background: dialog, titleFontColor: white, stageBackground: dialogDim }
      }   
    }  
