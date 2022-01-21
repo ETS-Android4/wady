@@ -1,65 +1,27 @@
-sourceSets.main.java.srcDirs = [ "src/" ]
+apply plugin: 'robovm'
 
-sourceCompatibility = '1.7'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 ext {
-	mainClassName = "com.wady.IOSLauncher"
+	mainClassName = "com.devmpv.wady.ios.IOSLauncher"
 }
-
-// Extracts native libs (*.a) from the native-ios.jar and places them
-// under build/libs/ios/.
-task copyNatives << {
-  file("build/libs/ios/").mkdirs();
-  configurations.natives.files.each { jar ->
-    def outputDir = null
-    if (jar.name.endsWith("natives-ios.jar")) outputDir = file("build/libs/ios")
-    if (outputDir != null) {
-      copy {
-        from zipTree(jar)
-        into outputDir
-        include "*.a"
-      }
-    }
-  }
-}
-
-// Updates a robovm.xml file.
-task updateRoboVMXML << {
-  def xml = file('robovm.xml')
-
-  if (!xml.exists()) {
-    return
-  }
-  
-  // Find all native (*.a) libraries beneath libs
-  def libtree = fileTree(dir: 'build/libs', include: '**/*.a')
-  
-  def config = new groovy.util.XmlParser().parse(xml)
-  config.libs.each {libs ->
-      libs.children().clear()
-      libtree.each { File file ->
-          libs.appendNode('lib', 'build/libs/ios/' + file.getName())
-      }
-  }
-  
-  def writer = new FileWriter(xml)
-  def printer = new XmlNodePrinter(new PrintWriter(writer))
-  printer.setPreserveWhitespace true
-  printer.print(config)
-}
-
-updateRoboVMXML.dependsOn copyNatives
-build.dependsOn updateRoboVMXML
-tasks.eclipse.dependsOn updateRoboVMXML
 
 launchIPhoneSimulator.dependsOn build
 launchIPadSimulator.dependsOn build
 launchIOSDevice.dependsOn build
 createIPA.dependsOn build
 
-
 eclipse.project {
-    name = appName + "-ios"
-    natures 'org.robovm.eclipse.RoboVMNature'
+	name = appName + "-ios"
+	natures 'org.robovm.eclipse.RoboVMNature'
+}
+
+dependencies {
+	implementation project(':core')
+	implementation "com.mobidevelop.robovm:robovm-rt:$robovmVersion"
+	implementation "com.mobidevelop.robovm:robovm-cocoatouch:$robovmVersion"
+	implementation "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"
+	implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
+	implementation "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-ios"
+	implementation "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-ios"
 }
