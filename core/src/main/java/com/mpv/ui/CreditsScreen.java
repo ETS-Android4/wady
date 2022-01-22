@@ -23,88 +23,86 @@ import com.mpv.data.GVars;
 
 public class CreditsScreen implements Screen {
 
-	private Stage stage;
-	private String text = "SOFTWARE & TOOLS:\nLibGDX, Eclipse, InkScape, Gimp, Tiled, Synfig\n\n"
-			+ "RESOURCES:\nopengameart.org\nsoundbible.com\nfreesound.org";
-	private TextArea textArea = new TextArea("", Assets.skin);
-	private float bWidth = Gdx.graphics.getWidth() / 3.2f;
-	private float bHeight = Const.PLAYER_SIZE * GVars.BOX_TO_WORLD / 1.6f;
+    private final Stage stage;
+    private final String text = "SOFTWARE & TOOLS:\nLibGDX, Eclipse, InkScape, Gimp, Tiled, Synfig\n\n"
+            + "RESOURCES:\nopengameart.org\nsoundbible.com\nfreesound.org";
+    private final TextArea textArea = new TextArea("", Assets.skin);
+    private final float bWidth = Gdx.graphics.getWidth() / 3.2f;
+    private final float bHeight = Const.PLAYER_SIZE * GVars.BOX_TO_WORLD / 1.6f;
 
-	public CreditsScreen() {
-		stage = new Stage();
-		final TextButton button = new TextButton("Ok", Assets.skin);
-		textArea.setAlignment(Align.center);
-		textArea.setTouchable(Touchable.disabled);
-		textArea.setText(text);
-		Table table = new Table();
-		Image image = new Image(Assets.skin.getDrawable("menu-screen"));
-		image.setSize(stage.getWidth(), stage.getWidth() / image.getWidth() * image.getHeight());
-		image.setPosition(0, 0);
-		stage.addActor(image);
-		stage.addActor(table);
-		table.setFillParent(true);
-		table.add(textArea).size(stage.getWidth() / 1.2f, stage.getHeight() / 1.6f).row();
-		table.add(new Widget()).height(stage.getWidth() / 12.8f).row();
-		table.add(button).size(bWidth, bHeight);
+    public CreditsScreen() {
+        stage = new Stage();
+        final TextButton button = new TextButton("Ok", Assets.skin);
+        textArea.setAlignment(Align.center);
+        textArea.setTouchable(Touchable.disabled);
+        textArea.setText(text);
+        Table table = new Table();
+        Image image = new Image(Assets.skin.getDrawable("menu-screen"));
+        image.setSize(stage.getWidth(), stage.getWidth() / image.getWidth() * image.getHeight());
+        image.setPosition(0, 0);
+        stage.addActor(image);
+        stage.addActor(table);
+        table.setFillParent(true);
+        table.add(textArea).size(stage.getWidth() / 1.2f, stage.getHeight() / 1.6f).row();
+        table.add(new Widget()).height(stage.getWidth() / 12.8f).row();
+        table.add(button).size(bWidth, bHeight);
 
-		button.addListener(new ClickListener() {
-			public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
-				// super.touchDown(event, x, y, pointer, button);
-				Sounds.play(ID.BUTTON);
-				GVars.app.setScreen(GVars.app.menuScreen);
-			}
-		});
-		stage.addListener(new InputListener() {
-			public boolean keyUp(InputEvent event, int keycode) {
-				if (keycode == Keys.BACK || keycode == Keys.ESCAPE) {
-					Sounds.play(ID.BUTTON);
-					GVars.app.setScreen(GVars.app.menuScreen);
-				}
-				return false;
-			}
-		});
-	}
+        button.addListener(new ClickListener() {
+            public void clicked(com.badlogic.gdx.scenes.scene2d.InputEvent event, float x, float y) {
+                // super.touchDown(event, x, y, pointer, button);
+                Sounds.play(ID.BUTTON);
+                GVars.app.setScreen(GVars.app.menuScreen);
+            }
+        });
+        stage.addListener(new InputListener() {
+            public boolean keyUp(InputEvent event, int keycode) {
+                if (keycode == Keys.BACK || keycode == Keys.ESCAPE) {
+                    Sounds.play(ID.BUTTON);
+                    GVars.app.setScreen(GVars.app.menuScreen);
+                }
+                return false;
+            }
+        });
+    }
 
-	@Override
-	public void render(float delta) {
-		Gdx.gl.glClearColor(0f, 0f, 0f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		//
-		stage.act(delta);
-		stage.draw();
-	}
+    @Override
+    public void render(float delta) {
+        Gdx.gl.glClearColor(0f, 0f, 0f, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-	@Override
-	public void resize(int width, int height) {
-		stage.getViewport().setWorldSize(width, height);
-	}
+        stage.act(delta);
+        stage.draw();
+    }
 
-	@Override
-	public void show() {
-		Gdx.input.setInputProcessor(stage);
-		Assets.pauseMusic();
-		Assets.playMusic(Assets.menuMusic);
-	}
+    @Override
+    public void resize(int width, int height) {
+        stage.getViewport().setWorldSize(width, height);
+    }
 
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-	}
+    @Override
+    public void show() {
+        Gdx.input.setInputProcessor(stage);
+        Assets.pauseMusic();
+        Assets.playMusic(Assets.menuMusic);
+    }
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
+    @Override
+    public void hide() {
+        // No-op
+    }
 
-	}
+    @Override
+    public void pause() {
+        // No-op
+    }
 
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
+    @Override
+    public void resume() {
+        // No-op
+    }
 
-	}
-
-	@Override
-	public void dispose() {
-		stage.dispose();
-	}
+    @Override
+    public void dispose() {
+        stage.dispose();
+    }
 }

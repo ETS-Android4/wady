@@ -18,35 +18,32 @@ import com.mpv.data.Settings;
 
 public class ExitDialog extends Dialog {
 
-	private float bSize = Const.PLAYER_SIZE * GVars.BOX_TO_WORLD * 1.2f;
+    private final float bSize = Const.PLAYER_SIZE * GVars.BOX_TO_WORLD * 1.2f;
 
-	public ExitDialog(String title, Skin skin, String windowStyleName) {
-		super(title, skin, windowStyleName);
-		Button yes = new Button(Assets.skin, "yes-button");
-		Button no = new Button(Assets.skin, "no-button");
-		this.getContentTable().add(new Label("Are you sure?", skin, "title-text")).height(bSize / 1.6f).row();
-		this.button(yes, true).button(no, false).key(Keys.ENTER, true).key(Keys.ESCAPE, false);
-		for (Cell<?> cell : this.getButtonTable().getCells()) {
-			cell.size(bSize);
-		}
-	}
+    public ExitDialog(String title, Skin skin, String windowStyleName) {
+        super(title, skin, windowStyleName);
+        Button yes = new Button(Assets.skin, "yes-button");
+        Button no = new Button(Assets.skin, "no-button");
+        this.getContentTable().add(new Label("Are you sure?", skin, "title-text")).height(bSize / 1.6f).row();
+        this.button(yes, true).button(no, false).key(Keys.ENTER, true).key(Keys.ESCAPE, false);
+        for (Cell<?> cell : this.getButtonTable().getCells()) {
+            cell.size(bSize);
+        }
+    }
 
-	protected void result(Object obj) {
-		Sounds.play(BUTTON);
-		if (obj.equals(true)) {
-			Settings.save();
-			Gdx.app.exit();
-		} else {
+    protected void result(Object obj) {
+        Sounds.play(BUTTON);
+        if (obj.equals(true)) {
+            Settings.save();
+            Gdx.app.exit();
+        }
+    }
 
-		}
-	}
-
-	@Override
-	public Dialog show(Stage stage) {
-		// TODO Auto-generated method stub
-		super.show(stage);
-		// this.setPosition(this.getX(), this.getY() + getHeight() / 3f);
-		return this;
-	}
+    @Override
+    public Dialog show(Stage stage) {
+        super.show(stage);
+        // this.setPosition(this.getX(), this.getY() + getHeight() / 3f);
+        return this;
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.mpv.game;
 
 public interface IReqHandler {
-	public void showAd(boolean show); 
-    public void showFullAd(boolean show);
+    void showAd(boolean show);
+
+    void showFullAd(boolean show);
 }
